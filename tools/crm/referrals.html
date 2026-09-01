@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Referrals</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23191a1c'/%3E%3Cpath d='M8 11h16M8 16h16M8 21h9' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Referrals">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    color-scheme: light;
+    --page: #fafafa; --surface: #ffffff; --line: #e4e4e7; --line-2: #d4d4d8;
+    --ink: #18181b; --ink-2: #3f3f46; --muted: #71717a; --faint: #a1a1aa;
+    --primary: #2557d6; --primary-hover: #1e47b8;
+    --ok: #0f7b41; --ok-dot: #16a34a;
+    --warn: #92610a; --warn-dot: #d97706;
+    --bad: #b42318;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--page); color: var(--ink);
+    font-family: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 13px; line-height: 1.45; -webkit-font-smoothing: antialiased; min-height: 100dvh;
+  }
+  a { color: var(--primary); text-decoration: none; }
+
+  .topnav { background: var(--surface); border-bottom: 1px solid var(--line); }
+  .topnav .in { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 48px; display: flex; align-items: center; gap: 22px; }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; letter-spacing: -0.01em; white-space: nowrap; color: var(--ink); }
+  .brand .mk { width: 20px; height: 20px; border-radius: 5px; background: #191a1c; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 700; }
+  .navtabs { display: flex; gap: 4px; height: 100%; }
+  .navtab { display: inline-flex; align-items: center; white-space: nowrap; padding: 0 10px; font-size: 13px; font-weight: 500; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .navtab:hover { color: var(--ink); }
+  .navtab.on { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
+  .navright { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .signout { font-size: 12px; color: var(--muted); }
+
+  .app { max-width: 1200px; margin: 0 auto; padding: 22px 24px 60px; }
+  h1 { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 3px; }
+  .sub { color: var(--muted); margin: 0 0 18px; }
+  .sub b { color: var(--ink); font-weight: 600; }
+
+  .cols { display: grid; grid-template-columns: 380px 1fr; gap: 20px; align-items: start; }
+  /* Grid children default to min-width:auto, so the table's min-content width
+     stretches the track and the whole page scrolls sideways on a phone. This is
+     what lets .tablewrap actually do the scrolling instead. */
+  .cols > * { min-width: 0; }
+  @media (max-width: 880px) { .cols { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .app { padding: 18px 14px 50px; } .topnav .in { padding: 0 14px; gap: 12px; } }
+  /* A flex child sits at min-width:auto by default, so once there were three
+     tabs the strip refused to shrink and dragged the whole page sideways on a
+     phone. It scrolls inside itself instead. */
+  @media (max-width: 560px) {
+    .navtabs { min-width: 0; overflow-x: auto; scrollbar-width: none; }
+    .navtabs::-webkit-scrollbar { display: none; }
+    .navtab { padding: 0 8px; }
+    /* The scrolling strip absorbs the squeeze; the buttons keep their size. */
+    .navright { flex: none; }
+  }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .card h2 { font-size: 14px; font-weight: 600; margin: 0 0 2px; }
+  .card .hint { color: var(--muted); font-size: 12px; margin: 0 0 14px; }
+  .card .hint.tight { margin: 2px 0 12px; }
+  .stack { display: flex; flex-direction: column; gap: 20px; }
+  .cardhead { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 2px; }
+  .cardhead h2 { margin: 0; }
+
+  /* Referred by: three fields that behave as one control */
+  .refbox { border: 1px solid var(--line-2); border-radius: 8px; padding: 10px 10px 4px; margin-bottom: 11px; position: relative; background: #fcfcfd; }
+  .refbox > label { margin-bottom: 7px; }
+  .refbox .fld.nb { margin-bottom: 8px; }
+  .refbox.ok { border-color: #86c9a4; background: #f6fdf9; }
+  .matchstate { font-size: 11.5px; border-radius: 5px; padding: 5px 7px; margin-bottom: 8px; }
+  .matchstate.none { background: #fffbeb; color: var(--warn); }
+  .matchstate.hit { background: #f0fdf4; color: var(--ok); font-weight: 600; }
+  .livestate { font-size: 12px; border-radius: 5px; padding: 7px 9px; margin: 10px 0 0; }
+  .livestate.off { background: #fffbeb; color: var(--warn); }
+  .livestate.on { background: #f0fdf4; color: var(--ok); font-weight: 600; word-break: break-all; }
+
+  label { display: block; font-size: 12px; font-weight: 600; color: var(--ink-2); margin: 0 0 4px; }
+  .fld { margin-bottom: 11px; position: relative; }
+  input[type=text], input[type=email], input[type=tel] {
+    width: 100%; font: inherit; font-size: 13px; height: 34px; padding: 0 10px;
+    border: 1px solid var(--line-2); border-radius: 6px; background: var(--surface); color: var(--ink);
+  }
+  input:focus { outline: 2px solid #c7d7fb; outline-offset: -1px; border-color: var(--primary); }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .btn {
+    font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 6px; padding: 0 14px; height: 34px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    transition: background 0.15s var(--ease);
+  }
+  .btn:hover { background: #f4f4f5; }
+  .btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; width: 100%; }
+  .btn.primary:hover { background: var(--primary-hover); }
+  .btn.primary:disabled { opacity: 0.55; cursor: default; }
+  .btn.sm { height: 28px; font-size: 12px; padding: 0 10px; }
+
+  .drop { position: absolute; z-index: 20; top: 100%; left: 0; right: 0; background: var(--surface); border: 1px solid var(--line-2); border-radius: 6px; margin-top: 3px; max-height: 230px; overflow: auto; box-shadow: 0 8px 20px rgba(0,0,0,0.10); }
+  .drop button { display: block; width: 100%; text-align: left; font: inherit; background: none; border: 0; padding: 7px 10px; cursor: pointer; border-bottom: 1px solid #f4f4f5; }
+  .drop button:last-child { border-bottom: 0; }
+  .drop button:hover, .drop button.act { background: #eff4fe; }
+  .drop .nm { font-weight: 600; }
+  .drop .mt { color: var(--muted); font-size: 11.5px; }
+  .drop .none { padding: 9px 10px; color: var(--muted); }
+
+  .picked { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line-2); border-radius: 6px; padding: 6px 8px; background: #f8fafc; }
+  .picked .nm { font-weight: 600; }
+  .picked .mt { color: var(--muted); font-size: 11.5px; }
+  .picked button { margin-left: auto; border: 0; background: none; cursor: pointer; color: var(--muted); font: inherit; font-size: 16px; line-height: 1; padding: 2px 4px; }
+
+  .note { border-radius: 6px; padding: 9px 11px; font-size: 12.5px; margin-bottom: 12px; }
+  .note.err { background: #fef2f2; border: 1px solid #fecaca; color: var(--bad); }
+  .note.ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: var(--ok); }
+  .note.warn { background: #fffbeb; border: 1px solid #fde68a; color: var(--warn); }
+
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); padding: 0 10px 7px; border-bottom: 1px solid var(--line); }
+  td { padding: 10px; border-bottom: 1px solid #f4f4f5; vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  .who { font-weight: 600; }
+  .meta { color: var(--muted); font-size: 11.5px; }
+  .amt { font-weight: 600; white-space: nowrap; }
+
+  .pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; border-radius: 999px; padding: 2px 8px; }
+  .pill .d { width: 6px; height: 6px; border-radius: 50%; }
+  .pill.pending { background: #fffbeb; color: var(--warn); } .pill.pending .d { background: var(--warn-dot); }
+  .pill.paid { background: #f0fdf4; color: var(--ok); } .pill.paid .d { background: var(--ok-dot); }
+  .pill.credit { background: #eff4fe; color: var(--primary); } .pill.credit .d { background: var(--primary); }
+
+  .empty { text-align: center; color: var(--muted); padding: 34px 10px; }
+  .spin { width: 18px; height: 18px; border: 2px solid var(--line-2); border-top-color: var(--primary); border-radius: 50%; animation: sp 0.7s linear infinite; margin: 26px auto; }
+  @keyframes sp { to { transform: rotate(360deg); } }
+  .kw { display: inline-block; font-weight: 700; letter-spacing: 0.06em; background: #f4f4f5; border: 1px solid var(--line-2); border-radius: 5px; padding: 1px 7px; }
+  .tablewrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="in">
+  <span class="brand"><span class="mk">A</span>AI Partner Method</span>
+  <div class="navtabs">
+    <a class="navtab" href="crm.html">Leads</a>
+    <a class="navtab" href="customers.html">Customers</a>
+    <a class="navtab on" href="referrals.html">Referrals</a>
+    <a class="navtab" href="./">Email health</a>
+  </div>
+  <div class="navright"><a class="signout" id="signout" href="#" style="display:none">Sign out</a></div>
+</div></nav>
+
+<div class="app">
+  <h1>Referrals</h1>
+  <p class="sub" id="sub">Loading...</p>
+  <div id="boot"><div class="spin"></div></div>
+
+  <div class="cols" id="cols" style="display:none">
+    <div class="card">
+      <h2>Log a referral</h2>
+      <p class="hint" id="formhint"></p>
+      <div id="formnote"></div>
+      <form id="form" autocomplete="off">
+        <div class="fld">
+          <label for="customer">New customer's name</label>
+          <input type="text" id="customer" placeholder="Sarah Chen" required>
+        </div>
+        <div class="row2">
+          <div class="fld">
+            <label for="cemail">Their email</label>
+            <input type="email" id="cemail" placeholder="sarah@email.com">
+          </div>
+          <div class="fld">
+            <label for="cphone">Their phone</label>
+            <input type="tel" id="cphone" placeholder="604 555 0134">
+          </div>
+        </div>
+        <div class="fld">
+          <label for="job">What they're booking</label>
+          <input type="text" id="job" placeholder="Roof replacement">
+        </div>
+        <div class="refbox" id="refwrap">
+          <label>Referred by</label>
+          <div class="row2">
+            <div class="fld nb"><input type="text" id="reffirst" placeholder="First name" autocomplete="off"></div>
+            <div class="fld nb"><input type="text" id="reflast" placeholder="Last name" autocomplete="off"></div>
+          </div>
+          <div class="fld nb"><input type="email" id="refemail" placeholder="Their email" autocomplete="off"></div>
+          <div id="refmatch" class="matchstate none">Search your customers above, then apply the match.</div>
+          <div id="picked" style="display:none"></div>
+        </div>
+        <div class="fld" id="kwwrap">
+          <label for="keyword">Keyword they gave</label>
+          <input type="text" id="keyword" placeholder="">
+        </div>
+        <button class="btn primary" id="save" type="submit">Save and send the emails</button>
+      </form>
+    </div>
+
+    <div class="stack">
+    <div class="card">
+      <div class="cardhead">
+        <h2>Referral terms</h2>
+        <button class="btn sm" type="button" id="termstoggle">Edit</button>
+      </div>
+      <p class="hint" id="termssummary"></p>
+      <div id="termsform" style="display:none">
+        <div id="termsnote"></div>
+        <div class="row2">
+          <div class="fld">
+            <label for="t_reward">Reward per referral</label>
+            <input type="text" id="t_reward" placeholder="150" inputmode="decimal">
+          </div>
+          <div class="fld">
+            <label for="t_discount">New customer gets</label>
+            <input type="text" id="t_discount" placeholder="$50 off">
+          </div>
+        </div>
+        <div class="row2">
+          <div class="fld">
+            <label for="t_keyword">Keyword</label>
+            <input type="text" id="t_keyword" placeholder="Leave blank for none">
+          </div>
+          <div class="fld">
+            <label for="t_cap">Cash cap per person, per year</label>
+            <input type="text" id="t_cap" placeholder="450" inputmode="decimal">
+          </div>
+        </div>
+        <div class="fld">
+          <label for="t_business">Business name on the emails</label>
+          <input type="text" id="t_business" placeholder="Your business">
+        </div>
+        <p class="hint tight">Keep the cap under $500. Past that you owe the person a tax slip at year end, which is the only reason the cap exists.</p>
+        <button class="btn primary" type="button" id="termssave">Save terms</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="cardhead">
+        <h2>The customer page</h2>
+        <a class="btn sm" href="thanks.html?name=Sarah" target="_blank" rel="noopener">Open it</a>
+      </div>
+      <p class="hint tight">
+        This is what a new customer sees: your video, their discount, the review ask, then this referral offer.
+        It is the reason anybody knows the referral programme exists.
+      </p>
+      <p class="livestate" id="tystate"></p>
+    </div>
+
+    <div class="card">
+      <h2>Everyone who's sent you work</h2>
+      <p class="hint" id="listhint"></p>
+      <div id="listnote"></div>
+      <div class="tablewrap">
+        <table id="table">
+          <thead><tr><th>Referred by</th><th>New customer</th><th>Reward</th><th>Status</th><th></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <div class="empty" id="empty" style="display:none">Nothing yet. The first one shows up here the moment you log it.</div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var qs = new URLSearchParams(location.search);
+  var K = qs.get("k") || "";
+  var api = function (path) { return path + (K ? (path.indexOf("?") === -1 ? "?" : "&") + "k=" + encodeURIComponent(K) : ""); };
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) {
+    return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  };
+
+  var state = { referrals: [], directory: [], config: {}, referrer: null };
+
+  function note(el, kind, msg) {
+    el.innerHTML = msg ? '<div class="note ' + kind + '">' + esc(msg) + "</div>" : "";
+  }
+
+  function money(n) { return "$" + (Number(n) || 0); }
+
+  // ---- the referrer picker -------------------------------------------------
+  // Three fields, first name, last name and email, because two Joes is a when
+  // not an if. Typing in any of them searches the customer list; picking a
+  // result "applies" that customer, which is what the save actually uses.
+  // Editing a field afterwards clears the match, so you can never apply Joe
+  // and then quietly change the email underneath it.
+  function initPicker() {
+    var first = $("reffirst"), last = $("reflast"), email = $("refemail");
+    var wrap = $("refwrap"), stateEl = $("refmatch");
+    var fields = [first, last, email];
+    var drop = null, idx = -1;
+
+    function close() { if (drop) { drop.remove(); drop = null; idx = -1; } }
+
+    function matches() {
+      var q = fields.map(function (f) { return f.value.trim().toLowerCase(); }).filter(Boolean);
+      if (!q.length) return [];
+      return state.directory.filter(function (p) {
+        var hay = ((p.name || "") + " " + (p.email || "")).toLowerCase();
+        return q.every(function (term) { return hay.indexOf(term) !== -1; });
+      }).slice(0, 8);
+    }
+
+    function splitName(full) {
+      var bits = String(full || "").trim().split(/\s+/);
+      return { first: bits.shift() || "", last: bits.join(" ") };
+    }
+
+    function setState() {
+      if (state.referrer) {
+        wrap.classList.add("ok");
+        stateEl.className = "matchstate hit";
+        stateEl.textContent = "Applied to " + state.referrer.name
+          + (state.referrer.email ? " (" + state.referrer.email + ")" : "");
+      } else {
+        wrap.classList.remove("ok");
+        stateEl.className = "matchstate none";
+        stateEl.textContent = "Search your customers above, then apply the match.";
+      }
+    }
+
+    function apply(p) {
+      var n = splitName(p.name);
+      first.value = n.first;
+      last.value = n.last;
+      email.value = p.email || "";
+      state.referrer = p;
+      setState();
+      close();
+    }
+
+    function render(list) {
+      close();
+      drop = document.createElement("div");
+      drop.className = "drop";
+      if (!list.length) {
+        drop.innerHTML = '<div class="none">Nobody like that on your books yet.</div>';
+      } else {
+        list.forEach(function (p) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.innerHTML = '<span class="nm">' + esc(p.name || p.email) + "</span>"
+            + (p.email ? ' <span class="mt">' + esc(p.email) + "</span>" : "")
+            + (p.note ? '<div class="mt">' + esc(p.note) + "</div>" : "");
+          b.onclick = function () { apply(p); };
+          drop.appendChild(b);
+        });
+      }
+      wrap.appendChild(drop);
+    }
+
+    fields.forEach(function (f) {
+      f.addEventListener("input", function () {
+        if (state.referrer) { state.referrer = null; setState(); }
+        var list = matches();
+        if (!list.length && !f.value.trim()) return close();
+        render(list);
+      });
+      f.addEventListener("keydown", function (e) {
+        if (!drop) return;
+        var btns = drop.querySelectorAll("button");
+        if (!btns.length) return;
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          e.preventDefault();
+          idx = e.key === "ArrowDown" ? Math.min(idx + 1, btns.length - 1) : Math.max(idx - 1, 0);
+          btns.forEach(function (b) { b.classList.remove("act"); });
+          btns[idx].classList.add("act");
+          btns[idx].scrollIntoView({ block: "nearest" });
+        } else if (e.key === "Enter" && idx >= 0) {
+          e.preventDefault();
+          btns[idx].click();
+        } else if (e.key === "Escape") {
+          close();
+        }
+      });
+    });
+
+    document.addEventListener("click", function (e) {
+      if (drop && !wrap.contains(e.target)) close();
+    });
+
+    setState();
+  }
+
+  function clearReferrer() {
+    ["reffirst", "reflast", "refemail"].forEach(function (id) { $(id).value = ""; });
+    state.referrer = null;
+    $("refwrap").classList.remove("ok");
+    var s = $("refmatch");
+    s.className = "matchstate none";
+    s.textContent = "Search your customers above, then apply the match.";
+  }
+
+  // Today's new customer is next year's referrer, so they join the searchable
+  // directory the moment they are logged. The sheet does the same thing on its
+  // side; this just saves waiting for a reload to see it.
+  function addToDirectory(r) {
+    var email = String(r.customer_email || "").trim().toLowerCase();
+    var name = String(r.customer || "").trim();
+    if (!name && !email) return;
+    var already = state.directory.some(function (p) {
+      return email
+        ? String(p.email || "").toLowerCase() === email
+        : String(p.name || "").trim().toLowerCase() === name.toLowerCase();
+    });
+    if (already) return;
+    state.directory.push({
+      name: name,
+      email: email,
+      phone: String(r.customer_phone || "").trim(),
+      note: "referred " + (r.date || ""),
+    });
+  }
+
+  // ---- list ----------------------------------------------------------------
+  function renderList() {
+    var rows = $("rows");
+    var list = state.referrals.slice().reverse();
+    rows.innerHTML = "";
+    $("empty").style.display = list.length ? "none" : "";
+    $("table").style.display = list.length ? "" : "none";
+
+    var owed = 0;
+    list.forEach(function (r) {
+      if (String(r.status).toLowerCase() === "pending") owed += Number(r.reward) || 0;
+      var tr = document.createElement("tr");
+      var credit = String(r.reward_type).toLowerCase() === "credit";
+      var paid = String(r.status).toLowerCase() === "paid";
+      tr.innerHTML =
+        '<td><div class="who">' + esc(r.referrer) + "</div>"
+          + '<div class="meta">' + esc(r.referrer_email || "") + "</div></td>"
+        + '<td><div class="who">' + esc(r.customer) + "</div>"
+          + '<div class="meta">' + [r.job, r.date].filter(Boolean).map(esc).join(" &middot; ") + "</div></td>"
+        + '<td><span class="amt">' + money(r.reward) + "</span>"
+          + (credit ? ' <span class="pill credit"><span class="d"></span>credit</span>' : "") + "</td>"
+        + "<td>" + (paid
+            ? '<span class="pill paid"><span class="d"></span>paid</span>'
+              + (r.payment_ref ? '<div class="meta">' + esc(r.payment_ref) + "</div>" : "")
+            : '<span class="pill pending"><span class="d"></span>pending</span>') + "</td>"
+        + "<td></td>";
+      if (!paid) {
+        var btn = document.createElement("button");
+        btn.className = "btn sm";
+        btn.type = "button";
+        btn.textContent = credit ? "Mark applied" : "Mark paid";
+        btn.onclick = function () { markPaid(r, btn); };
+        tr.lastElementChild.appendChild(btn);
+      }
+      rows.appendChild(tr);
+    });
+
+    var year = new Date().getFullYear();
+    $("listhint").innerHTML = list.length
+      ? esc(list.length + " so far. " + money(owed) + " owed out right now.")
+        + " Cash to any one person is capped at " + money(state.config.cash_cap)
+        + " in " + year + ", then their reward switches to credit."
+      : "";
+  }
+
+  function markPaid(r, btn) {
+    var credit = String(r.reward_type).toLowerCase() === "credit";
+    var ref = credit
+      ? "credit applied"
+      : window.prompt("Paid " + esc(r.referrer) + " " + money(r.reward) + ".\n\nPaste the e-transfer reference so it is on the record for the bookkeeper:", "");
+    if (ref === null) return;
+    btn.disabled = true;
+    btn.textContent = "Saving...";
+    fetch(api("api/referrals"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "paid", row: r.row, payment_ref: ref }),
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (d) {
+        if (!d.ok) throw new Error(d.error || "could not save that");
+        // The message goes on after the reload, not before: load() clears this
+        // slot, so setting it first would flash the confirmation and lose it.
+        return load().then(function () {
+          note($("listnote"), d.email_error ? "warn" : "ok",
+            d.email_error
+              ? "Marked paid, but the email did not go: " + d.email_error
+              : "Marked paid and " + r.referrer.split(" ")[0] + " has been told.");
+        });
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        btn.textContent = credit ? "Mark applied" : "Mark paid";
+        note($("listnote"), "err", String(err.message || err));
+      });
+  }
+
+  // ---- save ----------------------------------------------------------------
+  $("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var btn = $("save");
+    note($("formnote"), "", "");
+
+    if (!state.referrer) {
+      note($("formnote"), "err", "Apply the referrer to one of your customers first. Type their name or email and pick the match.");
+      return;
+    }
+    var payload = {
+      action: "create",
+      customer: $("customer").value.trim(),
+      customer_email: $("cemail").value.trim(),
+      customer_phone: $("cphone").value.trim(),
+      job: $("job").value.trim(),
+      referrer_first: $("reffirst").value.trim(),
+      referrer_last: $("reflast").value.trim(),
+      referrer_email: $("refemail").value.trim(),
+      keyword: $("keyword").value.trim(),
+    };
+
+    btn.disabled = true;
+    btn.textContent = "Saving...";
+    fetch(api("api/referrals"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (d) {
+        if (!d.ok) throw new Error(d.error || "could not save that");
+        var who = state.referrer.name.split(" ")[0];
+        var msg = d.capped
+          ? who + " is at their cash cap for this year, so this one is " + money(d.reward) + " of credit instead."
+          : "Logged. " + money(d.reward) + " is pending for " + who + ".";
+        if (d.email_error) msg += " Emails: " + d.email_error;
+        note($("formnote"), d.email_error || d.capped ? "warn" : "ok", msg);
+        $("form").reset();
+        clearReferrer();
+        $("keyword").value = "";
+        // The row that was just written comes back on the response, so it goes
+        // straight into the list. Reloading here meant a third trip to Google
+        // for data already in hand, and those trips are the slow part.
+        if (d.referral) {
+          state.referrals.push(d.referral);
+          addToDirectory(d.referral);
+          renderList();
+        } else {
+          load();
+        }
+      })
+      .catch(function (err) {
+        note($("formnote"), "err", String(err.message || err));
+      })
+      .then(function () {
+        btn.disabled = false;
+        btn.textContent = "Save and send the emails";
+      });
+  });
+
+  // ---- referral terms ------------------------------------------------------
+  // These live in the sheet, not in the code, so the owner can change what they
+  // pay without anybody redeploying, and every client's copy carries its own.
+  function fillTerms(c) {
+    $("t_reward").value = c.reward || "";
+    $("t_discount").value = c.discount || "";
+    $("t_keyword").value = c.keyword || "";
+    $("t_cap").value = c.cash_cap || "";
+    $("t_business").value = c.business || "";
+    var bits = [];
+    bits.push(c.reward ? money(c.reward) + " a referral" : "no reward set");
+    if (c.discount) bits.push(c.discount + " for the new customer");
+    bits.push(c.keyword ? "keyword " + c.keyword : "no keyword");
+    bits.push("cash capped at " + money(c.cash_cap) + " per person per year");
+    $("termssummary").textContent = bits.join(", ") + ".";
+  }
+
+  $("termstoggle").addEventListener("click", function () {
+    var open = $("termsform").style.display !== "none";
+    $("termsform").style.display = open ? "none" : "";
+    $("termstoggle").textContent = open ? "Edit" : "Close";
+  });
+
+  $("termssave").addEventListener("click", function () {
+    var btn = $("termssave");
+    note($("termsnote"), "", "");
+    btn.disabled = true;
+    btn.textContent = "Saving...";
+    fetch(api("api/referrals"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "terms", terms: {
+        reward: $("t_reward").value.trim(),
+        discount: $("t_discount").value.trim(),
+        keyword: $("t_keyword").value.trim(),
+        cash_cap: $("t_cap").value.trim(),
+        business: $("t_business").value.trim(),
+      } }),
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (d) {
+        if (!d.ok) throw new Error(d.error || "could not save the terms");
+        return load().then(function () {
+          note($("termsnote"), "ok", "Saved. New referrals use these straight away.");
+        });
+      })
+      .catch(function (err) { note($("termsnote"), "err", String(err.message || err)); })
+      .then(function () {
+        btn.disabled = false;
+        btn.textContent = "Save terms";
+      });
+  });
+
+  // ---- boot ----------------------------------------------------------------
+  function load() {
+    return fetch(api("api/referrals"))
+      .then(function (res) {
+        if (res.status === 401) { location.href = "./"; return null; }
+        return res.json();
+      })
+      .then(function (d) {
+        if (!d) return;
+        if (!d.ok) throw new Error(d.error || "could not load referrals");
+        state.referrals = d.referrals || [];
+        state.directory = d.directory || [];
+        state.config = d.config || {};
+        $("boot").style.display = "none";
+        $("cols").style.display = "";
+
+        var c = state.config;
+        var bits = [];
+        if (c.reward_label) bits.push("<b>" + esc(c.reward_label) + "</b> per referral");
+        if (c.discount) bits.push("<b>" + esc(c.discount) + "</b> for the new customer");
+        $("sub").innerHTML = bits.length
+          ? bits.join(", ") + ". They have to give the keyword and name a customer you already have."
+          : "Nothing set yet. Open Referral terms and put in what a referral pays.";
+
+        $("formhint").innerHTML = c.keyword
+          ? 'Ask them for the keyword. It is <span class="kw">' + esc(c.keyword) + "</span> for everybody."
+          : "No keyword set, so anybody naming a real customer counts.";
+        $("kwwrap").style.display = c.keyword ? "" : "none";
+
+        fillTerms(c);
+
+        // Honest about whether marking somebody Won actually reaches them yet.
+        var ty = $("tystate");
+        if (c.thankyou_url) {
+          ty.className = "livestate on";
+          ty.textContent = "Switched on. New customers get sent to " + c.thankyou_url;
+        } else {
+          ty.className = "livestate off";
+          ty.textContent = "Not switched on yet, so marking somebody Won emails nobody. This is the template to brand for a client.";
+        }
+
+        note($("listnote"), "", "");
+        if (!c.email_ready) {
+          note($("listnote"), "warn", "Emails are not switched on yet, so nothing gets sent. Everything else still records.");
+        }
+        renderList();
+      })
+      .catch(function (err) {
+        $("boot").innerHTML = '<div class="note err">' + esc(String(err.message || err)) + "</div>";
+      });
+  }
+
+  initPicker();
+  load();
+
+  // Sign out matches crm.html exactly: the link only shows on a cookie session
+  // (never on a ?k= link), and logging out is a POST, because api/login refuses
+  // anything else.
+  (function signout() {
+    if (/[?&]k=/.test(location.search)) return;
+    var out = $("signout");
+    if (!out) return;
+    out.style.display = "inline-flex";
+    out.addEventListener("click", function (e) {
+      e.preventDefault();
+      fetch("api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ logout: 1 }),
+      })
+        .then(function () { location.reload(); })
+        .catch(function () { location.reload(); });
+    });
+  })();
+})();
+</script>
+</body>
+</html>

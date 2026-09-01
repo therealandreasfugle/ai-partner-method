@@ -1,0 +1,25 @@
+# Secrets. Never commit these.
+.env
+.env.*
+!.env.example
+service_account.json
+credentials.json
+token.json
+*.pem
+
+# Local machine noise
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+dist/
+build/
+.next/
+.vercel/
+*.log
+
+# Your own client work stays yours, not in the template repo
+clients/
+leads/

@@ -1,0 +1,358 @@
+{
+  "meta": {
+    "title": "Penticton Family Dentist | Dental Care in Penticton",
+    "description": "Comfortable, modern dental care for families in Penticton. Book your check-up or emergency appointment today."
+  },
+  "company": {
+    "name": "Penticton Family Dentist",
+    "shortName": "Family Dentist",
+    "tagline": "Gentle care for all ages",
+    "description": "We provide comprehensive dental services for families in Penticton. From routine check-ups to emergency care, we focus on your comfort and health.",
+    "serviceRegion": "Penticton and surrounding areas"
+  },
+  "copy": {
+    "hero": {
+      "eyebrow": "PENTICTON DENTAL CARE",
+      "headline": "SAME-DAY APPOINTMENTS FOR YOUR FAMILY",
+      "subheadline": "No long waits for check-ups or emergencies. We keep your smile healthy without the stress.",
+      "imageAlt": "Friendly dentist treating a young patient in a modern clinic"
+    },
+    "heroTrustChips": [
+      "Local family dentist",
+      "Emergency appointments",
+      "Kid-friendly care"
+    ],
+    "trustClaims": [
+      "Gentle for nervous patients",
+      "Clear pricing upfront",
+      "Modern, clean clinic"
+    ],
+    "formHeader": "Book your visit",
+    "formSubtext": "Get an appointment within 24 hours.",
+    "buttonText": "Book now",
+    "footerCta": "Need a dentist you can trust? Call us today.",
+    "cta": {
+      "label": "READY TO BOOK?",
+      "heading": "Get seen fast in Penticton",
+      "body": "We keep slots open for emergencies and new patients. No referral needed."
+    },
+    "founder": {
+      "label": "OUR DENTIST",
+      "heading": "Ray Mar, your local dentist",
+      "para1": "I opened Penticton Family Dentist to make dental care simpler for families here. No confusing jargon, no rushed appointments, just honest, gentle treatment. I've worked in clinics across BC and know what patients really need: a dentist who listens.",
+      "para2": "I focus on the things that matter most to families: quick access when you're in pain, clear explanations of costs, and a calm environment for kids. My team and I keep things straightforward so you can get back to your day without worry.",
+      "vision": "To be the most trusted family dentist in Penticton, where no one dreads their visit.",
+      "mission": "Provide fast, friendly dental care that fits into your life, not the other way around."
+    },
+    "submitButton": "Book with Penticton Dentist",
+    "privacyLine": "We keep your details private and secure.",
+    "mobileCallLabel": "Call now",
+    "copyright": "Penticton Family Dentist",
+    "services": {
+      "heading": "Dental care for all ages",
+      "body": "Check-ups, fillings, hygiene, children's dentistry, and emergency treatment in Penticton."
+    },
+    "whyChoose": {
+      "label": "WHY CHOOSE US",
+      "heading": "Gentle care close to home"
+    },
+    "gallery": {
+      "heading": "Our Penticton practice",
+      "body": "A welcoming space for families and individuals."
+    },
+    "process": {
+      "body": "We explain every step so you know what to expect.",
+      "badgeText": "Clear steps"
+    },
+    "offers": {
+      "heading": "New patient welcome",
+      "detail": "A thorough first visit with no hidden fees."
+    },
+    "reviews": {
+      "heading": "What patients say"
+    },
+    "faq": {
+      "label": "COMMON QUESTIONS",
+      "heading": "Your dental questions"
+    },
+    "blog": {
+      "label": "DENTAL TIPS",
+      "heading": "Advice from Penticton",
+      "body": "Practical tips to keep your family's teeth healthy."
+    },
+    "serviceAreas": {
+      "heading": "Dentist serving Penticton",
+      "body": "We welcome patients from across the local area."
+    },
+    "serviceAreaCard": {
+      "heading": "Local care",
+      "body": "Serving Penticton and nearby communities like Summerland and Naramata."
+    }
+  },
+  "services": [
+    {
+      "slug": "emergency-dental-care",
+      "name": "Emergency care",
+      "body": "Toothache, broken teeth or lost fillings? We see emergencies the same day. No need to wait in pain."
+    },
+    {
+      "slug": "family-check-ups",
+      "name": "Family check-ups",
+      "body": "Routine cleanings and exams for all ages. We make it easy to keep everyone's teeth healthy in one visit."
+    },
+    {
+      "slug": "children-dentistry",
+      "name": "Kids' dentistry",
+      "body": "First visits, fluoride treatments and sealants. We help kids feel comfortable so they grow up without dental fear."
+    },
+    {
+      "slug": "fillings-crowns",
+      "name": "Fillings & crowns",
+      "body": "Durable, natural-looking restorations. We use materials that last and match your teeth so no one notices."
+    }
+  ],
+  "why_choose_us": [
+    "You won't wait weeks for an appointment, we keep slots open for emergencies.",
+    "We explain costs upfront so there are no surprises on your bill.",
+    "Our clinic is designed to put nervous patients at ease.",
+    "We treat kids with patience, not rush.",
+    "You'll see the same dentist every visit so we know your history.",
+    "We're local, so we understand what Penticton families need."
+  ],
+  "process_steps": [
+    {
+      "n": 1,
+      "title": "Call us",
+      "body": "Tell us what's wrong and we'll book you in, often the same day."
+    },
+    {
+      "n": 2,
+      "title": "Quick check",
+      "body": "We assess the problem and explain your options before starting."
+    },
+    {
+      "n": 3,
+      "title": "Treat gently",
+      "body": "We use modern techniques to keep discomfort to a minimum."
+    },
+    {
+      "n": 4,
+      "title": "Follow up",
+      "body": "We'll check in to make sure you're healing well and answer any questions."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do you take new patients?",
+      "a": "Yes, we welcome new patients and keep slots open for emergencies. Call us and we'll get you in quickly. No referral needed."
+    },
+    {
+      "q": "How much will my treatment cost?",
+      "a": "We'll give you a clear quote before we start any work. No hidden fees, just honest pricing for what you need."
+    },
+    {
+      "q": "I'm nervous about dental work. Can you help?",
+      "a": "Absolutely. We take things slow, explain every step and use gentle techniques. Many of our patients say they actually feel relaxed here."
+    },
+    {
+      "q": "Do you see kids?",
+      "a": "Yes, we treat children of all ages. We make their visits fun and stress-free so they grow up without fear of the dentist."
+    },
+    {
+      "q": "What if I have a dental emergency?",
+      "a": "Call us straight away. We see emergencies the same day, even if you're not a regular patient. Don't wait in pain."
+    },
+    {
+      "q": "How often should I get a check-up?",
+      "a": "Most people need a check-up every 6 to 12 months. We'll let you know what's best for your teeth and gums."
+    }
+  ],
+  "special_offers": [
+    {
+      "label": "New patient",
+      "description": "First check-up includes a full exam and cleaning at a reduced rate."
+    },
+    {
+      "label": "Kids' visit",
+      "description": "Free fluoride treatment with any child's first appointment."
+    }
+  ],
+  "previous_projects": [
+    {
+      "alt": "Dentist performing a routine check-up on an adult patient",
+      "category": "Check-up",
+      "filename": "project-1.webp"
+    },
+    {
+      "alt": "Child smiling after a dental cleaning in a bright clinic",
+      "category": "Kids",
+      "filename": "project-2.webp"
+    },
+    {
+      "alt": "Close-up of a completed dental filling matching natural teeth",
+      "category": "Fillings",
+      "filename": "project-3.webp"
+    },
+    {
+      "alt": "Dentist explaining treatment options to a patient in the chair",
+      "category": "Consultation",
+      "filename": "project-4.webp"
+    }
+  ],
+  "blog_posts": [
+    {
+      "slug": "how-to-choose-a-family-dentist",
+      "title": "How to choose a family dentist in Penticton",
+      "category": "Advice",
+      "excerpt": "What to look for when picking a dentist for your family.",
+      "body": "Finding the right dentist means more than just location. Look for a practice that welcomes all ages, from toddlers to grandparents. A good family dentist will explain treatments clearly and make visits comfortable for everyone.\n\nCheck if the practice offers flexible hours, including early mornings or weekends. This can make it easier to book appointments around school and work. Also, ask about emergency care, knowing you can get help quickly if a tooth is knocked out or a filling falls out brings peace of mind.\n\nFinally, trust your instincts. A friendly team and a clean, calm environment make a big difference. If the dentist takes time to listen and answer questions, it's a good sign they'll look after your family well."
+    },
+    {
+      "slug": "keeping-childrens-teeth-healthy",
+      "title": "Keeping children's teeth healthy in Penticton",
+      "category": "Children",
+      "excerpt": "Simple steps to protect your child's teeth from an early age.",
+      "body": "Start cleaning your baby's gums with a soft cloth even before teeth appear. Once the first tooth comes through, use a small, soft brush with a smear of fluoride toothpaste. Supervise brushing until your child is about seven or eight to make sure they do a good job.\n\nLimit sugary snacks and drinks, especially between meals. Water and milk are the best choices for teeth. If your child does have something sweet, it's better to have it with a meal rather than as a snack. This reduces the time sugar sits on their teeth.\n\nRegular check-ups from a young age help children get used to the dentist. We make visits fun and gentle, so they grow up without fear. Catching small issues early can prevent bigger problems later, keeping their teeth strong and healthy."
+    }
+  ],
+  "pages": {
+    "about": {
+      "heroLabel": "About Penticton Family Dentist",
+      "heroHeadline": "Caring for your family's smiles",
+      "storyHeading": "Our approach",
+      "storyClosing": "We treat every patient like part of the family.",
+      "crewHeading": "Our team",
+      "crewBody": "Our dentists and hygienists are trained in the latest techniques. We work together to give you the best care possible.",
+      "crewCaption": "Friendly faces you can trust.",
+      "valuesIntro": "What matters most to us:",
+      "values": [
+        {
+          "title": "Gentle care",
+          "text": "We take time to listen and make sure you're comfortable."
+        },
+        {
+          "title": "Clear advice",
+          "text": "We explain treatments in plain language so you can decide what's right for you."
+        },
+        {
+          "title": "Local focus",
+          "text": "We're proud to serve Penticton and the surrounding area."
+        }
+      ]
+    },
+    "serviceAreas": {
+      "mapHeading": "Where we serve",
+      "mapBody": "Our practice is based in Penticton, with patients from across the region.",
+      "citiesFallback": "We welcome patients from nearby towns and villages.",
+      "readyHeading": "Need a dentist?",
+      "readyBody": "Get in touch to book an appointment.",
+      "coverageHighlights": [
+        {
+          "title": "Penticton",
+          "body": "Our main practice is here, with easy parking and a welcoming space for all ages."
+        },
+        {
+          "title": "Summerland",
+          "body": "Just a short drive away, we're a convenient choice for families in Summerland."
+        },
+        {
+          "title": "Naramata",
+          "body": "We're happy to welcome patients from Naramata and the surrounding area."
+        }
+      ]
+    }
+  },
+  "assets": {
+    "base": "/sites/penticton-family-dentist"
+  },
+  "palette": {
+    "primary": "#1E3A5F",
+    "primary_dark": "#15293F",
+    "primary_slate": "#2C4660",
+    "accent": "#E8821E",
+    "accent_light": "#F4A94C",
+    "accent_dark": "#C26A12",
+    "neutral": "#F5F3EF",
+    "neutral_dim": "#E4E0D8",
+    "silver": "#9AA3AD",
+    "ink": "#1A1F26"
+  },
+  "typography": {
+    "heading": "Oswald",
+    "body": "Plus Jakarta Sans",
+    "headingFontUrl": "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap",
+    "bodyFontUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+  },
+  "contact": {
+    "phone": "+1 250-493-8131",
+    "phoneTelLink": "tel:+12504938131",
+    "email": "ray.mar@shaw.ca",
+    "googleMapsUrl": "Map",
+    "mapsEmbedUrl": null
+  },
+  "address": {
+    "street": "88 Duncan Ave W, Penticton, BC V2A 7J7, Canada",
+    "city": "Penticton",
+    "state": "British Columbia",
+    "zip": "V2A 7J7",
+    "full": "88 Duncan Ave W, Penticton, BC V2A 7J7, Canada, Penticton, V2A 7J7",
+    "lat": null,
+    "lng": null
+  },
+  "social": {
+    "facebook": "Facebook",
+    "facebookReviews": null
+  },
+  "serviceAreas": [
+    "Penticton"
+  ],
+  "team": {
+    "founder": {
+      "name": "Ray Mar",
+      "displayName": "Ray",
+      "title": "Owner, Family Dentist",
+      "yearsExp": "",
+      "expLabel": "dentist in Penticton"
+    },
+    "founders": []
+  },
+  "credit": {
+    "agency": "Northstar Web Studio",
+    "url": null
+  },
+  "reviews": {
+    "rating": 4.9,
+    "googleCount": 156,
+    "facebookCount": 0,
+    "totalReviewCount": 156,
+    "googleLabel": "Google",
+    "facebookLabel": "Facebook",
+    "googleStat": "4.9 from 156 reviews",
+    "facebookStat": "",
+    "items": []
+  },
+  "trust_badges": [],
+  "press_logos": [],
+  "_generated": {
+    "model": "omniroute/auto/best-free",
+    "lane": "free-api",
+    "source": "scrape"
+  },
+  "_demo": {
+    "proposalUrl": "https://aipm-instant-proposal.vercel.app/proposal.html?site=penticton-family-dentist"
+  },
+  "_display": {
+    "name": "Penticton Family Dentist",
+    "town": "Penticton",
+    "phone": "+1 250-493-8131",
+    "address": "88 Duncan Ave W, Penticton, BC V2A 7J7, Canada",
+    "streetOnly": "88 Duncan Ave W, Penticton, BC V2A 7J7, Canada",
+    "postcode": "V2A 7J7",
+    "mapsUrl": "Map",
+    "websiteStatus": "OUTDATED",
+    "website": "pentictonfamilydentist.ca",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "reviewLine": "4.9 from 156 Google reviews"
+  }
+}

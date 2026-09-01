@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+# secrets - never commit
+.env
+.env.local
+.env.*.local
+.env.backup*
+credentials.json
+token.json
+*.pem
+*.key
+# build output
+.next/
+dist/
+build/
+# tooling
+.vercel/
+.DS_Store
+*.log
+# preserved git history containing files over GitHub's 100MB limit
+.git-old-history-with-large-media/

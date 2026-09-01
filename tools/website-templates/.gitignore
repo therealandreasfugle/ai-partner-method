@@ -1,0 +1,19 @@
+.vercel
+# dependencies
+node_modules/
+# secrets - never commit
+.env
+.env.local
+.env.*.local
+.env.backup*
+credentials.json
+token.json
+*.pem
+# build output
+.next/
+dist/
+build/
+# tooling
+.vercel/
+.DS_Store
+*.log

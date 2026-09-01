@@ -1,0 +1,272 @@
+/* ==========================================================================
+   DENTAL PRACTICE
+   Clinical blue on near-white: split hero with floating stat cards, priced
+   service cards, statement block, feature split, testimonial marquee.
+   ========================================================================== */
+
+:root {
+  --background: #f7f6f7;
+  --card: #ffffff;
+  --foreground: #0c1325;
+  --primary-cta: #0798ff;
+  --primary-cta-text: #f7f6f7;
+  --secondary-cta: #ffffff;
+  --secondary-cta-text: #0c1325;
+  --accent: #93c7ff;
+  --background-accent: #a8cde8;
+  --radius: 1.5rem;
+  --content-width: 87.5vw;
+  --section-head-size: var(--text-6xl);
+}
+
+@media (width >= 1536px) {
+  :root { --section-head-size: var(--text-7xl); }
+}
+
+.section-head h2 { background: linear-gradient(100deg, var(--foreground) 45%, var(--primary-cta) 95%); -webkit-background-clip: text; background-clip: text; }
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero { padding-top: 9rem; padding-bottom: 5rem; }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.15rem;
+}
+
+.hero__title {
+  max-width: 13ch;
+  font-size: var(--text-8xl);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(115deg, var(--foreground) 40%, var(--primary-cta) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+
+.hero__lede { max-width: 44ch; font-size: var(--text-xl); line-height: 1.45; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+
+.hero__stage { position: relative; }
+
+.hero__stage > .card {
+  padding: 0.75rem;
+  border-radius: var(--radius);
+}
+
+.hero__stage img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 0.25rem);
+}
+
+.stat-chip {
+  position: absolute;
+  z-index: 2;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.stat-chip strong {
+  display: block;
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.stat-chip span { font-size: var(--text-base); opacity: 0.75; }
+
+.stat-chip--a { top: -1.5rem; left: -2rem; }
+.stat-chip--b { top: 42%; right: -2.5rem; }
+.stat-chip--c { bottom: -1.5rem; left: 0.5rem; }
+
+@media (width <= 900px) {
+  .hero { padding-top: 7.5rem; }
+  .hero__grid { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
+  .hero__title { max-width: 100%; font-size: var(--text-7xl); }
+  .stat-chip { padding: 0.75rem 1rem; }
+  .stat-chip--a { top: -1rem; left: -0.5rem; }
+  .stat-chip--b { top: auto; bottom: 30%; right: -0.5rem; }
+  .stat-chip--c { bottom: -1rem; left: 1rem; }
+}
+
+/* --- Priced service card --------------------------------------------------- */
+
+.price-card { padding: 1rem; border-radius: var(--radius); }
+
+.price-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 0.5rem);
+}
+
+.price-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 1.5rem 0.5rem 0.5rem;
+}
+
+.price-card__body h3 { font-size: var(--text-3xl); }
+
+.price-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+}
+
+.price-card__rating svg { width: 1rem; height: 1rem; }
+.price-card__rating span { color: var(--foreground); opacity: 0.6; font-size: var(--text-base); }
+
+.price-card__price { font-size: var(--text-3xl); font-weight: 700; }
+
+/* --- Statement -------------------------------------------------------------- */
+
+.statement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  text-align: center;
+}
+
+.statement h2 {
+  max-width: 30ch;
+  font-size: var(--text-5xl);
+  line-height: 1.25;
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+.statement__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+
+/* --- Feature split ---------------------------------------------------------- */
+
+.feature-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.feature-block { padding: 1rem; border-radius: var(--radius); }
+
+.feature-block img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 0.5rem);
+}
+
+.feature-block__body { padding: 1.5rem 0.75rem 0.75rem; }
+.feature-block__body h3 { font-size: var(--text-3xl); margin-bottom: 0.5rem; }
+.feature-block__body p { font-size: var(--text-lg); line-height: 1.45; }
+
+@media (width <= 768px) {
+  .feature-split { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- Testimonial marquee ------------------------------------------------------ */
+
+.review-marquee { --marquee-gap: 1rem; --marquee-duration: 55s; }
+.review-marquee .testimonial { width: 26rem; flex: none; }
+
+@media (width <= 768px) {
+  .review-marquee .testimonial { width: 20rem; }
+}
+
+/* --- Contact ------------------------------------------------------------------ */
+
+.contact-band {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+  padding: 5rem 2rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+}
+
+.contact-band__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-band::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 20, 40, 0.85), rgba(7, 20, 40, 0.55));
+}
+
+.contact-band > * { position: relative; z-index: 2; }
+
+.contact-band .eyebrow {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.contact-band h2 {
+  max-width: 22ch;
+  font-size: var(--text-6xl);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.contact-band p { max-width: 52ch; font-size: var(--text-lg); line-height: 1.5; }
+
+/* --- Footer -------------------------------------------------------------------- */
+
+.site-footer { border-radius: var(--radius) var(--radius) 0 0; background: var(--foreground); padding-block: 4rem; }
+
+.footer-top { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: start; }
+.footer-brand { font-size: var(--text-5xl); font-weight: 700; letter-spacing: -0.02em; }
+.footer-nav { display: grid; grid-template-columns: repeat(3, minmax(9rem, auto)); gap: 2.5rem; }
+.footer-nav h3 { font-size: var(--text-base); font-weight: 500; opacity: 0.55; margin-bottom: 1rem; }
+.footer-nav ul { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-nav a { font-size: var(--text-lg); transition: color 0.2s; }
+.footer-nav a:hover { color: var(--accent); }
+
+.footer-legal-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: var(--text-base);
+  opacity: 0.65;
+}
+
+.footer-legal-bar div { display: flex; gap: 1.25rem; }
+
+@media (width <= 768px) {
+  .footer-top { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .footer-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+}

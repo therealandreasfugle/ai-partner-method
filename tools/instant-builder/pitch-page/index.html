@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Your website preview</title>
+<meta name="description" content="See exactly how your website could look, built around your business in about a minute." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23030303'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial' font-size='17' font-weight='bold' fill='%23EAB308' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet" />
+<style>
+/* Design DNA cloned from the confirmed Summit proposal / settoku-watch page:
+   gold on warm ink, Plus Jakarta Sans throughout, dark cover over a light body,
+   numbered value stack. Deliberately not reinvented. */
+:root{
+  --gold:#EAB308; --gold-soft:#D4A94E; --gold-deep:#9C7B2E;
+  --ink:#1F1A15; --ink-2:#54514A; --muted:#86827A;
+  --hair:rgba(31,26,21,0.12); --hair-2:rgba(31,26,21,0.08);
+  --bg:#F1F1F1; --cream:#FAF8F1; --white:#fff;
+  --ok:#127A45; --bad:#B23B2E;
+  --sans:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+  --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.08}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* Topbar */
+.topbar{position:sticky;top:0;z-index:60;background:rgba(3,3,3,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;
+  height:58px;gap:16px}
+.wordmark{color:#fff;font-weight:800;font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase}
+.prepared{color:rgba(255,255,255,.55);font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;display:none}
+@media(min-width:820px){.prepared{display:block}}
+.pill-cta{background:var(--gold);color:#1a1400;text-decoration:none;
+  font-weight:700;font-size:13px;padding:9px 18px;border-radius:999px;
+  white-space:nowrap;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.pill-cta:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(234,179,8,.32)}
+
+/* Dark cover */
+.cover{background:linear-gradient(180deg,#030303 0%,#1F2124 100%);color:#fff;
+  padding:64px 0 76px;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(760px 420px at 78% 8%,rgba(234,179,8,.14),transparent 62%)}
+.cover .wrap{position:relative;z-index:2}
+.eyebrow{display:inline-block;border:1px solid rgba(234,179,8,.42);
+  color:var(--gold-soft);font-size:11.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;padding:7px 15px;border-radius:999px;margin-bottom:22px}
+.cover h1{font-size:clamp(34px,5.4vw,60px);max-width:15ch}
+.cover h1 .g{color:var(--gold)}
+.lede{color:rgba(255,255,255,.74);font-size:clamp(16px,1.7vw,19px);
+  max-width:52ch;margin-top:18px}
+
+/* Numbered value stack */
+.vstack{margin:34px 0 30px;border-top:1px solid rgba(255,255,255,.12)}
+.vrow{display:flex;gap:16px;align-items:baseline;padding:13px 0;
+  border-bottom:1px solid rgba(255,255,255,.12)}
+.vnum{color:var(--gold);font-weight:800;font-size:13px;letter-spacing:.08em;
+  min-width:26px}
+.vtext{color:#fff;font-weight:600;font-size:clamp(15px,1.6vw,17px)}
+.vrow.sum .vtext{color:var(--gold-soft)}
+
+.btn-gold{display:inline-flex;align-items:center;gap:11px;background:var(--gold);
+  color:#1a1400;border:0;text-decoration:none;font-weight:800;font-size:16px;
+  padding:16px 28px;border-radius:999px;cursor:pointer;font-family:var(--sans);
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(234,179,8,.34)}
+.btn-gold .arrow{display:grid;place-items:center;width:24px;height:24px;
+  border-radius:999px;background:rgba(0,0,0,.16);font-size:13px}
+.cover-note{color:rgba(255,255,255,.5);font-size:13.5px;margin-top:14px}
+
+/* Light sections */
+section.light{padding:70px 0;background:var(--bg)}
+section.light.alt{background:#EDEDEB}
+.label{color:var(--gold-deep);font-size:11.5px;font-weight:800;letter-spacing:.17em;
+  text-transform:uppercase;margin-bottom:12px}
+.h2{font-size:clamp(25px,3.4vw,38px);max-width:20ch;position:relative;
+  padding-bottom:16px;margin-bottom:22px}
+.h2::after{content:"";position:absolute;left:0;bottom:0;width:56px;height:3px;
+  background:var(--gold)}
+.sub{color:var(--ink-2);max-width:58ch}
+
+.reasons{display:grid;gap:18px;margin-top:34px}
+@media(min-width:800px){.reasons{grid-template-columns:repeat(3,1fr)}}
+.reason{background:var(--cream);border:1px solid var(--hair);border-radius:14px;
+  padding:26px 24px;box-shadow:0 1px 2px rgba(31,26,21,.04),0 10px 26px rgba(31,26,21,.05)}
+.reason .num{color:var(--gold-deep);font-weight:800;font-size:12px;
+  letter-spacing:.1em;margin-bottom:11px}
+.reason h3{font-size:19px;margin-bottom:9px}
+.reason p{color:var(--ink-2);font-size:15.5px;margin:0}
+
+/* Form */
+.formwrap{background:var(--cream);border:1px solid var(--hair);border-radius:18px;
+  padding:30px 24px;box-shadow:0 2px 4px rgba(31,26,21,.05),0 20px 50px rgba(31,26,21,.09)}
+@media(min-width:760px){.formwrap{padding:40px}}
+.steps{display:flex;gap:8px;margin-bottom:26px}
+.stepdot{flex:1;height:4px;border-radius:99px;background:var(--hair)}
+.stepdot.on{background:var(--gold)}
+.stepnote{color:var(--muted);font-size:12.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:8px}
+fieldset{border:0;padding:0;margin:0}
+fieldset[hidden]{display:none}
+.q{margin-bottom:24px}
+.q > label{display:block;font-weight:700;font-size:16.5px;margin-bottom:6px}
+.hint{color:var(--muted);font-size:13.5px;margin-bottom:10px}
+input[type=text],input[type=email],input[type=tel]{width:100%;font-family:var(--sans);
+  font-size:16px;color:var(--ink);background:var(--white);border:1px solid var(--hair);
+  border-radius:10px;padding:13px 14px;transition:border-color .18s,box-shadow .18s}
+input:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 3px rgba(234,179,8,.18)}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{border:1px solid var(--hair);background:var(--white);color:var(--ink-2);
+  font-family:var(--sans);font-size:14.5px;font-weight:600;padding:10px 15px;
+  border-radius:999px;cursor:pointer;transition:all .18s var(--ease);text-align:left}
+.chip:hover{border-color:var(--gold-soft);color:var(--ink)}
+.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.knownrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  background:var(--white);border:1px solid var(--hair);border-radius:12px;
+  padding:13px 15px;margin-bottom:24px;font-size:15px}
+.knownrow strong{font-weight:800}
+.linkbtn{background:0;border:0;color:var(--gold-deep);font-family:var(--sans);
+  font-size:14px;font-weight:700;cursor:pointer;text-decoration:underline;padding:0}
+.knownfields{display:grid;gap:12px;margin-top:14px}
+/* A class rule with display beats the UA [hidden]{display:none}, so every
+   element toggled by the hidden attribute needs its own explicit rule. */
+.knownfields[hidden]{display:none}
+@media(min-width:700px){.knownfields{grid-template-columns:repeat(3,1fr)}}
+.navrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:8px}
+.btn-ghost{background:0;border:1px solid var(--hair);color:var(--ink-2);
+  font-family:var(--sans);font-weight:700;font-size:15px;padding:14px 22px;
+  border-radius:999px;cursor:pointer}
+.btn-ghost:hover{border-color:var(--ink-2);color:var(--ink)}
+.err{color:var(--bad);font-size:14px;font-weight:600;margin-top:10px}
+.err[hidden]{display:none}
+
+/* Building + done states */
+.state{text-align:center;padding:16px 0}
+.state[hidden]{display:none}
+.spinner{width:42px;height:42px;margin:0 auto 20px;border-radius:50%;
+  border:3px solid var(--hair);border-top-color:var(--gold);
+  animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.buildlog{list-style:none;margin:18px auto 0;padding:0;max-width:330px;text-align:left}
+.buildlog li{color:var(--muted);font-size:15px;padding:7px 0 7px 28px;position:relative}
+.buildlog li.on{color:var(--ink);font-weight:600}
+.buildlog li.done::before{content:"\2713";position:absolute;left:6px;
+  color:var(--ok);font-weight:800}
+.buildlog li.on:not(.done)::before{content:"";position:absolute;left:6px;top:14px;
+  width:8px;height:8px;border-radius:50%;background:var(--gold);
+  animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+
+footer{background:#030303;color:rgba(255,255,255,.5);padding:34px 0;font-size:13.5px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="wordmark" id="agencyMark">Your Agency</span>
+    <span class="prepared" id="preparedFor">Prepared for your business</span>
+    <a class="pill-cta" href="#start">See my website</a>
+  </div>
+</div>
+
+<section class="cover">
+  <div class="wrap">
+    <span class="eyebrow" id="eyebrow">Prepared exclusively for your business</span>
+    <h1>See exactly how <span class="g" id="bizHead">your website</span> could look.</h1>
+    <p class="lede" id="lede">Answer six quick questions about your business and we will build
+      you a real website, not a mockup. It takes about a minute.</p>
+
+    <div class="vstack">
+      <div class="vrow"><span class="vnum">01</span><span class="vtext">Found first when someone nearby searches for you</span></div>
+      <div class="vrow"><span class="vnum">02</span><span class="vtext">Trusted in the five seconds before they decide</span></div>
+      <div class="vrow"><span class="vnum">03</span><span class="vtext">Enquiries chased and followed up without you doing it</span></div>
+      <div class="vrow sum"><span class="vnum">=</span><span class="vtext" id="sumline">You, with more of the work you actually want</span></div>
+    </div>
+
+    <a class="btn-gold" href="#start">Build my website <span class="arrow">&rsaquo;</span></a>
+    <p class="cover-note">No cost, no obligation. You will see it before you decide anything.</p>
+  </div>
+</section>
+
+<section class="light">
+  <div class="wrap">
+    <p class="label">Why this matters</p>
+    <h2 class="h2">Three reasons to look at this today</h2>
+    <p class="sub">The businesses booked solid in your area are not better at the job than you.
+      They are just easier to find and easier to trust.</p>
+    <div class="reasons">
+      <div class="reason"><div class="num">01</div>
+        <h3>Someone else is getting your work</h3>
+        <p>When people search for what you do, whoever shows up first gets the call.
+          Until that is you, those jobs keep going elsewhere.</p></div>
+      <div class="reason"><div class="num">02</div>
+        <h3>They decide in five seconds</h3>
+        <p>People judge whether you are worth ringing before they read a word.
+          A site that looks the part does the convincing for you.</p></div>
+      <div class="reason"><div class="num">03</div>
+        <h3>One extra job pays for it</h3>
+        <p>This is not a cost centre. For most trades a single extra booking
+          covers the whole thing, and the rest is profit.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="light alt" id="start">
+  <div class="wrap">
+    <p class="label">Your website</p>
+    <h2 class="h2">Tell us about the business</h2>
+    <p class="sub" style="margin-bottom:30px">The more honest you are here, the more the site
+      sounds like you rather than every other company in your trade.</p>
+
+    <div class="formwrap">
+      <div class="steps" aria-hidden="true">
+        <div class="stepdot on" data-dot="1"></div>
+        <div class="stepdot" data-dot="2"></div>
+        <div class="stepdot" data-dot="3"></div>
+      </div>
+
+      <form id="siteForm" novalidate>
+        <div class="knownrow" id="knownRow">
+          <span>Building for <strong id="knownLabel">your business</strong></span>
+          <button type="button" class="linkbtn" id="editKnown">Not right? Change it</button>
+        </div>
+        <div class="knownfields" id="knownFields" hidden>
+          <div><label class="hint" for="business_name">Business name</label>
+            <input type="text" id="business_name" name="business_name" autocomplete="organization" /></div>
+          <div><label class="hint" for="trade">What you do</label>
+            <input type="text" id="trade" name="trade" placeholder="Roofer, plumber, electrician" /></div>
+          <div><label class="hint" for="town">Main town</label>
+            <input type="text" id="town" name="town" autocomplete="address-level2" /></div>
+        </div>
+
+        <fieldset data-step="1">
+          <p class="stepnote">Step 1 of 3, the work</p>
+          <div class="q">
+            <label for="work_wanted">What kind of work do you want more of?</label>
+            <p class="hint">Be specific. This decides what the site leads with.</p>
+            <input type="text" id="work_wanted" name="work_wanted"
+              placeholder="Full re-roofs rather than small repairs" />
+          </div>
+          <div class="q">
+            <label for="customer_worry">What do customers worry about before they book you?</label>
+            <p class="hint">Whatever it is, the site will answer it head on.</p>
+            <input type="text" id="customer_worry" name="customer_worry"
+              placeholder="Being overcharged, or nobody turning up" />
+          </div>
+          <div class="q">
+            <label for="edge">What do you do better than the people you compete with?</label>
+            <input type="text" id="edge" name="edge"
+              placeholder="I do every job myself, I do not use subcontractors" />
+          </div>
+          <p class="err" id="err1" hidden></p>
+          <div class="navrow">
+            <button type="button" class="btn-gold" data-next="2">Next <span class="arrow">&rsaquo;</span></button>
+          </div>
+        </fieldset>
+
+        <fieldset data-step="2" hidden>
+          <p class="stepnote">Step 2 of 3, the business</p>
+          <div class="q">
+            <label>What is actually holding the business back right now?</label>
+            <div class="chips" data-field="bottleneck">
+              <button type="button" class="chip" aria-pressed="false">Not enough enquiries coming in</button>
+              <button type="button" class="chip" aria-pressed="false">Enquiries come in but they do not turn into jobs</button>
+              <button type="button" class="chip" aria-pressed="false">Too much time chasing people and doing admin</button>
+              <button type="button" class="chip" aria-pressed="false">Always getting beaten on price</button>
+              <button type="button" class="chip" aria-pressed="false">Nobody in my area knows who we are</button>
+              <button type="button" class="chip" aria-pressed="false">Feast or famine, the work is not steady</button>
+            </div>
+          </div>
+          <div class="q">
+            <label>If one thing changed in the next 90 days, what would it be?</label>
+            <div class="chips" data-field="ninety_day_win">
+              <button type="button" class="chip" aria-pressed="false">More calls and enquiries</button>
+              <button type="button" class="chip" aria-pressed="false">Better quality jobs, fewer time wasters</button>
+              <button type="button" class="chip" aria-pressed="false">Being able to charge more</button>
+              <button type="button" class="chip" aria-pressed="false">Filling the quiet weeks</button>
+              <button type="button" class="chip" aria-pressed="false">Spending less time chasing people</button>
+              <button type="button" class="chip" aria-pressed="false">Looking more established than my competitors</button>
+            </div>
+          </div>
+          <div class="q">
+            <label>How should it feel?</label>
+            <div class="chips" data-field="vibe">
+              <button type="button" class="chip" aria-pressed="false">Solid and trustworthy</button>
+              <button type="button" class="chip" aria-pressed="false">Modern and premium</button>
+              <button type="button" class="chip" aria-pressed="false">Friendly and local</button>
+              <button type="button" class="chip" aria-pressed="false">Bold and hard to ignore</button>
+            </div>
+          </div>
+          <p class="err" id="err2" hidden></p>
+
+          <div class="q">
+            <label>How long have you been doing this?</label>
+            <p class="hint">We will never claim anything you have not told us.</p>
+            <div class="chips" data-field="years_trading">
+              <button type="button" class="chip" aria-pressed="false">Under 2 years</button>
+              <button type="button" class="chip" aria-pressed="false">2 to 5 years</button>
+              <button type="button" class="chip" aria-pressed="false">5 to 10 years</button>
+              <button type="button" class="chip" aria-pressed="false">10 to 20 years</button>
+              <button type="button" class="chip" aria-pressed="false">Over 20 years</button>
+            </div>
+          </div>
+          <div class="q">
+            <label>Is it just you, or do you have a team?</label>
+            <div class="chips" data-field="team_size">
+              <button type="button" class="chip" aria-pressed="false">Just me</button>
+              <button type="button" class="chip" aria-pressed="false">Me and one other</button>
+              <button type="button" class="chip" aria-pressed="false">A small team of 3 to 6</button>
+              <button type="button" class="chip" aria-pressed="false">More than 6</button>
+            </div>
+          </div>
+          <div class="q">
+            <label>Where do you sit on price?</label>
+            <div class="chips" data-field="price_position">
+              <button type="button" class="chip" aria-pressed="false">I am the cheapest around</button>
+              <button type="button" class="chip" aria-pressed="false">Fair middle of the road</button>
+              <button type="button" class="chip" aria-pressed="false">Premium, and worth it</button>
+            </div>
+          </div>
+          <div class="q">
+            <label for="accreditations">Any qualifications, accreditations or insurance worth shouting about?</label>
+            <p class="hint">Optional. These become the trust badges on your site.</p>
+            <input type="text" id="accreditations" name="accreditations"
+              placeholder="Gas Safe registered, fully insured, City and Guilds" />
+          </div>
+          <div class="navrow">
+            <button type="button" class="btn-ghost" data-back="1">Back</button>
+            <button type="button" class="btn-gold" data-next="3">Next <span class="arrow">&rsaquo;</span></button>
+          </div>
+        </fieldset>
+
+        <fieldset data-step="3" hidden>
+          <p class="stepnote">Step 3 of 3, where to send it</p>
+          <div class="q">
+            <label for="owner_name">Your name</label>
+            <input type="text" id="owner_name" name="owner_name" autocomplete="name" />
+          </div>
+          <div class="q">
+            <label for="email">Email</label>
+            <p class="hint">This is where your finished website gets sent.</p>
+            <input type="email" id="email" name="email" autocomplete="email" inputmode="email" />
+          </div>
+          <div class="q">
+            <label for="phone">Phone</label>
+            <p class="hint">Goes on the site so customers can ring you.</p>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" />
+          </div>
+          <p class="err" id="err3" hidden></p>
+          <div class="navrow">
+            <button type="button" class="btn-ghost" data-back="2">Back</button>
+            <button type="submit" class="btn-gold">Build my website <span class="arrow">&rsaquo;</span></button>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="state" id="building" hidden>
+        <div class="spinner"></div>
+        <h3 style="font-size:21px">Building your website now</h3>
+        <p class="sub" style="margin:8px auto 0">This takes about a minute. Keep this page open.</p>
+        <ul class="buildlog" id="buildlog">
+          <li data-s="1">Reading what you told us</li>
+          <li data-s="2">Writing your pages</li>
+          <li data-s="3">Choosing photos and colours</li>
+          <li data-s="4">Putting the site together</li>
+          <li data-s="5">Sending it to your inbox</li>
+        </ul>
+      </div>
+
+      <div class="state" id="done" hidden>
+        <h3 style="font-size:24px">Your website is ready</h3>
+        <p class="sub" style="margin:10px auto 22px">We have emailed the link to
+          <strong id="doneEmail"></strong> as well.</p>
+        <a class="btn-gold" id="doneLink" href="#" target="_blank" rel="noopener">
+          Open my website <span class="arrow">&rsaquo;</span></a>
+      </div>
+
+      <div class="state" id="failed" hidden>
+        <h3 style="font-size:21px">That did not go through</h3>
+        <p class="sub" style="margin:10px auto 20px" id="failMsg">Something went wrong at our end.</p>
+        <button type="button" class="btn-ghost" id="retry">Try again</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span id="footerMark">Your Agency</span>. Websites and growth systems for local businesses.
+  </div>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------------------
+   Student configuration. These are the only lines a student edits.
+   BUILD_ENDPOINT receives the answers and returns { url } for the finished site.
+--------------------------------------------------------------------------- */
+var CONFIG = {
+  agencyName: "Jumpsky Ltd",
+  bookingUrl: "#",
+  buildEndpoint: "/api/build"
+};
+
+(function () {
+  "use strict";
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* Personalisation from the outreach link: ?business=&trade=&town= */
+  var params = new URLSearchParams(location.search);
+  /* business, trade and town fill the visible fields. The rest come straight
+     from the Google Maps scraper via the outreach link and are never shown as
+     form inputs, they just make the generated site carry their real details. */
+  var known = {
+    business_name: params.get("business") || params.get("b") || "",
+    trade: params.get("trade") || params.get("t") || "",
+    town: params.get("town") || params.get("c") || "",
+    address: params.get("address") || "",
+    postal_code: params.get("postcode") || params.get("postal_code") || "",
+    region: params.get("region") || "",
+    google_maps_url: params.get("maps") || "",
+    rating: params.get("rating") || "",
+    reviews: params.get("reviews") || ""
+  };
+
+  $("#agencyMark").textContent = CONFIG.agencyName;
+  $("#footerMark").textContent = CONFIG.agencyName;
+  if (CONFIG.bookingUrl && CONFIG.bookingUrl !== "#") {
+    $$(".pill-cta").forEach(function (a) { a.href = CONFIG.bookingUrl; });
+  }
+
+  Object.keys(known).forEach(function (k) { if (known[k]) $("#" + k).value = known[k]; });
+
+  var name = known.business_name || "your business";
+  document.title = known.business_name ? known.business_name + ", your website preview"
+                                       : "Your website preview";
+  $("#bizHead").textContent = known.business_name || "your website";
+  $("#knownLabel").textContent = name;
+  $("#eyebrow").textContent = "Prepared exclusively for " + name;
+  $("#preparedFor").textContent = "Prepared for " + name;
+  if (known.trade) {
+    $("#sumline").textContent = "You, with more " + known.trade.toLowerCase() + " work booked";
+    $("#lede").textContent = "Answer six quick questions and we will build " + name +
+      " a real website, not a mockup. It takes about a minute.";
+  }
+
+  $("#editKnown").addEventListener("click", function () {
+    var f = $("#knownFields");
+    f.hidden = !f.hidden;
+    this.textContent = f.hidden ? "Not right? Change it" : "Done";
+    if (!f.hidden) $("#business_name").focus();
+  });
+
+  /* Single-select chip groups behave like radios but are one tap on a phone. */
+  var chosen = {};
+  $$(".chips").forEach(function (group) {
+    var field = group.getAttribute("data-field");
+    group.addEventListener("click", function (e) {
+      var chip = e.target.closest(".chip");
+      if (!chip) return;
+      $$(".chip", group).forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
+      chip.setAttribute("aria-pressed", "true");
+      chosen[field] = chip.textContent.trim();
+    });
+  });
+
+  var REQUIRED = {
+    1: [["work_wanted", "what work you want more of"],
+        ["customer_worry", "what customers worry about"],
+        ["edge", "what you do better"]],
+    3: [["owner_name", "your name"], ["email", "your email"], ["phone", "your phone number"]]
+  };
+
+  function showStep(n) {
+    $$("fieldset").forEach(function (fs) {
+      fs.hidden = fs.getAttribute("data-step") !== String(n);
+    });
+    $$(".stepdot").forEach(function (d) {
+      d.classList.toggle("on", Number(d.getAttribute("data-dot")) <= n);
+    });
+    $("#start").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function validate(step) {
+    var box = $("#err" + step);
+    if (box) { box.hidden = true; box.textContent = ""; }
+    var missing = [];
+    (REQUIRED[step] || []).forEach(function (pair) {
+      if (!$("#" + pair[0]).value.trim()) missing.push(pair[1]);
+    });
+    if (step === 1 && !$("#business_name").value.trim()) missing.push("your business name");
+    if (step === 2) {
+      if (!chosen.bottleneck) missing.push("what is holding you back");
+      if (!chosen.ninety_day_win) missing.push("what you want to change");
+    }
+    if (step === 3) {
+      var email = $("#email").value.trim();
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) missing.push("a valid email");
+    }
+    if (missing.length && box) {
+      box.textContent = "Just need " + missing.join(", ") + ".";
+      box.hidden = false;
+      return false;
+    }
+    return missing.length === 0;
+  }
+
+  $$("[data-next]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var from = Number(b.closest("fieldset").getAttribute("data-step"));
+      if (validate(from)) showStep(Number(b.getAttribute("data-next")));
+    });
+  });
+  $$("[data-back]").forEach(function (b) {
+    b.addEventListener("click", function () { showStep(Number(b.getAttribute("data-back"))); });
+  });
+
+  /* Progress theatre: the build genuinely takes ~30s, so the log advances on a
+     timer to show it is alive. The real result always wins when it lands. */
+  var timers = [];
+  function runBuildLog() {
+    var items = $$("#buildlog li");
+    items.forEach(function (li) { li.className = ""; });
+    var step = 0;
+    items[0].classList.add("on");
+    timers.push(setInterval(function () {
+      if (step < items.length - 1) {
+        items[step].classList.add("done");
+        step += 1;
+        items[step].classList.add("on");
+      }
+    }, 7000));
+  }
+  function stopBuildLog() { timers.forEach(clearInterval); timers = []; }
+
+  function collect() {
+    return {
+      business_name: $("#business_name").value.trim(),
+      trade: $("#trade").value.trim(),
+      town: $("#town").value.trim(),
+      areas: $("#town").value.trim(),
+      work_wanted: $("#work_wanted").value.trim(),
+      customer_worry: $("#customer_worry").value.trim(),
+      edge: $("#edge").value.trim(),
+      bottleneck: chosen.bottleneck || "",
+      ninety_day_win: chosen.ninety_day_win || "",
+      vibe: chosen.vibe || "Solid and trustworthy",
+      years_trading: chosen.years_trading || "",
+      team_size: chosen.team_size || "",
+      price_position: chosen.price_position || "",
+      accreditations: $("#accreditations").value.trim(),
+      /* Anything the Google Maps scraper already knew, forwarded from the
+         outreach link so the demo carries their real details. */
+      address: known.address,
+      postal_code: known.postal_code,
+      region: known.region,
+      google_maps_url: known.google_maps_url,
+      rating: known.rating,
+      reviews: known.reviews,
+      owner_name: $("#owner_name").value.trim(),
+      email: $("#email").value.trim(),
+      phone: $("#phone").value.trim(),
+      agency_name: CONFIG.agencyName
+    };
+  }
+
+  $("#siteForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!validate(3)) return;
+    $("#siteForm").hidden = true;
+    $("#failed").hidden = true;
+    $("#building").hidden = false;
+    runBuildLog();
+
+    fetch(CONFIG.buildEndpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(collect())
+    })
+      .then(function (r) {
+        return r.json().then(function (body) {
+          if (!r.ok) throw new Error(body.error || ("Server said " + r.status));
+          return body;
+        });
+      })
+      .then(function (body) {
+        stopBuildLog();
+        $("#building").hidden = true;
+        $("#done").hidden = false;
+        $("#doneEmail").textContent = $("#email").value.trim();
+        $("#doneLink").href = body.url;
+      })
+      .catch(function (err) {
+        stopBuildLog();
+        $("#building").hidden = true;
+        $("#failMsg").textContent = err.message ||
+          "Something went wrong at our end. Nothing was lost, try again.";
+        $("#failed").hidden = false;
+      });
+  });
+
+  $("#retry").addEventListener("click", function () {
+    $("#failed").hidden = true;
+    $("#siteForm").hidden = false;
+    showStep(3);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your website demo | {{YOUR_BUSINESS}}</title>
+<meta name="description" content="A website demo built for your business: found first on Google, every lead chased and booked, a fuller calendar. Watch the two-minute walkthrough, then book a quick call.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23030303'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='800' fill='%23EAB308' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap">
+<style>
+  :root {
+    --gold: #EAB308; --gold-soft: #D4A94E; --gold-deep: #9C7B2E;
+    --ink: #1F1A15; --ink-2: #54514A; --muted: #86827A;
+    --hair: rgba(31,26,21,0.12); --hair-2: rgba(31,26,21,0.08);
+    --bg: #F1F1F1; --cream: #FAF8F1;
+    --sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16.5px; line-height: 1.62; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .container { max-width: 1080px; margin: 0 auto; padding-left: clamp(20px, 5vw, 52px); padding-right: clamp(20px, 5vw, 52px); }
+  strong { font-weight: 700; color: inherit; }
+  /* Highlighter: skimmable emphasis on the one line that matters per block */
+  .hl { background-image: linear-gradient(transparent 56%, rgba(234,179,8,0.32) 56%); padding: 0 2px; font-weight: 600; }
+
+  /* ===== DARK COVER ===== */
+  .cover { position: relative; overflow: hidden; background: linear-gradient(180deg, #030303 0%, #1F2124 100%); color: #fff; --mx: 0; --my: 0; }
+  .cover .grain { position: absolute; inset: 0; z-index: 1; opacity: 0.5; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); }
+
+  /* Ambient light field */
+  .fx { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+  .aura { position: absolute; border-radius: 50%; will-change: transform; }
+  .aura.a1 { width: 720px; height: 720px; top: -320px; right: -180px; background: radial-gradient(circle, rgba(234,179,8,0.20) 0%, rgba(234,179,8,0.11) 34%, transparent 74%); animation: pulseA 20s var(--ease) infinite alternate; translate: calc(var(--mx) * 28px) calc(var(--my) * 28px); }
+  .aura.a2 { width: 560px; height: 560px; bottom: -260px; left: -170px; background: radial-gradient(circle, rgba(255,236,190,0.09) 0%, rgba(255,236,190,0.05) 36%, transparent 76%); animation: pulseB 26s var(--ease) infinite alternate; translate: calc(var(--mx) * -18px) calc(var(--my) * -18px); }
+  @keyframes pulseA { to { transform: scale(1.14); } }
+  @keyframes pulseB { to { transform: scale(1.1); } }
+  .beam { position: absolute; top: -40%; height: 180%; width: 34vw; }
+  .beam.b1 { left: -42vw; background: linear-gradient(90deg, transparent 4%, rgba(234,179,8,0.085) 48%, transparent 96%); transform: rotate(15deg); animation: drift 27s linear infinite; }
+  .beam.b2 { left: -52vw; background: linear-gradient(90deg, transparent 4%, rgba(255,255,255,0.05) 48%, transparent 96%); transform: rotate(15deg); animation: drift 37s linear infinite; animation-delay: -14s; }
+  @keyframes drift { to { transform: translateX(185vw) rotate(15deg); } }
+  .streaks { position: absolute; inset: 0; translate: calc(var(--mx) * -12px) calc(var(--my) * -12px); }
+  .streak { position: absolute; top: -30%; height: 160%; width: 2px; opacity: 0; filter: blur(0.7px); transform: rotate(20deg);
+    background: linear-gradient(180deg, transparent 24%, rgba(234,179,8,0.5) 47%, rgba(255,255,255,0.9) 50%, rgba(234,179,8,0.5) 53%, transparent 76%);
+    animation: shoot 8s var(--ease) infinite; }
+  .streak.s1 { left: 16%; animation-delay: 1.4s; }
+  .streak.s2 { left: 53%; animation-delay: 4.2s; }
+  .streak.s3 { left: 79%; animation-delay: 6.6s; }
+  @keyframes shoot { 0% { opacity: 0; transform: translateY(-32%) rotate(20deg); } 7% { opacity: 0.7; } 20% { opacity: 0; transform: translateY(30%) rotate(20deg); } 100% { opacity: 0; transform: translateY(30%) rotate(20deg); } }
+  .cover .container { position: relative; z-index: 2; }
+  @media (prefers-reduced-motion: reduce) { .aura, .beam, .streak { animation: none; } .aura.a1, .aura.a2, .streaks { translate: none; } }
+
+  /* Thin banner */
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+  .agency { font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; text-decoration: none; }
+  .agency .d { color: var(--gold); }
+  .bar-cta { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: #0A0806; text-decoration: none; background: var(--gold); padding: 7px 7px 7px 15px; border-radius: 999px; transition: background 0.3s var(--ease), transform 0.3s var(--ease); }
+  .bar-cta:hover { background: var(--gold-soft); transform: translateY(-1px); }
+  .bar-cta .c { width: 21px; height: 21px; border-radius: 999px; background: rgba(10,8,6,0.14); display: flex; align-items: center; justify-content: center; }
+
+  /* Centred hero */
+  .hero { padding: clamp(28px, 4vw, 56px) 0 clamp(44px, 5vw, 64px); text-align: center; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--gold); padding: 6px 15px; border: 1px solid rgba(234,179,8,0.28); border-radius: 999px; background: rgba(234,179,8,0.06); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08); }
+  .eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px rgba(234,179,8,0.9); animation: blip 2.6s ease-in-out infinite; }
+  @keyframes blip { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  @media (prefers-reduced-motion: reduce) { .eyebrow::before { animation: none; } }
+  .hero h1 { font-weight: 500; font-size: clamp(34px, 5.6vw, 66px); line-height: 1.0; letter-spacing: -0.028em; margin: 20px auto 0; max-width: 17ch; text-wrap: balance; }
+  .hero h1 .g { color: var(--gold); }
+  .hero .lede { margin: 18px auto 0; font-size: clamp(15.5px, 1.7vw, 18.5px); color: rgba(255,255,255,0.78); max-width: 54ch; text-wrap: balance; }
+  .hero .lede strong { color: #fff; }
+  .hero .lede .hl { color: #fff; }
+
+  /* Video */
+  .stage { position: relative; margin: clamp(24px, 3vw, 36px) auto 0; max-width: 860px; }
+  .stage .glow { position: absolute; inset: -8% 0 -12%; z-index: 0; background: radial-gradient(60% 60% at 50% 40%, rgba(234,179,8,0.20) 0%, rgba(234,179,8,0.11) 38%, transparent 78%); opacity: 0.9; translate: calc(var(--mx) * 14px) calc(var(--my) * 14px); animation: glowPulse 6s var(--ease) infinite alternate; }
+  @keyframes glowPulse { to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .stage .glow { animation: none; translate: none; } }
+  .ring { position: relative; z-index: 1; border-radius: 18px; padding: 1.5px; background: linear-gradient(150deg, rgba(234,179,8,0.65), rgba(255,255,255,0.2) 55%, rgba(234,179,8,0.3)); box-shadow: 0 40px 90px rgba(0,0,0,0.55); transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease); }
+  .stage:hover .ring { transform: translateY(-3px); box-shadow: 0 52px 110px rgba(0,0,0,0.6), 0 0 60px rgba(234,179,8,0.12); }
+  .frame { position: relative; border-radius: 16.5px; overflow: hidden; aspect-ratio: 16 / 9; background: radial-gradient(120% 120% at 50% 0%, #14161A, #060708); display: flex; align-items: center; justify-content: center; }
+  .frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .poster { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .play { position: relative; width: 74px; height: 74px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.28); cursor: pointer; transition: transform 0.4s var(--ease), background 0.4s var(--ease); }
+  .play::before { content: ""; position: absolute; inset: -8px; border-radius: 999px; border: 1px solid rgba(234,179,8,0.4); opacity: 0; animation: ripple 3s var(--ease) infinite; }
+  @keyframes ripple { 0% { transform: scale(0.9); opacity: 0.7; } 70%, 100% { transform: scale(1.5); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .play::before { animation: none; } }
+  .play:hover { transform: scale(1.06); background: rgba(255,255,255,0.16); }
+  .play svg { margin-left: 5px; }
+  .poster p { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+
+  /* CTA: button dead-centre, note beneath */
+  .hero .cta-row { margin-top: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+  /* Buttons */
+  .btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 12px; padding: 13px 13px 13px 28px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 16px; color: #0A0806; background: var(--gold); box-shadow: 0 12px 30px rgba(234,179,8,0.28); transition: transform 0.4s var(--ease), background 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+  .btn::after { content: ""; position: absolute; top: 0; left: -130%; width: 55%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent); transform: skewX(-18deg); pointer-events: none; }
+  .btn:hover { transform: translateY(-2px); background: var(--gold-soft); box-shadow: 0 18px 40px rgba(234,179,8,0.4); }
+  .btn:hover::after { animation: sheen 0.9s var(--ease); }
+  @keyframes sheen { to { left: 150%; } }
+  .btn:active { transform: scale(0.985); }
+  .btn .go { position: relative; z-index: 1; width: 34px; height: 34px; border-radius: 999px; background: rgba(10,8,6,0.14); display: flex; align-items: center; justify-content: center; transition: transform 0.4s var(--ease); }
+  .btn:hover .go { transform: translate(2px, -1px); }
+  .cta-note { font-size: 13px; color: rgba(255,255,255,0.55); }
+
+  /* Value stack */
+  .vstack { list-style: none; margin: clamp(40px, 5vw, 60px) auto clamp(52px, 6vw, 80px); border-top: 1px solid rgba(255,255,255,0.12); max-width: 600px; text-align: left; }
+  .vstack li { display: flex; align-items: center; gap: 18px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .vstack .n { font-weight: 700; font-size: 11px; letter-spacing: 0.22em; color: var(--gold); min-width: 28px; }
+  .vstack .t { font-size: clamp(16px, 1.5vw, 21px); font-weight: 500; color: #fff; letter-spacing: 0.01em; }
+  .vstack li.sum .t { color: var(--gold); font-weight: 600; }
+
+  /* ===== LIGHT BODY ===== */
+  section.blk { padding-top: clamp(56px, 7vw, 88px); }
+  .head { position: relative; text-align: center; max-width: 34ch; margin: 0 auto; }
+  .blk .head::before { content: ""; position: absolute; left: 50%; top: -34px; width: min(380px, 82%); height: 168px; transform: translateX(-50%); background: radial-gradient(circle, rgba(234,179,8,0.12), transparent 70%); filter: blur(30px); z-index: 0; pointer-events: none; }
+  .head > * { position: relative; z-index: 1; }
+  .label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep); padding: 5px 13px; border: 1px solid rgba(156,123,46,0.22); border-radius: 999px; background: rgba(156,123,46,0.05); }
+  h2 { font-weight: 500; font-size: clamp(28px, 3.6vw, 42px); line-height: 1.06; letter-spacing: -0.02em; margin: 16px 0 0; color: var(--ink); text-wrap: balance; }
+  h2 .g { color: var(--gold-deep); }
+  .head p { margin-top: 12px; color: var(--ink-2); }
+
+  .reasons { margin-top: 38px; display: grid; gap: 16px; }
+  .reason { position: relative; display: grid; grid-template-columns: 54px 1fr; gap: 20px; align-items: start; background: var(--cream); border: 1px solid var(--hair-2); border-radius: 18px; padding: 26px 28px; box-shadow: 0 18px 44px rgba(31,26,21,0.05), inset 0 1px 0 rgba(255,255,255,0.7); transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease), border-color 0.45s var(--ease); }
+  .reason:hover { transform: translateY(-4px); box-shadow: 0 30px 60px rgba(31,26,21,0.1), inset 0 1px 0 rgba(255,255,255,0.8); border-color: rgba(234,179,8,0.35); }
+  .reason .num { font-weight: 700; font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep); background: rgba(156,123,46,0.1); width: 44px; height: 44px; border-radius: 13px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1px rgba(156,123,46,0.14); }
+  .reason h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px; }
+  .reason p { font-size: 15.5px; color: var(--ink-2); }
+
+  .eq { margin-top: 38px; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 14px; align-items: stretch; }
+  .eq .op { align-self: center; font-size: 24px; font-weight: 700; color: var(--gold-deep); }
+  .eqcard { position: relative; background: #fff; border: 1px solid var(--hair); border-radius: 18px; padding: 26px 24px; box-shadow: 0 18px 44px rgba(31,26,21,0.05), inset 0 1px 0 rgba(255,255,255,0.8); transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease); }
+  .eqcard:hover { transform: translateY(-4px); box-shadow: 0 28px 58px rgba(31,26,21,0.09), inset 0 1px 0 rgba(255,255,255,0.9); }
+  .eqcard .k { font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 8px; }
+  .eqcard h4 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px; }
+  .eqcard p { font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+  .eqcard.sum { background: linear-gradient(160deg, #26221A, #14120D); border-color: transparent; box-shadow: 0 22px 50px rgba(31,26,21,0.18), inset 0 1px 0 rgba(255,255,255,0.08); }
+  .eqcard.sum .k { color: var(--gold); }
+  .eqcard.sum h4 { color: #fff; }
+  .eqcard.sum p { color: rgba(255,255,255,0.78); }
+
+  /* ===== BUYER JOURNEY (interactive) ===== */
+  .track { position: relative; margin-top: 42px; background: linear-gradient(180deg, #0A0B0D, #050607); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: clamp(30px, 4vw, 48px) clamp(22px, 3vw, 40px); overflow: hidden; box-shadow: 0 30px 66px rgba(31,26,21,0.16); }
+  .track::before { content: ""; position: absolute; top: -30%; left: 8%; width: 60%; height: 120%; background: radial-gradient(circle, rgba(234,179,8,0.12), transparent 62%); filter: blur(40px); pointer-events: none; }
+  .steps { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .rail { position: absolute; top: 28px; left: 10%; right: 10%; height: 2px; background: rgba(255,255,255,0.12); z-index: 0; }
+  .rail .fill { position: absolute; inset: 0; transform: scaleX(0); transform-origin: left center; background: linear-gradient(90deg, var(--gold-deep), var(--gold)); transition: transform 1.2s var(--ease); }
+  .track.go .rail .fill { transform: scaleX(1); }
+  .rail .pulse { position: absolute; top: 50%; left: 0; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px 2px rgba(234,179,8,0.8); opacity: 0; }
+  .track.go .rail .pulse { animation: runH 3.6s var(--ease) 0.6s infinite; }
+  @keyframes runH { 0% { left: 0; opacity: 0; } 8% { opacity: 1; } 90% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+  .step { position: relative; z-index: 1; text-align: center; padding: 0 6px; opacity: 0; transform: translateY(16px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+  .track.go .step { opacity: 1; transform: none; }
+  .track.go .step:nth-child(2) { transition-delay: 0.12s; }
+  .track.go .step:nth-child(3) { transition-delay: 0.24s; }
+  .track.go .step:nth-child(4) { transition-delay: 0.36s; }
+  .track.go .step:nth-child(5) { transition-delay: 0.48s; }
+  @media (prefers-reduced-motion: reduce) { .step { opacity: 1; transform: none; } .rail .fill { transform: scaleX(1); } .track.go .rail .pulse { animation: none; } }
+  .snode { position: relative; z-index: 2; width: 56px; height: 56px; margin: 0 auto 16px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--gold); background: linear-gradient(180deg, #16181C, #0B0C0E); border: 1px solid rgba(234,179,8,0.3); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 20px rgba(0,0,0,0.4); transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease); }
+  .step:hover .snode { transform: translateY(-4px) scale(1.05); border-color: rgba(234,179,8,0.7); box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 14px 30px rgba(0,0,0,0.5), 0 0 26px rgba(234,179,8,0.35); }
+  .snode .sn { position: absolute; top: -8px; right: -8px; width: 20px; height: 20px; border-radius: 999px; background: var(--gold); color: #0A0806; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 8px rgba(0,0,0,0.4); }
+  .step h4 { font-size: 15.5px; font-weight: 700; color: #fff; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .step p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.62); transition: color 0.4s var(--ease); }
+  .step:hover p { color: rgba(255,255,255,0.85); }
+  .step p strong { color: #fff; }
+
+  /* Dark engine band */
+  .band { position: relative; overflow: hidden; margin-top: clamp(56px, 7vw, 88px); background: #030303; color: #fff; padding: clamp(54px, 7vw, 84px) 0; }
+  .band .aura2 { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(55% 80% at 12% 0%, rgba(234,179,8,0.18), transparent 60%); animation: pulseB 22s var(--ease) infinite alternate; }
+  @media (prefers-reduced-motion: reduce) { .band .aura2 { animation: none; } }
+  .band .container { position: relative; z-index: 1; }
+  .band .head { max-width: 34ch; }
+  .band .label { color: var(--gold); border-color: rgba(234,179,8,0.3); background: rgba(234,179,8,0.08); }
+  .band h2 { color: #fff; }
+  .band h2 .g { color: var(--gold); }
+  .band .head p { color: rgba(255,255,255,0.66); }
+  .engine { margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .ecard { position: relative; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 28px 26px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: transform 0.45s var(--ease), background 0.45s var(--ease), border-color 0.45s var(--ease), box-shadow 0.45s var(--ease); }
+  .engine .ecard { animation: floatCard 9s var(--ease) infinite alternate; }
+  .engine .ecard:nth-child(2) { animation-delay: -2.2s; }
+  .engine .ecard:nth-child(3) { animation-delay: -4.4s; }
+  .engine .ecard:nth-child(4) { animation-delay: -6.6s; }
+  @keyframes floatCard { to { translate: 0 -7px; } }
+  .ecard:hover { transform: translateY(-4px); background: rgba(255,255,255,0.06); border-color: rgba(234,179,8,0.4); box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 24px 50px rgba(0,0,0,0.4); }
+  @media (prefers-reduced-motion: reduce) { .engine .ecard { animation: none; } }
+  .ecard .ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(234,179,8,0.14); color: var(--gold); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: inset 0 0 0 1px rgba(234,179,8,0.18); }
+  .ecard h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; color: #fff; }
+  .ecard p { font-size: 14.5px; color: rgba(255,255,255,0.68); line-height: 1.55; }
+  .ecard p strong { color: #fff; font-weight: 600; }
+  .ecard .hl { color: #fff; }
+
+  /* ===== CRM SHOWCASE ===== */
+  .showcase { margin-top: 42px; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+  .sc-copy, .sc-app { min-width: 0; }
+  .sc-copy .label { margin-bottom: 4px; }
+  .sc-copy h2 { margin-bottom: 14px; }
+  .sc-copy > p { color: var(--ink-2); font-size: 16px; }
+  .sc-copy > p strong { color: var(--ink); }
+  .sc-copy .hl { color: var(--ink); }
+  .sc-points { list-style: none; margin-top: 20px; display: grid; gap: 12px; }
+  .sc-points li { position: relative; padding-left: 30px; font-size: 15px; color: var(--ink-2); }
+  .sc-points li strong { color: var(--ink); }
+  .sc-points li::before { content: ""; position: absolute; left: 0; top: 2px; width: 19px; height: 19px; border-radius: 999px; background: rgba(234,179,8,0.14); box-shadow: inset 0 0 0 1px rgba(156,123,46,0.28); }
+  .sc-points li::after { content: ""; position: absolute; left: 6.5px; top: 7px; width: 6px; height: 3.5px; border-left: 1.7px solid var(--gold-deep); border-bottom: 1.7px solid var(--gold-deep); transform: rotate(-45deg); }
+  .sc-fine { margin-top: 18px; font-size: 13px; color: var(--muted); }
+
+  /* CRM board: honest pipeline mock, CSS-drawn (no fabricated screenshots) */
+  .crm { position: relative; border-radius: 20px; padding: 1.5px; background: linear-gradient(150deg, rgba(234,179,8,0.55), rgba(255,255,255,0.14) 55%, rgba(234,179,8,0.24)); box-shadow: 0 30px 66px rgba(31,26,21,0.18); }
+  .crm-in { border-radius: 18.5px; overflow: hidden; background: linear-gradient(180deg, #0C0D10, #060708); }
+  .crm-bar { display: flex; align-items: center; gap: 10px; padding: 13px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .crm-bar .dots { display: flex; gap: 6px; }
+  .crm-bar .dots i { width: 10px; height: 10px; border-radius: 999px; background: rgba(255,255,255,0.16); }
+  .crm-title { font-size: 12.5px; font-weight: 700; color: #fff; }
+  .crm-badge { margin-left: auto; font-size: 10.5px; font-weight: 700; color: #0A0806; background: var(--gold); padding: 3px 9px; border-radius: 999px; }
+  .crm-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 14px; }
+  .crm-col { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+  .crm-h { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 6px; }
+  .crm-h b { width: 16px; height: 16px; border-radius: 999px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); font-size: 9px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .crm-card { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; padding: 10px 11px 9px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05); }
+  .crm-card .cc-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; min-width: 0; }
+  .crm-card .cc-name { font-size: 12px; font-weight: 700; color: #fff; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crm-card .cc-tag { font-size: 8px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #0A0806; background: var(--gold); padding: 2px 6px; border-radius: 999px; white-space: nowrap; }
+  .crm-card .cc-tag.done { background: rgba(234,179,8,0.18); color: var(--gold); }
+  .crm-card .cc-sub { font-size: 10.5px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+  .crm-card .cc-act { display: flex; gap: 6px; margin-top: 10px; }
+  .crm-card .cc-act span { width: 24px; height: 24px; border-radius: 7px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; }
+  .crm-card .cc-act span.on { background: rgba(234,179,8,0.18); color: var(--gold); }
+  .crm-card.is-new { border-color: rgba(234,179,8,0.5); background: rgba(234,179,8,0.08); animation: newpulse 3.4s var(--ease) infinite; }
+  @keyframes newpulse { 0%, 100% { box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 0 rgba(234,179,8,0.35); } 50% { box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 5px rgba(234,179,8,0); } }
+  @media (prefers-reduced-motion: reduce) { .crm-card.is-new { animation: none; } }
+
+  /* ===== WHAT'S INCLUDED ===== */
+  .incl { margin-top: 38px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .item { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; background: var(--cream); border: 1px solid var(--hair-2); border-radius: 16px; padding: 20px 22px; box-shadow: 0 14px 36px rgba(31,26,21,0.04), inset 0 1px 0 rgba(255,255,255,0.7); transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease); }
+  .item:hover { transform: translateY(-3px); border-color: rgba(234,179,8,0.32); box-shadow: 0 24px 48px rgba(31,26,21,0.08), inset 0 1px 0 rgba(255,255,255,0.8); }
+  .item .ic { width: 44px; height: 44px; border-radius: 12px; background: rgba(234,179,8,0.12); color: var(--gold-deep); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1px rgba(156,123,46,0.16); }
+  .item h4 { font-size: 16.5px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; color: var(--ink); }
+  .item p { font-size: 14.5px; color: var(--ink-2); line-height: 1.5; }
+  .item p strong { color: var(--ink); }
+  .incl-note { margin-top: 22px; text-align: center; font-size: 15px; color: var(--ink-2); }
+  .incl-note strong { color: var(--ink); }
+
+  /* ===== FOUNDER ===== */
+  .founder { margin-top: 4px; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(28px, 4vw, 52px); align-items: center; }
+  .f-photo { position: relative; border-radius: 22px; padding: 1.5px; background: linear-gradient(150deg, rgba(234,179,8,0.6), rgba(255,255,255,0.15) 55%, rgba(234,179,8,0.28)); box-shadow: 0 26px 60px rgba(31,26,21,0.16); }
+  .f-photo img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 30%; border-radius: 20.5px; }
+  .f-copy .label { margin-bottom: 4px; }
+  .f-copy h2 { margin-bottom: 8px; }
+  .f-copy p { color: var(--ink-2); font-size: 16px; margin-top: 14px; }
+  .f-copy p strong { color: var(--ink); }
+  .f-sign { margin-top: 22px; font-family: var(--sans); font-weight: 700; font-size: 20px; color: var(--ink); font-style: italic; }
+  .f-sign span { display: block; font-style: normal; font-weight: 600; font-size: 12.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--gold-deep); margin-top: 4px; }
+
+  /* FAQ */
+  .faq { margin-top: 38px; background: #fff; border: 1px solid var(--hair); border-radius: 18px; padding: 4px 28px; box-shadow: 0 18px 44px rgba(31,26,21,0.05), inset 0 1px 0 rgba(255,255,255,0.8); }
+  details { border-bottom: 1px solid var(--hair); }
+  details:last-child { border-bottom: none; }
+  summary { list-style: none; cursor: pointer; padding: 20px 40px 20px 0; position: relative; font-size: 16.5px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); transition: color 0.3s var(--ease); }
+  summary:hover { color: var(--gold-deep); }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: ""; position: absolute; right: 4px; top: 25px; width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform 0.3s var(--ease); }
+  details[open] summary::after { transform: rotate(-135deg); }
+  details .ans { padding: 0 40px 20px 0; font-size: 15.5px; color: var(--ink-2); max-width: 66ch; }
+  details .ans strong { color: var(--ink); }
+
+  .final { position: relative; overflow: hidden; margin: clamp(56px, 7vw, 88px) auto clamp(60px, 8vw, 96px); background: linear-gradient(180deg, #030303, #1F2124); border-radius: 24px; padding: clamp(42px, 5vw, 66px); text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,0.3); }
+  .final::before { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 130% at 50% -10%, rgba(234,179,8,0.28), transparent 62%); animation: glowPulse 7s var(--ease) infinite alternate; }
+  @media (prefers-reduced-motion: reduce) { .final::before { animation: none; } }
+  .final > * { position: relative; z-index: 1; }
+  .final .label { color: var(--gold); border-color: rgba(234,179,8,0.3); background: rgba(234,179,8,0.08); }
+  .final h2 { color: #fff; margin: 16px auto 10px; max-width: 20ch; }
+  .final p { color: rgba(255,255,255,0.72); max-width: 48ch; margin: 0 auto 26px; }
+  .final p strong { color: #fff; }
+  .final .hl { color: #fff; }
+  .final .cta-row { display: flex; justify-content: center; }
+
+  /* ===== FOOTER (real company footer) ===== */
+  footer { background: #030303; color: rgba(255,255,255,0.6); }
+  .foot-in { max-width: 1080px; margin: 0 auto; padding: clamp(48px, 6vw, 72px) clamp(20px, 5vw, 52px) 0; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
+  .foot-brand .agency { font-size: 15px; }
+  .foot-brand p { margin-top: 14px; font-size: 13.5px; line-height: 1.6; max-width: 34ch; color: rgba(255,255,255,0.6); }
+  .foot-brand .foot-loc { margin-top: 12px; font-size: 12px; letter-spacing: 0.04em; color: rgba(255,255,255,0.4); }
+  .foot-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .foot-col li { font-size: 13.5px; color: rgba(255,255,255,0.6); }
+  .foot-col a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s var(--ease); }
+  .foot-col a:hover { color: var(--gold); }
+  .foot-bottom { max-width: 1080px; margin: clamp(40px, 5vw, 56px) auto 0; padding: 20px clamp(20px, 5vw, 52px) 34px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12px; color: rgba(255,255,255,0.42); }
+
+  .rv { opacity: 0; transform: translateY(20px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+  .rv.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  @media (max-width: 860px) {
+    .showcase { grid-template-columns: 1fr; gap: 28px; }
+    .founder { grid-template-columns: 1fr; gap: 24px; max-width: 460px; margin-inline: auto; }
+    .f-photo img { aspect-ratio: 16 / 11; object-position: center 28%; }
+  }
+
+  @media (max-width: 760px) {
+    body { font-size: 15.5px; }
+    .container { padding-left: 22px; padding-right: 22px; }
+    .topbar .bar-cta { display: none; }
+    .hero { padding: 10px 0 30px; }
+    .eyebrow { font-size: 9px; letter-spacing: 0.13em; gap: 6px; padding: 4px 11px; }
+    .eyebrow::before { width: 5px; height: 5px; }
+    .hero h1 { font-size: clamp(26px, 7.2vw, 34px); margin-top: 15px; }
+    .hero .lede { margin-top: 12px; font-size: 14.5px; max-width: 42ch; }
+    .stage { margin-top: 17px; }
+    .hero .cta-row { margin-top: 18px; }
+    .play { width: 58px; height: 58px; }
+    .beam.b2, .streak.s3 { display: none; }
+    .reason { grid-template-columns: 44px 1fr; gap: 14px; padding: 22px; }
+    .reason .num { width: 40px; height: 40px; }
+    .eq { grid-template-columns: 1fr; }
+    .eq .op { justify-self: center; font-size: 22px; }
+    .engine { grid-template-columns: 1fr; }
+    /* Journey goes vertical: rail runs down the left of the nodes */
+    .steps { grid-template-columns: 1fr; gap: 26px; }
+    .step { display: grid; grid-template-columns: 48px 1fr; gap: 16px; text-align: left; align-items: start; padding: 0; }
+    .snode { width: 48px; height: 48px; margin: 0; border-radius: 14px; }
+    .step h4 { margin-top: 4px; }
+    .rail { top: 24px; bottom: 24px; left: 24px; right: auto; width: 2px; height: auto; }
+    .rail .fill { transform: scaleY(0); transform-origin: top center; }
+    .track.go .rail .fill { transform: scaleY(1); }
+    .rail .pulse { left: 50%; top: 0; margin: -4.5px 0 0 -4.5px; }
+    .track.go .rail .pulse { animation: runV 3.6s var(--ease) 0.6s infinite; }
+    @keyframes runV { 0% { top: 0; opacity: 0; } 8% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+    .showcase { gap: 24px; }
+    .incl { grid-template-columns: 1fr; }
+    .item { grid-template-columns: 40px 1fr; gap: 13px; padding: 18px; }
+    .item .ic { width: 40px; height: 40px; }
+    .crm-cols { padding: 10px; gap: 6px; }
+    .crm-card { padding: 8px; }
+    .crm-card .cc-name { font-size: 10.5px; }
+    .crm-card .cc-tag { display: none; }
+    .crm-card .cc-sub { font-size: 9.5px; }
+    .crm-card .cc-act { gap: 5px; }
+    .crm-card .cc-act span { width: 21px; height: 21px; border-radius: 6px; }
+    .foot-in { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .foot-brand { grid-column: 1 / -1; }
+  }
+
+/* ===== VSL PLAYER (VSL player)
+   Nothing here activates until the <video> has a src, so the page looks
+   exactly as it does today until the real file is dropped in. ===== */
+.vf-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;
+  background:#07080d;border:0;
+  filter:blur(9px) saturate(1.1) brightness(.82);transform:scale(1.06);
+  transition:filter .8s var(--ease),transform .8s var(--ease)}
+.vf-vid:not([src]){display:none}          /* dormant until the file is wired */
+.vf-vid.is-live{filter:none;transform:none}
+.frame.is-playing .poster{opacity:0;pointer-events:none}
+.poster{transition:opacity .45s var(--ease)}
+.frame .poster{position:relative;z-index:3}
+
+/* Pulsing play button, gated on the video actually having a source. Without
+   the gate the button would sit there inviting a click it cannot honour. */
+.play .pbring{position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  border:2px solid rgba(234,179,8,.55);display:none}
+@keyframes pbring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.85);opacity:0}}
+@keyframes pbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.frame:has(.vf-vid[src]) .play .pbring{display:block;animation:pbring 2.6s ease-out infinite}
+.frame:has(.vf-vid[src]) .play .pbring.d2{animation-delay:1.3s}
+.frame:has(.vf-vid[src]) .play{animation:pbeat 2.6s var(--ease) infinite;cursor:pointer}
+.play{transition:transform .35s var(--ease)}
+.frame:has(.vf-vid[src]) .play:active{transform:scale(.94)}
+
+/* mini player. bottom-RIGHT here (this page has no sticky CTA to dodge) and
+   with a darker ring, because it floats over a light background. */
+.miniplayer{position:fixed;right:16px;bottom:18px;width:184px;aspect-ratio:16/9;
+  border-radius:13px;overflow:hidden;z-index:65;background:#07080d;cursor:pointer;
+  box-shadow:0 20px 46px -12px rgba(31,26,21,.5),0 0 0 1px rgba(31,26,21,.16),
+             0 0 24px -10px rgba(234,179,8,.5);
+  animation:mpIn .4s var(--ease)}
+.miniplayer[hidden]{display:none}
+.miniplayer video{width:100%;height:100%;object-fit:cover;display:block}
+@keyframes mpIn{from{opacity:0;transform:translateY(14px) scale(.94)}to{opacity:1;transform:none}}
+.mp-x{position:absolute;top:5px;right:5px;z-index:2;width:22px;height:22px;border-radius:50%;
+  border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  background:rgba(6,6,8,.7);color:#fff;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+@media(max-width:600px){.miniplayer{width:158px;right:12px;bottom:14px}}
+@media (prefers-reduced-motion:reduce){
+  .play,.play .pbring,.miniplayer{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="fx" aria-hidden="true">
+    <span class="aura a1"></span>
+    <span class="aura a2"></span>
+    <span class="beam b1"></span>
+    <span class="beam b2"></span>
+    <span class="streaks"><span class="streak s1"></span><span class="streak s2"></span><span class="streak s3"></span></span>
+  </div>
+  <div class="grain"></div>
+  <div class="container">
+    <div class="topbar">
+      <a class="agency" href="{{YOUR_WEBSITE}}" target="_blank" rel="noopener">{{YOUR_BUSINESS}}<span class="d">.</span></a>
+      <a class="bar-cta" href="{{YOUR_BOOKING_LINK}}" target="_blank" rel="noopener">Book a call<span class="c" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4.5M12 2v7.5" stroke="#0A0806" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    </div>
+
+    <header class="hero">
+      <p class="eyebrow rv" id="eb">Prepared for your business</p>
+      <h1 class="rv" style="transition-delay:0.05s">More jobs. <span class="g">Without chasing them.</span></h1>
+      <p class="lede rv" style="transition-delay:0.1s">Right now, the jobs you should be winning are going to whoever <strong>shows up first on Google and Google Maps</strong>, and <strong>calls back fastest</strong>. This fixes both. You show up first when they search, <span class="hl">every new lead gets chased by text, email, and call the second it lands</span>, and you win the job before your competition even picks up the phone.</p>
+
+      <div class="stage rv" style="transition-delay:0.14s">
+        <div class="glow"></div>
+        <div class="ring">
+          <div class="frame" id="videoframe">
+            <!-- Drop the R2 url on src and the thumbnail on poster; everything
+                 else (blur-until-play, rings, mini player) arms itself. -->
+            <video id="vsl" class="vf-vid" playsinline preload="metadata"></video>
+            <div class="poster" id="vfPoster">
+              <button class="play" id="vfPlay" type="button" aria-label="Play the demo"><span class="pbring" aria-hidden="true"></span><span class="pbring d2" aria-hidden="true"></span><svg width="22" height="26" viewBox="0 0 22 26" fill="none"><path d="M1 2.2C1 1 2.3 0.3 3.3 0.9l17.2 10.3c1 0.6 1 2 0 2.6L3.3 24.1c-1 0.6-2.3-0.1-2.3-1.3V2.2z" fill="#fff"/></svg></button>
+              <p id="poster-note">Your demo video, arriving shortly</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-row rv" style="transition-delay:0.18s">
+        <a class="btn" href="{{YOUR_BOOKING_LINK}}" target="_blank" rel="noopener">Book a quick call<span class="go" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4.5M12 2v7.5" stroke="#0A0806" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <span class="cta-note">See it in 15 minutes. No cost, no obligation.</span>
+      </div>
+
+      <ul class="vstack rv">
+        <li><span class="n">01</span><span class="t">First on Google, Google Maps, and AI search</span></li>
+        <li><span class="n">02</span><span class="t">Trusted before they even call</span></li>
+        <li><span class="n">03</span><span class="t">Every lead chased and booked for you</span></li>
+        <li class="sum"><span class="n">=</span><span class="t" id="vs-sum">A calendar that stays full</span></li>
+      </ul>
+    </header>
+  </div>
+</div>
+
+<div class="light">
+  <section class="blk container">
+    <div class="head"><p class="label rv">Why take the call</p><h2 class="rv" style="transition-delay:0.05s">Three reasons to <span class="g">call today</span></h2></div>
+    <div class="reasons">
+      <div class="reason rv"><span class="num">01</span><div><h3>Someone else is getting your jobs</h3><p>The businesses booked out in your area are <strong>not better on the tools than you</strong>. They just show up first and look the part online. Until you do, <span class="hl">those jobs keep going to them</span>, and the gap widens every week.</p></div></div>
+      <div class="reason rv" style="transition-delay:0.05s"><span class="num">02</span><div><h3>It pays for itself in one job</h3><p>You do not need a flood of leads to win here. <strong>One extra job a month more than covers it.</strong> Everything after that is money you were leaving on the table.</p></div></div>
+      <div class="reason rv" style="transition-delay:0.1s"><span class="num">03</span><div><h3>You are covered, in writing</h3><p>I build the whole thing for you and keep refining it, at no extra cost, until it is exactly right. <strong>That guarantee is in writing.</strong> The only real risk is staying invisible.</p></div></div>
+    </div>
+  </section>
+
+  <section class="blk container">
+    <div class="head"><p class="label rv">The growth equation</p><h2 class="rv" style="transition-delay:0.05s">Two levers, and the <span class="g">math works</span></h2></div>
+    <div class="eq">
+      <div class="eqcard rv"><div class="k">Traffic</div><h4>Found first, everywhere</h4><p>When someone near you searches for <span id="eq-trade">a business like yours</span> in <span id="eq-town">your area</span> on Google, Google Maps, ChatGPT, or Siri, <strong>you are the first name they see.</strong> Local SEO and AI search, built in.</p></div>
+      <div class="op rv" aria-hidden="true">&times;</div>
+      <div class="eqcard rv" style="transition-delay:0.05s"><div class="k">Trust</div><h4>Look the part</h4><p>Real reviews and a site that looks established, so they <strong>choose you in the first five seconds</strong>, before they even scroll.</p></div>
+      <div class="op rv" style="transition-delay:0.05s" aria-hidden="true">=</div>
+      <div class="eqcard sum rv" style="transition-delay:0.1s"><div class="k">The result</div><h4>A full calendar</h4><p>Searchers turn into calls. Calls turn into booked jobs. <strong>Your week fills itself.</strong></p></div>
+    </div>
+  </section>
+
+  <section class="blk container">
+    <div class="head"><p class="label rv">How it works</p><h2 class="rv" style="transition-delay:0.05s">From <span class="g">click to booked job</span></h2><p class="rv" style="transition-delay:0.09s">Every enquiry follows the same path, and your new site runs all of it for you.</p></div>
+    <div class="track rv" id="journey">
+      <div class="steps">
+        <span class="rail"><span class="fill"></span><span class="pulse"></span></span>
+        <div class="step">
+          <div class="snode"><span class="sn">1</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <div><h4>They find you</h4><p>A customer searches on Google or Google Maps, and <strong>you are the first name they see.</strong></p></div>
+        </div>
+        <div class="step">
+          <div class="snode"><span class="sn">2</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <div><h4>They reach out</h4><p>One tap and they call or drop their details. <strong>Works on any phone, takes seconds.</strong></p></div>
+        </div>
+        <div class="step">
+          <div class="snode"><span class="sn">3</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div><h4>Straight into your CRM</h4><p>Every lead lands in <strong>your own dashboard</strong>. You and your team see it the moment it comes in.</p></div>
+        </div>
+        <div class="step">
+          <div class="snode"><span class="sn">4</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <div><h4>You close it</h4><p>Call, text, and email from one place, and <strong>track every lead from new to booked</strong> so none slip through.</p></div>
+        </div>
+        <div class="step">
+          <div class="snode"><span class="sn">5</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg></div>
+          <div><h4>Booked, then again</h4><p>The job hits your calendar, the site asks for a review, and <strong>the whole thing runs again.</strong></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk container">
+    <div class="showcase">
+      <div class="sc-copy">
+        <p class="label rv">Your leads, one place</p>
+        <h2 class="rv" style="transition-delay:0.05s">Every lead, in <span class="g">one place</span></h2>
+        <p class="rv" style="transition-delay:0.09s">The second someone enquires on your site, they land in <strong>your own dashboard</strong>. You and your team see it straight away, then call, text, and email right from the card and move it along as it turns into a booked job. <span class="hl">No sticky notes, no missed enquiries, nothing slipping through.</span></p>
+        <ul class="sc-points rv" style="transition-delay:0.13s">
+          <li><strong>See every lead the second it lands</strong>, before a competitor gets a look in.</li>
+          <li><strong>Call, text, and email from one screen</strong>, so following up takes seconds.</li>
+          <li><strong>Track each job from new to booked</strong>, so nothing gets forgotten.</li>
+        </ul>
+        <p class="sc-fine rv" style="transition-delay:0.16s">Included in every build. Simple by design, made for a busy local team.</p>
+      </div>
+      <div class="sc-app rv" style="transition-delay:0.1s">
+        <div class="crm">
+          <div class="crm-in">
+            <div class="crm-bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="crm-title">Your leads</span>
+              <span class="crm-badge">2 new</span>
+            </div>
+            <div class="crm-cols">
+              <div class="crm-col">
+                <div class="crm-h">New <b>2</b></div>
+                <div class="crm-card is-new">
+                  <div class="cc-top"><span class="cc-name">Sarah M.</span><span class="cc-tag">New</span></div>
+                  <div class="cc-sub">Wants a quote</div>
+                  <div class="cc-act" aria-hidden="true"><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 11.5a16 16 0 006 6l1.1-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg></span><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span></div>
+                </div>
+                <div class="crm-card">
+                  <div class="cc-top"><span class="cc-name">Dave R.</span></div>
+                  <div class="cc-sub">New enquiry</div>
+                  <div class="cc-act" aria-hidden="true"><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 11.5a16 16 0 006 6l1.1-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg></span><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span></div>
+                </div>
+              </div>
+              <div class="crm-col">
+                <div class="crm-h">Contacted <b>1</b></div>
+                <div class="crm-card">
+                  <div class="cc-top"><span class="cc-name">Priya K.</span></div>
+                  <div class="cc-sub">Called back</div>
+                  <div class="cc-act" aria-hidden="true"><span class="on"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 11.5a16 16 0 006 6l1.1-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg></span><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span></div>
+                </div>
+              </div>
+              <div class="crm-col">
+                <div class="crm-h">Booked <b>1</b></div>
+                <div class="crm-card">
+                  <div class="cc-top"><span class="cc-name">Tom H.</span><span class="cc-tag done">Booked</span></div>
+                  <div class="cc-sub">Fri, 2:00pm</div>
+                  <div class="cc-act" aria-hidden="true"><span class="on"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 11.5a16 16 0 006 6l1.1-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg></span><span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span><span class="on"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="band">
+  <div class="aura2"></div>
+  <div class="container">
+    <div class="head"><p class="label rv">Beyond the website</p><h2 class="rv" style="transition-delay:0.05s">The engine behind your <span class="g">phone ringing</span></h2><p class="rv" style="transition-delay:0.09s">Most agencies hand you a website and vanish. I stay wired into your business, running the systems that turn visitors into booked jobs long after the site goes live.</p></div>
+    <div class="engine">
+      <div class="ecard rv">
+        <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 11.5a16 16 0 006 6l1.1-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg></div>
+        <h3>You reply first, every time</h3>
+        <p>The second someone enquires, <strong>you and your crew get a text and an email</strong>. You call them back while they are still on your site, not three days later. <span class="hl">First to reply wins the job.</span></p>
+      </div>
+      <div class="ecard rv" style="transition-delay:0.05s">
+        <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg></div>
+        <h3>No lead ever goes cold</h3>
+        <p>Most leads never get chased. Yours do. Every new enquiry gets <strong>automatic texts, emails, and calls</strong> until they book, so none slip away while you are up a ladder.</p>
+      </div>
+      <div class="ecard rv" style="transition-delay:0.1s">
+        <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 21.2l1.4-6.8L2.2 9.7l6.9-.7z"/></svg></div>
+        <h3>Reviews on autopilot</h3>
+        <p>After every job, your happy customers are asked for a five-star review, automatically. <strong>More reviews, higher on Google Maps, more calls.</strong> It compounds.</p>
+      </div>
+      <div class="ecard rv" style="transition-delay:0.15s">
+        <div class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+        <h3>See exactly what it brings in</h3>
+        <p>One simple report each month. Every call, form, and review, tracked, so you <strong>always know it is working</strong> and exactly what it is bringing in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="light">
+  <section class="blk container">
+    <div class="head"><p class="label rv">Everything included</p><h2 class="rv" style="transition-delay:0.05s">What you're <span class="g">actually getting</span></h2><p class="rv" style="transition-delay:0.09s">The full system, built and managed for you. Here's what lands in your hands, and why each piece puts money in your pocket.</p></div>
+    <div class="incl">
+      <div class="item rv"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 15l2.5-2.5L13 15l3-3.5"/></svg></div><div><h4>A site built to book jobs</h4><p>Not just a pretty page. <strong>Every part of it is built to turn a visitor into a call or an enquiry</strong>, not just a look.</p></div></div>
+      <div class="item rv" style="transition-delay:0.04s"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><h4>First on Google and Google Maps</h4><p>You show up <strong>the moment someone nearby needs you</strong>, ahead of the competition, in search and AI assistants.</p></div></div>
+      <div class="item rv" style="transition-delay:0.08s"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div><h4>Your own lead CRM</h4><p>Every enquiry in one dashboard to <strong>call, text, and track to booked</strong>. Yours to keep.</p></div></div>
+      <div class="item rv" style="transition-delay:0.04s"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg></div><div><h4>Follow-up that runs itself</h4><p>Texts, emails, and call reminders <strong>chase every lead for you</strong>, so none ever goes cold.</p></div></div>
+      <div class="item rv" style="transition-delay:0.08s"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 21.2l1.4-6.8L2.2 9.7l6.9-.7z"/></svg></div><div><h4>Reviews on autopilot</h4><p>Happy customers asked for five stars after every job, so you <strong>climb the map and win more calls</strong>.</p></div></div>
+      <div class="item rv" style="transition-delay:0.12s"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><div><h4>One clear monthly report</h4><p>Every call, lead, and booked job in plain numbers, so you <strong>always see what it brings in</strong>.</p></div></div>
+    </div>
+    <p class="incl-note rv"><strong>All of it is included in every build</strong>, set up and managed for you, and live in about three days.</p>
+  </section>
+
+  <section class="blk container">
+    <div class="head"><p class="label rv">Who you'll work with</p></div>
+    <div class="founder">
+      <div class="f-photo rv"><img src="your-photo.jpg" alt="Brett Zuke, founder of {{YOUR_BUSINESS}}" loading="lazy"></div>
+      <div class="f-copy">
+        <h2 class="rv">You deal with <span class="g">me</span>, not an agency</h2>
+        <p class="rv" style="transition-delay:0.05s">I have spent years helping online and local businesses get found and get booked, and I built {{YOUR_BUSINESS}} to put the <strong>same growth systems the big players use</strong> in the hands of local businesses, without the big-agency price.</p>
+        <p class="rv" style="transition-delay:0.1s">I run this from wherever I am in the world, and I <strong>stay wired into your business long after the site goes live</strong>. Ask me anything and you get me, not a support ticket.</p>
+        <p class="f-sign rv" style="transition-delay:0.15s">Brett Zuke<span>Founder, {{YOUR_BUSINESS}}</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk container">
+    <div class="head"><p class="label rv">Straight answers</p><h2 class="rv" style="transition-delay:0.05s">The questions everyone <span class="g">asks first</span></h2></div>
+    <div class="faq rv" style="transition-delay:0.09s">
+      <details><summary>I already get enough from word of mouth.</summary><div class="ans">Word of mouth is the <strong>best acquisition channel there is</strong>, and this makes it worth more. When someone you were referred to Googles your name, they find you, see the reviews, and book, instead of drifting to a competitor who looks more established.</div></details>
+      <details><summary>I have tried marketing before and got nothing.</summary><div class="ans">Most agencies sell you clicks and disappear. This is built to <strong>turn visitors into booked jobs</strong>, not vanity numbers, and you see every call and lead it brings in. If it is not working, you will know, and so will I.</div></details>
+      <details><summary>I do not have the time for this.</summary><div class="ans">You do not need any. <strong>I build the site, set up the systems, and they chase your leads for you.</strong> It is a 15-minute call to start, and you are live in three days.</div></details>
+      <details><summary>What if it is not right?</summary><div class="ans">I keep refining it at no extra cost until it matches exactly what we agreed. <strong>That is the guarantee, and it is in writing.</strong></div></details>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="final rv">
+      <p class="label">Ready when you are</p>
+      <h2>Let's fill your calendar</h2>
+      <p>In 15 minutes I'll show you <strong>exactly how you'll book more jobs</strong> from the customers already searching for you. No cost, no obligation, no hard sell. Worst case, you walk away with <span class="hl">a plan you can run yourself.</span></p>
+      <div class="cta-row">
+        <a class="btn" href="{{YOUR_BOOKING_LINK}}" target="_blank" rel="noopener">Book a quick call<span class="go" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4.5M12 2v7.5" stroke="#0A0806" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <div class="foot-brand">
+      <a class="agency" href="{{YOUR_WEBSITE}}" target="_blank" rel="noopener">{{YOUR_BUSINESS}}<span class="d">.</span></a>
+      <p>Websites and growth systems that keep local businesses found, trusted, and booked.</p>
+      <p class="foot-loc">Kelowna, BC · working worldwide</p>
+    </div>
+    <div class="foot-col">
+      <h5>What you get</h5>
+      <ul>
+        <li>A website that converts</li>
+        <li>Found first on Google</li>
+        <li>Your own lead CRM</li>
+        <li>Automatic follow-up</li>
+        <li>Reviews and reporting</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Get started</h5>
+      <ul>
+        <li><a href="{{YOUR_BOOKING_LINK}}" target="_blank" rel="noopener">Book a call</a></li>
+        <li><a href="{{YOUR_WEBSITE}}" target="_blank" rel="noopener">Visit {{YOUR_BUSINESS}}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 {{YOUR_BUSINESS}}. All rights reserved.</span>
+    <span>Built by Brett Zuke</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var p = new URLSearchParams(location.search);
+    var cap = function (s) { return s ? s.trim().replace(/\s+/g, " ") : ""; };
+    var biz = cap(p.get("business") || p.get("b") || "");
+    var trade = cap(p.get("trade") || p.get("t") || "").toLowerCase();
+    var town = cap(p.get("town") || p.get("c") || "");
+    var set = function (id, txt) { var el = document.getElementById(id); if (el && txt) el.textContent = txt; };
+    if (biz) { set("eb", "Prepared for " + biz); set("poster-note", "Demo for " + biz + ", arriving shortly"); document.title = biz + " | Website demo | {{YOUR_BUSINESS}}"; }
+    if (trade) { set("eq-trade", trade); set("vs-sum", "More " + trade + " jobs, booked"); }
+    if (town) { set("eq-town", town); if (!trade) set("vs-sum", "Booked solid in " + town); }
+
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Scroll-reveal
+    var els = document.querySelectorAll(".rv");
+    if (!("IntersectionObserver" in window)) { els.forEach(function (e) { e.classList.add("in"); }); }
+    else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+      }, { threshold: 0.1 });
+      els.forEach(function (e) { io.observe(e); });
+    }
+
+    // Buyer-journey: draw the line, sequence the steps, start the pulse when it scrolls in
+    var track = document.getElementById("journey");
+    if (track) {
+      if (!("IntersectionObserver" in window)) { track.classList.add("go"); }
+      else {
+        var jio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("go"); jio.unobserve(en.target); } });
+        }, { threshold: 0.25 });
+        jio.observe(track);
+      }
+    }
+
+    // Mouse parallax across the cover
+    var cover = document.querySelector(".cover");
+    var fine = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+    if (cover && fine && !reduce) {
+      var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+      var tick = function () {
+        cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+        cover.style.setProperty("--mx", cx.toFixed(4));
+        cover.style.setProperty("--my", cy.toFixed(4));
+        if (Math.abs(tx - cx) > 0.0008 || Math.abs(ty - cy) > 0.0008) { raf = requestAnimationFrame(tick); }
+        else { raf = null; }
+      };
+      cover.addEventListener("mousemove", function (e) {
+        var r = cover.getBoundingClientRect();
+        tx = (e.clientX - r.left) / r.width - 0.5;
+        ty = (e.clientY - r.top) / r.height - 0.5;
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
+      cover.addEventListener("mouseleave", function () { tx = 0; ty = 0; if (!raf) raf = requestAnimationFrame(tick); });
+    }
+  })();
+</script>
+<div class="miniplayer" id="miniPlayer" hidden>
+  <button class="mp-x" id="mpClose" type="button" aria-label="Close mini player">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+
+<script>
+// VSL player. Stays dormant until the <video> has a src, so this page looks
+// unchanged until the real file is dropped in. Then: click to unblur and
+// play, native controls (so fullscreen), and the video re-parents into a
+// corner mini player when the frame scrolls off.
+// NOTE: this script must stay AFTER #miniPlayer in the DOM. Above it,
+// getElementById returns null and the sticky dock silently never arms.
+(function(){
+  var frame=document.getElementById('videoframe'),
+      v=document.getElementById('vsl'),
+      btn=document.getElementById('vfPlay'),
+      poster=document.getElementById('vfPoster'),
+      mini=document.getElementById('miniPlayer'),
+      close=document.getElementById('mpClose');
+  if(!frame||!v||!btn) return;
+  if(!v.getAttribute('src')) return;   // no file yet: leave the static poster alone
+
+  function startPlay(){
+    frame.classList.add('is-playing');
+    v.classList.add('is-live');
+    v.controls=true;
+    var p=v.play();
+    if(p&&p.catch) p.catch(function(){ v.muted=true; v.play().catch(function(){}); });
+  }
+  btn.addEventListener('click',startPlay);
+  if(poster) poster.addEventListener('click',function(e){ if(e.target!==btn) startPlay(); });
+
+  if(!mini||!close||!('IntersectionObserver' in window)) return;
+  var floating=false, dismissed=false;
+  function isFs(){return document.fullscreenElement||document.webkitFullscreenElement;}
+  function canFloat(){return !v.paused && !v.ended && !isFs() && !dismissed;}
+  function toMini(){ if(floating) return; floating=true; mini.appendChild(v); mini.hidden=false; }
+  function toDock(){ if(!floating) return; floating=false; frame.insertBefore(v, frame.firstChild); mini.hidden=true; }
+  new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting){ if(canFloat()) toMini(); } else { toDock(); }
+  });},{threshold:0.2}).observe(frame);
+  close.addEventListener('click',function(ev){
+    ev.stopPropagation(); dismissed=true; try{v.pause();}catch(_){} toDock();
+  });
+  mini.addEventListener('click',function(){
+    try{ frame.scrollIntoView({behavior:'smooth',block:'center'}); }catch(_){ frame.scrollIntoView(); }
+  });
+  v.addEventListener('play',function(){ dismissed=false; });
+})();
+</script>
+</body>
+</html>

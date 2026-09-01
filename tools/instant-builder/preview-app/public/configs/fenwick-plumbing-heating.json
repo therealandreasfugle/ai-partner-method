@@ -1,0 +1,339 @@
+{
+  "meta": {
+    "title": "Fenwick Plumbing & Heating | Harrogate Plumber & Heating Engineer",
+    "description": "Same day quotes for bathroom installs and boiler replacements in Harrogate. No hidden costs, no missed appointments."
+  },
+  "company": {
+    "name": "Fenwick Plumbing & Heating",
+    "shortName": "Fenwick",
+    "tagline": "Bathrooms and boilers done right",
+    "description": "Local plumber and heating engineer covering Harrogate and surrounding areas. We focus on full bathroom installs and boiler replacements, not quick fixes.",
+    "serviceRegion": "Harrogate, Knaresborough, Ripon and nearby villages"
+  },
+  "copy": {
+    "hero": {
+      "eyebrow": "HARROGATE PLUMBING & HEATING",
+      "headline": "FIXED PRICE BATHROOMS AND BOILERS, SAME DAY QUOTE",
+      "subheadline": "No time-wasters, no surprise bills. Just honest work from a local who turns up when he says he will.",
+      "imageAlt": "Plumber fitting a new bathroom suite in a Harrogate home"
+    },
+    "heroTrustChips": [
+      "Same day quotes",
+      "No call-out fees",
+      "Clean up after"
+    ],
+    "trustClaims": [
+      "No price jumps halfway",
+      "I do every job myself",
+      "Same day service available"
+    ],
+    "formHeader": "Get a quote today",
+    "formSubtext": "Tell us what you need and we'll call you back within the hour.",
+    "buttonText": "Get quote",
+    "footerCta": "Need a bathroom or boiler done right? Call Dave on [phone number].",
+    "cta": {
+      "label": "READY TO BOOK?",
+      "heading": "Same day quotes, no hidden costs",
+      "body": "We'll give you a fixed price upfront so you know exactly what to expect."
+    },
+    "founder": {
+      "label": "MEET DAVE",
+      "heading": "I do every job myself",
+      "para1": "I started Fenwick Plumbing & Heating because I was tired of seeing customers let down by tradesmen who didn't turn up or hiked prices halfway through. I wanted to do things differently: show up on time, give a fair price, and leave the place clean.",
+      "para2": "I don't do quick fixes or dripping taps. I focus on full bathroom installs and boiler replacements because that's where I can make the biggest difference. You'll get the same quote I give you, and I'll clean up properly after myself. No mess, no stress.",
+      "vision": "To be the most reliable plumber in Harrogate, known for doing the job right the first time.",
+      "mission": "To give customers honest, fixed-price work with no hidden surprises."
+    },
+    "submitButton": "Get a Fenwick quote",
+    "privacyLine": "Your details are never shared.",
+    "mobileCallLabel": "Call Dave",
+    "copyright": "Fenwick Plumbing & Heating",
+    "services": {
+      "heading": "Plumbing and heating in Harrogate",
+      "body": "Bathroom installs, boiler replacements, repairs and maintenance across your home."
+    },
+    "whyChoose": {
+      "label": "WHY CHOOSE US",
+      "heading": "Same day quotes, no surprises"
+    },
+    "gallery": {
+      "heading": "Recent work in Harrogate",
+      "body": "See how we've helped local homes with new bathrooms and boilers."
+    },
+    "process": {
+      "body": "I'll visit, quote, and do the job myself, no subcontractors.",
+      "badgeText": "No hassle"
+    },
+    "offers": {
+      "heading": "Fair pricing upfront",
+      "detail": "No hidden costs or mid-job price jumps."
+    },
+    "reviews": {
+      "heading": "What locals say"
+    },
+    "faq": {
+      "label": "QUESTIONS",
+      "heading": "Your plumbing answers"
+    },
+    "blog": {
+      "label": "ADVICE",
+      "heading": "Plumbing tips for Harrogate",
+      "body": "Practical guides to keep your home running smoothly."
+    },
+    "serviceAreas": {
+      "heading": "Plumbing across Harrogate",
+      "body": "We cover Harrogate, Knaresborough, Wetherby, Ripon and nearby villages."
+    },
+    "serviceAreaCard": {
+      "heading": "Local plumber",
+      "body": "Serving Harrogate, Knaresborough, Wetherby and Ripon."
+    }
+  },
+  "services": [
+    {
+      "slug": "bathroom-installation",
+      "name": "Full bathroom installs",
+      "body": "From design to tiles, we handle everything. No subcontractors, no delays. We'll give you a fixed price upfront so you know exactly what you're paying."
+    },
+    {
+      "slug": "boiler-replacement",
+      "name": "Boiler replacements",
+      "body": "New boilers fitted quickly and properly. We'll advise on the best model for your home and give you a same-day quote. No pushy sales, just honest advice."
+    },
+    {
+      "slug": "heating-upgrades",
+      "name": "Heating upgrades",
+      "body": "Radiators, underfloor heating or smart controls. We'll assess your system and recommend the best upgrade for your home. Fixed price, no surprises."
+    },
+    {
+      "slug": "emergency-plumbing",
+      "name": "Emergency plumbing",
+      "body": "Burst pipes or leaks? We'll be there the same day. No call-out fees, just a fair price for the work needed."
+    }
+  ],
+  "why_choose_us": [
+    "We give same day quotes so you know the cost upfront.",
+    "No time-wasters, we focus on proper jobs, not quick fixes.",
+    "I do every job myself, so you get the same high standard every time.",
+    "No price jumps halfway through, the quote is the price.",
+    "We clean up properly after ourselves, no mess left behind.",
+    "We turn up when we say we will, no missed appointments."
+  ],
+  "process_steps": [
+    {
+      "n": 1,
+      "title": "Tell us",
+      "body": "Call or fill in the form with what you need. We'll ask a few questions to understand the job."
+    },
+    {
+      "n": 2,
+      "title": "Same day quote",
+      "body": "We'll call you back within the hour with a fixed price. No hidden costs, no surprises."
+    },
+    {
+      "n": 3,
+      "title": "Book it in",
+      "body": "Pick a date that works for you. We'll confirm the time and turn up when we say we will."
+    },
+    {
+      "n": 4,
+      "title": "Job done",
+      "body": "We'll do the work, clean up after ourselves, and leave you with a job done right."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Will the price go up halfway through?",
+      "a": "No. We give you a fixed price upfront so you know exactly what you're paying. If something unexpected comes up, we'll tell you before we do any extra work."
+    },
+    {
+      "q": "Do you turn up on time?",
+      "a": "Yes. We'll give you a time slot and stick to it. If we're running late, we'll call you to let you know."
+    },
+    {
+      "q": "Do you use subcontractors?",
+      "a": "No. I do every job myself so you get the same high standard every time. No corners cut, no delays."
+    },
+    {
+      "q": "Do you clean up after yourselves?",
+      "a": "Yes. We'll leave your home as clean as we found it, if not cleaner. No mess, no stress."
+    },
+    {
+      "q": "What areas do you cover?",
+      "a": "We cover Harrogate, Knaresborough, Ripon and nearby villages. If you're not sure, give us a call and we'll let you know."
+    },
+    {
+      "q": "Do you do small jobs like dripping taps?",
+      "a": "We focus on full bathroom installs and boiler replacements. If it's a small job, we'll let you know upfront if we can help or point you in the right direction."
+    }
+  ],
+  "special_offers": [
+    {
+      "label": "Same day quotes",
+      "description": "Call us before 10am and we'll give you a quote the same day."
+    },
+    {
+      "label": "No call-out fees",
+      "description": "You only pay for the work we do, not for us to turn up."
+    }
+  ],
+  "previous_projects": [
+    {
+      "alt": "New bathroom suite installed in a Harrogate home",
+      "category": "Bathroom",
+      "filename": "project-1.webp"
+    },
+    {
+      "alt": "Boiler replacement in a Knaresborough house",
+      "category": "Boiler",
+      "filename": "project-2.webp"
+    },
+    {
+      "alt": "Underfloor heating installation in a Ripon property",
+      "category": "Heating",
+      "filename": "project-3.webp"
+    },
+    {
+      "alt": "Radiator upgrade in a Harrogate flat",
+      "category": "Heating",
+      "filename": "project-4.webp"
+    }
+  ],
+  "blog_posts": [
+    {
+      "slug": "when-to-replace-your-boiler",
+      "title": "When to replace your boiler in Harrogate",
+      "category": "Boilers",
+      "excerpt": "Signs your boiler might need replacing before winter arrives.",
+      "body": "Boilers don't last forever. If yours is over 10 years old, struggles to heat your home evenly, or needs frequent repairs, it might be time for a replacement. Newer models are far more efficient, which can cut your energy bills.\n\nLook out for strange noises, leaks, or a pilot light that keeps going out. These are all signs your boiler is on its way out. A professional can assess whether a repair will do the job or if a new boiler is the smarter choice.\n\nIn Harrogate, where winters can be chilly, a reliable boiler is essential. If you're unsure, get a same-day quote to avoid being left in the cold when it fails unexpectedly."
+    },
+    {
+      "slug": "how-to-choose-a-bathroom-for-your-home",
+      "title": "How to choose a bathroom for your Harrogate home",
+      "category": "Bathrooms",
+      "excerpt": "Tips for picking the right bathroom style and layout for your space.",
+      "body": "The right bathroom can add value to your home and make daily life more comfortable. Start by thinking about how you use the space. Do you need a shower for quick mornings, a bath for relaxing, or both?\n\nMeasure your room carefully. A small bathroom can still feel spacious with the right layout and fixtures. Consider storage, shelves, cabinets, or vanity units can keep clutter out of sight.\n\nIn Harrogate, where period homes are common, you might want to blend modern convenience with traditional style. A local plumber can help you plan the best layout and ensure everything is installed properly."
+    }
+  ],
+  "pages": {
+    "about": {
+      "heroLabel": "About Fenwick Plumbing & Heating",
+      "heroHeadline": "Plumbing done right in Harrogate",
+      "storyHeading": "How it started",
+      "storyClosing": "Now I run every job myself, so you get the same care every time.",
+      "crewHeading": "Just me, Dave",
+      "crewBody": "I've been fixing and fitting plumbing and heating systems for years. You'll deal with me from the first call to the final check, no middlemen, no surprises.\n\nI take pride in doing the job properly, whether it's a boiler replacement or a full bathroom install.",
+      "crewCaption": "Dave Fenwick, owner",
+      "valuesIntro": "Here's what matters to me when I work in your home.",
+      "values": [
+        {
+          "title": "No surprises",
+          "text": "You'll get a clear quote upfront, with no hidden costs."
+        },
+        {
+          "title": "Reliable",
+          "text": "I turn up when I say I will and finish on time."
+        },
+        {
+          "title": "Tidy work",
+          "text": "I clean up properly after every job, so your home looks as good as new."
+        }
+      ]
+    },
+    "serviceAreas": {
+      "mapHeading": "Where we work",
+      "mapBody": "We cover Harrogate and the surrounding areas.",
+      "citiesFallback": "Serving homes across North Yorkshire.",
+      "readyHeading": "Need a plumber?",
+      "readyBody": "Get in touch for a same-day quote in your area.",
+      "coverageHighlights": [
+        {
+          "title": "Harrogate",
+          "body": "Full bathroom installs, boiler replacements and repairs across the town."
+        },
+        {
+          "title": "Knaresborough",
+          "body": "Local plumbing and heating services for homes and businesses."
+        },
+        {
+          "title": "Wetherby",
+          "body": "Boiler servicing, repairs and new bathroom installations."
+        }
+      ]
+    }
+  },
+  "assets": {
+    "base": "/sites/fenwick-plumbing-heating"
+  },
+  "palette": {
+    "primary": "#1E3A5F",
+    "primary_dark": "#15293F",
+    "primary_slate": "#2C4660",
+    "accent": "#E8821E",
+    "accent_light": "#F4A94C",
+    "accent_dark": "#C26A12",
+    "neutral": "#F5F3EF",
+    "neutral_dim": "#E4E0D8",
+    "silver": "#9AA3AD",
+    "ink": "#1A1F26"
+  },
+  "typography": {
+    "heading": "Oswald",
+    "body": "Plus Jakarta Sans",
+    "headingFontUrl": "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap",
+    "bodyFontUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+  },
+  "contact": {
+    "phone": "01423 555 0198",
+    "phoneTelLink": "tel:014235550198",
+    "email": "dave@fenwickplumbing.example",
+    "googleMapsUrl": null,
+    "mapsEmbedUrl": null
+  },
+  "address": {
+    "street": "",
+    "city": "Harrogate",
+    "state": "",
+    "zip": "",
+    "full": "Harrogate",
+    "lat": null,
+    "lng": null
+  },
+  "serviceAreas": [
+    "Harrogate",
+    "Knaresborough",
+    "Wetherby",
+    "Ripon"
+  ],
+  "team": {
+    "founder": {
+      "name": "Dave Fenwick",
+      "displayName": "Dave",
+      "title": "Owner, Fenwick",
+      "yearsExp": "",
+      "expLabel": "plumber and heating engineer in Harrogate"
+    },
+    "founders": []
+  },
+  "credit": {
+    "agency": "Northstar Web Studio",
+    "url": null
+  },
+  "reviews": {
+    "rating": 0,
+    "googleCount": 0,
+    "facebookCount": 0,
+    "totalReviewCount": 0,
+    "googleLabel": "Google",
+    "facebookLabel": "Facebook",
+    "googleStat": "",
+    "facebookStat": "",
+    "items": []
+  },
+  "_generated": {
+    "model": "omniroute/auto/best-free + omniroute/auto/best-free",
+    "lane": "free-api",
+    "date": "2026-08-04",
+    "trade_set": "plumbing"
+  }
+}

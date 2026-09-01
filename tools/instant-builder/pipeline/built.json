@@ -1,0 +1,18 @@
+{
+  "nails-time-spa": {
+    "business": "Nails Time & Spa",
+    "email": "nailstimepenticton@gmail.com",
+    "site": "https://aipm-instant-site.vercel.app/?site=nails-time-spa",
+    "proposal": "https://aipm-instant-proposal.vercel.app/proposal.html?site=nails-time-spa",
+    "sent": false,
+    "row": 4
+  },
+  "penticton-family-dentist": {
+    "business": "Penticton Family Dentist",
+    "email": "ray.mar@shaw.ca",
+    "site": "https://aipm-instant-site.vercel.app/?site=penticton-family-dentist",
+    "proposal": "https://aipm-instant-proposal.vercel.app/proposal.html?site=penticton-family-dentist",
+    "sent": false,
+    "row": 8
+  }
+}

@@ -1,0 +1,73 @@
+/* ==========================================================================
+   CORE / TOKENS
+   Every template sets these ten variables and nothing else changes.
+   Override them in a template's theme.css to reskin the entire site.
+   ========================================================================== */
+
+:root {
+  /* --- The ten-variable contract ---------------------------------------- */
+  --background: #f5f0e8;        /* page background */
+  --card: #ede7db;              /* card fill and border */
+  --foreground: #2c1810;        /* body text and headings */
+  --primary-cta: #2c1810;       /* primary button fill */
+  --primary-cta-text: #f5f0e8;  /* primary button label */
+  --secondary-cta: #ffffff;     /* secondary button fill */
+  --secondary-cta-text: #2c1810;/* secondary button label */
+  --accent: #8b7355;            /* highlights, eyebrows, small accents */
+  --background-accent: #6f4e37; /* ambient background glow */
+  --radius: 1.5rem;             /* one radius drives every rounded corner */
+
+  /* --- Layout ------------------------------------------------------------ */
+  --content-width: clamp(40rem, 87.5vw, 100rem);
+
+  /* --- Typeface slots ---------------------------------------------------- */
+  --font-body: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: var(--font-body);
+
+  /* --- Fluid type scale --------------------------------------------------
+     Scales with the viewport between a floor and a ceiling, so a template
+     never needs per-breakpoint font sizes. */
+  --text-2xs: clamp(0.465rem, 0.62vw, 0.64rem);
+  --text-xs: clamp(0.54rem, 0.72vw, 0.74rem);
+  --text-sm: clamp(0.615rem, 0.82vw, 0.84rem);
+  --text-base: clamp(0.69rem, 0.92vw, 0.94rem);
+  --text-lg: clamp(0.75rem, 1vw, 1.02rem);
+  --text-xl: clamp(0.825rem, 1.1vw, 1.13rem);
+  --text-2xl: clamp(0.975rem, 1.4vw, 1.4rem);
+  --text-3xl: clamp(1.2rem, 1.71vw, 1.72rem);
+  --text-4xl: clamp(1.5rem, 2.2vw, 2.21rem);
+  --text-5xl: clamp(2.025rem, 3.03vw, 3.05rem);
+  --text-6xl: clamp(2.475rem, 3.65vw, 3.73rem);
+  --text-7xl: clamp(3rem, 4.41vw, 4.52rem);
+  --text-8xl: clamp(3.5rem, 4.97vw, 5.09rem);
+  --text-9xl: clamp(5.25rem, 7.73vw, 7.92rem);
+}
+
+/* Below 768px headlines scale with the viewport so they stay proportional,
+   but every size is clamped at both ends:
+
+   The floor keeps body copy readable on a small phone. 16px is not a
+   preference, it is the point below which iOS zooms the page when a form
+   input is focused, which throws the user out of the layout.
+
+   The ceiling stops the same vw rule rendering 25px body text on a 768px
+   tablet, which is what a bare vw scale does at the top of this range. */
+@media (width <= 768px) {
+  :root {
+    --content-width: 88vw;
+    --text-2xs: clamp(11px, 2.5vw, 13px);
+    --text-xs: clamp(12px, 2.75vw, 14px);
+    --text-sm: clamp(13px, 3vw, 15px);
+    --text-base: clamp(15px, 3.25vw, 17px);
+    --text-lg: clamp(16px, 3.5vw, 18px);
+    --text-xl: clamp(18px, 4.25vw, 21px);
+    --text-2xl: clamp(20px, 5vw, 24px);
+    --text-3xl: clamp(23px, 6vw, 30px);
+    --text-4xl: clamp(27px, 7vw, 36px);
+    --text-5xl: clamp(29px, 7.5vw, 40px);
+    --text-6xl: clamp(33px, 8.5vw, 46px);
+    --text-7xl: clamp(38px, 10vw, 56px);
+    --text-8xl: clamp(44px, 12vw, 68px);
+    --text-9xl: clamp(52px, 14vw, 80px);
+  }
+}

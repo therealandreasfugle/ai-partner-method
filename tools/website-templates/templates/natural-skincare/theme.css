@@ -1,0 +1,120 @@
+/* ==========================================================================
+   NATURAL SKINCARE
+   Warm cream and clay: tall image hero, statement, priced product trio,
+   bento reasons with a stat marquee, single quote, FAQ split, newsletter.
+   ========================================================================== */
+
+:root {
+  --background: #fcf6ec;
+  --card: #f3ede2;
+  --foreground: #2e2521;
+  --primary-cta: #2e2521;
+  --primary-cta-text: #fcf6ec;
+  --secondary-cta: #ffffff;
+  --secondary-cta-text: #2e2521;
+  --accent: #b2a28b;
+  --background-accent: #b89461;
+  --radius: 1.5rem;
+  --content-width: 87.5vw;
+  --section-head-size: var(--text-6xl);
+}
+
+@media (width >= 1536px) { :root { --section-head-size: var(--text-7xl); } }
+
+
+.navbar__brand { letter-spacing: 0.04em; }
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero { padding-top: 8rem; padding-bottom: 3rem; }
+.hero__inner { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; text-align: center; }
+.hero__title { font-size: var(--text-9xl); line-height: 0.95; font-weight: 500; letter-spacing: -0.02em; }
+.hero__lede { max-width: 46ch; font-size: var(--text-xl); line-height: 1.55; opacity: 0.8; }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 0.25rem; }
+
+.hero__stage { margin-top: 2.5rem; border-radius: var(--radius); overflow: hidden; }
+.hero__stage img { width: 100%; aspect-ratio: 21 / 9; object-fit: cover; }
+
+@media (width <= 768px) {
+  .hero { padding-top: 7rem; }
+  .hero__stage img { aspect-ratio: 4 / 3; }
+}
+
+/* --- Statement ------------------------------------------------------------- */
+
+.statement { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; }
+.statement h2 { max-width: 22ch; font-size: var(--text-5xl); line-height: 1.15; font-weight: 500; text-wrap: balance; }
+.statement p { max-width: 56ch; font-size: var(--text-lg); line-height: 1.65; opacity: 0.8; }
+
+/* --- Products -------------------------------------------------------------- */
+
+.jar { padding: 0.75rem; border-radius: var(--radius); }
+.jar img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: calc(var(--radius) - 0.5rem); transition: transform 0.6s ease-out; }
+.jar:hover img { transform: scale(1.04); }
+.jar__body { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 1.15rem 0.6rem 0.5rem; }
+.jar__body h3 { font-size: var(--text-2xl); }
+.jar__price { font-size: var(--text-2xl); font-weight: 600; color: var(--accent); }
+
+/* --- Reasons bento ---------------------------------------------------------- */
+
+.reasons-bento { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
+.reason-cell { padding: 2rem; border-radius: var(--radius); }
+.reason-cell h3 { font-size: var(--text-3xl); margin-bottom: 0.5rem; }
+.reason-cell p { font-size: var(--text-lg); line-height: 1.5; opacity: 0.78; }
+
+.stat-marquee { --marquee-gap: 2.5rem; --marquee-duration: 34s; margin-bottom: 1rem; }
+.stat-chip-inline { display: flex; align-items: baseline; gap: 0.6rem; flex: none; white-space: nowrap; }
+.stat-chip-inline b { font-size: var(--text-4xl); font-weight: 600; }
+.stat-chip-inline span { font-size: var(--text-lg); opacity: 0.6; }
+
+@media (width <= 768px) { .reasons-bento { grid-template-columns: minmax(0,1fr); } }
+
+/* --- Quote ------------------------------------------------------------------- */
+
+.quote-band { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding: 3.5rem 2rem; border-radius: var(--radius); text-align: center; }
+.quote-band blockquote { max-width: 46ch; margin: 0; font-size: var(--text-2xl); line-height: 1.55; }
+.quote-band cite { font-size: var(--text-lg); font-style: normal; opacity: 0.7; }
+.quote-band .avatar-stack { justify-content: center; }
+
+/* --- FAQ split ---------------------------------------------------------------- */
+
+.faq-split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: start; }
+.faq-split__media { border-radius: var(--radius); overflow: hidden; position: sticky; top: 6rem; }
+.faq-split__media img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+
+@media (width <= 900px) {
+  .faq-split { grid-template-columns: minmax(0,1fr); }
+  .faq-split__media { position: static; }
+  .faq-split__media img { aspect-ratio: 16 / 10; }
+}
+
+/* --- Newsletter ---------------------------------------------------------------- */
+
+.newsletter { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 3.5rem 2rem; border-radius: var(--radius); text-align: center; }
+.newsletter h2 { max-width: 18ch; font-size: var(--text-6xl); line-height: 1.1; font-weight: 500; }
+.newsletter p { max-width: 46ch; font-size: var(--text-lg); line-height: 1.55; opacity: 0.8; }
+.newsletter .form { max-width: 28rem; }
+
+/* --- Footer -------------------------------------------------------------------- */
+
+.site-footer { border-radius: var(--radius) var(--radius) 0 0; background: var(--foreground); color: #fcf6ec; padding-block: 4rem; }
+.footer-top { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: start; }
+.footer-brand { font-size: var(--text-5xl); font-weight: 700; letter-spacing: -0.02em; }
+.footer-nav { display: grid; grid-template-columns: repeat(3, minmax(9rem, auto)); gap: 2.5rem; }
+.footer-nav h3 { font-size: var(--text-base); font-weight: 500; opacity: 0.55; margin-bottom: 1rem; }
+.footer-nav ul { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-nav a { font-size: var(--text-lg); transition: color 0.2s, opacity 0.2s; }
+.footer-nav a:hover { color: var(--accent); }
+
+.footer-legal-bar {
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  margin-top: 3rem; padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  font-size: var(--text-base); opacity: 0.6;
+}
+.footer-legal-bar div { display: flex; gap: 1.25rem; }
+
+@media (width <= 768px) {
+  .footer-top { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .footer-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+}

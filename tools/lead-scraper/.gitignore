@@ -1,0 +1,24 @@
+# secrets
+.env
+
+# generated lead lists (keep the folder, ignore the CSVs)
+leads/*.csv
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# os
+.DS_Store
+leads/*.log
+
+# internal notes (not for students)
+specs/
+
+# resend outreach warm-up progress (per-machine, not shared)
+.outreach_warmup.json
+
+# vercel project link created when you deploy the dashboard (yours, not shared)
+.vercel/

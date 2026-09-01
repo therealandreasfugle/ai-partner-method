@@ -1,0 +1,338 @@
+{
+  "meta": {
+    "title": "Kerrigan Roofing | Roofer in Stockport",
+    "description": "Full re-roofs and new roofs across Stockport, Cheadle, Bramhall and Marple. One fixed price in writing, no big deposit, and Sean on every roof himself."
+  },
+  "company": {
+    "name": "Kerrigan Roofing",
+    "shortName": "Kerrigan",
+    "tagline": "Fixed price, roof done right",
+    "description": "Kerrigan Roofing does full re-roofs, new build roofing and flat roofs for homeowners across Stockport. Sean Kerrigan prices every job in writing and is on every roof himself, so you get a fair fixed price and a roof that is done properly.",
+    "serviceRegion": "Stockport, Cheadle, Bramhall, Marple and the surrounding area"
+  },
+  "copy": {
+    "hero": {
+      "eyebrow": "STOCKPORT, CHEADLE, BRAMHALL AND MARPLE",
+      "headline": "A NEW ROOF IN STOCKPORT, ONE FIXED PRICE IN WRITING",
+      "subheadline": "Full re-roofs and new build roofing across Stockport, priced in writing before we start, with Sean on the roof from first slate to last.",
+      "imageAlt": "Sean Kerrigan standing on a freshly slated pitched roof of a Stockport house, ladder resting against the gutter."
+    },
+    "heroTrustChips": [
+      "Written fixed price",
+      "Owner on the roof",
+      "No large deposit"
+    ],
+    "trustClaims": [
+      "Written fixed price before we start",
+      "Sean is on every roof himself",
+      "No big deposit to hand over"
+    ],
+    "formHeader": "Get your written fixed price",
+    "formSubtext": "Tell Sean about your roof and he will come out and price it in person.",
+    "buttonText": "Book a survey",
+    "footerCta": "If you want your roof done properly, at a price that will not move, Sean will come out and put it in writing.",
+    "cta": {
+      "label": "GET YOUR FIXED PRICE",
+      "heading": "Get a written fixed price for your roof",
+      "body": "Send a few details and Sean will come out, look at the roof himself, and put a fixed price in writing."
+    },
+    "founder": {
+      "label": "MEET SEAN KERRIGAN",
+      "heading": "I am on every roof I take on",
+      "para1": "I am Sean Kerrigan and I have spent my working life on roofs. I started Kerrigan Roofing because I was tired of watching people get let down by firms who take a deposit and are never seen again. Hire me and you get me on the roof, not a stranger you have never met.",
+      "para2": "Before any work starts, I write the price down and fix it, so the number we agree is the number you pay. There are no surprise extras halfway through, and no big deposit to hand over up front. I would rather do fewer roofs and do them properly than rush around patching things that need doing right.",
+      "vision": "To be the roofer people in Stockport ring first, because they know the job will be done right.",
+      "mission": "To give every customer a fair fixed price in writing and a roof that lasts."
+    },
+    "submitButton": "Send to Kerrigan",
+    "privacyLine": "Your details go straight to Sean and no further, and we will never pass them on.",
+    "mobileCallLabel": "Call Sean",
+    "copyright": "Kerrigan Roofing",
+    "services": {
+      "heading": "Roofing done properly in Stockport",
+      "body": "Full re-roofs, new build roofing, flat roofs and honest repairs across Stockport and the towns nearby."
+    },
+    "whyChoose": {
+      "label": "WHY KERRIGAN ROOFING",
+      "heading": "One fixed price, owner on your roof"
+    },
+    "gallery": {
+      "heading": "Roofs we have finished around Stockport",
+      "body": "A look at some of the re-roofs and new roofs we have done for people nearby."
+    },
+    "process": {
+      "body": "From your first call to the last tidy up you deal with Sean, and you know the price before we start.",
+      "badgeText": "No surprises"
+    },
+    "offers": {
+      "heading": "A free survey and a fixed price",
+      "detail": "Every roof gets a free in-person survey and a written fixed price before any work begins."
+    },
+    "reviews": {
+      "heading": "What people in Stockport say"
+    },
+    "faq": {
+      "label": "COMMON QUESTIONS",
+      "heading": "Questions we get asked a lot"
+    },
+    "blog": {
+      "label": "ROOFING ADVICE",
+      "heading": "Straight roofing advice for Stockport homeowners",
+      "body": "Practical tips on looking after your roof and hiring a roofer you can actually trust."
+    },
+    "serviceAreas": {
+      "heading": "Roofing across Stockport, Cheadle, Bramhall and Marple",
+      "body": "We cover Stockport and the towns around it, and we are rarely more than a short drive from your door."
+    },
+    "serviceAreaCard": {
+      "heading": "Your local Stockport roofer",
+      "body": "Based in Stockport and out on roofs in Cheadle, Bramhall and Marple most weeks."
+    }
+  },
+  "services": [
+    {
+      "slug": "full-re-roofs",
+      "name": "Full Re-Roofs",
+      "body": "When a roof is past patching, we strip it right back and re-roof it properly with new membrane, battens and your choice of slate or tile. It is all covered by one fixed price, agreed in writing before we start."
+    },
+    {
+      "slug": "new-build-roofing",
+      "name": "New Build Roofing",
+      "body": "Roofing for new builds, extensions and garden rooms, worked to your plans and your timescale. The builder or the homeowner gets a clear fixed price up front, so there are no surprises on the invoice."
+    },
+    {
+      "slug": "flat-roofs",
+      "name": "Flat Roofs",
+      "body": "Warm flat roofs and rubber EPDM coverings for extensions, dormers and garages. They are built to shed water properly, so you are not back up there patching leaks in two winters."
+    },
+    {
+      "slug": "roof-repairs",
+      "name": "Roof Repairs",
+      "body": "Slipped slates, leaks and storm damage put right, quickly and cleanly. If a repair is the honest fix we will do it, and if the roof really needs replacing we will tell you straight rather than take your money for a patch."
+    }
+  ],
+  "why_choose_us": [
+    "You get one fixed price in writing, so the number never creeps up once the work starts.",
+    "Sean is on your roof himself, not a subcontractor you have never met.",
+    "There is no big deposit to hand over, so your money is not at risk before a slate is touched.",
+    "The cheapest quote often means corners cut and you paying twice, so we do it once and do it right.",
+    "You deal with the same local roofer from the first survey to the last tidy up.",
+    "We would rather turn a job down than rush it, so what we do is done properly."
+  ],
+  "process_steps": [
+    {
+      "n": 1,
+      "title": "Get in touch",
+      "body": "Tell Sean what is going on with your roof and book a time for him to come and look."
+    },
+    {
+      "n": 2,
+      "title": "Sean prices it",
+      "body": "Sean comes out, gets up on the roof himself, and works out exactly what the job needs."
+    },
+    {
+      "n": 3,
+      "title": "Agreed in writing",
+      "body": "You get a clear fixed price in writing, with no surprise extras and no pressure to say yes."
+    },
+    {
+      "n": 4,
+      "title": "We do it",
+      "body": "We turn up when we said we would, do the roof properly, and leave your place clean."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do you take a deposit up front?",
+      "a": "We do not ask for a big deposit before we start. For most jobs you pay when the work is done and you are happy with it, and on a larger re-roof we can agree staged payments in writing. Your money is not sat with a stranger while you hope they come back."
+    },
+    {
+      "q": "How do I know you are not going to disappear like the cowboys?",
+      "a": "You deal with Sean directly, he is on the roof himself, and he lives and works here in Stockport. There is a written fixed price with your name on it, so you always know exactly who you hired and what was agreed."
+    },
+    {
+      "q": "Why are you not the cheapest quote I have had?",
+      "a": "The cheapest quote usually leaves something out, and you end up paying again when it leaks. We price the whole job properly, put it in writing, and stick to it. You pay once and the roof lasts."
+    },
+    {
+      "q": "Can you do a full re-roof or just repairs?",
+      "a": "Full re-roofs and new roofs are the main work we do. If your roof is past patching we will strip it and re-roof it properly. If it only needs a small repair we will tell you that honestly, rather than sell you a new roof you do not need."
+    },
+    {
+      "q": "What areas do you cover?",
+      "a": "We roof across Stockport and the towns around it, including Cheadle, Bramhall and Marple. If you are just outside that, give us a ring and we will let you know if we can still help."
+    },
+    {
+      "q": "Will the price change once you get started?",
+      "a": "No. The written price is the price, as long as the job is what we agreed at the survey. If we ever find something hidden once the old roof is off, we stop and talk to you before anything else is done or charged."
+    }
+  ],
+  "special_offers": [
+    {
+      "label": "Free roof survey",
+      "description": "Sean will come out, look at your roof in person, and talk you through what it actually needs at no cost."
+    },
+    {
+      "label": "Written fixed price, always",
+      "description": "Every job we quote comes with a fixed price in writing before any work starts, so you are never caught out."
+    }
+  ],
+  "previous_projects": [
+    {
+      "alt": "A full re-roof on a semi-detached Stockport house, finished in grey slate with new ridge tiles.",
+      "category": "Re-roof",
+      "filename": "project-1.webp"
+    },
+    {
+      "alt": "A new pitched roof going on a two storey extension, battens and membrane in place before tiling.",
+      "category": "New build",
+      "filename": "project-2.webp"
+    },
+    {
+      "alt": "A rubber flat roof on a rear extension, with clean lead flashing run into the house wall.",
+      "category": "Flat roof",
+      "filename": "project-3.webp"
+    },
+    {
+      "alt": "New lead work and replaced slates around a repaired chimney on an older Stockport home.",
+      "category": "Repair",
+      "filename": "project-4.webp"
+    }
+  ],
+  "blog_posts": [
+    {
+      "slug": "how-to-spot-a-roofing-cowboy",
+      "title": "How to spot a roofing cowboy before you pay a deposit",
+      "category": "Hiring",
+      "excerpt": "The warning signs that a roofer is going to take your money and vanish.",
+      "body": "The biggest warning sign is being asked for a large deposit before any work starts. A settled local roofer does not need your cash up front to buy materials for a normal job. If someone wants a big deposit and is vague about when they will actually start, walk away.\n\nAsk for the price in writing. A cowboy will keep it verbal so the number can drift up once the old roof is off and you are committed. A written fixed price tells you the roofer has properly worked the job out, and it gives you something to hold them to.\n\nCheck they are a real person you can find. A local address, a name on the paperwork, and a roofer who is happy for you to see other roofs they have done are all good signs. If you cannot pin down who you are actually hiring, that is your answer."
+    },
+    {
+      "slug": "re-roof-or-repair",
+      "title": "Re-roof or repair: how to tell when patching is a waste of money",
+      "category": "Advice",
+      "excerpt": "When a repair is the sensible fix, and when you are just throwing money at a tired old roof.",
+      "body": "A repair makes sense when the roof is sound but one specific thing has gone wrong, like a slipped slate or storm damage in a single spot. If the structure and the covering are otherwise in good order, there is no need to spend on a full re-roof.\n\nThe trouble starts when a roof is near the end of its life and you keep paying for patch after patch. Each repair costs money, the leaks keep moving to a new spot, and within a few years you have spent a good chunk of what a proper re-roof would have cost, with the same old roof still over your head.\n\nThe honest test is whether the same roof keeps giving you trouble. If a roofer keeps coming back out, ask for a straight opinion on whether it is time to re-roof. A good one will tell you the truth, even when the bigger job is not the answer you were hoping for."
+    }
+  ],
+  "pages": {
+    "about": {
+      "heroLabel": "About Kerrigan Roofing",
+      "heroHeadline": "A Stockport roofer who is on every roof",
+      "storyHeading": "How Kerrigan Roofing started",
+      "storyClosing": "That is still how every job is done today: one roofer, one fixed price, one roof done right.",
+      "crewHeading": "Who does your roof",
+      "crewBody": "Sean is on every roof himself and works with a small, settled team he knows and trusts. You will not have a different set of strangers turning up each day, and you will not be handed off to a subcontractor.",
+      "crewCaption": "Sean on a Stockport re-roof.",
+      "valuesIntro": "The way we work comes down to a few simple things.",
+      "values": [
+        {
+          "title": "Do it once",
+          "text": "We would rather re-roof it properly than patch it and be back next winter."
+        },
+        {
+          "title": "Price in writing",
+          "text": "You get a fixed price on paper before we start, and that is the price you pay."
+        },
+        {
+          "title": "On the roof",
+          "text": "Sean is up there doing the work, not sending someone you have never met."
+        }
+      ]
+    },
+    "serviceAreas": {
+      "mapHeading": "Where we work",
+      "mapBody": "We roof across Stockport and the towns around it, and we are rarely more than a short drive from your door.",
+      "citiesFallback": "If your town is not listed, ring Sean and ask, and we will let you know if we can still help.",
+      "readyHeading": "Ready for a proper roof?",
+      "readyBody": "Tell Sean about your roof and get a written fixed price, with no pressure to go ahead.",
+      "coverageHighlights": [
+        {
+          "title": "Stockport",
+          "body": "Our home patch, from the town centre out to Heaton Moor, Davenport and Edgeley."
+        },
+        {
+          "title": "Cheadle and Bramhall",
+          "body": "Re-roofs and new roofs for homes across Cheadle, Cheadle Hulme and Bramhall."
+        },
+        {
+          "title": "Marple",
+          "body": "Full roofing for houses in Marple, Marple Bridge and the villages around them."
+        }
+      ]
+    }
+  },
+  "assets": {
+    "base": "/sites/kerrigan-roofing-claude"
+  },
+  "palette": {
+    "primary": "#161616",
+    "primary_dark": "#000000",
+    "primary_slate": "#2E2E2E",
+    "accent": "#FF4A1C",
+    "accent_light": "#FF7A55",
+    "accent_dark": "#CC3510",
+    "neutral": "#F4F4F2",
+    "neutral_dim": "#E2E2DE",
+    "silver": "#9C9C9C",
+    "ink": "#101010"
+  },
+  "typography": {
+    "heading": "Archivo",
+    "body": "Plus Jakarta Sans",
+    "headingFontUrl": "https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap",
+    "bodyFontUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+  },
+  "contact": {
+    "phone": "0161 555 0142",
+    "phoneTelLink": "tel:01615550142",
+    "email": "sean@kerriganroofing.example",
+    "googleMapsUrl": null,
+    "mapsEmbedUrl": null
+  },
+  "address": {
+    "street": "",
+    "city": "Stockport",
+    "state": "",
+    "zip": "",
+    "full": "Stockport",
+    "lat": null,
+    "lng": null
+  },
+  "serviceAreas": [
+    "Stockport",
+    "Cheadle",
+    "Bramhall",
+    "Marple"
+  ],
+  "team": {
+    "founder": {
+      "name": "Sean Kerrigan",
+      "displayName": "Sean",
+      "title": "Owner, Kerrigan",
+      "yearsExp": "",
+      "expLabel": "roofer in Stockport"
+    },
+    "founders": []
+  },
+  "credit": {
+    "agency": "Northstar Web Studio",
+    "url": null
+  },
+  "reviews": {
+    "rating": 0,
+    "googleCount": 0,
+    "facebookCount": 0,
+    "totalReviewCount": 0,
+    "googleLabel": "Google",
+    "facebookLabel": "Facebook",
+    "googleStat": "",
+    "facebookStat": "",
+    "items": []
+  },
+  "_generated": {
+    "lane": "claude-code",
+    "model": "session default",
+    "seconds": 489.2
+  }
+}

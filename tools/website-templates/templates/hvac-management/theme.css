@@ -1,0 +1,265 @@
+/* ==========================================================================
+   HVAC MANAGEMENT
+   Clean slate-blue trade site: full-bleed hero, inline glass nav, service
+   carousel, sticky-stacked reasons, process steps, testimonials, FAQ.
+   ========================================================================== */
+
+:root {
+  --background: #f8fafc;
+  --card: #ffffff;
+  --foreground: #0f172a;
+  --primary-cta: #1d4ed8;
+  --primary-cta-text: #ffffff;
+  --secondary-cta: #e0e7ff;
+  --secondary-cta-text: #1e3a5f;
+  --accent: #3b82f6;
+  --background-accent: #60a5fa;
+  --radius: 1.5rem;
+  --content-width: 87.5vw;
+  --section-head-size: var(--text-6xl);
+}
+
+@media (width >= 1536px) {
+  :root { --section-head-size: var(--text-7xl); }
+}
+
+@media (width >= 1600px) {
+  :root { --content-width: clamp(40rem, 87.5vw, 100rem); }
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 40rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 5rem;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark scrim so white copy stays legible over any photo. */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(2, 6, 23, 0.75) 0%,
+    rgba(2, 6, 23, 0.35) 45%,
+    rgba(2, 6, 23, 0.1) 100%
+  );
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding-bottom: 6rem;
+  color: #fff;
+}
+
+.hero__inner .eyebrow {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #fff;
+}
+
+.hero__title {
+  max-width: 15ch; /* breaks after "Comfort", matching the reference */
+  font-size: var(--text-8xl);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero__lede {
+  max-width: 46ch;
+  font-size: var(--text-xl);
+  line-height: 1.45;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.hero .avatar-stack { margin-top: 1rem; }
+.hero .avatar-stack__row img,
+.hero .avatar-stack__more { border-color: rgba(255, 255, 255, 0.6); }
+.hero .avatar-stack p { font-size: var(--text-base); font-weight: 600; }
+
+@media (width <= 768px) {
+  .hero { margin-bottom: 3rem; }
+  .hero__inner { padding-bottom: 3.5rem; }
+  .hero__title { font-size: var(--text-7xl); max-width: 14ch; }
+}
+
+/* --- About ---------------------------------------------------------------- */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.about-grid__panel { padding: 1rem 2rem; border-radius: var(--radius); }
+
+.about-grid__media {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.about-grid__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 20rem;
+  object-fit: cover;
+}
+
+@media (width <= 768px) {
+  .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .about-grid__panel { padding: 0.5rem 1.25rem; }
+  .about-grid__media img { min-height: 14rem; }
+}
+
+/* --- Why choose: sticky stacked cards --------------------------------------
+   Each card pins as the next scrolls up over it. */
+
+.reasons { display: flex; flex-direction: column; gap: 2rem; }
+
+.reason {
+  position: sticky;
+  top: 6rem;
+  background: var(--card);
+}
+
+.reason .split-card__copy h3 { font-size: var(--text-6xl); }
+
+@media (width <= 768px) {
+  .reason { position: static; }
+  .reasons { gap: 1rem; }
+}
+
+/* --- Process --------------------------------------------------------------- */
+
+.process__media {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.step-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2rem;
+  border-radius: var(--radius);
+}
+
+.step-card h3 { font-size: var(--text-3xl); }
+.step-card p { font-size: var(--text-lg); line-height: 1.45; }
+
+/* --- Contact CTA ------------------------------------------------------------ */
+
+.cta-band {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+  padding-block: 5rem;
+}
+
+.cta-band h2 {
+  max-width: 20ch;
+  font-size: var(--text-7xl);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.cta-band__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+
+/* --- Footer ----------------------------------------------------------------- */
+
+.footer-band {
+  width: 100%;
+  height: 28rem;
+  object-fit: cover;
+}
+
+.site-footer {
+  border-radius: 0;
+  background: var(--primary-cta);
+  padding-block: 4rem;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: start;
+}
+
+.footer-brand {
+  font-size: var(--text-6xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(9rem, auto));
+  gap: 2.5rem;
+}
+
+.footer-nav h3 {
+  font-size: var(--text-base);
+  font-weight: 500;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+
+.footer-nav ul { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-nav a { font-size: var(--text-lg); transition: opacity 0.2s; }
+.footer-nav a:hover { opacity: 0.7; }
+
+.footer-legal-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: var(--text-base);
+  opacity: 0.75;
+}
+
+.footer-legal-bar div { display: flex; gap: 1.25rem; }
+
+@media (width <= 768px) {
+  .footer-band { height: 14rem; }
+  .footer-top { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .footer-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+}

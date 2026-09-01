@@ -1,0 +1,358 @@
+{
+  "meta": {
+    "title": "Nails Time & Spa | Nail Salon in Penticton",
+    "description": "Professional nail care and spa treatments in Penticton. Book your manicure, pedicure or gel nails today."
+  },
+  "company": {
+    "name": "Nails Time & Spa",
+    "shortName": "Nails Time",
+    "tagline": "Perfect nails, relaxed you",
+    "description": "A Penticton nail salon offering manicures, pedicures, gel nails and spa treatments. For clients who want great results without the wait.",
+    "serviceRegion": "Penticton and surrounding areas"
+  },
+  "copy": {
+    "hero": {
+      "eyebrow": "NAILS & SPA IN PENTICTON",
+      "headline": "SAME-DAY NAILS, NO STRESS",
+      "subheadline": "Book online in minutes for manicures, pedicures and gel nails that last.",
+      "imageAlt": "Client receiving a professional manicure at Nails Time & Spa in Penticton"
+    },
+    "heroTrustChips": [
+      "Same-day bookings",
+      "Hygienic tools",
+      "Experienced technicians"
+    ],
+    "trustClaims": [
+      "Clean, sterilised tools every time",
+      "Gel nails that don't chip early",
+      "No rushed appointments"
+    ],
+    "formHeader": "Book now",
+    "formSubtext": "Slots fill fast, secure yours today.",
+    "buttonText": "Get appointment",
+    "footerCta": "Need last-minute nails? Check our live availability and book online.",
+    "cta": {
+      "label": "READY FOR NAILS?",
+      "heading": "Book in 60 seconds",
+      "body": "See real-time availability and pick a slot that works for you."
+    },
+    "founder": {
+      "label": "OUR STORY",
+      "heading": "Nails done right, every time",
+      "para1": "I opened Nails Time & Spa because Penticton needed a salon that actually listens. No upselling, no rushing, just great nails and a bit of relaxation. I've worked in salons for years, and I know what clients really want: results that last, without the hassle.",
+      "para2": "I focus on the details that matter, sterilised tools, long-lasting gel, and a calm space where you can unwind. Whether it's a quick manicure or a full spa pedicure, I make sure you leave happy. No shortcuts, no surprises.",
+      "vision": "To be the go-to nail salon in Penticton for clients who value quality and care.",
+      "mission": "Provide nail services that look great and feel even better, with honesty and skill."
+    },
+    "submitButton": "Book at Nails Time",
+    "privacyLine": "We keep your details safe and private.",
+    "mobileCallLabel": "Call now",
+    "copyright": "Nails Time & Spa",
+    "services": {
+      "heading": "Penticton nail care & spa",
+      "body": "Manicures, pedicures, gel polish, nail art, and relaxing spa treatments."
+    },
+    "whyChoose": {
+      "label": "WHY US",
+      "heading": "Clean, calm, and creative nails"
+    },
+    "gallery": {
+      "heading": "See our latest work",
+      "body": "Browse fresh nail designs from Penticton clients."
+    },
+    "process": {
+      "body": "Book online, arrive on time, and leave with perfect nails.",
+      "badgeText": "Simple steps"
+    },
+    "offers": {
+      "heading": "Seasonal nail specials",
+      "detail": "Ask about our current treatments and packages."
+    },
+    "reviews": {
+      "heading": "What clients say"
+    },
+    "faq": {
+      "label": "FAQ",
+      "heading": "Your nail questions"
+    },
+    "blog": {
+      "label": "TIPS",
+      "heading": "Nail care advice",
+      "body": "Practical tips for healthy, beautiful nails in Penticton."
+    },
+    "serviceAreas": {
+      "heading": "Nail salon in Penticton",
+      "body": "We serve clients across Penticton and nearby areas."
+    },
+    "serviceAreaCard": {
+      "heading": "Local nails",
+      "body": "Serving Penticton, Summerland, and Naramata."
+    }
+  },
+  "services": [
+    {
+      "slug": "gel-manicure",
+      "name": "Gel Manicure",
+      "body": "Long-lasting colour that won't chip in days. Perfect for busy hands that need to look polished."
+    },
+    {
+      "slug": "spa-pedicure",
+      "name": "Spa Pedicure",
+      "body": "A proper soak, scrub and massage to soften feet. Includes nail shaping and polish of your choice."
+    },
+    {
+      "slug": "acrylic-nails",
+      "name": "Acrylic Nails",
+      "body": "Strong, durable extensions shaped to your style. Ideal for clients who want length without the upkeep of gel."
+    },
+    {
+      "slug": "nail-repair",
+      "name": "Nail Repair",
+      "body": "Fix broken nails or lifts without starting over. Quick, affordable and keeps your nails looking neat."
+    }
+  ],
+  "why_choose_us": [
+    "You won't be rushed, appointments start on time and finish when you're happy.",
+    "Tools are sterilised after every client, no exceptions.",
+    "Gel nails that last 2+ weeks without peeling or chipping.",
+    "No pushy upselling, just the service you booked.",
+    "Same-day bookings available for last-minute needs.",
+    "A calm, clean space where you can actually relax."
+  ],
+  "process_steps": [
+    {
+      "n": 1,
+      "title": "Book online",
+      "body": "Pick a time that works for you, no phone tag."
+    },
+    {
+      "n": 2,
+      "title": "Arrive relaxed",
+      "body": "We start on time so you're not stuck waiting."
+    },
+    {
+      "n": 3,
+      "title": "Nails done",
+      "body": "No shortcuts, just great results that last."
+    },
+    {
+      "n": 4,
+      "title": "Leave happy",
+      "body": "Walk out with nails you're proud to show off."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How long do gel nails last?",
+      "a": "With proper care, gel nails should last at least two weeks without chipping. We use high-quality products and proper application techniques to help them last longer. Avoid picking at them to keep them looking fresh."
+    },
+    {
+      "q": "Do you take walk-ins?",
+      "a": "We prefer bookings to guarantee your slot, but we'll do our best to fit you in if we have availability. Check our online calendar for same-day openings. Walk-ins may have to wait if we're fully booked."
+    },
+    {
+      "q": "Are your tools sterilised?",
+      "a": "Yes. Every tool is cleaned and sterilised after each client. We follow strict hygiene protocols to keep you safe. You'll see us open fresh packages for your appointment."
+    },
+    {
+      "q": "What's the difference between gel and acrylic?",
+      "a": "Gel is a flexible, glossy polish that's cured under a lamp. Acrylic is a stronger, more durable extension that's built onto your natural nail. Gel is lighter and more natural-looking, while acrylic is better for length and strength."
+    },
+    {
+      "q": "How do I make my manicure last longer?",
+      "a": "Wear gloves when cleaning, avoid picking at your nails, and apply cuticle oil daily. We'll show you how to care for your nails at home. The better you look after them, the longer they'll stay perfect."
+    },
+    {
+      "q": "Do you do nail art?",
+      "a": "Yes, we offer simple nail art like French tips, glitter and basic designs. Let us know what you're after when you book. For complex designs, we may need extra time or charge a small fee."
+    }
+  ],
+  "special_offers": [
+    {
+      "label": "First visit",
+      "description": "10% off your first manicure or pedicure when you book online."
+    },
+    {
+      "label": "Refer a friend",
+      "description": "Get $10 off your next visit when your friend books their first appointment."
+    }
+  ],
+  "previous_projects": [
+    {
+      "alt": "Close-up of a client's hands with fresh gel manicure in nude shade",
+      "category": "Gel",
+      "filename": "project-1.webp"
+    },
+    {
+      "alt": "Client's feet after a spa pedicure with pink polish",
+      "category": "Pedicure",
+      "filename": "project-2.webp"
+    },
+    {
+      "alt": "Acrylic nails with French tip design on a client's hands",
+      "category": "Acrylic",
+      "filename": "project-3.webp"
+    },
+    {
+      "alt": "Close-up of repaired nail with clear gel overlay",
+      "category": "Repair",
+      "filename": "project-4.webp"
+    }
+  ],
+  "blog_posts": [
+    {
+      "slug": "how-to-keep-gel-polish-lasting-longer",
+      "title": "How to Keep Gel Polish Lasting Longer",
+      "category": "Nail care",
+      "excerpt": "Simple steps to make your gel manicure last weeks.",
+      "body": "Gel polish can stay flawless for up to three weeks if you follow a few key steps. Start by keeping your hands moisturised, dry skin causes lifting. Avoid picking at your cuticles, as this can weaken the polish bond.\n\nWhen washing dishes or cleaning, wear gloves to protect your nails from harsh chemicals. These can strip the polish and make it chip faster. If you notice any lifting, book a quick fix at your salon to prevent further damage.\n\nFinally, apply cuticle oil daily. This keeps your nails flexible and prevents cracking. A little care goes a long way in keeping your gel manicure looking fresh."
+    },
+    {
+      "slug": "choosing-the-right-nail-shape-for-your-hands",
+      "title": "Choosing the Right Nail Shape for Your Hands",
+      "category": "Style tips",
+      "excerpt": "Find the perfect nail shape to flatter your hands.",
+      "body": "The right nail shape can enhance your hands and complement your style. Almond nails suit most hand shapes, offering a soft, elegant look. If you prefer something bolder, try square or coffin shapes for a modern edge.\n\nShort nails? Opt for rounded or squoval shapes, they make fingers appear longer. For those who love drama, stiletto nails create a striking, elongated effect. Your nail technician can help you decide based on your lifestyle and preferences.\n\nRemember, the shape should feel comfortable for daily tasks. If you type a lot or work with your hands, shorter, rounded shapes may be more practical. A good salon will balance style and function for nails you'll love."
+    }
+  ],
+  "pages": {
+    "about": {
+      "heroLabel": "About Nails Time & Spa",
+      "heroHeadline": "Penticton's trusted nail salon",
+      "storyHeading": "Our start",
+      "storyClosing": "We're proud to serve Penticton with care and creativity.",
+      "crewHeading": "Our team",
+      "crewBody": "Our nail technicians are trained in the latest techniques and trends. We work together to give you a relaxing, personalised experience every time.",
+      "crewCaption": "Your nails in expert hands.",
+      "valuesIntro": "What matters most to us, and to you.",
+      "values": [
+        {
+          "title": "Hygiene first",
+          "text": "We sterilise tools and maintain a clean space for your safety."
+        },
+        {
+          "title": "Creative touch",
+          "text": "From classic to bold, we tailor designs to your style."
+        },
+        {
+          "title": "Calm space",
+          "text": "Step in, unwind, and leave feeling refreshed."
+        }
+      ]
+    },
+    "serviceAreas": {
+      "mapHeading": "Where we work",
+      "mapBody": "Serving Penticton and the surrounding area.",
+      "citiesFallback": "We cover Penticton and nearby towns.",
+      "readyHeading": "Book today",
+      "readyBody": "Get the nails you've been dreaming of, contact us now.",
+      "coverageHighlights": [
+        {
+          "title": "Penticton",
+          "body": "Our main salon is right here in the heart of Penticton."
+        },
+        {
+          "title": "Summerland",
+          "body": "We welcome clients from Summerland for regular appointments."
+        },
+        {
+          "title": "Naramata",
+          "body": "Residents of Naramata visit us for fresh designs and spa treatments."
+        }
+      ]
+    }
+  },
+  "assets": {
+    "base": "/sites/nails-time-spa"
+  },
+  "palette": {
+    "primary": "#1E3A5F",
+    "primary_dark": "#15293F",
+    "primary_slate": "#2C4660",
+    "accent": "#E8821E",
+    "accent_light": "#F4A94C",
+    "accent_dark": "#C26A12",
+    "neutral": "#F5F3EF",
+    "neutral_dim": "#E4E0D8",
+    "silver": "#9AA3AD",
+    "ink": "#1A1F26"
+  },
+  "typography": {
+    "heading": "Oswald",
+    "body": "Plus Jakarta Sans",
+    "headingFontUrl": "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap",
+    "bodyFontUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+  },
+  "contact": {
+    "phone": "+1 778-476-0011",
+    "phoneTelLink": "tel:+17784760011",
+    "email": "nailstimepenticton@gmail.com",
+    "googleMapsUrl": "Map",
+    "mapsEmbedUrl": null
+  },
+  "address": {
+    "street": "2100 Main St #103, Penticton, BC V2A 5H7, Canada",
+    "city": "Penticton",
+    "state": "British Columbia",
+    "zip": "V2A 5H7",
+    "full": "2100 Main St #103, Penticton, BC V2A 5H7, Canada, Penticton, V2A 5H7",
+    "lat": null,
+    "lng": null
+  },
+  "social": {
+    "facebook": "Facebook",
+    "facebookReviews": null
+  },
+  "serviceAreas": [
+    "Penticton"
+  ],
+  "team": {
+    "founder": {
+      "name": "Nails Time",
+      "displayName": "Nails Time",
+      "title": "Nails Time",
+      "yearsExp": "",
+      "expLabel": "nail salon in Penticton"
+    },
+    "founders": []
+  },
+  "credit": {
+    "agency": "Northstar Web Studio",
+    "url": null
+  },
+  "reviews": {
+    "rating": 4.5,
+    "googleCount": 416,
+    "facebookCount": 0,
+    "totalReviewCount": 416,
+    "googleLabel": "Google",
+    "facebookLabel": "Facebook",
+    "googleStat": "4.5 from 416 reviews",
+    "facebookStat": "",
+    "items": []
+  },
+  "trust_badges": [],
+  "press_logos": [],
+  "_generated": {
+    "model": "omniroute/auto/best-free",
+    "lane": "free-api",
+    "source": "scrape"
+  },
+  "_demo": {
+    "proposalUrl": "https://aipm-instant-proposal.vercel.app/proposal.html?site=nails-time-spa"
+  },
+  "_display": {
+    "name": "Nails Time & Spa",
+    "town": "Penticton",
+    "phone": "+1 778-476-0011",
+    "address": "2100 Main St #103, Penticton, BC V2A 5H7, Canada, Penticton, V2A 5H7",
+    "streetOnly": "2100 Main St #103, Penticton, BC V2A 5H7, Canada",
+    "postcode": "V2A 5H7",
+    "mapsUrl": "Map",
+    "websiteStatus": "SOCIAL",
+    "website": "facebook.com",
+    "facebook": "Facebook",
+    "instagram": "",
+    "reviewLine": "4.5 from 416 Google reviews"
+  }
+}

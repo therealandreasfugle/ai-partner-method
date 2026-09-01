@@ -1,0 +1,228 @@
+{
+  "groups": [
+    {
+      "title": "Local service businesses",
+      "note": "The niches AIPM students sell to first",
+      "items": [
+        {
+          "slug": "hvac-management",
+          "name": "HVAC Management",
+          "desc": "Full-bleed hero, service carousel, sticky reason stack, process steps, FAQ.",
+          "sw": [
+            "#f8fafc",
+            "#1d4ed8",
+            "#e0e7ff"
+          ]
+        },
+        {
+          "slug": "plumbing-services",
+          "name": "Plumbing Services",
+          "desc": "Centred hero with trust marquee, glow stat cards, contact form.",
+          "sw": [
+            "#020617",
+            "#0ea5e9",
+            "#f8fafc"
+          ]
+        },
+        {
+          "slug": "landscaping-services",
+          "name": "Landscaping Services",
+          "desc": "Video statement, four oversized numbered service panels, team grid.",
+          "sw": [
+            "#f7f9f4",
+            "#2d5a27",
+            "#8fbc8f"
+          ]
+        },
+        {
+          "slug": "dental-practice",
+          "name": "Dental Practice",
+          "desc": "Split hero with floating stat chips, priced service cards, review marquee.",
+          "sw": [
+            "#f7f6f7",
+            "#0798ff",
+            "#e8f4ff"
+          ]
+        },
+        {
+          "slug": "med-spa",
+          "name": "Med Spa",
+          "desc": "Blush hero with trust marquee, treatment grid, before-and-after marquee.",
+          "sw": [
+            "#fdf8f8",
+            "#d5799b",
+            "#feeaee"
+          ]
+        },
+        {
+          "slug": "auto-detailing",
+          "name": "Auto Detailing",
+          "desc": "Video hero, sticky service stack, comparison table, video contact band.",
+          "sw": [
+            "#0a0a0a",
+            "#ff7a1a",
+            "#1a1a1a"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hospitality and food",
+      "note": "Warm, image-heavy, walk-in driven",
+      "items": [
+        {
+          "slug": "coffee-shop",
+          "name": "Coffee Shop",
+          "desc": "Handwritten display face, cursor image trail, filterable menu.",
+          "sw": [
+            "#f5f0e8",
+            "#2c1810",
+            "#ede7db"
+          ]
+        },
+        {
+          "slug": "boutique-hotel",
+          "name": "Boutique Hotel",
+          "desc": "Dark editorial with room gallery and video.",
+          "sw": [
+            "#0f1010",
+            "#ffffff",
+            "#2a2a28"
+          ]
+        },
+        {
+          "slug": "travel-agency",
+          "name": "Travel Agency",
+          "desc": "Warm rose and sand. Destination-led itineraries.",
+          "sw": [
+            "#f6f0e9",
+            "#3d1f2a",
+            "#8c4a5c"
+          ]
+        },
+        {
+          "slug": "wellness-center",
+          "name": "Wellness Center",
+          "desc": "Warm terracotta, class timetable, practitioner led.",
+          "sw": [
+            "#fafaf9",
+            "#ea6720",
+            "#f5ede6"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Online and tech",
+      "note": "For the online side of the offer",
+      "items": [
+        {
+          "slug": "web-agency",
+          "name": "Web Agency",
+          "desc": "Vertical marquee hero, bento services, work carousel.",
+          "sw": [
+            "#0a0a0a",
+            "#f0f0f0",
+            "#434343"
+          ]
+        },
+        {
+          "slug": "ai-consulting",
+          "name": "AI Consulting",
+          "desc": "Black with mint. Large-radius cards, dark systems feel.",
+          "sw": [
+            "#0a0a0a",
+            "#00ffab",
+            "#111111"
+          ]
+        },
+        {
+          "slug": "ai-email-platform",
+          "name": "AI Email Platform",
+          "desc": "SaaS layout with feature blocks, pricing table, testimonials.",
+          "sw": [
+            "#f8fafc",
+            "#106feb",
+            "#b4d4f8"
+          ]
+        },
+        {
+          "slug": "real-estate-agency",
+          "name": "Real Estate Agency",
+          "desc": "Listings grid, agent cards, enquiry flow.",
+          "sw": [
+            "#f0f0f0",
+            "#1a1a1a",
+            "#c9c9c9"
+          ]
+        },
+        {
+          "slug": "ai-ugc-creator",
+          "name": "AI UGC Creator",
+          "desc": "Heaviest video use: six clips, thirty images.",
+          "sw": [
+            "snow",
+            "#e63946",
+            "#1d1d1d"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Creator and product",
+      "note": "Portfolio, publishing, product launches, and beauty brands",
+      "items": [
+        {
+          "slug": "creative-portfolio",
+          "name": "Creative Portfolio",
+          "desc": "Tight radius, white space, project-first.",
+          "sw": [
+            "#ffffff",
+            "#171717",
+            "#e5e5e5"
+          ]
+        },
+        {
+          "slug": "personal-blogger",
+          "name": "Personal Blogger",
+          "desc": "Editorial paper tone, image-led posts.",
+          "sw": [
+            "#f5f3f0",
+            "#1a1a1a",
+            "#d8d2c8"
+          ]
+        },
+        {
+          "slug": "product-showcase",
+          "name": "Product Showcase",
+          "desc": "Single-product launch page, spec blocks, gallery.",
+          "sw": [
+            "#f1f1f1",
+            "#1a1a1a",
+            "#b8b8b8"
+          ]
+        },
+        {
+          "slug": "perfume-brand",
+          "name": "Perfume Brand",
+          "desc": "Oxblood collage hero, priced bottles, numbered craft steps, creator video wall.",
+          "sw": [
+            "#f5f5f5",
+            "#511f1f",
+            "#c9725c"
+          ]
+        },
+        {
+          "slug": "natural-skincare",
+          "name": "Natural Skincare",
+          "desc": "Warm cream and clay. Statement hero, product trio, stat marquee, FAQ split.",
+          "sw": [
+            "#fcf6ec",
+            "#2e2521",
+            "#b89461"
+          ]
+        }
+      ]
+    }
+  ]
+}

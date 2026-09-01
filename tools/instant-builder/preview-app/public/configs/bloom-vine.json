@@ -1,0 +1,337 @@
+{
+  "meta": {
+    "title": "Bloom & Vine | Wedding Florist in Altrincham",
+    "description": "Fresh morning flowers for weddings & events in Altrincham. Meet Ruth for bespoke arrangements that match your vision."
+  },
+  "company": {
+    "name": "Bloom & Vine",
+    "shortName": "Bloom & Vine",
+    "tagline": "Fresh flowers for your big day",
+    "description": "We create bespoke wedding and event flowers in Altrincham. Every arrangement is made fresh the morning of your event, so you get exactly what you imagined.",
+    "serviceRegion": "Altrincham, Hale, Bowdon, Timperley and surrounding areas"
+  },
+  "copy": {
+    "hero": {
+      "eyebrow": "WEDDING & EVENT FLOWERS",
+      "headline": "FRESH FLOWERS THAT MATCH YOUR VISION",
+      "subheadline": "No more quiet weeks - book your wedding or event flowers now and get arrangements made fresh the morning of your day.",
+      "imageAlt": "Bride holding a fresh bouquet of seasonal flowers arranged by Bloom & Vine"
+    },
+    "heroTrustChips": [
+      "Same-day fresh",
+      "Meet Ruth",
+      "No surprises"
+    ],
+    "trustClaims": [
+      "Flowers cut that morning",
+      "Direct with the florist",
+      "Exactly what you pictured"
+    ],
+    "formHeader": "Book a chat",
+    "formSubtext": "Tell us about your event and we'll show you what's possible.",
+    "buttonText": "Get in touch",
+    "footerCta": "Need flowers for your wedding or event? Let's talk about what you have in mind.",
+    "cta": {
+      "label": "READY TO BOOK?",
+      "heading": "Fill the quiet weeks",
+      "body": "Secure your wedding or event date now and avoid last-minute stress."
+    },
+    "founder": {
+      "label": "MEET RUTH",
+      "heading": "Your florist, not a middleman",
+      "para1": "I started Bloom & Vine because I was tired of the feast or famine cycle. Some weeks are packed, others are too quiet. I want to change that by focusing on weddings and events - the work I love most.",
+      "para2": "I meet every couple myself and arrange every bouquet fresh the morning of your event. That means no wilting flowers, no last-minute substitutions, and no surprises. Just what you imagined, exactly how you pictured it.",
+      "vision": "To make sure every wedding and event in Altrincham has flowers that feel as special as the day itself.",
+      "mission": "To give couples peace of mind by delivering exactly what they pictured, without the stress."
+    },
+    "submitButton": "Send to Bloom & Vine",
+    "privacyLine": "We keep your details private and secure.",
+    "mobileCallLabel": "Call Ruth",
+    "copyright": "Bloom & Vine",
+    "services": {
+      "heading": "Wedding & event flowers in Altrincham",
+      "body": "Bespoke bouquets, centrepieces, arches and installations for weddings and events across the area."
+    },
+    "whyChoose": {
+      "label": "WHY CHOOSE US",
+      "heading": "Fresh flowers arranged the morning you need them"
+    },
+    "gallery": {
+      "heading": "See our recent wedding flowers",
+      "body": "A selection of our favourite arrangements from local couples."
+    },
+    "process": {
+      "body": "We meet every couple to discuss your vision and ensure everything matches your expectations.",
+      "badgeText": "Personal service"
+    },
+    "offers": {
+      "heading": "Seasonal flower arrangements",
+      "detail": "Ask about our current seasonal designs for weddings and events."
+    },
+    "reviews": {
+      "heading": "What couples say"
+    },
+    "faq": {
+      "label": "QUESTIONS",
+      "heading": "Your flower queries answered"
+    },
+    "blog": {
+      "label": "FLOWER TIPS",
+      "heading": "Advice for your wedding flowers",
+      "body": "Practical tips to help you choose the perfect arrangements for your day."
+    },
+    "serviceAreas": {
+      "heading": "Florist serving Altrincham & nearby",
+      "body": "We create fresh arrangements for weddings and events across the area."
+    },
+    "serviceAreaCard": {
+      "heading": "Local florist",
+      "body": "Serving Altrincham, Hale, Sale and Timperley with fresh flowers."
+    }
+  },
+  "services": [
+    {
+      "slug": "wedding-flowers",
+      "name": "Wedding Flowers",
+      "body": "From bouquets to table centres, we create arrangements that match your theme and colour scheme. Everything is made fresh the morning of your wedding."
+    },
+    {
+      "slug": "event-flowers",
+      "name": "Event Flowers",
+      "body": "Whether it's a corporate event or a milestone celebration, we design flowers that set the right tone. Fresh, seasonal and bespoke to your occasion."
+    },
+    {
+      "slug": "bespoke-bouquets",
+      "name": "Bespoke Bouquets",
+      "body": "Need something unique? We work with you to create a bouquet that reflects your style. No templates, just your vision brought to life."
+    },
+    {
+      "slug": "floral-installations",
+      "name": "Floral Installations",
+      "body": "For venues that need a statement, we create arches, backdrops and hanging displays. Perfect for weddings, parties and special events."
+    }
+  ],
+  "why_choose_us": [
+    "No more quiet weeks - we focus on weddings and events, so you get steady bookings.",
+    "Every arrangement is made fresh the morning of your event, so it looks exactly as you imagined.",
+    "You deal directly with Ruth, not a salesperson, so there are no surprises.",
+    "We don't do generic - every bouquet is bespoke to your vision and theme.",
+    "No last-minute substitutions or wilting flowers - just fresh, seasonal blooms.",
+    "We meet every couple ourselves, so you know exactly who is creating your flowers."
+  ],
+  "process_steps": [
+    {
+      "n": 1,
+      "title": "Chat with Ruth",
+      "body": "Tell us about your event, your theme and what you have in mind for your flowers."
+    },
+    {
+      "n": 2,
+      "title": "See your vision",
+      "body": "We'll show you a mood board and samples so you can see exactly what to expect."
+    },
+    {
+      "n": 3,
+      "title": "Fresh on the day",
+      "body": "Every arrangement is made fresh the morning of your event, so it's perfect when you see it."
+    },
+    {
+      "n": 4,
+      "title": "No stress",
+      "body": "We deliver and set up, so you can focus on enjoying your day."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Will my flowers look exactly like the pictures?",
+      "a": "We work with you to create a mood board and samples, so you know exactly what to expect. Every arrangement is made fresh the morning of your event, so it will match your vision."
+    },
+    {
+      "q": "What if I don't know what I want?",
+      "a": "That's fine. We'll chat about your event, your theme and your style, then show you options. You'll see samples before we finalise anything."
+    },
+    {
+      "q": "Do you do last-minute bookings?",
+      "a": "We can sometimes accommodate last-minute requests, but it's best to book early to secure your date. Quiet weeks fill up fast."
+    },
+    {
+      "q": "How far in advance should I book?",
+      "a": "For weddings and big events, book as soon as you have a date. For smaller events, a few weeks' notice is usually enough."
+    },
+    {
+      "q": "Do you deliver and set up?",
+      "a": "Yes. We deliver and set up your flowers, so you don't have to worry about a thing."
+    },
+    {
+      "q": "What areas do you cover?",
+      "a": "We cover Altrincham, Hale, Bowdon, Timperley and surrounding areas. If you're outside this area, get in touch and we'll see what we can do."
+    }
+  ],
+  "special_offers": [
+    {
+      "label": "Early bird",
+      "description": "Book your wedding or event flowers 6 months in advance and get a free consultation."
+    },
+    {
+      "label": "Quiet week deal",
+      "description": "Book a midweek event in our quieter months and get 10% off your flowers."
+    }
+  ],
+  "previous_projects": [
+    {
+      "alt": "Bride holding a fresh bouquet of white roses and greenery",
+      "category": "Wedding",
+      "filename": "project-1.webp"
+    },
+    {
+      "alt": "Table centre with seasonal flowers in soft pinks and whites",
+      "category": "Event",
+      "filename": "project-2.webp"
+    },
+    {
+      "alt": "Floral arch with trailing greenery and white blooms",
+      "category": "Installation",
+      "filename": "project-3.webp"
+    },
+    {
+      "alt": "Bespoke bouquet with wildflowers and delicate stems",
+      "category": "Bouquet",
+      "filename": "project-4.webp"
+    }
+  ],
+  "blog_posts": [
+    {
+      "slug": "choosing-wedding-flowers-for-your-season",
+      "title": "Choosing wedding flowers for your season",
+      "category": "Wedding flowers",
+      "excerpt": "How to select the best blooms for your wedding day, whatever the time of year.",
+      "body": "Spring weddings bring soft pastels and delicate blossoms like peonies and tulips. These flowers are at their peak in the early months of the year, offering a fresh and romantic look.\n\nSummer allows for bold, vibrant choices such as sunflowers, dahlias and roses. These blooms thrive in warmer weather and can add a striking pop of colour to your arrangements.\n\nAutumn and winter weddings benefit from deeper tones and textured flowers like anemones, ranunculus and berries. These create a rich, seasonal feel that complements cooler weather."
+    },
+    {
+      "slug": "how-to-keep-your-flowers-fresh-all-day",
+      "title": "How to keep your flowers fresh all day",
+      "category": "Care tips",
+      "excerpt": "Simple steps to ensure your wedding flowers stay vibrant from ceremony to reception.",
+      "body": "Start with fresh flowers. We arrange everything the morning of your event to ensure maximum freshness. Ask us about our delivery and setup service to keep blooms looking their best.\n\nKeep arrangements out of direct sunlight and away from heat sources. This helps prevent wilting and keeps colours vibrant for longer.\n\nA light mist of water can help revive flowers during the day. Ask your venue if they can assist with this, or we can provide guidance on the best way to care for your specific arrangements."
+    }
+  ],
+  "pages": {
+    "about": {
+      "heroLabel": "About Bloom & Vine",
+      "heroHeadline": "Fresh flowers for your special day",
+      "storyHeading": "Our story",
+      "storyClosing": "We love creating arrangements that bring your vision to life.",
+      "crewHeading": "Meet Ruth",
+      "crewBody": "Ruth Okafor is the owner and lead florist at Bloom & Vine. She meets every couple to discuss their ideas and ensure the flowers match their expectations.",
+      "crewCaption": "Ruth with a recent wedding arrangement",
+      "valuesIntro": "We believe in fresh, personal service for every couple.",
+      "values": [
+        {
+          "title": "Fresh blooms",
+          "text": "Every arrangement is created the morning of your event for maximum freshness."
+        },
+        {
+          "title": "Personal touch",
+          "text": "Ruth meets every couple to discuss your vision and ensure everything is perfect."
+        },
+        {
+          "title": "Local service",
+          "text": "We serve Altrincham, Hale, Sale and Timperley with care and attention to detail."
+        }
+      ]
+    },
+    "serviceAreas": {
+      "mapHeading": "Our coverage",
+      "mapBody": "We create fresh arrangements for weddings and events across the area.",
+      "citiesFallback": "Serving Altrincham and nearby towns.",
+      "readyHeading": "Ready to order?",
+      "readyBody": "Contact us to discuss your wedding or event flowers.",
+      "coverageHighlights": [
+        {
+          "title": "Altrincham",
+          "body": "Local florist creating bespoke arrangements for weddings and events in Altrincham."
+        },
+        {
+          "title": "Hale",
+          "body": "Fresh flowers for your special day in Hale and surrounding areas."
+        },
+        {
+          "title": "Sale & Timperley",
+          "body": "Personal service and beautiful arrangements for weddings and events in Sale and Timperley."
+        }
+      ]
+    }
+  },
+  "assets": {
+    "base": "/sites/bloom-vine"
+  },
+  "palette": {
+    "primary": "#0E7C4A",
+    "primary_dark": "#08492B",
+    "primary_slate": "#2A6B4F",
+    "accent": "#F2B705",
+    "accent_light": "#FFD34D",
+    "accent_dark": "#C29200",
+    "neutral": "#F6F5F0",
+    "neutral_dim": "#E5E3DA",
+    "silver": "#9BA5A0",
+    "ink": "#18201C"
+  },
+  "typography": {
+    "heading": "Bricolage Grotesque",
+    "body": "Plus Jakarta Sans",
+    "headingFontUrl": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&display=swap",
+    "bodyFontUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+  },
+  "contact": {
+    "phone": "0161 555 0177",
+    "phoneTelLink": "tel:01615550177",
+    "email": "ruth@bloomandvine.example",
+    "googleMapsUrl": null,
+    "mapsEmbedUrl": null
+  },
+  "address": {
+    "street": "",
+    "city": "Altrincham",
+    "state": "",
+    "zip": "",
+    "full": "Altrincham",
+    "lat": null,
+    "lng": null
+  },
+  "serviceAreas": [
+    "Altrincham",
+    "Hale",
+    "Sale",
+    "Timperley"
+  ],
+  "team": {
+    "founder": {
+      "name": "Ruth Okafor",
+      "displayName": "Ruth",
+      "title": "Owner, Bloom & Vine",
+      "yearsExp": "",
+      "expLabel": "florist in Altrincham"
+    },
+    "founders": []
+  },
+  "credit": {
+    "agency": "Northstar Web Studio",
+    "url": null
+  },
+  "reviews": {
+    "rating": 0,
+    "googleCount": 0,
+    "facebookCount": 0,
+    "totalReviewCount": 0,
+    "googleLabel": "Google",
+    "facebookLabel": "Facebook",
+    "googleStat": "",
+    "facebookStat": "",
+    "items": []
+  },
+  "_generated": {
+    "model": "omniroute/auto/best-free + omniroute/auto/best-free",
+    "lane": "free-api"
+  }
+}

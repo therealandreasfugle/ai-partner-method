@@ -1,0 +1,493 @@
+/* ==========================================================================
+   GROWTH KIT
+   The parts a template needs before it can be sold as a growth system rather
+   than a brochure: a hero enquiry form, a chat bubble, a reviews block, and
+   the schema that makes the business legible to Google and to AI answers.
+
+   Written entirely against the ten-variable contract in tokens.css, so it
+   inherits every template's colours, radius and type without a single
+   per-template override. A dark template gets a dark form; the clinical blue
+   one gets a blue form. Nothing here hardcodes a colour except black at low
+   opacity for shadows, which is safe on any ground.
+   ========================================================================== */
+
+/* --- Enquiry form --------------------------------------------------------
+   ONE PLACE ON EVERY TEMPLATE. An earlier version measured each hero and
+   positioned itself in whatever gap it found, which meant the button turned up
+   somewhere different on every site and looked like a mistake. It lives in the
+   bottom-left corner now, always, opposite the chat bubble, and the card opens
+   upward from it.
+
+   Covering the cover is fine and deliberate. It arrives on a delay, after the
+   visitor has read the headline, it is translucent so the design still reads
+   through it, and one tap puts it away.
+--------------------------------------------------------------------------- */
+.gk-form-dock {
+  position: fixed;
+  left: 1.75rem;
+  bottom: 1.75rem;
+  z-index: 9996;
+  width: min(21.5rem, calc(100vw - 3.5rem));
+  pointer-events: none;
+}
+.gk-form-dock > * { pointer-events: auto; }
+
+/* The button. Has to be found without being hunted for, so it carries a soft
+   double glow in the brand colour and breathes continuously. */
+.gk-form-toggle {
+  display: inline-flex; align-items: center; gap: 0.65rem;
+  font: inherit; font-family: var(--font-heading); font-weight: 700;
+  font-size: var(--text-base, 1rem); letter-spacing: -0.01em;
+  color: var(--primary-cta-text);
+  background: var(--primary-cta);
+  border: 0; border-radius: 999px; padding: 1.05rem 1.75rem; cursor: pointer;
+  box-shadow:
+    0 12px 34px -8px color-mix(in srgb, var(--primary-cta) 75%, transparent),
+    0 4px 12px rgb(0 0 0 / 0.22);
+  animation: gk-breathe 3.4s ease-in-out infinite;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+.gk-form-toggle:hover { filter: brightness(1.07); transform: translateY(-2px); animation: none; }
+.gk-form-toggle svg { width: 1.15rem; height: 1.15rem; }
+
+/* A halo that swells and fades, so the eye catches movement in the corner
+   without anything jumping around. */
+@keyframes gk-breathe {
+  0%, 100% {
+    box-shadow: 0 12px 34px -8px color-mix(in srgb, var(--primary-cta) 75%, transparent),
+                0 4px 12px rgb(0 0 0 / 0.22),
+                0 0 0 0 color-mix(in srgb, var(--primary-cta) 55%, transparent);
+  }
+  55% {
+    box-shadow: 0 12px 34px -8px color-mix(in srgb, var(--primary-cta) 75%, transparent),
+                0 4px 12px rgb(0 0 0 / 0.22),
+                0 0 0 14px color-mix(in srgb, var(--primary-cta) 0%, transparent);
+  }
+}
+/* The occasional moves, fired at irregular intervals from the script. Each
+   runs once and hands the button straight back to its resting glow. */
+.gk-form-toggle.gk-shake { animation: gk-shake 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+.gk-form-toggle.gk-jump  { animation: gk-jump 0.9s cubic-bezier(0.28, 0.84, 0.42, 1) both; }
+.gk-form-toggle.gk-flash { animation: gk-breathe 3.4s ease-in-out infinite, gk-flash 1.1s ease-out both; }
+
+@keyframes gk-shake {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  15% { transform: translateX(-5px) rotate(-2.5deg); }
+  30% { transform: translateX(5px) rotate(2.5deg); }
+  45% { transform: translateX(-4px) rotate(-1.8deg); }
+  60% { transform: translateX(4px) rotate(1.8deg); }
+  78% { transform: translateX(-2px) rotate(-0.8deg); }
+}
+@keyframes gk-jump {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-14px) scale(1.04); }
+  45% { transform: translateY(0) scale(0.97); }
+  62% { transform: translateY(-6px) scale(1.02); }
+  80% { transform: translateY(0) scale(0.99); }
+}
+/* A light sweeps across it, the way a highlight runs over polished metal. */
+.gk-form-toggle { position: relative; overflow: hidden; }
+.gk-form-toggle.gk-flash::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 30%,
+    color-mix(in srgb, #ffffff 55%, transparent) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: gk-sweep 1.1s ease-out both;
+}
+@keyframes gk-sweep { to { transform: translateX(120%); } }
+@keyframes gk-flash { 0%, 100% { filter: brightness(1); } 45% { filter: brightness(1.18); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .gk-form-toggle, .gk-form-toggle.gk-shake, .gk-form-toggle.gk-jump,
+  .gk-form-toggle.gk-flash, .gk-form-toggle.gk-flash::after { animation: none; }
+}
+
+.gk-form-dock[data-open="true"] .gk-form-toggle { display: none; }
+.gk-form-dock:not([data-open="true"]) .gk-form { display: none; }
+.gk-form-dock:not([data-open="true"]) { width: auto; }
+
+/* The card. Translucent on purpose: the site reads through it, so it feels
+   like part of the page rather than a shutter pulled down over it. The blur
+   keeps the fields legible whatever is behind them. */
+/* Meant to read as a pane of glass HOVERING over the page rather than a panel
+   welded into it, and to waste none of its own space doing it.
+
+   The depth comes from four things working together: real transparency so the
+   design moves underneath, a bright rim along the top where light would catch
+   and a dark one underneath where it would not, a shadow stack that starts
+   tight at the edge and spreads far below, and a live tilt that follows the
+   pointer. Any one of them alone reads as a flat translucent box.
+--------------------------------------------------------------------------- */
+.gk-form {
+  position: relative;
+  display: grid;
+  gap: 0.45rem;
+  padding: 1.05rem 1.05rem 0.9rem;
+  border-radius: 1.15rem;
+  background:
+    linear-gradient(157deg,
+      color-mix(in srgb, var(--card) 36%, transparent) 0%,
+      color-mix(in srgb, var(--card) 20%, transparent) 62%,
+      color-mix(in srgb, var(--card) 26%, transparent) 100%);
+  /* Blur carries the legibility now that the panel itself is barely there. */
+  -webkit-backdrop-filter: blur(38px) saturate(2);
+  backdrop-filter: blur(38px) saturate(2);
+  /* The edges do the heavy lifting for depth. A single flat border reads as a
+     sticker; a lit top-left and a shaded bottom-right reads as a solid pane
+     with thickness. The dark outer ring separates it from whatever is behind,
+     which is what was missing when it looked flat against a busy photo. */
+  border: 1px solid color-mix(in srgb, #ffffff 46%, transparent);
+  border-bottom-color: color-mix(in srgb, #000000 30%, transparent);
+  border-right-color: color-mix(in srgb, #000000 20%, transparent);
+  box-shadow:
+    /* the bevel: light catching the top edge, shadow pooling at the bottom */
+    inset 0 2px 0 color-mix(in srgb, #ffffff 85%, transparent),
+    inset 2px 0 0 color-mix(in srgb, #ffffff 30%, transparent),
+    inset 0 -2px 0 color-mix(in srgb, #000000 22%, transparent),
+    inset -2px 0 0 color-mix(in srgb, #000000 12%, transparent),
+    /* an interior falloff, so the pane looks thick rather than papery */
+    inset 0 -18px 26px -18px color-mix(in srgb, #000000 45%, transparent),
+    inset 0 18px 26px -20px color-mix(in srgb, #ffffff 40%, transparent),
+    /* a hard rim that cuts the card away from the photo behind it */
+    0 0 0 1px color-mix(in srgb, #000000 22%, transparent),
+    /* and the stack that lifts it off the page */
+    0 1px 2px rgb(0 0 0 / 0.16),
+    0 8px 16px -6px rgb(0 0 0 / 0.3),
+    0 26px 44px -16px rgb(0 0 0 / 0.45),
+    0 60px 100px -30px rgb(0 0 0 / 0.65);
+  color: var(--foreground);
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: gk-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+/* Lifts and rotates into place, which is what sells the depth on arrival. */
+@keyframes gk-rise {
+  from { opacity: 0; transform: perspective(900px) rotateX(14deg) translateY(30px) scale(0.92); filter: blur(3px); }
+  to { opacity: 1; transform: perspective(900px) rotateX(0) translateY(0) scale(1); filter: none; }
+}
+
+.gk-form__head {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: var(--text-base, 1.02rem); line-height: 1.2;
+  letter-spacing: -0.02em; margin: 0; padding-right: 1.9rem;
+}
+.gk-form__sub {
+  font-size: var(--text-xs, 0.76rem); opacity: 0.66;
+  margin: -0.15rem 0 0.15rem; line-height: 1.4;
+}
+.gk-form__row { display: grid; gap: 0.45rem; grid-template-columns: 1fr 1fr; }
+
+.gk-form input,
+.gk-form select,
+.gk-form textarea {
+  width: 100%; font: inherit;
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--background) 42%, transparent);
+  /* Recessed: dark along the top where the lip would cast, light along the
+     bottom. The opposite of the card, so the fields read as cut into it. */
+  border: 1px solid color-mix(in srgb, #000000 16%, transparent);
+  border-bottom-color: color-mix(in srgb, #ffffff 30%, transparent);
+  box-shadow: inset 0 1px 2px color-mix(in srgb, #000000 18%, transparent);
+  border-radius: 0.6rem;
+  padding: 0.58rem 0.72rem;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+.gk-form textarea { resize: vertical; min-height: 2.6rem; }
+.gk-form select {
+  -webkit-appearance: none; appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: right 1.05rem center, right 0.8rem center;
+  background-size: 0.32rem 0.32rem, 0.32rem 0.32rem;
+  background-repeat: no-repeat;
+  padding-right: 2rem;
+}
+.gk-form select option { background: var(--background); color: var(--foreground); }
+.gk-form input::placeholder,
+.gk-form textarea::placeholder {
+  /* Was 48% and unreadable over a blurred photo. Placeholder text is doing
+     the job of a label here, so it has to be legible, not decorative. */
+  color: color-mix(in srgb, var(--foreground) 78%, transparent);
+}
+.gk-form input:focus, .gk-form select:focus, .gk-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--background) 78%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 26%, transparent);
+}
+
+.gk-form button[type="submit"] {
+  font: inherit; font-family: var(--font-heading); font-weight: 700;
+  font-size: var(--text-sm, 0.9rem);
+  color: var(--primary-cta-text); background: var(--primary-cta);
+  border: 0; border-radius: calc(var(--radius) / 3.5);
+  padding: 0.95rem 1rem; cursor: pointer; margin-top: 0.15rem;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.gk-form button[type="submit"]:hover { filter: brightness(1.07); }
+.gk-form button[type="submit"]:active { transform: translateY(1px); }
+.gk-form button[disabled] { opacity: 0.6; cursor: default; }
+
+.gk-form__note { font-size: 0.68rem; opacity: 0.55; margin: 0; line-height: 1.35; }
+.gk-form__done { font-size: var(--text-sm, 0.875rem); line-height: 1.6; margin: 0; padding: 0.6rem 0; }
+
+.gk-form__close {
+  position: absolute; top: 0.6rem; right: 0.6rem;
+  width: 1.6rem; height: 1.6rem; display: grid; place-items: center;
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  border-radius: 999px; cursor: pointer; line-height: 1;
+  font-size: 1.05rem; color: var(--foreground); opacity: 0.65; padding: 0;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+.gk-form__close:hover { opacity: 1; background: color-mix(in srgb, var(--foreground) 15%, transparent); }
+
+@media (width < 40rem) {
+  /* Same card, edge to edge, still the full set of fields. */
+  .gk-form-dock { left: 0.9rem; right: 0.9rem; bottom: 0.9rem; width: auto; }
+  .gk-form-dock:not([data-open="true"]) { right: auto; }
+  .gk-form { max-height: calc(100vh - 2rem); overflow-y: auto; }
+  /* The bubble steps aside so the two never sit on top of each other. */
+  body:has(.gk-form-dock[data-open="true"]) .gk-chat-launcher { opacity: 0; pointer-events: none; }
+}
+
+/* --- Chat bubble ---------------------------------------------------------
+   Fixed to the corner on every template, above everything, and small enough
+   that it never competes with the design it is sitting on. */
+.gk-chat-launcher {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 9998;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  background: var(--primary-cta);
+  color: var(--primary-cta-text);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.28);
+  transition: transform 0.18s ease;
+}
+.gk-chat-launcher:hover { transform: scale(1.06); }
+.gk-chat-launcher svg { width: 1.5rem; height: 1.5rem; }
+.gk-chat-launcher img {
+  width: 100%; height: 100%; border-radius: 999px; object-fit: cover;
+  border: 2px solid color-mix(in srgb, var(--primary-cta-text) 55%, transparent);
+}
+
+/* The panel follows the shape Brett pointed at on the Summit site: a greeting
+   header, then a stack of cards a visitor can tap, then Home and Messages
+   tabs. The point of it is that nobody has to type anything to get moving. */
+.gk-chat-panel {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 5.5rem;
+  z-index: 9999;
+  width: min(23.5rem, calc(100vw - 2.5rem));
+  max-height: min(38rem, calc(100vh - 8rem));
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: calc(var(--radius) * 0.8);
+  background: color-mix(in srgb, var(--background) 60%, #ffffff);
+  color: var(--foreground);
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  box-shadow: 0 24px 70px -14px rgb(0 0 0 / 0.45);
+}
+.gk-chat-panel[data-open="true"] { display: flex; }
+
+.gk-chat-head {
+  padding: 1.1rem 1.15rem 1.35rem;
+  background: var(--primary-cta);
+  color: var(--primary-cta-text);
+}
+.gk-chat-head__top { display: flex; align-items: center; gap: 0.6rem; }
+.gk-chat-head__top img {
+  width: 1.9rem; height: 1.9rem; border-radius: 999px; object-fit: cover;
+  border: 2px solid color-mix(in srgb, var(--primary-cta-text) 45%, transparent);
+}
+.gk-chat-head__name {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: var(--text-sm, 0.875rem);
+}
+.gk-chat-head button {
+  margin-left: auto; background: none; border: 0; cursor: pointer;
+  color: inherit; opacity: 0.85; font-size: 1.25rem; line-height: 1; padding: 0.2rem;
+}
+.gk-chat-hi {
+  margin: 0.9rem 0 0;
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: var(--text-2xl, 1.5rem); line-height: 1.2;
+}
+.gk-chat-hi span { display: block; opacity: 0.78; }
+
+/* Card stack */
+.gk-chat-home { overflow-y: auto; padding: 0.9rem; display: grid; gap: 0.7rem; }
+.gk-card {
+  background: var(--card);
+  border: 1px solid color-mix(in srgb, var(--foreground) 9%, transparent);
+  border-radius: calc(var(--radius) * 0.55);
+  box-shadow: 0 6px 18px -6px rgb(0 0 0 / 0.14);
+  overflow: hidden;
+}
+.gk-card__label {
+  margin: 0; padding: 0.85rem 1rem 0.4rem;
+  font-size: var(--text-xs, 0.75rem); font-weight: 600; opacity: 0.55;
+}
+.gk-row {
+  display: flex; align-items: center; gap: 0.75rem; width: 100%;
+  font: inherit; text-align: left; text-decoration: none; color: var(--foreground);
+  background: none; border: 0; cursor: pointer;
+  padding: 0.85rem 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 7%, transparent);
+  transition: background 0.15s ease;
+}
+.gk-card__label + .gk-row, .gk-card > .gk-row:first-child { border-top: 0; }
+.gk-row:hover { background: color-mix(in srgb, var(--foreground) 4%, transparent); }
+.gk-row__text { flex: 1; min-width: 0; }
+.gk-row__text { display: block; }
+.gk-row__title {
+  display: block;                     /* spans run together on one line */
+  font-family: var(--font-heading); font-weight: 600;
+  font-size: var(--text-sm, 0.875rem); line-height: 1.3;
+}
+.gk-row__sub {
+  display: block;
+  font-size: var(--text-xs, 0.75rem); opacity: 0.6; margin-top: 0.15rem; line-height: 1.4;
+}
+.gk-row__go { color: var(--accent); flex-shrink: 0; display: grid; place-items: center; }
+.gk-row__go svg { width: 1rem; height: 1rem; }
+.gk-row__faces { display: flex; flex-shrink: 0; }
+.gk-row__faces span {
+  width: 1.75rem; height: 1.75rem; border-radius: 999px; display: grid; place-items: center;
+  font-size: var(--text-xs, 0.75rem); font-weight: 700;
+  background: var(--accent); color: var(--primary-cta-text);
+  border: 2px solid var(--card); margin-left: -0.5rem;
+}
+.gk-row__faces span:first-child { margin-left: 0; }
+
+/* Home and Messages */
+.gk-chat-tabs {
+  margin-top: auto; display: flex; border-top: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  background: var(--card);
+}
+.gk-chat-tabs button {
+  flex: 1; font: inherit; font-size: var(--text-xs, 0.75rem); font-weight: 600;
+  background: none; border: 0; cursor: pointer; padding: 0.7rem 0.5rem;
+  color: var(--foreground); opacity: 0.5;
+  display: grid; gap: 0.15rem; justify-items: center;
+}
+.gk-chat-tabs button[aria-selected="true"] { opacity: 1; color: var(--accent); }
+.gk-chat-tabs svg { width: 1.05rem; height: 1.05rem; }
+
+.gk-chat-panel[data-view="home"] .gk-chat-log,
+.gk-chat-panel[data-view="home"] .gk-chat-foot,
+.gk-chat-panel[data-view="home"] .gk-chat-note { display: none; }
+.gk-chat-panel[data-view="messages"] .gk-chat-home { display: none; }
+.gk-chat-panel[data-view="messages"] .gk-chat-hi { display: none; }
+.gk-chat-panel[data-view="messages"] .gk-chat-head { padding-bottom: 1.1rem; }
+.gk-chat-log {
+  flex: 1; overflow-y: auto; padding: 0.9rem;
+  display: flex; flex-direction: column; gap: 0.6rem;
+  font-size: var(--text-sm, 0.875rem); line-height: 1.5;
+}
+.gk-msg { max-width: 85%; padding: 0.6rem 0.8rem; border-radius: calc(var(--radius) / 2.2); }
+.gk-msg[data-from="bot"] {
+  background: color-mix(in srgb, var(--foreground) 7%, transparent);
+  align-self: flex-start;
+}
+.gk-msg[data-from="you"] {
+  background: var(--primary-cta); color: var(--primary-cta-text); align-self: flex-end;
+}
+/* Tap-to-ask chips. Typing is friction; most people will press a button and
+   will not press anything if there is nothing to press. */
+.gk-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.2rem; }
+.gk-chip {
+  font: inherit; font-size: var(--text-xs, 0.75rem); font-weight: 600;
+  cursor: pointer; text-align: left;
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 16%, transparent);
+  border-radius: 999px; padding: 0.45rem 0.75rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.gk-chip:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+
+/* The two things a visitor always wants, always reachable, never behind a
+   conversation that has gone nowhere. */
+.gk-chat-actions {
+  display: flex; gap: 0.5rem; padding: 0.7rem 0.7rem 0;
+}
+.gk-chat-actions a, .gk-chat-actions button {
+  flex: 1; text-align: center; text-decoration: none;
+  font: inherit; font-family: var(--font-heading); font-weight: 600;
+  font-size: var(--text-xs, 0.75rem);
+  border-radius: 999px; padding: 0.55rem 0.6rem; cursor: pointer; border: 0;
+  background: var(--primary-cta); color: var(--primary-cta-text);
+}
+.gk-chat-actions .gk-secondary {
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  color: var(--foreground);
+  border: 1px solid color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+/* Says plainly that the demo assistant is not the real one yet. An owner who
+   works that out for themselves trusts everything else on the page less. */
+.gk-chat-note {
+  margin: 0; padding: 0.55rem 0.9rem;
+  font-size: var(--text-2xs, 0.65rem); line-height: 1.45;
+  text-align: center; opacity: 0.6;
+  border-top: 1px dashed color-mix(in srgb, var(--foreground) 18%, transparent);
+}
+
+.gk-chat-foot { display: flex; gap: 0.5rem; padding: 0.7rem; border-top: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent); }
+.gk-chat-foot input {
+  flex: 1; font: inherit; font-size: var(--text-sm, 0.875rem); color: var(--foreground);
+  background: color-mix(in srgb, var(--background) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 16%, transparent);
+  border-radius: 999px; padding: 0.55rem 0.9rem;
+}
+.gk-chat-foot input:focus { outline: none; border-color: var(--accent); }
+.gk-chat-foot button {
+  font: inherit; font-weight: 600; cursor: pointer; border: 0; border-radius: 999px;
+  padding: 0.55rem 1rem; background: var(--primary-cta); color: var(--primary-cta-text);
+}
+
+/* --- Reviews -------------------------------------------------------------
+   Used when a template has no testimonial block of its own, and for the
+   labelled examples a demo carries before the real ones arrive. */
+.gk-reviews { display: grid; gap: 1rem; }
+@media (width >= 48rem) { .gk-reviews { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.gk-review {
+  position: relative;
+  padding: 1.35rem 1.4rem 1.2rem;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  display: flex; flex-direction: column; gap: 0.85rem;
+}
+.gk-review[data-example="true"] { border-style: dashed; }
+.gk-review__tag {
+  position: absolute; top: 0.9rem; right: 0.9rem;
+  font-size: var(--text-2xs, 0.65rem); font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; opacity: 0.5;
+  border: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent);
+  padding: 0.2rem 0.45rem; border-radius: 0.35rem;
+}
+.gk-review__stars { color: var(--accent); letter-spacing: 0.12em; font-size: var(--text-sm, 0.875rem); }
+.gk-review__text { margin: 0; font-size: var(--text-sm, 0.875rem); line-height: 1.6; opacity: 0.88; }
+.gk-review__who {
+  margin: auto 0 0; padding-top: 0.8rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  font-size: var(--text-xs, 0.75rem); font-weight: 600; opacity: 0.65;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.gk-reviews__note { font-size: var(--text-sm, 0.875rem); opacity: 0.6; margin: 0.9rem 0 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gk-chat-launcher, .gk-form button { transition: none; }
+}

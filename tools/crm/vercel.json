@@ -1,0 +1,17 @@
+{
+  "crons": [
+    {
+      "path": "/api/send",
+      "schedule": "0 16 * * *"
+    },
+    {
+      "path": "/api/sequences?tick=1",
+      "schedule": "0 15 * * *"
+    }
+  ],
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 60
+    }
+  }
+}

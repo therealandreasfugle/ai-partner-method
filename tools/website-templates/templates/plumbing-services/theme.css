@@ -1,0 +1,235 @@
+/* ==========================================================================
+   PLUMBING SERVICES
+   Dark navy trade site: centred full-bleed hero with a trust marquee,
+   service carousel, testimonials, glow stat cards, FAQ, contact form.
+   ========================================================================== */
+
+:root {
+  --background: #020617;
+  --card: #0f172a;
+  --foreground: #f1f5f9;
+  --primary-cta: #0ea5e9;
+  --primary-cta-text: #ffffff;
+  --secondary-cta: #334155;
+  --secondary-cta-text: #f1f5f9;
+  --accent: #38bdf8;
+  --background-accent: #0284c7;
+  --radius: 1.5rem;
+  --content-width: 87.5vw;
+  --section-head-size: var(--text-6xl);
+}
+
+@media (width >= 1536px) {
+  :root { --section-head-size: var(--text-7xl); }
+}
+
+/* On a dark ground the card gradient needs more body to read as a surface. */
+.card {
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, var(--card) 95%, transparent),
+    color-mix(in srgb, var(--card) 65%, transparent)
+  );
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.section-head h2 {
+  background: linear-gradient(100deg, var(--foreground) 40%, var(--accent) 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 42rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 5rem;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(2, 6, 23, 0.55) 0%, rgba(2, 6, 23, 0.9) 75%),
+    linear-gradient(to top, var(--background) 2%, transparent 40%);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.hero__title {
+  max-width: 30ch; /* the headline sits on one line at desktop */
+  font-size: var(--text-8xl);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero__lede {
+  max-width: 52ch;
+  font-size: var(--text-xl);
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--foreground) 85%, transparent);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.hero .avatar-stack { justify-content: center; }
+.hero .avatar-stack__row img { border-color: rgba(255, 255, 255, 0.35); }
+.hero .avatar-stack p { font-size: var(--text-base); font-weight: 600; }
+
+/* Trust strip pinned to the bottom of the hero. */
+.hero__marquee {
+  position: absolute;
+  z-index: 2;
+  bottom: 3rem;
+  left: 0;
+  right: 0;
+  --marquee-gap: 1rem;
+  --marquee-duration: 38s;
+}
+
+.hero__marquee .trust-pill {
+  border: 1px solid color-mix(in srgb, var(--foreground) 14%, transparent);
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+@media (width <= 768px) {
+  .hero { margin-bottom: 3rem; }
+  .hero__title { font-size: var(--text-7xl); max-width: 16ch; }
+  .hero__marquee { bottom: 1.5rem; }
+}
+
+/* --- Contact ------------------------------------------------------------- */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.contact-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.contact-panel h2 {
+  font-size: var(--text-6xl);
+  line-height: 1.1;
+}
+
+.contact-panel > p {
+  max-width: 34ch;
+  font-size: var(--text-lg);
+  line-height: 1.45;
+  margin-bottom: 0.75rem;
+}
+
+.contact-grid__media {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.contact-grid__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 22rem;
+  object-fit: cover;
+}
+
+@media (width <= 900px) {
+  .contact-grid { grid-template-columns: minmax(0, 1fr); }
+  .contact-panel { padding: 1.5rem; }
+  .contact-grid__media img { min-height: 16rem; }
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.site-footer {
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--card);
+  color: var(--foreground);
+  padding-block: 4rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: start;
+}
+
+.footer-brand {
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.footer-nav { display: grid; grid-template-columns: repeat(3, minmax(9rem, auto)); gap: 2.5rem; }
+
+.footer-nav h3 {
+  font-size: var(--text-base);
+  font-weight: 500;
+  opacity: 0.55;
+  margin-bottom: 1rem;
+}
+
+.footer-nav ul { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-nav a { font-size: var(--text-lg); transition: color 0.2s; }
+.footer-nav a:hover { color: var(--accent); }
+
+.footer-legal-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  font-size: var(--text-base);
+  opacity: 0.6;
+}
+
+.footer-legal-bar div { display: flex; gap: 1.25rem; }
+
+@media (width <= 768px) {
+  .footer-top { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .footer-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+}

@@ -1,0 +1,334 @@
+{
+  "meta": {
+    "title": "Kerrigan Roofing | Roofers in Stockport",
+    "description": "Full re-roofs and new builds in Stockport. Fixed price, no deposit scams. Sean on every roof."
+  },
+  "company": {
+    "name": "Kerrigan Roofing",
+    "shortName": "Kerrigan",
+    "tagline": "Full roofs, fixed prices",
+    "description": "We do proper re-roofs and new builds for homes in Stockport. No patch jobs, no time-wasters, just a roof that lasts.",
+    "serviceRegion": "Stockport and surrounding areas"
+  },
+  "copy": {
+    "hero": {
+      "eyebrow": "STOCKPORT ROOFERS",
+      "headline": "FIXED PRICE ROOFS, NO DEPOSIT SCAMS",
+      "subheadline": "Get a proper re-roof or new build without the cowboys. Sean checks every job himself.",
+      "imageAlt": "Roofer working on a new roof in Stockport"
+    },
+    "heroTrustChips": [
+      "No deposit",
+      "Fixed price",
+      "Sean on site"
+    ],
+    "trustClaims": [
+      "No hidden costs",
+      "No patch jobs",
+      "Proper guarantees"
+    ],
+    "formHeader": "Get your quote",
+    "formSubtext": "Tell us about your roof and we'll call you back.",
+    "buttonText": "Get quote",
+    "footerCta": "Need a proper roof? Call us before you get a cheap quote that disappears.",
+    "cta": {
+      "label": "READY FOR A PROPER ROOF?",
+      "heading": "Stop wasting time on patch jobs",
+      "body": "We do full re-roofs and new builds, not quick fixes that fail."
+    },
+    "founder": {
+      "label": "MEET SEAN",
+      "heading": "I'm on every roof myself",
+      "para1": "I started Kerrigan Roofing because I was tired of seeing cowboys take deposits and vanish. Now, I make sure every job is done right, no shortcuts. If I wouldn't put it on my own house, I won't put it on yours.",
+      "para2": "I give you a fixed price upfront, so you know exactly what you're paying. No surprises, no extra costs. And because I'm on site, you get the quality you're paying for, not some subcontractor cutting corners.",
+      "vision": "To be the roofer Stockport trusts for honest, long-lasting work.",
+      "mission": "No time-wasters, no patch jobs, just proper roofs that last."
+    },
+    "submitButton": "Get Kerrigan quote",
+    "privacyLine": "We never share your details.",
+    "mobileCallLabel": "Call Sean",
+    "copyright": "Kerrigan Roofing",
+    "services": {
+      "heading": "Roofing work in Stockport",
+      "body": "Full re-roofs, new builds, and structural repairs across Stockport."
+    },
+    "whyChoose": {
+      "label": "WHY US",
+      "heading": "One fixed price, no surprises"
+    },
+    "gallery": {
+      "heading": "Recent roofs in Stockport",
+      "body": "See examples of our completed re-roofs and new builds."
+    },
+    "process": {
+      "body": "We inspect, quote in writing, then complete the job on time.",
+      "badgeText": "Fixed price"
+    },
+    "offers": {
+      "heading": "No deposit needed",
+      "detail": "We only ask for payment once the work is done."
+    },
+    "reviews": {
+      "heading": "What customers say"
+    },
+    "faq": {
+      "label": "QUESTIONS",
+      "heading": "Common roofing questions"
+    },
+    "blog": {
+      "label": "ADVICE",
+      "heading": "Roofing tips for homeowners",
+      "body": "Practical guidance on maintaining and replacing your roof."
+    },
+    "serviceAreas": {
+      "heading": "Roofers in Stockport",
+      "body": "We cover all of Stockport and nearby areas."
+    },
+    "serviceAreaCard": {
+      "heading": "Stockport roofs",
+      "body": "Serving Cheadle, Bramhall, Hazel Grove, and surrounding areas."
+    }
+  },
+  "services": [
+    {
+      "slug": "full-re-roofs",
+      "name": "Full re-roofs",
+      "body": "We strip off your old roof and replace it with new tiles or slates. No half-measures, just a proper job that lasts."
+    },
+    {
+      "slug": "new-build-roofs",
+      "name": "New build roofs",
+      "body": "From planning to completion, we handle the roof on your new home or extension. Proper materials, proper workmanship."
+    },
+    {
+      "slug": "roof-inspections",
+      "name": "Roof inspections",
+      "body": "Not sure if you need a repair or a full re-roof? We'll check it out and tell you straight. No upselling, just honest advice."
+    },
+    {
+      "slug": "roof-maintenance",
+      "name": "Roof maintenance",
+      "body": "Keep your roof in good shape with regular checks and small fixes. Cheaper than a full re-roof, and it stops big problems later."
+    }
+  ],
+  "why_choose_us": [
+    "We don't do patch jobs, just proper re-roofs and new builds.",
+    "You get a fixed price upfront, no surprises.",
+    "Sean is on every roof himself, not a subcontractor.",
+    "No deposit scams, we don't ask for money before we start.",
+    "We turn down time-wasters, so you get a roofer who cares.",
+    "No corporate fluff, just honest work for Stockport homes."
+  ],
+  "process_steps": [
+    {
+      "n": 1,
+      "title": "Call us",
+      "body": "Tell us about your roof and we'll arrange a time to come out."
+    },
+    {
+      "n": 2,
+      "title": "Site check",
+      "body": "Sean visits your home to see the job and give you a fixed price."
+    },
+    {
+      "n": 3,
+      "title": "Start date",
+      "body": "We agree a date and get to work, no delays, no excuses."
+    },
+    {
+      "n": 4,
+      "title": "Job done",
+      "body": "We finish on time, clean up, and leave you with a roof that lasts."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do I need a full re-roof or just repairs?",
+      "a": "It depends on the age and condition of your roof. We'll inspect it and tell you straight, no upselling. If it's past its best, a full re-roof is cheaper in the long run than endless repairs."
+    },
+    {
+      "q": "Why should I pay more when I can get a cheaper quote?",
+      "a": "Cheap quotes often mean cheap materials or cowboys who vanish after taking your deposit. We give you a fixed price upfront, so you know what you're paying for. No surprises, no extra costs."
+    },
+    {
+      "q": "Do you ask for a deposit?",
+      "a": "No. We don't ask for money upfront. You pay when the job is done, so you know the work is finished before you hand over a penny."
+    },
+    {
+      "q": "How long does a re-roof take?",
+      "a": "Most re-roofs take 3 to 5 days, depending on the size of your home. We'll give you a clear timeline before we start, so you know what to expect."
+    },
+    {
+      "q": "What happens if it rains while you're working?",
+      "a": "We cover the roof with tarpaulins to keep your home dry. If the weather's really bad, we'll pause the job and come back when it's safe to work."
+    },
+    {
+      "q": "Do you offer guarantees?",
+      "a": "Yes. We give you a written guarantee for the work, so you're covered if anything goes wrong. No vague promises, just proper paperwork."
+    }
+  ],
+  "special_offers": [
+    {
+      "label": "Free inspection",
+      "description": "Not sure if your roof needs work? We'll check it for free and tell you straight."
+    },
+    {
+      "label": "Fixed price promise",
+      "description": "The price we quote is the price you pay. No extras, no surprises."
+    }
+  ],
+  "previous_projects": [
+    {
+      "alt": "New roof on a detached house in Stockport",
+      "category": "Re-roof",
+      "filename": "project-1.webp"
+    },
+    {
+      "alt": "Roof installation on a new build home",
+      "category": "New build",
+      "filename": "project-2.webp"
+    },
+    {
+      "alt": "Roof inspection on a terraced house",
+      "category": "Inspection",
+      "filename": "project-3.webp"
+    },
+    {
+      "alt": "Roof maintenance work on a semi-detached home",
+      "category": "Maintenance",
+      "filename": "project-4.webp"
+    }
+  ],
+  "blog_posts": [
+    {
+      "slug": "when-to-replace-your-roof",
+      "title": "When to replace your roof instead of repairing it",
+      "category": "Roofing advice",
+      "excerpt": "Signs that a full re-roof is better than patch repairs.",
+      "body": "Small leaks or missing tiles might seem like minor issues, but they can hide bigger problems. If your roof is over 20 years old or has widespread damage, patch repairs may only delay the inevitable.\n\nA full re-roof ensures all weak points are addressed at once. This prevents water damage to your home's structure and avoids the cost of repeated call-outs for temporary fixes.\n\nWe inspect every roof ourselves before quoting. If a repair will last, we'll tell you. If a replacement is the smarter choice, we'll explain why and give you a fixed price upfront."
+    },
+    {
+      "slug": "how-to-spot-a-roofing-cowboy",
+      "title": "How to spot a roofing cowboy before they take your deposit",
+      "category": "Avoiding scams",
+      "excerpt": "Red flags to watch for when hiring a roofer.",
+      "body": "Cowboy roofers often pressure you into quick decisions. They might offer a 'today-only' discount or demand a large deposit before starting work. Genuine roofers will give you time to think and won't ask for money upfront.\n\nCheck for a local address and landline number. If they only have a mobile, it's harder to track them down if things go wrong. Ask for photos of their previous work and references from recent customers.\n\nWe provide a written quote with a fixed price, no deposit, and our name on every roof we work on. If something feels off, walk away."
+    }
+  ],
+  "pages": {
+    "about": {
+      "heroLabel": "About Kerrigan Roofing",
+      "heroHeadline": "Roofing done right in Stockport",
+      "storyHeading": "Our approach",
+      "storyClosing": "We treat every roof as if it were our own.",
+      "crewHeading": "The team",
+      "crewBody": "Sean Kerrigan oversees every job personally. Our small crew are trained, insured, and take pride in their work. We don't subcontract to strangers.",
+      "crewCaption": "Sean on site in Stockport",
+      "valuesIntro": "What matters to us:",
+      "values": [
+        {
+          "title": "No surprises",
+          "text": "We give you a fixed price in writing before we start."
+        },
+        {
+          "title": "No deposits",
+          "text": "You only pay once the work is done to your satisfaction."
+        },
+        {
+          "title": "On every roof",
+          "text": "Sean is there from start to finish, not just for the quote."
+        }
+      ]
+    },
+    "serviceAreas": {
+      "mapHeading": "Where we work",
+      "mapBody": "We cover all of Stockport and the surrounding areas.",
+      "citiesFallback": "Serving Stockport and nearby towns.",
+      "readyHeading": "Need a roofer?",
+      "readyBody": "Get a fixed-price quote with no obligation.",
+      "coverageHighlights": [
+        {
+          "title": "Cheadle",
+          "body": "Full re-roofs and new builds for homes in Cheadle."
+        },
+        {
+          "title": "Bramhall",
+          "body": "Structural repairs and roof replacements across Bramhall."
+        },
+        {
+          "title": "Hazel Grove",
+          "body": "Local roofing services for Hazel Grove and surrounding streets."
+        }
+      ]
+    }
+  },
+  "assets": {
+    "base": "/sites/kerrigan-roofing"
+  },
+  "palette": {
+    "primary": "#161616",
+    "primary_dark": "#000000",
+    "primary_slate": "#2E2E2E",
+    "accent": "#FF4A1C",
+    "accent_light": "#FF7A55",
+    "accent_dark": "#CC3510",
+    "neutral": "#F4F4F2",
+    "neutral_dim": "#E2E2DE",
+    "silver": "#9C9C9C",
+    "ink": "#101010"
+  },
+  "typography": {
+    "heading": "Archivo",
+    "body": "Plus Jakarta Sans",
+    "headingFontUrl": "https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap",
+    "bodyFontUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+  },
+  "contact": {
+    "phone": "0161 555 0142",
+    "phoneTelLink": "tel:01615550142",
+    "email": "sean@kerriganroofing.example",
+    "googleMapsUrl": null,
+    "mapsEmbedUrl": null
+  },
+  "address": {
+    "street": "",
+    "city": "Stockport",
+    "state": "",
+    "zip": "",
+    "full": "Stockport",
+    "lat": null,
+    "lng": null
+  },
+  "serviceAreas": [
+    "Stockport"
+  ],
+  "team": {
+    "founder": {
+      "name": "Sean Kerrigan",
+      "displayName": "Sean",
+      "title": "Owner, Kerrigan",
+      "yearsExp": "",
+      "expLabel": "roofer in Stockport"
+    },
+    "founders": []
+  },
+  "credit": {
+    "agency": "Northstar Web Studio",
+    "url": null
+  },
+  "reviews": {
+    "rating": 0,
+    "googleCount": 0,
+    "facebookCount": 0,
+    "totalReviewCount": 0,
+    "googleLabel": "Google",
+    "facebookLabel": "Facebook",
+    "googleStat": "",
+    "facebookStat": "",
+    "items": []
+  },
+  "_generated": {
+    "model": "omniroute/auto/best-free + omniroute/auto/best-free",
+    "lane": "free-api"
+  }
+}

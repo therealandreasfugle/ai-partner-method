@@ -1,0 +1,312 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./brand-dna.schema.json",
+  "title": "website template brand-dna",
+  "description": "Per-client config consumed by templates/website-template/. Stage 10.1 generates a brand-dna.js whose default export must validate against this schema. The validator fails closed if any '__REQUIRED__' sentinel survives in the per-client config.",
+  "type": "object",
+  "required": ["meta", "company", "contact", "address", "hours", "team", "theme_mode", "shape_motif", "palette", "typography", "reviews", "services", "serviceAreas", "trust_badges", "previous_projects", "copy", "process_steps", "faq", "blog_posts", "credit"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "type": "string", "minLength": 10 },
+        "description": { "type": "string", "minLength": 30 }
+      }
+    },
+    "company": {
+      "type": "object",
+      "required": ["name", "shortName", "tagline", "url", "description", "serviceRegion"],
+      "properties": {
+        "name": { "type": "string", "minLength": 2 },
+        "shortName": { "type": "string", "minLength": 2 },
+        "tagline": { "type": "string", "minLength": 10 },
+        "url": { "type": "string", "format": "uri" },
+        "licenseNumber": { "type": ["string", "null"] },
+        "description": { "type": "string", "minLength": 30 },
+        "serviceRegion": { "type": "string", "minLength": 5 }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "required": ["phone", "phoneTelLink", "email"],
+      "properties": {
+        "phone": { "type": "string" },
+        "phoneTelLink": { "type": "string", "pattern": "^\\+?[0-9]+$" },
+        "email": { "type": "string", "format": "email" },
+        "googleMapsUrl": { "type": ["string", "null"] },
+        "mapsEmbedUrl": { "type": ["string", "null"] }
+      }
+    },
+    "address": {
+      "type": "object",
+      "required": ["street", "city", "state", "zip", "full"],
+      "properties": {
+        "street": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string", "minLength": 2, "maxLength": 2 },
+        "zip": { "type": "string", "pattern": "^[0-9]{5}(-[0-9]{4})?$" },
+        "full": { "type": "string" },
+        "lat": { "type": ["number", "null"] },
+        "lng": { "type": ["number", "null"] }
+      }
+    },
+    "hours": {
+      "type": "object",
+      "required": ["weekday", "display"],
+      "properties": {
+        "weekday": {
+          "type": "object",
+          "required": ["dayOfWeek", "opens", "closes"],
+          "properties": {
+            "dayOfWeek": { "type": "array", "items": { "type": "string" } },
+            "opens": { "type": "string", "pattern": "^[0-9]{2}:[0-9]{2}$" },
+            "closes": { "type": "string", "pattern": "^[0-9]{2}:[0-9]{2}$" }
+          }
+        },
+        "saturday": { "type": ["object", "null"] },
+        "display": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "value"],
+            "properties": {
+              "label": { "type": "string" },
+              "value": { "type": "string" }
+            }
+          }
+        },
+        "emergencyBadge": { "type": ["string", "null"] }
+      }
+    },
+    "social": {
+      "type": "object",
+      "properties": {
+        "facebook": { "type": ["string", "null"] },
+        "facebookReviews": { "type": ["string", "null"] }
+      }
+    },
+    "team": {
+      "type": "object",
+      "required": ["founder"],
+      "properties": {
+        "founder": {
+          "type": "object",
+          "required": ["name", "displayName", "title", "yearsExp", "expLabel"],
+          "properties": {
+            "name": { "type": "string" },
+            "displayName": { "type": "string" },
+            "title": { "type": "string" },
+            "yearsExp": { "type": "string" },
+            "expLabel": { "type": "string" }
+          }
+        },
+        "founders": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "theme_mode": { "enum": ["light", "dark"] },
+    "voice_register": { "enum": ["commercial", "family", "premium"] },
+    "shape_motif": {
+      "enum": ["polygon", "triangle", "wave", "arc", "dot-grid", "hexagon", "chevron", "diamond", "cross-hatch", "mountain", "topographic"]
+    },
+    "palette": {
+      "type": "object",
+      "required": ["primary", "primary_dark", "primary_slate", "accent", "accent_light", "accent_dark", "neutral", "neutral_dim", "silver", "ink"],
+      "patternProperties": {
+        "^(primary|primary_dark|primary_slate|accent|accent_light|accent_dark|neutral|neutral_dim|silver|ink)$": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "required": ["heading", "body", "headingFontUrl", "bodyFontUrl"],
+      "properties": {
+        "heading": { "type": "string" },
+        "body": { "type": "string" },
+        "headingFontUrl": { "type": "string", "format": "uri" },
+        "bodyFontUrl": { "type": "string", "format": "uri" }
+      }
+    },
+    "reviews": {
+      "type": "object",
+      "required": ["rating", "googleCount", "facebookCount", "totalReviewCount", "items"],
+      "properties": {
+        "rating": { "type": "number", "minimum": 0, "maximum": 5 },
+        "googleCount": { "type": "integer", "minimum": 0 },
+        "facebookCount": { "type": "integer", "minimum": 0 },
+        "totalReviewCount": { "type": "integer", "minimum": 0 },
+        "googleLabel": { "type": "string" },
+        "facebookLabel": { "type": "string" },
+        "googleStat": { "type": "string" },
+        "facebookStat": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["author", "source", "text"],
+            "properties": {
+              "author": { "type": "string" },
+              "source": { "type": "string" },
+              "text": { "type": "string", "minLength": 30 }
+            }
+          }
+        }
+      }
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "name", "blurb"],
+        "properties": {
+          "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string" },
+          "blurb": { "type": "string" },
+          "heroTitle": { "type": "string" },
+          "subtitle": { "type": "string" },
+          "description": { "type": "string" },
+          "image": { "type": "string" },
+          "benefits": { "type": "array", "items": { "type": "string" } },
+          "included": { "type": "array", "items": { "type": "string" } },
+          "process": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["num", "title", "desc"],
+              "properties": {
+                "num": { "type": "string" },
+                "title": { "type": "string" },
+                "desc": { "type": "string" }
+              }
+            }
+          },
+          "faq": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["q", "a"],
+              "properties": {
+                "q": { "type": "string" },
+                "a": { "type": "string" }
+              }
+            }
+          },
+          "related": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9-]+$" } }
+        }
+      }
+    },
+    "serviceAreas": { "type": "array", "items": { "type": "string" } },
+    "trust_badges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["filename", "alt"],
+        "properties": {
+          "filename": { "type": "string" },
+          "alt": { "type": "string" }
+        }
+      }
+    },
+    "previous_projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["filename", "type", "alt"],
+        "properties": {
+          "filename": { "type": "string" },
+          "type": { "enum": ["image", "video"] },
+          "alt": { "type": "string" }
+        }
+      }
+    },
+    "team_members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "title", "photo_slug"],
+        "properties": {
+          "name": { "type": "string" },
+          "title": { "type": "string" },
+          "photo_slug": { "type": "string" }
+        }
+      }
+    },
+    "copy": { "type": "object" },
+    "process_steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["n", "title", "body"],
+        "properties": {
+          "n": { "type": "integer", "minimum": 1 },
+          "title": { "type": "string" },
+          "body": { "type": "string" }
+        }
+      }
+    },
+    "why_choose_us": { "type": "array", "items": { "type": "string" } },
+    "special_offers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "amount"],
+        "properties": {
+          "label": { "type": "string" },
+          "amount": { "type": "string" }
+        }
+      }
+    },
+    "faq": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["q", "a"],
+        "properties": {
+          "q": { "type": "string" },
+          "a": { "type": "string", "minLength": 30 }
+        }
+      }
+    },
+    "blog_posts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "title", "excerpt", "date", "category", "cover"],
+        "properties": {
+          "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "title": { "type": "string" },
+          "excerpt": { "type": "string" },
+          "date": { "type": "string" },
+          "category": { "type": "string" },
+          "readTime": { "type": "string" },
+          "cover": { "type": "string" },
+          "featured": { "type": "boolean" },
+          "content": {
+            "type": "array",
+            "description": "Rich body blocks. Each block is either a paragraph, an h2 heading, or a bulleted list.",
+            "items": {
+              "type": "object",
+              "required": ["type"],
+              "properties": {
+                "type": { "enum": ["p", "h2", "list"] },
+                "text": { "type": "string" },
+                "items": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "blog_categories": { "type": "array", "items": { "type": "string" } },
+    "pages": { "type": "object" },
+    "credit": {
+      "type": "object",
+      "properties": {
+        "agency": { "type": "string" },
+        "url": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

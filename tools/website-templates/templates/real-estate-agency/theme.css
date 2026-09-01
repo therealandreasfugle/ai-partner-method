@@ -1,0 +1,138 @@
+/* ==========================================================================
+   REAL ESTATE AGENCY
+   Warm grey with gold: marquee hero, listings with prices, numbered service
+   tiles, executive team, metric band, review cards.
+   ========================================================================== */
+
+:root {
+  --background: #f0f0f0;
+  --card: #fafafa;
+  --foreground: #1a1a1a;
+  --primary-cta: #1a1a1a;
+  --primary-cta-text: #f0f0f0;
+  --secondary-cta: #e8e8e8;
+  --secondary-cta-text: #1a1a1a;
+  --accent: #c89b3c;
+  --background-accent: #c89b3c;
+  --radius: 1.5rem;
+  --content-width: 87.5vw;
+  --section-head-size: var(--text-6xl);
+  --nav-ink: #ffffff;
+  --nav-ink-scrolled: var(--foreground);
+}
+
+@media (width >= 1536px) { :root { --section-head-size: var(--text-7xl); } }
+
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 40rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 5rem;
+}
+
+.hero__rail { position: absolute; inset: 0; display: flex; }
+.hero__rail img { width: 20%; height: 100%; object-fit: cover; flex: none; }
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15,15,15,0.9) 0%, rgba(15,15,15,0.5) 55%, rgba(15,15,15,0.35) 100%);
+}
+
+.hero__inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; gap: 1.15rem; color: #fff; }
+.hero__title { max-width: 16ch; font-size: var(--text-8xl); line-height: 1.05; font-weight: 600; letter-spacing: -0.02em; }
+.hero__lede { max-width: 52ch; font-size: var(--text-xl); line-height: 1.5; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+.hero .eyebrow { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); color: #fff; }
+
+@media (width <= 768px) {
+  .hero { margin-bottom: 3rem; }
+  .hero__title { font-size: var(--text-7xl); max-width: 13ch; }
+  .hero__rail img { width: 50%; }
+}
+
+/* --- About split ---------------------------------------------------------- */
+
+.about-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; align-items: center; padding: 2rem; border-radius: var(--radius); }
+.about-split__copy { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.5rem; }
+.about-split__copy h2 { font-size: var(--text-5xl); line-height: 1.15; }
+.about-split__copy p { font-size: var(--text-lg); line-height: 1.55; }
+.about-split__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+.about-split img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: calc(var(--radius) - 0.5rem); }
+
+@media (width <= 900px) { .about-split { grid-template-columns: minmax(0,1fr); padding: 1rem; } }
+
+/* --- Listings -------------------------------------------------------------- */
+
+.listing { padding: 0.75rem; border-radius: var(--radius); }
+.listing img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: calc(var(--radius) - 0.5rem); transition: transform 0.5s ease-out; }
+.listing:hover img { transform: scale(1.04); }
+.listing__body { display: flex; flex-direction: column; gap: 0.35rem; padding: 1.15rem 0.6rem 0.5rem; }
+.listing__body h3 { font-size: var(--text-3xl); }
+.listing__spec { font-size: var(--text-lg); opacity: 0.65; }
+.listing__price { font-size: var(--text-2xl); font-weight: 600; color: var(--accent); margin-top: 0.35rem; }
+
+/* --- Service tiles ---------------------------------------------------------- */
+
+.svc-tile { position: relative; border-radius: var(--radius); overflow: hidden; min-height: 20rem; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.75rem; color: #fff; }
+.svc-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease-out; }
+.svc-tile:hover img { transform: scale(1.05); }
+.svc-tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2) 70%); }
+.svc-tile > * { position: relative; z-index: 2; }
+.svc-tile .badge-num { margin-bottom: 0.85rem; background: var(--accent); color: #1a1a1a; }
+.svc-tile h3 { font-size: var(--text-3xl); margin-bottom: 0.35rem; }
+.svc-tile p { font-size: var(--text-lg); line-height: 1.4; opacity: 0.9; }
+
+/* --- Metrics band ------------------------------------------------------------ */
+
+.metric-band { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.metric-band__cell { padding: 2rem; border-radius: var(--radius); text-align: center; }
+.metric-band__cell strong { display: block; font-size: var(--text-6xl); font-weight: 700; line-height: 1; color: var(--accent); }
+.metric-band__cell span { display: block; margin-top: 0.6rem; font-size: var(--text-lg); opacity: 0.7; }
+
+@media (width <= 768px) { .metric-band { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+
+/* --- Reviews ------------------------------------------------------------------ */
+
+.review-card { display: flex; flex-direction: column; gap: 1rem; padding: 2rem; border-radius: var(--radius); }
+.review-card__tag { font-size: var(--text-base); letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; }
+.review-card h3 { font-size: var(--text-2xl); line-height: 1.25; }
+.review-card p { font-size: var(--text-lg); line-height: 1.55; }
+
+/* --- Contact ---------------------------------------------------------------- */
+
+.cta-band { display: flex; flex-direction: column; align-items: center; gap: 1.15rem; text-align: center; padding-block: 5rem; }
+.cta-band h2 { max-width: 22ch; font-size: var(--text-6xl); line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
+.cta-band p { max-width: 46ch; font-size: var(--text-lg); line-height: 1.5; opacity: 0.75; }
+.cta-band__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+
+/* --- Footer -------------------------------------------------------------------- */
+
+.site-footer { border-radius: var(--radius) var(--radius) 0 0; background: var(--foreground); color: #f0f0f0; padding-block: 4rem; }
+.footer-top { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: start; }
+.footer-brand { font-size: var(--text-5xl); font-weight: 700; letter-spacing: -0.02em; }
+.footer-nav { display: grid; grid-template-columns: repeat(3, minmax(9rem, auto)); gap: 2.5rem; }
+.footer-nav h3 { font-size: var(--text-base); font-weight: 500; opacity: 0.55; margin-bottom: 1rem; }
+.footer-nav ul { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-nav a { font-size: var(--text-lg); transition: color 0.2s, opacity 0.2s; }
+.footer-nav a:hover { color: var(--accent); }
+
+.footer-legal-bar {
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  margin-top: 3rem; padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  font-size: var(--text-base); opacity: 0.6;
+}
+.footer-legal-bar div { display: flex; gap: 1.25rem; }
+
+@media (width <= 768px) {
+  .footer-top { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .footer-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+}

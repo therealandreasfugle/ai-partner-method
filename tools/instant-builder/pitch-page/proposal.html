@@ -1,0 +1,1450 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Your growth system</title>
+<meta name="description" content="The growth system that wins you more work. Everything included, one price." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23030303'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial' font-size='17' font-weight='bold' fill='%23EAB308' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet" />
+<style>
+/* ---------------------------------------------------------------------------
+   Cloned from the Summit proposal, which is the confirmed winner for this
+   audience. Colours, type and the alternating band rhythm are lifted directly
+   rather than reinvented: cream and tan light bands carrying one idea each,
+   broken by warm-dark and near-black bands so the eye gets a reset. That
+   rhythm is what makes it readable, not the individual sections.
+--------------------------------------------------------------------------- */
+:root{
+  --gold:#EAB308; --gold-soft:#D4A94E; --gold-deep:#9C7B2E;
+  --ink:#1F1A15; --ink-2:#54514A; --muted:#86827A;
+  --hair:rgba(31,26,21,0.12); --hair-2:rgba(31,26,21,0.07);
+  --cream:#FBF7F0;      /* primary light band */
+  --tan:#F4ECDE;        /* alternate light band */
+  --dark:#1C1712;       /* warm dark band */
+  --black:#030303;      /* proof / cover band */
+  --sans:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+/* Type scale matched to the reference: 16px body on a 1520px container. The
+   earlier 17px body inside 1080px read as zoomed in on a desktop monitor. */
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.028em;line-height:1.12}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{max-width:1520px;margin:0 auto;padding:0 32px}
+/* scroll-margin so anchor jumps clear the sticky topbar. Without it "See the
+   price" landed with the heading tucked 59px underneath the bar, which is what
+   made the page feel broken. */
+.section,[id]{scroll-margin-top:80px}
+.section{padding:86px 0}
+/* Offscreen sections skip layout and paint entirely until they are near the
+   viewport. The page is over 8000px tall, and without this the browser was
+   doing work for content nobody was looking at. contain-intrinsic-size keeps
+   the scrollbar honest so the page does not jump as sections come in. */
+.section:not(.cover){content-visibility:auto;contain-intrinsic-size:auto 700px}
+.s-cream{background:var(--cream)}
+.s-tan{background:var(--tan)}
+.s-dark{background:var(--dark);color:#fff}
+.s-black{background:var(--black);color:#fff}
+.label{color:var(--gold-deep);font-size:11.5px;font-weight:800;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:13px}
+.s-dark .label,.s-black .label{color:var(--gold-soft)}
+.title{font-size:clamp(24px,2.5vw,33px);max-width:24ch;position:relative;
+  padding-bottom:15px;margin-bottom:18px}
+.title::after{content:"";position:absolute;left:0;bottom:0;width:54px;height:3px;
+  background:var(--gold)}
+.sub{color:var(--ink-2);max-width:64ch;font-size:16px}
+.s-dark .sub,.s-black .sub{color:rgba(255,255,255,.68)}
+
+/* Topbar */
+/* Solid, not translucent. backdrop-filter on a sticky full-width bar forces the
+   browser to re-blur the strip behind it on every scroll frame, which was one
+   of two sources of stutter on this page. The bar is near-opaque anyway, so the
+   blur bought nothing visible. */
+.topbar{position:sticky;top:0;z-index:70;background:#070707;
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:14px}
+.wordmark{color:#fff;font-weight:800;font-size:13.5px;letter-spacing:.15em;text-transform:uppercase}
+.prepared{color:rgba(255,255,255,.5);font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;display:none}
+@media(min-width:860px){.prepared{display:block}}
+.pill{background:var(--gold);color:#1a1400;text-decoration:none;font-weight:700;
+  font-size:13px;padding:9px 17px;border-radius:999px;white-space:nowrap}
+
+/* Cover */
+.cover{background:linear-gradient(180deg,var(--black) 0%,var(--dark) 100%);
+  color:#fff;padding:62px 0 74px;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(760px 420px at 78% 6%,rgba(234,179,8,.16),transparent 62%)}
+.cover .wrap{position:relative;z-index:2}
+.eyebrow{display:inline-block;border:1px solid rgba(234,179,8,.42);color:var(--gold-soft);
+  font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:7px 15px;border-radius:999px;margin-bottom:22px}
+.cover h1{font-size:clamp(30px,3.6vw,50px);max-width:19ch}
+.cover h1 .g{color:var(--gold)}
+.cover-lede{color:rgba(255,255,255,.72);max-width:58ch;margin-top:16px}
+.vstack{margin:32px 0 28px;border-top:1px solid rgba(255,255,255,.13)}
+.vrow{display:flex;gap:16px;align-items:baseline;padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.13)}
+.vnum{color:var(--gold);font-weight:800;font-size:12.5px;min-width:26px}
+.vtext{font-weight:600;font-size:clamp(14.5px,1.5vw,16.5px)}
+.vrow.sum .vtext{color:var(--gold-soft)}
+
+/* Their details, written as a sentence rather than a record. The left rule
+   marks it as an aside without making it look like a form field. */
+.observation{margin:26px 0 0;padding:2px 0 2px 20px;border-left:3px solid var(--gold);
+  color:rgba(255,255,255,.78);font-size:clamp(15px,1.55vw,17.5px);line-height:1.6;
+  max-width:62ch}
+.observation b{color:#fff;font-weight:700}
+
+/* Laptop holding their real site */
+.laptop{margin:34px auto 0;max-width:880px}
+.screen{background:#0b0b0b;border:1px solid rgba(255,255,255,.16);
+  border-radius:12px 12px 0 0;padding:9px 10px 0;box-shadow:0 34px 80px rgba(0,0,0,.5)}
+.bar{display:flex;gap:6px;padding:0 4px 9px}
+.bar i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2)}
+.frame{position:relative;width:100%;aspect-ratio:16/10;background:#fff;
+  border-radius:5px;overflow:hidden}
+.frame iframe{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;
+  transform-origin:0 0}
+.base{height:13px;background:linear-gradient(180deg,#2b2b2b,#141414);
+  border-radius:0 0 14px 14px;border:1px solid rgba(255,255,255,.14);border-top:0}
+.laptop-note{color:rgba(255,255,255,.5);font-size:13.5px;text-align:center;margin-top:14px}
+/* Padded to a thumb-sized tap target rather than a 17px line of text. */
+.laptop-note a{color:var(--gold-soft);display:inline-block;padding:9px 4px;
+  font-weight:700;text-underline-offset:3px}
+/* The embedded site scrolls internally, which is not obvious: people assume it
+   is a static screenshot and never look past the hero. */
+/* Sits ON the embed rather than in the caption underneath. As a line of text
+   below the frame it was missed entirely and people assumed the site was a
+   screenshot. It fades once they start scrolling inside. */
+.scrollhint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:9px;background:var(--gold);color:#140F00;
+  font-weight:800;font-size:13.5px;padding:11px 20px;border-radius:999px;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);white-space:nowrap;z-index:5;
+  pointer-events:none;transition:opacity .4s ease}
+.scrollhint.gone{opacity:0}
+.scrollhint i{font-style:normal;display:inline-block;font-size:15px;line-height:1;
+  animation:nudge 1.4s ease-in-out infinite;will-change:transform}
+@keyframes nudge{0%,100%{transform:translateY(-3px)}50%{transform:translateY(3px)}}
+@media(prefers-reduced-motion:reduce){.scrollhint i{animation:none}}
+.embed-pitch{max-width:760px;margin:26px auto 0;padding:20px 24px;
+  background:rgba(234,179,8,.09);border:1px solid rgba(234,179,8,.3);border-radius:13px}
+.embed-pitch p{margin:0;color:rgba(255,255,255,.76);font-size:15px;line-height:1.6}
+.embed-pitch strong{color:#fff;font-weight:800}
+.phoneproof{margin:0 0 10px!important;padding-bottom:10px;
+  border-bottom:1px solid rgba(234,179,8,.22)}
+.phoneproof b{color:var(--gold-soft);font-weight:800}
+/* On a phone, a 1440px desktop view scaled into a 300px laptop is unreadable.
+   Below 760px the frame becomes a tall phone shell and the iframe renders at a
+   real 390px, so the visitor sees the mobile site properly, which is also the
+   version most of their customers will actually get. */
+@media(max-width:760px){
+  .laptop{max-width:290px}
+  .screen{border-radius:22px 22px 0 0;padding:10px 8px 0}
+  .bar{justify-content:center;padding-bottom:7px}
+  .bar i:nth-child(2),.bar i:nth-child(3){display:none}
+  .bar i:first-child{width:52px;height:5px;border-radius:99px}
+  .frame{aspect-ratio:390/720}
+  .base{height:10px;border-radius:0 0 22px 22px}
+}
+
+/* ---------------------------------------------------------------------------
+   FOUNDER SECTION. Cloned from the Summit proposal's "Hello, I'm Dan" band,
+   which is the confirmed winner: a 1.05/0.95 split with oversized dash-marked
+   bullets on the left and a 4:5 portrait on the right, then a two-up review
+   grid on white cards underneath. Only the palette changes, gold instead of
+   red, so it sits inside this page's rhythm.
+--------------------------------------------------------------------------- */
+.founder-h{font-size:clamp(28px,3vw,42px);letter-spacing:-0.03em}
+.founder-h em{font-style:normal;color:var(--gold-deep)}
+.founder-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center;margin-top:40px}
+@media(min-width:900px){.founder-grid{grid-template-columns:1.05fr 0.95fr;gap:56px}}
+/* Large on purpose. These four lines are the argument; at body size they read
+   as a feature list and the eye slides straight past them. */
+.founder-bullets{list-style:none;padding:0;margin:4px 0 28px;display:flex;
+  flex-direction:column;gap:24px}
+.founder-bullets li{position:relative;padding:4px 0 4px 54px;font-weight:700;
+  font-size:clamp(19px,1.85vw,27px);line-height:1.34;letter-spacing:-0.012em}
+.founder-bullets li::before{content:"";position:absolute;left:0;top:.66em;width:36px;
+  height:4px;background:var(--gold);border-radius:2px}
+.founder-bullets li strong{color:var(--gold-deep);font-weight:800}
+.founder-promise{font-size:clamp(17px,1.5vw,22px);font-weight:800;line-height:1.42;
+  border-left:4px solid var(--gold);padding:18px 22px;margin:0 0 22px;border-radius:0 8px 8px 0;
+  background:linear-gradient(90deg,rgba(234,179,8,.14) 0%,transparent 100%)}
+.founder-promise strong{color:var(--gold-deep);font-weight:900}
+.founder-sig{display:flex;align-items:center;gap:16px;padding-top:22px;
+  border-top:1px solid var(--hair)}
+.founder-sig-name{font-weight:800;font-size:22px;line-height:1}
+.founder-sig-title{display:block;margin-top:6px;font-size:11px;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--gold-deep)}
+.founder-portrait{position:relative;width:100%;max-width:460px;margin:0 auto;
+  aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--dark);
+  box-shadow:0 18px 48px rgba(31,26,21,.28),0 0 0 1px rgba(156,123,46,.2)}
+.founder-portrait img{width:100%;height:100%;object-fit:cover}
+.founder-portrait figcaption{position:absolute;left:0;right:0;bottom:0;padding:38px 16px 15px;
+  text-align:center;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.72);
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.62))}
+
+/* Reviews of the agency, not of the client. Paper cards on the light band. */
+.founder-reviews{margin-top:56px;padding-top:44px;border-top:1px solid var(--hair)}
+.founder-reviews-lead{color:var(--ink-2);font-size:15.5px;margin:0 0 22px;max-width:60ch}
+.rev-grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:820px){.rev-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rev{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:24px 26px 20px;
+  display:flex;flex-direction:column;gap:15px;
+  box-shadow:0 1px 2px rgba(31,26,21,.04),0 14px 34px rgba(31,26,21,.06);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.rev:hover{transform:translateY(-3px);
+  box-shadow:0 4px 10px rgba(31,26,21,.05),0 26px 56px rgba(156,123,46,.16)}
+.rev::before{content:"\201C";font-size:46px;line-height:.55;height:18px;display:block;
+  color:var(--gold);font-weight:700}
+.rev blockquote{margin:0;font-size:15px;line-height:1.66;color:rgba(31,26,21,.85)}
+.rev figcaption{display:flex;align-items:center;gap:12px;border-top:1px solid var(--hair);
+  padding-top:14px;margin-top:auto}
+.rev figcaption img{width:40px;height:40px;border-radius:50%;object-fit:cover;
+  background:#EFE9E0;flex-shrink:0}
+.rev-name{font-weight:700;font-size:14px;line-height:1.1}
+.rev-src{display:flex;align-items:center;gap:6px;margin-top:3px;font-size:10.5px;
+  font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(31,26,21,.5)}
+.rev-src svg{width:12px;height:12px;flex-shrink:0}
+.rev-stars{margin-left:auto;color:var(--gold);font-size:12.5px;letter-spacing:2.5px;
+  white-space:nowrap}
+
+/* Recent builds */
+.builds{display:grid;grid-template-columns:1fr;gap:18px;margin-top:34px}
+@media(min-width:760px){.builds{grid-template-columns:repeat(3,1fr)}}
+.build{background:#fff;border:1px solid var(--hair);border-radius:14px;overflow:hidden;
+  display:flex;flex-direction:column;margin:0;color:inherit;
+  box-shadow:0 1px 2px rgba(31,26,21,.04),0 12px 30px rgba(31,26,21,.06);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+/* No lift on hover: these are not clickable, and a card that rises under the
+   cursor promises something that does not happen. */
+.build:hover{box-shadow:0 4px 10px rgba(31,26,21,.05),0 22px 48px rgba(156,123,46,.14)}
+/* Browser chrome around the shot, so it reads as a real site rather than art. */
+.build-bar{display:flex;align-items:center;gap:7px;padding:9px 12px;background:#141210;
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.build-bar i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22)}
+.build-url{margin-left:6px;color:rgba(255,255,255,.55);font-size:11px;font-weight:600;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* A short window onto a tall screenshot. It scrolls inside itself, so the
+   reader can look down someone else's page without being given its address. */
+.build-shot{position:relative;display:block;height:230px;overflow-y:auto;overflow-x:hidden;
+  background:#EFE9E0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.build-shot::-webkit-scrollbar{display:none}
+.build-shot img{width:100%;height:auto;display:block;user-select:none}
+.build-scrollhint{position:sticky;bottom:10px;left:0;right:0;margin:0 auto;display:block;width:max-content;
+  background:rgba(3,3,3,.72);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;padding:6px 12px;border-radius:999px;pointer-events:none;
+  transition:opacity .3s var(--ease)}
+.build:hover .build-scrollhint{opacity:0}
+/* The card is one <a>, so every line inside it is a span and has to be told to
+   behave like a block. Left inline they ran together on one line. */
+.build-cap{display:block;padding:16px 18px 18px}
+.build-name{display:block;font-weight:800;font-size:16.5px}
+.build-what{display:block;color:var(--ink-2);font-size:14px;margin-top:3px}
+.build-bar{display:flex}
+.build-shot{display:block}
+
+/* Numbered rows (three reasons) */
+.rows{margin-top:32px;border-top:1px solid var(--hair)}
+.row{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--hair);
+  align-items:flex-start;transition:background .2s var(--ease)}
+.row:hover{background:rgba(234,179,8,.05)}
+.row .n{color:var(--gold-deep);font-weight:800;font-size:13px;min-width:30px;padding-top:3px}
+.row h3{font-size:19.5px;margin-bottom:7px}
+.row p{color:var(--ink-2);font-size:15.5px;margin:0}
+
+/* Growth equation levers */
+.levers{margin-top:30px;border-top:1px solid var(--hair)}
+.lever{border-bottom:1px solid var(--hair)}
+.lever summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:18px;
+  padding:20px 0;transition:background .2s var(--ease)}
+.lever summary::-webkit-details-marker{display:none}
+.lever summary:hover{background:rgba(234,179,8,.05)}
+.lever .n{color:var(--gold-deep);font-weight:800;font-size:13px;min-width:30px}
+.lever .lv{font-weight:800;font-size:20px;min-width:150px}
+.lever .lp{color:var(--ink-2);font-size:15.5px;flex:1}
+.lever .plus{color:var(--gold-deep);font-size:22px;font-weight:700;
+  transition:transform .3s var(--ease)}
+.lever[open] .plus{transform:rotate(45deg)}
+.lever-body{padding:0 0 24px 48px;color:var(--ink-2);font-size:15.5px;max-width:66ch}
+.lever-body ul{margin:10px 0 0;padding-left:18px}
+.lever-body li{margin-bottom:7px}
+.result{display:flex;gap:18px;align-items:center;padding:22px 0 0;font-weight:800;
+  font-size:clamp(19px,2.4vw,25px)}
+.result .eq{color:var(--gold-deep);min-width:30px}
+.result .rv{color:var(--ink)}
+
+/* Engine cards */
+.cards{display:grid;gap:16px;margin-top:34px}
+@media(min-width:700px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:24px 22px;
+  box-shadow:0 1px 2px rgba(31,26,21,.04),0 12px 30px rgba(31,26,21,.06);
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.card:hover{transform:translateY(-3px);box-shadow:0 4px 8px rgba(31,26,21,.05),0 22px 46px rgba(31,26,21,.11)}
+.card .k{color:var(--gold-deep);font-size:10.5px;font-weight:800;letter-spacing:.15em;
+  text-transform:uppercase;margin-bottom:11px}
+.card h3{font-size:17.5px;margin-bottom:9px;line-height:1.25}
+.card p{color:var(--ink-2);font-size:15px;margin:0}
+.card .live{display:inline-block;margin-top:13px;font-size:13px;font-weight:700;
+  color:var(--gold-deep);text-decoration:none;border-bottom:1px solid rgba(156,123,46,.4)}
+
+/* Quote band: a short, high-contrast full-stop between two long reading
+   sections, so the eye gets somewhere to rest. */
+.quoteband{padding:64px 0;text-align:center}
+.quote{margin:0 auto;font-weight:800;letter-spacing:-0.028em;line-height:1.25;
+  font-size:clamp(21px,2.6vw,34px);max-width:24ch;color:rgba(255,255,255,.58)}
+.quote .q-g{color:var(--gold)}
+
+/* CRM visual, tokens taken from the settoku-watch page: gold-edged gradient
+   frame over a near-black panel, three columns of lead cards. */
+.crmwrap{display:grid;gap:30px;margin-top:40px;align-items:center}
+@media(min-width:960px){.crmwrap{grid-template-columns:0.85fr 1.15fr;gap:44px}}
+.crmside h3{font-size:22px;margin-bottom:11px;max-width:18ch}
+.crmside p{color:var(--ink-2);font-size:15px;margin-bottom:16px}
+.crmpoints{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.crmpoints li{position:relative;padding-left:26px;font-size:14.5px;color:var(--ink-2)}
+.crmpoints li::before{content:"";position:absolute;left:0;top:7px;width:9px;height:9px;
+  border-radius:50%;background:var(--gold)}
+.crm{position:relative;border-radius:20px;padding:1.5px;
+  background:linear-gradient(150deg,rgba(234,179,8,.55),rgba(255,255,255,.14) 55%,rgba(234,179,8,.24));
+  box-shadow:0 30px 66px rgba(31,26,21,.18)}
+.crm-in{border-radius:18.5px;overflow:hidden;background:linear-gradient(180deg,#0C0D10,#060708)}
+.crm-bar{display:flex;align-items:center;gap:10px;padding:13px 16px;
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.crm-dots{display:flex;gap:5px}
+.crm-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2)}
+.crm-title{font-size:12.5px;font-weight:700;color:#fff}
+.crm-badge{margin-left:auto;font-size:10.5px;font-weight:700;color:#0A0806;
+  background:var(--gold);padding:3px 9px;border-radius:999px}
+.crm-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:14px}
+.crm-col{display:flex;flex-direction:column;gap:9px;min-width:0}
+.crm-h{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);display:flex;align-items:center;gap:6px}
+.crm-h b{color:var(--gold)}
+.crm-card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);
+  border-radius:12px;padding:10px 11px 9px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.crm-card.is-new{border-color:rgba(234,179,8,.4)}
+.crm-card.is-won{border-color:rgba(18,122,69,.5)}
+.cc-top{display:flex;align-items:center;gap:7px;margin-bottom:3px}
+.cc-name{color:#fff;font-size:12.5px;font-weight:700}
+.cc-tag{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--gold);color:#0A0806;padding:2px 6px;border-radius:999px}
+.cc-tag.won{background:#127A45;color:#fff}
+.cc-sub{color:rgba(255,255,255,.5);font-size:11.5px;line-height:1.4}
+.cc-act{display:flex;gap:5px;margin-top:8px}
+.cc-act span{font-size:9.5px;font-weight:700;color:rgba(255,255,255,.62);
+  border:1px solid rgba(255,255,255,.14);border-radius:5px;padding:3px 7px}
+@media(max-width:520px){
+  .crm-cols{grid-template-columns:1fr;gap:8px}
+  .crm-col:not(:first-child) .crm-card:nth-child(n+2){display:none}
+}
+
+/* Replaces block: answers the ongoing-cost objection before it is raised. */
+.replaces{display:grid;gap:26px;margin-top:38px;padding:30px;background:#fff;
+  border:1px solid var(--hair);border-radius:16px}
+@media(min-width:900px){.replaces{grid-template-columns:1.25fr 1fr;gap:40px;align-items:center}}
+.replaces-head h3{font-size:21px;margin-bottom:10px}
+.replaces-head p{color:var(--ink-2);font-size:15px;margin:0}
+.replaces-list{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.replaces-list li{position:relative;padding-left:30px;color:var(--muted);
+  font-size:14.5px;text-decoration:line-through;text-decoration-color:rgba(31,26,21,.3)}
+.replaces-list li::before{content:"\00d7";position:absolute;left:0;top:-1px;width:19px;
+  height:19px;border-radius:50%;background:var(--tan);color:var(--ink-2);
+  display:grid;place-items:center;font-size:12px;font-weight:800;text-decoration:none}
+
+/* Pricing card: value stack, standard price, and the one-time offer reveal.
+   Structure follows the reference proposal, where the stack and the price live
+   in ONE card so the value is read immediately before the number. */
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  background:var(--gold);color:#1a1400;border:0;text-decoration:none;font-weight:800;
+  font-size:16px;padding:16px 30px;border-radius:999px;cursor:pointer;font-family:var(--sans);
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(234,179,8,.36)}
+.btn-gold .arrow{display:grid;place-items:center;width:23px;height:23px;border-radius:999px;
+  background:rgba(0,0,0,.16);font-size:13px}
+
+.pcard{background:#fff;border:1px solid var(--hair);border-radius:20px;
+  padding:34px 30px;max-width:720px;margin:0 auto;
+  box-shadow:0 2px 4px rgba(31,26,21,.05),0 26px 62px rgba(31,26,21,.11)}
+.pc-eyebrow{color:var(--gold-deep);font-size:11px;font-weight:800;letter-spacing:.19em;
+  text-transform:uppercase;margin-bottom:10px}
+.pc-headline{font-size:clamp(21px,2vw,27px);margin-bottom:11px}
+.pc-identity{color:var(--ink-2);font-size:14.5px;margin-bottom:22px}
+.pc-label{color:var(--muted);font-size:10.5px;font-weight:800;letter-spacing:.19em;
+  text-transform:uppercase;margin-bottom:9px}
+/* Tightened: the stack was airy enough that ten items read as a long scroll
+   rather than a dense list of things they are getting. Value stacks should feel
+   packed. */
+/* Deliberately dense. A value stack should read as a lot of things for one
+   price, and airy rows made ten items feel like three. */
+.vs{border-top:1px solid var(--hair)}
+.vs-group{padding:13px 0 3px}
+.vs-group:first-child{padding-top:8px}
+.vs-group-k{display:block;font-weight:800;font-size:12px;color:var(--gold-deep);
+  letter-spacing:.09em;text-transform:uppercase}
+.vs-group-sub{display:none}
+.vs-item{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:6px 0;border-bottom:1px solid var(--hair-2)}
+.vs-name{font-size:14px;font-weight:600;line-height:1.3}
+.vs-name small{display:block;font-weight:400;color:var(--muted);font-size:12px;
+  margin-top:0;line-height:1.35}
+.vs-msrp{color:var(--muted);white-space:nowrap;font-weight:700;font-size:13.5px}
+.vs-total{display:flex;justify-content:space-between;align-items:center;gap:20px;
+  padding:20px 0 0;border-top:2px solid var(--ink)}
+.vs-total-k{display:block;font-weight:800;font-size:11px;letter-spacing:.19em;
+  text-transform:uppercase}
+.vs-total-sub{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.vs-total-amt{font-weight:800;font-size:clamp(26px,3vw,34px);letter-spacing:-0.03em}
+.pc-badges{margin:22px 0 0;padding:12px 16px;background:var(--tan);border-radius:9px;
+  color:var(--ink-2);font-size:11.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;text-align:center}
+
+.pc-invest{margin-top:32px;padding-top:30px;border-top:1px solid var(--hair);text-align:center}
+.pc-standard{display:flex;justify-content:center;align-items:baseline;gap:14px;
+  margin-bottom:20px;flex-wrap:wrap}
+.pc-standard-k{color:var(--muted);font-size:11.5px;font-weight:800;letter-spacing:.17em;
+  text-transform:uppercase}
+.pc-standard-v{font-size:clamp(30px,4vw,42px);font-weight:800;letter-spacing:-0.035em}
+/* The halo is a separate pseudo element animating transform and opacity only.
+   Animating box-shadow on the button itself repainted the whole button every
+   frame, for the entire time the page was open, which is what made the page
+   feel sluggish. */
+.reveal{width:100%;max-width:400px;text-transform:uppercase;letter-spacing:.06em;
+  font-size:15px;position:relative;isolation:isolate}
+.reveal::before{content:"";position:absolute;inset:0;border-radius:999px;
+  border:2px solid rgba(234,179,8,.55);z-index:-1;
+  animation:revealPulse 2.6s ease-out infinite;will-change:transform,opacity}
+@keyframes revealPulse{0%{transform:scale(1);opacity:.75}
+  70%,100%{transform:scale(1.14);opacity:0}}
+@media(prefers-reduced-motion:reduce){.reveal::before{animation:none;opacity:0}}
+.pc-note{color:var(--muted);font-size:13.5px;margin:14px 0 0}
+
+.pc-after{margin-top:34px;padding-top:30px;border-top:1px solid var(--hair)}
+.pc-after-sub{color:var(--ink-2);font-size:15px;margin-bottom:20px}
+.tiers{display:grid;gap:14px}
+@media(min-width:780px){.tiers{grid-template-columns:repeat(3,1fr)}}
+.tier{border:1px solid var(--hair);border-radius:13px;padding:20px 18px;position:relative;
+  background:#fff}
+.tier.pop{border-color:var(--gold);box-shadow:0 0 0 3px rgba(234,179,8,.15)}
+.tier-pop{position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:#1a1400;font-size:9.5px;font-weight:800;letter-spacing:.15em;
+  text-transform:uppercase;padding:4px 11px;border-radius:999px;white-space:nowrap}
+.tier-name{font-weight:800;font-size:17px}
+.tier-tag{color:var(--muted);font-size:13.5px;margin-bottom:9px}
+.tier-price{font-weight:800;font-size:24px;letter-spacing:-0.03em;margin-bottom:13px}
+.tier ul{margin:0;padding-left:17px;color:var(--ink-2);font-size:13.5px}
+.tier li{margin-bottom:6px}
+.pc-small{color:var(--muted);font-size:12.5px;margin:26px 0 0;line-height:1.6}
+
+.guarantee{background:var(--tan);border:1px solid var(--hair);border-radius:14px;
+  padding:24px;margin:24px auto 0;max-width:780px}
+.guarantee h3{font-size:17px;margin-bottom:8px}
+.guarantee p{color:var(--ink-2);font-size:15px;margin:0}
+
+/* One time offer modal.
+   position:fixed + centring transform is required: a <dialog> defaults to
+   absolute positioning against the document, so opening it from a pricing card
+   two thirds down the page threw the viewer back to the top to find it. */
+.oto{border:0;border-radius:20px;padding:40px 32px;max-width:480px;width:calc(100% - 40px);
+  text-align:center;background:#fff;box-shadow:0 40px 90px rgba(0,0,0,.4);
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;
+  max-height:calc(100vh - 40px);overflow-y:auto}
+.oto::backdrop{background:rgba(3,3,3,.72);backdrop-filter:blur(4px)}
+.oto-close{position:absolute;top:12px;right:16px;background:0;border:0;font-size:26px;
+  line-height:1;color:var(--muted);cursor:pointer;font-family:var(--sans)}
+.oto-close:hover{color:var(--ink)}
+.oto-eyebrow{color:var(--gold-deep);font-size:11px;font-weight:800;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:14px}
+.oto-amount{font-size:clamp(44px,9vw,64px);font-weight:800;letter-spacing:-0.04em;
+  line-height:1;margin-bottom:16px}
+.oto-body{color:var(--ink-2);font-size:15px;margin-bottom:24px}
+.oto-note{color:var(--muted);font-size:13px;margin:16px 0 0}
+.oto-alt{margin-top:18px;padding-top:18px;border-top:1px solid var(--hair)}
+.oto-or{display:block;color:var(--muted);font-size:12px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+.btn-quiet{display:inline-flex;align-items:center;justify-content:center;
+  background:#fff;color:var(--ink);border:1.5px solid var(--ink);text-decoration:none;
+  font-weight:800;font-size:15px;padding:13px 26px;border-radius:999px;
+  font-family:var(--sans);transition:background .18s var(--ease),color .18s var(--ease)}
+.btn-quiet:hover{background:var(--ink);color:#fff}
+.oto-alt-note{color:var(--muted);font-size:12.5px;margin:11px 0 0}
+
+/* Timeline */
+.tl{margin-top:32px;border-left:2px solid var(--hair);padding-left:26px}
+.tl-step{position:relative;padding-bottom:26px}
+.tl-step::before{content:"";position:absolute;left:-33px;top:5px;width:12px;height:12px;
+  border-radius:50%;background:var(--gold);border:3px solid var(--cream)}
+.tl-step .d{color:var(--gold-deep);font-size:11.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:5px}
+.tl-step h3{font-size:18px;margin-bottom:5px}
+.tl-step p{color:var(--ink-2);font-size:15px;margin:0}
+
+/* FAQ */
+.faq{margin-top:30px;border-top:1px solid var(--hair)}
+.faq details{border-bottom:1px solid var(--hair)}
+.faq summary{list-style:none;cursor:pointer;padding:19px 0;font-weight:700;font-size:17px;
+  display:flex;justify-content:space-between;gap:18px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--gold-deep)}
+.faq .plus{color:var(--gold-deep);font-size:21px;transition:transform .3s var(--ease)}
+.faq details[open] .plus{transform:rotate(45deg)}
+.faq .a{color:var(--ink-2);font-size:15.5px;padding:0 0 20px;max-width:66ch}
+
+footer{background:var(--black);color:rgba(255,255,255,.5);padding:34px 0;font-size:13.5px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ---------------------------------------------------------------------------
+   Mobile. Most owners open this on a phone between jobs, so the phone layout is
+   the one that has to work, not the desktop one shrunk down.
+--------------------------------------------------------------------------- */
+@media(max-width:760px){
+  .wrap{padding:0 18px}
+  .section{padding:48px 0}
+  .section,[id]{scroll-margin-top:66px}
+  .topbar .wrap{height:52px}
+  .wordmark{font-size:11.5px;letter-spacing:.12em}
+  .pill{font-size:12px;padding:8px 14px}
+
+  .cover{padding:38px 0 48px}
+  .cover h1{font-size:clamp(27px,7.4vw,34px);max-width:none}
+  .cover-lede{font-size:15px;margin-top:13px}
+  .eyebrow{font-size:10px;padding:6px 12px;margin-bottom:16px}
+  .vstack{margin:24px 0 20px}
+  .vrow{padding:10px 0;gap:12px}
+  .vtext{font-size:14.5px}
+  .vnum{font-size:11.5px;min-width:22px}
+
+  .idcard{padding:15px 16px;margin-top:20px}
+  .idlabel{min-width:0;font-size:10px}
+  .idrow{flex-direction:column;gap:1px}
+  .idval{font-size:14px}
+
+  .title{font-size:clamp(22px,6vw,26px);max-width:none}
+  .sub{font-size:15px}
+
+  .row{gap:14px;padding:18px 0}
+  .row h3{font-size:17px}
+  .row p{font-size:14.5px}
+
+  .lever summary{flex-wrap:wrap;gap:8px;padding:16px 0}
+  .lever .lv{min-width:0;font-size:17px}
+  .lever .lp{flex-basis:100%;padding-left:42px;font-size:14px}
+  .lever-body{padding:0 0 20px 42px;font-size:14.5px}
+  .result{font-size:19px;padding-top:18px}
+
+  .quoteband{padding:44px 0}
+  .card{padding:19px 17px}
+  .card h3{font-size:16.5px}
+  .card p{font-size:14.5px}
+
+  .crmwrap{margin-top:28px;gap:22px}
+  .crmside h3{font-size:19px;max-width:none}
+  .replaces{padding:22px 18px;margin-top:28px}
+  .replaces-head h3{font-size:19px}
+
+  .pcard{padding:24px 18px;border-radius:16px}
+  .pc-headline{font-size:20px}
+  .pc-identity{font-size:14px}
+  .vs-item{gap:12px}
+  .vs-name{font-size:13.5px}
+  .vs-msrp{font-size:13px}
+  .vs-total-amt{font-size:27px}
+  .pc-badges{font-size:10px;letter-spacing:.06em;padding:10px 12px}
+  .pc-standard-v{font-size:32px}
+  .reveal{font-size:14px;padding:15px 20px}
+  .guarantee{padding:20px 18px}
+
+  .tl{padding-left:20px}
+  .tl-step::before{left:-27px}
+  .faq summary{font-size:15.5px;padding:16px 0}
+  .faq .a{font-size:14.5px}
+  .oto{padding:30px 22px}
+  .oto-amount{font-size:46px}
+}
+@media(max-width:400px){
+  .wrap{padding:0 15px}
+  .cover h1{font-size:25px}
+  .vs-name small{display:none}   /* keep the list scannable on the smallest screens */
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span class="wordmark" id="agencyMark">Your Agency</span>
+  <span class="prepared" id="preparedFor"></span>
+  <a class="pill" href="#price">See the price</a>
+</div></div>
+
+<!-- COVER: sells the SYSTEM, not the website -->
+<section class="cover"><div class="wrap">
+  <span class="eyebrow" id="eyebrow">Prepared for your business</span>
+  <h1>The growth system that wins work for <span class="g" id="bizHead">your business</span>.</h1>
+  <p class="cover-lede">A website is where this starts, not where it ends. Below is the
+    whole machine: how people find you, how they decide to trust you, and what chases
+    every enquiry until it is a booked job.</p>
+
+  <div class="vstack">
+    <div class="vrow"><span class="vnum">01</span><span class="vtext">Found first when someone nearby searches, on Google, Maps and AI</span></div>
+    <div class="vrow"><span class="vnum">02</span><span class="vtext">Trusted in the five seconds before they decide who to ring</span></div>
+    <div class="vrow"><span class="vnum">03</span><span class="vtext">Every enquiry chased by email, text and call, without you doing it</span></div>
+    <div class="vrow"><span class="vnum">04</span><span class="vtext">Every finished job turned into a review and a referral</span></div>
+    <div class="vrow sum"><span class="vnum">=</span><span class="vtext" id="sumline">More booked jobs, every month</span></div>
+  </div>
+
+  <!-- Their real details appear as an OBSERVATION, not a labelled record. A
+       "Built for / Business / Phone / Address" card reads like a mail merge and
+       tells the owner they are one of hundreds. A sentence that uses their
+       actual rating to make a point reads like somebody looked them up. Hidden
+       entirely when we have nothing worth saying. -->
+  <p class="observation" id="observation" hidden></p>
+
+  <div class="laptop">
+    <div class="screen">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <!-- Deliberately NOT loading="lazy": the laptop sits in the cover, and a
+           lazy iframe stays blank in screenshots and on slower connections,
+           which is the one thing on this page that must never look broken. -->
+      <div class="frame" id="frame">
+        <iframe id="siteFrame" title="Your website"></iframe>
+        <span class="scrollhint" id="scrollHint"><i>&darr;</i> Scroll inside to explore it</span>
+      </div>
+    </div>
+    <div class="base"></div>
+    <p class="laptop-note">This is your real site, running live, not a picture.
+      <a id="openLive" href="#" target="_blank" rel="noopener">Open it full size &rsaquo;</a></p>
+
+    <!-- Repeated below the embed because plenty of owners never open the site
+         full size, and this is the message that has to land either way. -->
+    <div class="embed-pitch">
+      <p><strong id="embedPitchLead">What you are looking at is the shop window.</strong>
+        The part that makes the money sits behind it: every enquiry hits your phone
+        within seconds and gets chased by email, text and call until it turns into a
+        booked job, and every job you finish turns into a Google review and a referral.
+        Add your own photos and this is your whole growth system.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- WHO IS BEHIND THIS. Straight after the cover on purpose: they have just seen
+     their own site running, and the next question every owner asks is who made
+     it and why they should believe them. -->
+<section class="section s-cream" id="founder"><div class="wrap">
+  <p class="label">Who is behind this</p>
+  <h2 class="founder-h">Hello, <em id="founderHi">I'm Dan.</em></h2>
+  <div class="founder-grid">
+    <div>
+      <ul class="founder-bullets" id="founderBullets"></ul>
+      <p class="founder-promise" id="founderPromise"></p>
+      <div class="founder-sig">
+        <div>
+          <span class="founder-sig-name" id="founderSigName">Dan</span>
+          <span class="founder-sig-title" id="founderSigTitle">Owner of Jumpsky Ltd</span>
+        </div>
+      </div>
+    </div>
+    <figure class="founder-portrait">
+      <img id="founderPhoto" src="agency-assets/agency-intro.jpg" alt="Dan, the founder" loading="lazy" />
+      <figcaption id="founderCaption">Dan &middot; Founder of Jumpsky Ltd</figcaption>
+    </figure>
+  </div>
+
+  <div class="founder-reviews" id="founderReviews" hidden>
+    <p class="founder-reviews-lead" id="founderReviewsLead"></p>
+    <div class="rev-grid" id="revGrid"></div>
+  </div>
+</div></section>
+
+<!-- THREE REASONS -->
+<section class="section s-tan"><div class="wrap">
+  <p class="label">Why now</p>
+  <h2 class="title">Three reasons to start today.</h2>
+  <div class="rows">
+    <div class="row"><span class="n">01</span><div>
+      <h3>We do not stop until it is right</h3>
+      <p>Built to the scope we agree, and we keep refining at no extra cost until it is
+        right. You are never left holding something half finished.</p></div></div>
+    <div class="row"><span class="n">02</span><div>
+      <h3>Your competitors are already moving</h3>
+      <p>The businesses booked solid in your area are not better at the job than you.
+        They are easier to find and easier to trust. Every week that gap widens.</p></div></div>
+    <div class="row"><span class="n">03</span><div>
+      <h3>One extra job pays for it</h3>
+      <p>This is not a cost. For most trades a single extra booking covers the whole
+        thing, and everything after that is profit you were not getting.</p></div></div>
+  </div>
+</div></section>
+
+<!-- GROWTH EQUATION -->
+<section class="section s-cream"><div class="wrap">
+  <p class="label">How it works</p>
+  <h2 class="title">The Growth Equation.</h2>
+  <p class="sub">Four levers. The first three fill your calendar. The fourth is the one
+    most people never switch on.</p>
+
+  <div class="levers">
+    <details class="lever" name="lever">
+      <summary><span class="n">01</span><span class="lv">Traffic</span>
+        <span class="lp">Get found first on Google, Maps and AI search</span>
+        <span class="plus">+</span></summary>
+      <div class="lever-body">
+        <p>When someone near you searches for what you do, you are the first name they
+          see. Not an advert they scroll past, the result they actually trust.</p>
+        <ul>
+          <li>Local SEO foundation, schema and AEO so AI assistants quote you too</li>
+          <li>A page for every service and every area you cover, not one thin homepage</li>
+          <li>Your Google Business Profile working with the site rather than beside it</li>
+        </ul>
+      </div>
+    </details>
+    <details class="lever" name="lever">
+      <summary><span class="n">02</span><span class="lv">Trust</span>
+        <span class="lp">Win them in the five seconds before they decide</span>
+        <span class="plus">+</span></summary>
+      <div class="lever-body">
+        <p>People decide whether you are worth ringing before they read a word. Being
+          found is wasted if the page does not carry that moment.</p>
+        <ul>
+          <li>Real reviews pulled from your Google listing, kept current automatically</li>
+          <li>Your work, your team and your accreditations, front and centre</li>
+          <li>Written like you speak, so it sounds like a person and not a brochure</li>
+        </ul>
+      </div>
+    </details>
+    <details class="lever" name="lever">
+      <summary><span class="n">03</span><span class="lv">Conversion</span>
+        <span class="lp">Turn visits into booked jobs, not lost enquiries</span>
+        <span class="plus">+</span></summary>
+      <div class="lever-body">
+        <p>Most enquiries are lost in the gap between someone asking and someone
+          replying. This closes that gap whether you are on a job or asleep.</p>
+        <ul>
+          <li>The second a form lands, you and your team get an email and a text</li>
+          <li>The customer gets an instant reply, then follow up by email, text and call</li>
+          <li>An AI chatbot answering questions on the site around the clock</li>
+        </ul>
+      </div>
+    </details>
+    <details class="lever" name="lever">
+      <summary><span class="n">04</span><span class="lv">Repeat &amp; Referral</span>
+        <span class="lp">Turn every finished job into the next two</span>
+        <span class="plus">+</span></summary>
+      <div class="lever-body">
+        <p>The lever almost nobody switches on. You have already paid to win these
+          customers, so this is the cheapest work you will ever get.</p>
+        <ul>
+          <li>A Google review asked for automatically after every finished job</li>
+          <li>A referral program with a thank-you page, tracking and a payout ledger</li>
+          <li>Old customers brought back with campaigns to the list you already own</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+  <div class="result"><span class="eq">=</span><span class="rv" id="resultLine">More of the work you actually want</span></div>
+</div></section>
+
+<!-- RECENT BUILDS. Screenshots rather than live embeds: the cover already runs
+     one iframe, and three more made the page stutter on scroll. Every tile
+     links out to the real site, so the proof is still one click away. -->
+<section class="section s-tan" id="builds"><div class="wrap">
+  <p class="label">Recent work</p>
+  <h2 class="title">Built to set the standard.</h2>
+  <p class="sub" id="buildsSub"></p>
+  <div class="builds" id="buildsGrid"></div>
+</div></section>
+
+<!-- Quote band: a hard visual break between two dense reading sections -->
+<section class="section s-black quoteband"><div class="wrap">
+  <p class="quote">Any agency can hand you a website and disappear.<br />
+    <span class="q-g">A website is where this starts, not where it ends.</span></p>
+</div></section>
+
+
+
+<!-- THE ENGINE -->
+<section class="section s-cream"><div class="wrap">
+  <p class="label">After the website</p>
+  <h2 class="title">What keeps the work coming in.</h2>
+  <p class="sub">The website gets people to you. This is what happens next, running every
+    day without you touching it.</p>
+
+  <div class="cards">
+    <div class="card"><div class="k">01 · Never miss a lead</div>
+      <h3>Every enquiry hits your phone in seconds</h3>
+      <p>The moment someone fills in your form, you and your sales team get an email and
+        a text. No more finding out two days later that someone went elsewhere.</p></div>
+    <div class="card"><div class="k">02 · Speed to lead</div>
+      <h3>They get chased before they cool off</h3>
+      <p>The customer gets an instant reply, then automatic follow up by email, text and
+        phone. Most local businesses lose the job by replying the next morning.</p></div>
+    <div class="card"><div class="k">03 · Your own CRM</div>
+      <h3>New leads and old customers, one screen</h3>
+      <p>No notebooks, sticky notes or three different phones. Every lead, every job and
+        every conversation in one place, with a power dialler built in.</p></div>
+    <div class="card"><div class="k">04 · Review engine</div>
+      <h3>Finished jobs become five star reviews</h3>
+      <p>The moment a job is marked done, the customer is asked for a Google review
+        automatically. That is what climbs Maps, and you never chase anybody.</p></div>
+    <div class="card"><div class="k">05 · Referral program</div>
+      <h3>Your customers bring you their neighbours</h3>
+      <p>Every finished job gets a thank-you page, tracked referral links and a payout
+        ledger, so word of mouth finally becomes something you can count.</p></div>
+    <div class="card"><div class="k">06 · See every number</div>
+      <h3>One clear report, every month</h3>
+      <p>Every call, form, review and referral tracked and shown plainly, so you know
+        exactly what your money bought instead of guessing.</p></div>
+  </div>
+  <p class="sub" style="margin-top:26px"><strong>Two of these are already switched on.</strong>
+    Open your site and try the chat bubble in the corner, then send yourself a test
+    enquiry through the form. That is the engine running, not a mock-up.</p>
+
+  <!-- CRM visual. Lifted from the settoku-watch page so the dashboard is shown
+       rather than described: "one screen" means nothing until they see it. -->
+  <div class="crmwrap">
+    <div class="crmside">
+      <p class="label" style="margin-bottom:8px">Your dashboard</p>
+      <h3>Every lead and every customer, on one screen.</h3>
+      <p>No notebooks, no sticky notes, no scrolling back through texts to find who
+        wanted a quote. Every enquiry lands here the second it comes in, you can see
+        who has been called and who has not, and you can ring them straight from it.</p>
+      <ul class="crmpoints">
+        <li>New enquiries appear the moment they land</li>
+        <li>Call, text or email from the same screen</li>
+        <li>Nothing gets forgotten because it is written down for you</li>
+      </ul>
+    </div>
+    <div class="crm">
+      <div class="crm-in">
+        <div class="crm-bar">
+          <span class="crm-dots"><i></i><i></i><i></i></span>
+          <span class="crm-title" id="crmTitle">Your leads</span>
+          <span class="crm-badge">2 new</span>
+        </div>
+        <div class="crm-cols">
+          <div class="crm-col">
+            <div class="crm-h">New <b>2</b></div>
+            <div class="crm-card is-new">
+              <div class="cc-top"><span class="cc-name">Sarah M.</span><span class="cc-tag">New</span></div>
+              <div class="cc-sub">Wants a quote</div>
+              <div class="cc-act"><span>Call</span><span>Text</span><span>Email</span></div>
+            </div>
+            <div class="crm-card">
+              <div class="cc-top"><span class="cc-name">Dave R.</span></div>
+              <div class="cc-sub">New enquiry</div>
+              <div class="cc-act"><span>Call</span><span>Text</span><span>Email</span></div>
+            </div>
+          </div>
+          <div class="crm-col">
+            <div class="crm-h">Contacted <b>2</b></div>
+            <div class="crm-card">
+              <div class="cc-top"><span class="cc-name">J. Whitfield</span></div>
+              <div class="cc-sub">Quote sent, following up</div>
+            </div>
+            <div class="crm-card">
+              <div class="cc-top"><span class="cc-name">Priya N.</span></div>
+              <div class="cc-sub">Called back Tuesday</div>
+            </div>
+          </div>
+          <div class="crm-col">
+            <div class="crm-h">Booked <b>1</b></div>
+            <div class="crm-card is-won">
+              <div class="cc-top"><span class="cc-name">M. Ellery</span><span class="cc-tag won">Booked</span></div>
+              <div class="cc-sub">Starts Monday</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The cost objection, answered before they raise it -->
+  <div class="replaces">
+    <div class="replaces-head">
+      <p class="label" style="margin-bottom:8px">No stack of subscriptions</p>
+      <h3>One system instead of six bills.</h3>
+      <p>Most businesses end up paying separately for a website builder, a CRM, an email
+        tool, a review app, a chat widget and a call tracker. They rarely talk to each
+        other and the bills add up quietly. This is all of it in one place, on one price,
+        with no per-seat fees and nothing extra to buy.</p>
+    </div>
+    <ul class="replaces-list">
+      <li>Website builder subscription</li>
+      <li>Separate CRM licence</li>
+      <li>Email and SMS marketing tool</li>
+      <li>Review collection app</li>
+      <li>Live chat widget</li>
+      <li>Call and form tracking</li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- VALUE STACK + PRICING, one card, matching the reference proposal -->
+<section class="section s-tan" id="price"><div class="wrap">
+  <div class="pcard">
+    <p class="pc-eyebrow" id="pcEyebrow">Limited slot &middot; same week start</p>
+    <h2 class="pc-headline" id="pcHeadline">Become the most trusted name in your area.</h2>
+    <p class="pc-identity" id="pcIdentity">The whole growth system: the website that gets
+      found, the CRM that holds every lead and every customer you already have, and the
+      review and referral engines that turn each finished job into the next two.</p>
+
+    <p class="pc-label">What is stacked into this</p>
+    <div class="vs" id="stackRows"></div>
+
+    <div class="vs-total">
+      <div><span class="vs-total-k">Stacked value</span>
+        <span class="vs-total-sub">What this is actually worth</span></div>
+      <span class="vs-total-amt" id="stackTotal"></span>
+    </div>
+
+    <p class="pc-badges" id="pcBadges">Built until you are 100% happy &middot; month to month &middot; cancel anytime</p>
+
+    <div class="pc-invest">
+      <p class="pc-label" style="margin-bottom:14px">Your investment</p>
+      <div class="pc-standard">
+        <span class="pc-standard-k">Standard setup</span>
+        <span class="pc-standard-v" id="standardPrice"></span>
+      </div>
+      <button type="button" class="btn-gold reveal" id="revealBtn">
+        Reveal one-time offer <span class="arrow">&rarr;</span></button>
+      <p class="pc-note" id="pcStartNote">Same week start. We begin building the moment your payment clears.</p>
+    </div>
+
+    <div class="pc-after">
+      <p class="pc-label">After your first 90 days</p>
+      <p class="pc-after-sub">Nothing monthly until then. After that, pick a plan.</p>
+      <div class="tiers" id="tiers"></div>
+    </div>
+
+    <p class="pc-small" id="pcSmall"></p>
+  </div>
+
+  <div class="guarantee">
+    <h3>Our delivery guarantee</h3>
+    <p>If anything is not right, we keep working on it at no extra cost until it is.
+      You are never left with something half finished.</p>
+  </div>
+</div></section>
+
+<!-- ONE TIME OFFER -->
+<dialog id="otoModal" class="oto">
+  <button class="oto-close" id="otoClose" aria-label="Close">&times;</button>
+  <p class="oto-eyebrow">Special one-time offer &middot; today only</p>
+  <div class="oto-amount" id="otoAmount"></div>
+  <p class="oto-body" id="otoBody"></p>
+  <a class="btn-gold" id="payBtn" href="#">Claim this price <span class="arrow">&rsaquo;</span></a>
+  <!-- Not everyone is ready to pay from a page. Without a second door they close
+       the tab instead, and the lead is gone. -->
+  <div class="oto-alt" id="otoAlt" hidden>
+    <span class="oto-or">or</span>
+    <a class="btn-quiet" id="bookBtn" href="#" target="_blank" rel="noopener">
+      Book a quick call first</a>
+    <p class="oto-alt-note">Ten minutes, no pressure. We will walk you through it and
+      answer anything you want to ask.</p>
+  </div>
+  <p class="oto-note">Backed by our delivery guarantee. Nothing is signed until you are happy.</p>
+</dialog>
+
+<!-- TIMELINE -->
+<section class="section s-cream" style="padding-top:0"><div class="wrap">
+  <p class="label">What happens next</p>
+  <h2 class="title">Approve today. Live this week.</h2>
+  <p class="sub">No four to six week timelines and no agency drag. The system is already
+    built, yours starts the moment you approve it.</p>
+  <div class="tl">
+    <div class="tl-step"><div class="d">Today</div><h3>You approve it</h3>
+      <p>We take your details, your logo if you have one, and the photos you want using.</p></div>
+    <div class="tl-step"><div class="d">Day 1</div><h3>Your site goes live</h3>
+      <p>On your own domain, with every service and area page written and published.</p></div>
+    <div class="tl-step"><div class="d">Day 2 to 3</div><h3>The engine is switched on</h3>
+      <p>Lead alerts, follow up, the CRM, the review engine and the referral program.</p></div>
+    <div class="tl-step"><div class="d">From then on</div><h3>It runs without you</h3>
+      <p>Enquiries get chased, reviews get asked for, and you get one clear report a month.</p></div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section class="section s-tan"><div class="wrap">
+  <p class="label">Questions</p>
+  <h2 class="title">Straight answers.</h2>
+  <div class="faq">
+    <details><summary>I already have a website<span class="plus">+</span></summary>
+      <div class="a">Most people do, and most of them are brochures that never brought in
+        a job. The question is not whether you have one, it is whether it is booking work.
+        If it is, keep it. If it is not, this replaces it and adds the part it never had.</div></details>
+    <details><summary>I get all my work from word of mouth<span class="plus">+</span></summary>
+      <div class="a">Good, and that is exactly why the referral program is in here. Word of
+        mouth is your best channel, it is just currently untracked and unpaid. This turns
+        it into something you can measure, and adds the people who have not heard of you yet.</div></details>
+    <details><summary>How long until it is live?<span class="plus">+</span></summary>
+      <div class="a">Your site goes live within a day of approval, and the rest of the
+        system is switched on within three. You do not wait weeks.</div></details>
+    <details><summary>What if I do not like it?<span class="plus">+</span></summary>
+      <div class="a">We keep working on it at no extra cost until it is right. That is the
+        delivery guarantee, and it is the whole reason we do not take a large deposit.</div></details>
+    <details><summary>Do I need to be technical?<span class="plus">+</span></summary>
+      <div class="a">No. You do not touch any of it. Enquiries come to your phone by text
+        and email, and everything else runs on its own.</div></details>
+    <details><summary>What is the monthly for?<span class="plus">+</span></summary>
+      <div class="a">Hosting, the domain, the CRM, the follow up, the review engine, the
+        referral program and your monthly report. It is the engine, not the website.</div></details>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span id="footerMark">Your Agency</span>. Growth systems for local businesses.</div></footer>
+
+<script>
+/* ---------------------------------------------------------------------------
+   Student configuration. These are the only lines to edit.
+   payLink: a Stripe or Commas checkout URL. Blank falls back to an email so the
+   button never dead ends on a broken link.
+--------------------------------------------------------------------------- */
+var CONFIG = {
+  agencyName: "Jumpsky Ltd",
+  previewOrigin: "http://localhost:4500",
+
+  /* Read-only key for the store the builder writes each site into. Public by
+     design: it can select rows and nothing else, and the generated sites ship
+     the same key in their own bundle. Without it this page cannot name the
+     business it was built for. */
+  storeKey: "YOUR_SUPABASE_ANON_KEY",
+
+  /* WHERE THE MONEY IS TAKEN. Commas checkout. Left blank the button opens an
+     email instead, so a student who has not set theirs never dead ends. */
+  payLink: "https://commas.com/checkout/RjqD04xK4b4eeFY",
+  /* Second door for anyone not ready to buy off a page. Blank hides the
+     option entirely rather than showing a dead button. */
+  bookingUrl: "https://cal.com/your-booking-link",
+  fallbackEmail: "hello@example.com",
+
+  currency: "£",
+  standardPrice: "6,000",   /* what you normally charge */
+  offerPrice: "1,500",      /* the one-time offer revealed behind the button */
+
+  /* WHO IS BEHIND THIS. The section under the cover. Put your own name, photo
+     and reviews here: it is the part of the page that makes an owner believe a
+     real person is on the other end.
+     photo: any image in agency-assets/, or a full https:// URL.
+     reviews: your own, in your clients' words. Delete any you do not have.
+     An empty list hides the whole reviews block rather than showing a gap. */
+  founder: {
+    firstName: "Dan",
+    title: "Owner of Jumpsky Ltd",
+    photo: "agency-assets/agency-intro.jpg",
+    bullets: [
+      ["More calls", "from people who are ready to book, not just browsing"],
+      ["More trust", "built in the first five seconds, with real reviews and a real owner"],
+      ["More jobs", "booked while you are out doing the work"],
+      ["More word of mouth", ", because every finished job asks for the review and the referral for you"]
+    ],
+    promise: "I build the whole growth system for local businesses: the site that gets " +
+      "found, and the engine that turns every customer into the next two.",
+    guarantee: "If it does not bring you more work, you do not pay.",
+    reviewsLead: "A few of the owners I have built this for.",
+    reviews: [
+      ["We went from page three of Google to the top result for roofers in our area in about two months. Dan checked in every week while it was being built. Worth every penny.",
+        "Mike Hensley", "google", "agency-assets/review-avatars/1.jpg"],
+      ["Dan built the new site for my salon and bookings started coming through the first weekend it was live. He explains everything in plain English which I really appreciated.",
+        "Tanya Brooks", "facebook", "agency-assets/review-avatars/2.jpg"],
+      ["Straight shooter. No upsell nonsense, the site was live in three days like he said, and it looks better than companies ten times our size.",
+        "Rob Caldwell", "google", "agency-assets/review-avatars/3.jpg"],
+      ["I was nervous about spending the money but the website has paid for itself several times over. Customers keep telling us how easy it is to book.",
+        "Alyssa Chen", "google", "agency-assets/review-avatars/4.jpg"]
+    ]
+  },
+
+  /* The value stack. Every line is part of the growth system, with the benefit
+     written under it rather than just a feature name. */
+  /* Grouped into three blocks. Ten undifferentiated rows read as a wall and the
+     eye slides off; three labelled groups are scannable and tell the story that
+     the website is one third of what they are buying. */
+  valueStack: [
+    ["GROUP", "Getting found", "So the right people land on you instead of a competitor"],
+    ["Your website, built and live", "Every service and area page written around your business, on your own domain", 4500],
+    ["SEO foundation, schema and AEO setup", "Found on Google, Maps and in AI answers, not buried on page three", 1200],
+    ["Launch package", "Domain, hosting and SSL, with the first 90 days covered", 500],
+
+    ["GROUP", "Turning them into booked jobs", "The part that actually makes the money"],
+    ["Lead and customer CRM", "Every lead and every customer on one screen you can actually manage, with the power dialler built in", 1500],
+    ["Automated follow up by email, text and call", "Chases every enquiry until it is booked or it says no", 1200],
+    ["Owner and sales team lead alerts", "Email and text the second an enquiry lands, so nobody waits", 400],
+    ["AI chatbot on your site", "Answers questions and captures enquiries around the clock", 600],
+
+    ["GROUP", "Turning one job into the next two", "The lever almost nobody switches on"],
+    ["Automatic review engine", "A Google review asked for after every finished job, without chasing", 700],
+    ["Referral program", "Thank-you page, tracked links and a payout ledger for word of mouth", 900],
+    ["Analytics and monthly reporting", "Every call, form, review and referral in one clear report", 300]
+  ],
+
+  /* RECENT WORK. Real sites you have built, that an owner can open and scroll.
+     shot: an image in agency-assets/client-builds/, url: where it actually is.
+     Leave the list empty and the whole section disappears rather than showing
+     three empty frames. Refresh the screenshots when a site is redesigned. */
+  /* RECENT WORK.
+     Name, what the business is, and a screenshot. Deliberately NO domain and no
+     way to open the real site: these are other owners' businesses and showing
+     the address hands this reader a list of them. They are here as proof of the
+     work, nothing else. */
+  buildsLead: "",
+  builds: [
+    ["Terramar Estates", "Property sales", "agency-assets/client-builds/1.jpg"],
+    ["Shrewsbury Vehicles", "Used car sales", "agency-assets/client-builds/2.jpg"],
+    ["Joe's Coffee", "Coffee shop", "agency-assets/client-builds/3.jpg"],
+    ["Prestige Auto Garage", "Garage and servicing", "agency-assets/client-builds/4.jpg"],
+    ["Built Gym", "Gym and memberships", "agency-assets/client-builds/5.jpg"],
+    ["Bloom and Co.", "Florist", "agency-assets/client-builds/6.jpg"]
+  ],
+
+  /* The monthly plans that start after the first 90 days. */
+  tiers: [
+    ["Lite", "Keep it live.", "47", ["Hosting, SSL and security",
+      "1 hour of edits a month, anything past that only if you ask"], false],
+    ["Growth", "Kept fresh, and you see the numbers.", "97", ["Everything in Lite",
+      "4 hours of priority edits a month, front of the queue",
+      "Seasonal offers and page updates done for you",
+      "Monthly report: calls, forms, reviews, referrals"], true],
+    ["Pro", "Fully hands off.", "147", ["Everything in Growth",
+      "AI dialler: every new lead called within 60 seconds",
+      "A monthly email sent to your whole customer list"], false]
+  ],
+
+  smallPrint: "One fee today. Nothing monthly for 90 days, then a plan you choose from " +
+    "47 a month, change or cancel anytime. Third-party running costs are billed to you " +
+    "directly, they are small and you only ever pay the provider, never a markup."
+};
+
+(function () {
+  "use strict";
+  var $ = function (s) { return document.querySelector(s); };
+  var params = new URLSearchParams(location.search);
+  var slug = params.get("site") || params.get("slug") || "";
+  var business = params.get("business") || "";
+
+  $("#agencyMark").textContent = CONFIG.agencyName;
+  $("#footerMark").textContent = CONFIG.agencyName;
+
+  var escapeText = function (t) {
+    return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  };
+
+  /* --- Who is behind this ------------------------------------------------ */
+  var PLATFORM_MARKS = {
+    google: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      '<path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>' +
+      '<path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A10.99 10.99 0 0012 23z"/>' +
+      '<path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18a10.99 10.99 0 000 9.86l3.66-2.84z"/>' +
+      '<path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>',
+    facebook: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      '<path fill="#1877F2" d="M22 12.07C22 6.51 17.52 2 12 2S2 6.51 2 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.77l-.44 2.9h-2.33V22c4.78-.75 8.44-4.91 8.44-9.93z"/></svg>'
+  };
+
+  (function renderFounder() {
+    var f = CONFIG.founder || {};
+    var name = f.firstName || "";
+    if (name) {
+      $("#founderHi").textContent = "I'm " + name + ".";
+      $("#founderSigName").textContent = name;
+      $("#founderCaption").textContent = name + " · " +
+        (f.title || "Founder of " + CONFIG.agencyName);
+      $("#founderPhoto").alt = name + ", the founder";
+    }
+    if (f.title) $("#founderSigTitle").textContent = f.title;
+    if (f.photo) $("#founderPhoto").src = f.photo;
+
+    $("#founderBullets").innerHTML = (f.bullets || []).map(function (b) {
+      /* The second half starts with its own punctuation in some lines, so it is
+         joined without a space rather than assuming one. */
+      var rest = String(b[1] || "");
+      var joiner = /^[,.;:]/.test(rest) ? "" : " ";
+      return "<li><strong>" + escapeText(b[0]) + "</strong>" + joiner + escapeText(rest) + "</li>";
+    }).join("");
+
+    $("#founderPromise").innerHTML = escapeText(f.promise || "") +
+      (f.guarantee ? "<br /><strong>" + escapeText(f.guarantee) + "</strong>" : "");
+
+    var reviews = f.reviews || [];
+    if (!reviews.length) return;   /* no reviews beats an empty grid */
+    $("#founderReviewsLead").textContent = f.reviewsLead || "";
+    $("#revGrid").innerHTML = reviews.map(function (r) {
+      var platform = String(r[2] || "google").toLowerCase();
+      var mark = PLATFORM_MARKS[platform] || PLATFORM_MARKS.google;
+      var label = platform.charAt(0).toUpperCase() + platform.slice(1) + " review";
+      var avatar = r[3]
+        ? '<img src="' + escapeText(r[3]) + '" alt="" loading="lazy" />'
+        : "";
+      return '<figure class="rev">' +
+        "<blockquote>" + escapeText(r[0]) + "</blockquote>" +
+        "<figcaption>" + avatar +
+        '<div><div class="rev-name">' + escapeText(r[1]) + "</div>" +
+        '<div class="rev-src">' + mark + "<span>" + escapeText(label) + "</span></div></div>" +
+        '<div class="rev-stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>' +
+        "</figcaption></figure>";
+    }).join("");
+    $("#founderReviews").hidden = false;
+  })();
+
+  /* --- Recent work ------------------------------------------------------- */
+  (function renderBuilds() {
+    var builds = CONFIG.builds || [];
+    var section = document.getElementById("builds");
+    if (!builds.length) { section.remove(); return; }   /* no work shown beats empty frames */
+    $("#buildsSub").textContent = CONFIG.buildsLead || "";
+    /* Each shot is a tall screenshot in a short window that scrolls on hover or
+       drag, so the reader can look down the page without leaving this one and
+       without ever being handed the address. */
+    $("#buildsGrid").innerHTML = builds.map(function (b) {
+      return '<figure class="build">' +
+        '<span class="build-bar"><i></i><i></i><i></i>' +
+        '<span class="build-url">' + escapeText(b[0]) + "</span></span>" +
+        '<span class="build-shot"><img src="' + escapeText(b[2]) + '" alt="' +
+          escapeText(b[0]) + ' website" loading="lazy" draggable="false" />' +
+        '<span class="build-scrollhint">Scroll to see the page</span></span>' +
+        '<figcaption class="build-cap"><span class="build-name">' + escapeText(b[0]) + "</span>" +
+        '<span class="build-what">' + escapeText(b[1]) + ".</span></figcaption></figure>";
+    }).join("");
+  })();
+
+  /* The stack renders from config and the total is summed from it, so the
+     line items and the headline value can never drift apart. */
+  var money = function (n) { return CONFIG.currency + n.toLocaleString("en-GB"); };
+  var total = 0, rowsHtml = "";
+  CONFIG.valueStack.forEach(function (item) {
+    if (item[0] === "GROUP") {
+      rowsHtml += '<div class="vs-group"><span class="vs-group-k">' + item[1] +
+        '</span><span class="vs-group-sub">' + item[2] + '</span></div>';
+      return;
+    }
+    total += item[2];
+    rowsHtml += '<div class="vs-item"><span class="vs-name">' + item[0] +
+      '<small>' + item[1] + '</small></span><span class="vs-msrp">' +
+      money(item[2]) + '</span></div>';
+  });
+  $("#stackRows").innerHTML = rowsHtml;
+  $("#stackTotal").textContent = money(total);
+  $("#standardPrice").textContent = CONFIG.currency + CONFIG.standardPrice;
+  $("#pcSmall").textContent = CONFIG.smallPrint;
+
+  var tiersHtml = "";
+  CONFIG.tiers.forEach(function (t) {
+    tiersHtml += '<div class="tier' + (t[4] ? ' pop' : '') + '">' +
+      (t[4] ? '<span class="tier-pop">Most popular</span>' : '') +
+      '<div class="tier-name">' + t[0] + '</div>' +
+      '<div class="tier-tag">' + t[1] + '</div>' +
+      '<div class="tier-price">' + CONFIG.currency + t[2] + '<span style="font-size:14px;font-weight:600">/mo</span></div>' +
+      '<ul><li>' + t[3].join('</li><li>') + '</li></ul></div>';
+  });
+  $("#tiers").innerHTML = tiersHtml;
+
+  /* One-time offer: the standard price is shown openly, the discount is held
+     behind a click. Revealing it makes the number an event rather than a line
+     of text, and it is where the payment link lives. */
+  var modal = $("#otoModal");
+  $("#otoAmount").textContent = CONFIG.currency + CONFIG.offerPrice;
+  $("#otoBody").textContent = "Take this today and lock in " + CONFIG.currency +
+    CONFIG.offerPrice + " instead of the standard " + CONFIG.currency +
+    CONFIG.standardPrice + " setup. Everything in the stack above is included.";
+  $("#revealBtn").addEventListener("click", function () {
+    if (typeof modal.showModal === "function") modal.showModal();
+    else modal.setAttribute("open", "");
+  });
+  $("#otoClose").addEventListener("click", function () { modal.close(); });
+  modal.addEventListener("click", function (e) {
+    // Clicking the backdrop closes it. The dialog element reports clicks on
+    // its own padding as clicks on itself, so compare against the box.
+    var r = modal.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) {
+      modal.close();
+    }
+  });
+
+  /* Where their site actually lives.
+     The builder now picks a template per trade, so the address is written on
+     the config rather than guessed from the slug. Guessing it meant the
+     proposal embedded the old preview app while the CRM linked to the new
+     template: two different sites for the same business, side by side.
+     The fallback is only for records built before templates existed. */
+  function setEmbed(url) {
+    // embed=1 only inside the frame. The site reads it and switches off the
+    // effects that repaint forever (the nav CTA animation, the chat pulse, the
+    // backdrop blurs), which is what made this page stutter while scrolling.
+    // The link below opens the real thing with everything running.
+    $("#siteFrame").src = url + (url.indexOf("?") > -1 ? "&" : "?") + "embed=1";
+    $("#openLive").href = url;
+  }
+  setEmbed(CONFIG.previewOrigin + "/?site=" + encodeURIComponent(slug));
+
+  /* The iframe renders at a fixed logical width then scales to fit its shell.
+     On desktop that is 1440px, so the owner sees the true desktop layout rather
+     than a squashed breakpoint. On a phone it is 390px, because scaling a
+     1440px page into a 300px box makes it unreadable. */
+  function fitFrame() {
+    var frame = $("#frame");
+    var logicalWidth = window.matchMedia("(max-width: 760px)").matches ? 390 : 1440;
+    var scale = frame.clientWidth / logicalWidth;
+    var f = $("#siteFrame");
+    f.style.width = logicalWidth + "px";
+    f.style.transform = "scale(" + scale + ")";
+    f.style.height = (frame.clientHeight / scale) + "px";
+  }
+  fitFrame();
+  window.addEventListener("resize", fitFrame);
+
+  /* The hint stays up until they are halfway down the page. Hiding it on hover
+     or after a few seconds meant most people never registered that the embed
+     scrolls, which is the whole point of it being there. */
+  var hint = $("#scrollHint");
+  function updateHint() {
+    if (!hint) return;
+    var scrollable = document.body.scrollHeight - window.innerHeight;
+    var progress = scrollable > 0 ? window.scrollY / scrollable : 1;
+    hint.classList.toggle("gone", progress >= 0.5);
+  }
+  window.addEventListener("scroll", updateHint, { passive: true });
+  updateHint();
+
+  /* Where a generated site's details actually live.
+     Every build writes its config to the Supabase `sites` table. The static
+     /configs folder only holds the handful of demo sites bundled at build time,
+     so reading it alone meant every REAL proposal fell back to "Prepared for
+     your business" with no name, no town and no rating line: the exact opposite
+     of the personal thing this page is for. Store first, bundled file second.
+     The key is the public read-only anon key, the same one the site itself
+     ships in its bundle, and it can select rows and nothing else. */
+  var STORE_URL = "https://YOUR_SUPABASE_PROJECT_REF.supabase.co";
+  var STORE_KEY = CONFIG.storeKey || "";
+
+  function loadConfig(slug) {
+    var fromStore = STORE_KEY
+      ? fetch(STORE_URL + "/rest/v1/sites?slug=eq." + encodeURIComponent(slug) + "&select=config",
+              { headers: { apikey: STORE_KEY, Authorization: "Bearer " + STORE_KEY },
+                cache: "no-store" })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (rows) { return rows && rows.length ? rows[0].config : null; })
+          .catch(function () { return null; })
+      : Promise.resolve(null);
+
+    return fromStore.then(function (cfg) {
+      if (cfg) return cfg;
+      /* no-store: a rebuilt client config must never lose to a cached copy, or
+         the proposal quietly renders yesterday's details. */
+      return fetch(CONFIG.previewOrigin + "/configs/" + encodeURIComponent(slug) + ".json",
+                   { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; });
+    });
+  }
+
+  /* The generated config is the source of truth for the business name and trade,
+     so the proposal always agrees with the site rather than trusting the URL. */
+  if (slug) {
+    loadConfig(slug)
+      .then(function (cfg) {
+        if (!cfg) return;
+        /* _display is the generator's single source of truth for anything we
+           print about the business: the name already has its legal suffix
+           removed, and every field is "" rather than missing when unknown. */
+        /* The address the builder recorded when it made the site, which is a
+           template URL now rather than the old preview app. */
+        if (cfg._demo && cfg._demo.siteUrl) setEmbed(cfg._demo.siteUrl);
+
+        var d = cfg._display || {};
+        var name = d.name || (cfg.company && cfg.company.name) || business;
+        var town = d.town || (cfg.address && cfg.address.city) || "";
+
+        if (name) {
+          $("#bizHead").textContent = name;
+          $("#eyebrow").textContent = "Prepared for " + name;
+          $("#preparedFor").textContent = "Prepared for " + name;
+          $("#embedPitchLead").textContent = "This is the shop window for " + name + ".";
+          document.title = name + ", your growth system";
+        }
+        /* The town only ever appears as its own clause, never spliced into the
+           middle of a sentence, so an odd or missing value cannot mangle copy. */
+        if (town) $("#pcHeadline").textContent = "Become the name people call in " + town + ".";
+
+        /* Turn whatever we actually know into one observation that makes an
+           argument. Ordered best first, and it renders nothing at all rather
+           than a weak or half-empty line. */
+        var esc = function (t) {
+          return String(t).replace(/[&<>"]/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+          });
+        };
+        var rating = Number((cfg.reviews && cfg.reviews.rating) || 0);
+        var count = Number((cfg.reviews && cfg.reviews.totalReviewCount) || 0);
+        var where = town ? " in " + esc(town) : " in your area";
+        var status = String(d.websiteStatus || "").toLowerCase();
+        var line = "";
+
+        /* Ordered strongest first. Each branch turns a real fact into an
+           argument. Nothing renders at all if we know nothing useful, and no
+           branch ever insults them with their own weak numbers. */
+        if (status.indexOf("no website") > -1 || status === "none") {
+          line = "You do not have a website yet. Right now, when somebody" + where +
+            " searches for what you do, they find whoever does.";
+        } else if (rating >= 4 && count >= 10) {
+          line = "You are on <b>" + esc(rating.toFixed(1)) + " stars from " +
+            esc(count) + " Google reviews</b>" + where +
+            ". The people who find you already trust you. The question is how many " +
+            "never find you in the first place.";
+        } else if (rating >= 4 && count > 0) {
+          // Few but good reviews: the gap IS the opportunity, framed as fixable.
+          line = "You are on <b>" + esc(rating.toFixed(1)) + " stars</b>, but from only " +
+            esc(count) + (count === 1 ? " review" : " reviews") +
+            ". The businesses booked solid" + where + " are not better than you, they " +
+            "just have more proof. The review engine below closes that gap on its own.";
+        } else if (count === 0) {
+          // No reviews at all: never a criticism, always the thing we fix.
+          line = "You have no Google reviews yet, and that is quietly costing you work" +
+            where + ". Every finished job should be leaving one behind, which is " +
+            "exactly what the review engine below does.";
+        } else if (d.streetOnly && town) {
+          line = "We pulled your details from your Google listing on <b>" +
+            esc(d.streetOnly) + "</b>. That address decides whether you show up when " +
+            "somebody nearby searches, and right now it is doing very little for you.";
+        } else if (town) {
+          line = "Somebody" + where + " is searching for what you do today. The only " +
+            "question is whose name comes up first.";
+        }
+
+        if (line) {
+          var el = $("#observation");
+          el.innerHTML = line;
+          el.hidden = false;
+        }
+      })
+      .catch(function () { /* the page still works without it */ });
+  }
+
+  if (CONFIG.bookingUrl) {
+    $("#bookBtn").href = CONFIG.bookingUrl;
+    $("#otoAlt").hidden = false;
+  }
+
+  var pay = $("#payBtn");
+  if (CONFIG.payLink) {
+    // Used exactly as given. Appending a tracking parameter to a live checkout
+    // link risks breaking the one thing on this page that must never break, and
+    // Commas has not been verified to ignore unknown query parameters.
+    pay.href = CONFIG.payLink;
+  } else {
+    pay.href = "mailto:" + CONFIG.fallbackEmail +
+      "?subject=" + encodeURIComponent("I want to get started" + (business ? " (" + business + ")" : "")) +
+      "&body=" + encodeURIComponent("Please send me the payment link for " + (business || slug) + ".");
+    pay.title = "Payment link not set yet, this opens an email instead";
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, x-build-secret"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "POST, OPTIONS"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "api/build.js": {
+      "maxDuration": 60
+    },
+    "api/scrape.js": {
+      "maxDuration": 30
+    }
+  }
+}

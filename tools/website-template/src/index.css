@@ -1,0 +1,678 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* ─── Foundation tokens (research bake-in) ──────────────────────────────────
+ * Source: research/_framework/web-design-research-2026-05.md
+ *
+ * The foundation tokens below are universal. The premium easings, prefers-
+ * reduced-motion gate, optical-sizing, smart-quote and tabular-num utilities
+ * apply to every niche template scaffolded from this baseline. The font
+ * @import lines above are rewritten per-client by scripts/inject-theme.mjs
+ * from brand-dna.typography (see SOP 13 for the motion preset, SOP 06 for the
+ * AI-vocab and typographic-standards enforcement points).
+ * ────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --primary: 0 102 204;
+  --primary-dark: 0 51 102;
+  --primary-slate: 85 119 170;
+  --accent: 255 170 0;
+  --accent-light: 255 204 85;
+  --accent-dark: 204 136 0;
+  --neutral: 170 170 170;
+  --neutral-dim: 136 136 136;
+  --silver: 204 204 204;
+  --ink: 34 34 34;
+}
+html {
+  font-optical-sizing: auto;
+}
+
+/* Smart-quote / tabular-num utilities (research tactic 6) */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+.smart-quotes {
+  /* Quote characters must be set in source. This utility is a marker for the
+   * copy-lint (tools/copy-lint.py) to verify the element uses curly quotes.
+   * The class itself does not transform glyphs, that would be unsafe. */
+}
+
+/* Editorial paragraph max-width (research tactic Ty5) */
+.prose-narrow {
+  max-width: 68ch;
+}
+
+/* prefers-reduced-motion gate (research tactic 10, M1).
+ * Every animation honours this. Components that disable motion conditionally
+ * should also check `useReducedMotion()` from framer-motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ─── End foundation tokens ──────────────────────────────────────────────── */
+
+/* Palette CSS variables. inject-theme.mjs (vite prebuild hook) rewrites the
+ * :root block from src/config/brand-dna.js before every build. Values are
+ * rgb triplets (no rgb() wrapper) so Tailwind's `rgb(var(--X) / <alpha-value>)`
+ * pattern can apply utility opacities.
+ *
+ * Default values shown here are the template's brand. Per-client builds replace
+ * them at prebuild time.
+ */
+:root {
+  --primary: 15 23 42;
+  --primary-dark: 2 6 23;
+  --primary-slate: 30 41 59;
+  --accent: 198 167 94;
+  --accent-light: 217 187 122;
+  --accent-dark: 156 127 63;
+  --neutral: 148 163 187;
+  --neutral-dim: 100 116 139;
+  --silver: 192 198 207;
+  --ink: 11 18 32;
+  /* Typography flows through these two vars. inject-theme.mjs overwrites them
+     from brandDNA.typography at prebuild; the base rules + Tailwind fontFamily
+     reference them so a client's fonts actually APPLY (not just load). */
+  --font-heading: 'Oswald', Impact, sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+/* Optional dark-mode overrides applied via <html data-theme-mode="dark">.
+ * inject-theme.mjs sets the attribute from brandDNA.theme_mode; light mode
+ * is the unchanged baseline. Only define overrides that should differ in
+ * dark mode (e.g. swap primary <-> primary_slate for higher contrast). */
+:root[data-theme-mode="dark"] {
+  --primary: 2 6 23;
+  --primary-dark: 0 0 0;
+  --primary-slate: 15 23 42;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Desktop density: the 8pt token scale reads ~10% hotter than standard sites
+   (130px nav, 32px paddings), which registers as "zoomed in". A uniform zoom
+   preserves every authored proportion while relaxing the whole page. Mobile
+   keeps 1:1 (density is right there after the pinned-px fixes). */
+@media (min-width: 1024px) {
+  html { zoom: 0.9; }
+}
+
+/* ── Mobile density layer ──────────────────────────────────────────────────
+   The 8pt token scale is authored for desktop; on phones it produces 128-192px
+   section pads and 56-75px headlines, which reads broken. This layer remaps
+   the heavy utilities to phone-sane values below lg. Desktop is untouched.
+   Same-specificity overrides win because this file loads after the utilities. */
+@media (max-width: 1023px) {
+  .py-24 { padding-top: 64px; padding-bottom: 64px; }
+  .py-20 { padding-top: 56px; padding-bottom: 56px; }
+  .py-16 { padding-top: 48px; padding-bottom: 48px; }
+  .py-12 { padding-top: 40px; padding-bottom: 40px; }
+  .py-10 { padding-top: 36px; padding-bottom: 36px; }
+  .py-8 { padding-top: 32px; padding-bottom: 32px; }
+  .pt-24 { padding-top: 64px; } .pb-24 { padding-bottom: 64px; }
+  .pt-20 { padding-top: 56px; } .pb-20 { padding-bottom: 56px; }
+  .pt-16 { padding-top: 48px; } .pb-16 { padding-bottom: 48px; }
+  .pt-12 { padding-top: 40px; } .pb-12 { padding-bottom: 40px; }
+  .pt-10 { padding-top: 36px; } .pb-10 { padding-bottom: 36px; }
+  .pt-8 { padding-top: 32px; } .pb-8 { padding-bottom: 32px; }
+  .mt-16 { margin-top: 40px; } .mb-16 { margin-bottom: 40px; }
+  .mt-12 { margin-top: 32px; } .mb-12 { margin-bottom: 32px; }
+  .mt-10 { margin-top: 28px; } .mb-10 { margin-bottom: 28px; }
+  .mt-8 { margin-top: 24px; } .mb-8 { margin-bottom: 24px; }
+  .gap-16 { gap: 32px; }
+  .gap-12 { gap: 28px; }
+  .gap-10 { gap: 24px; }
+  .gap-8 { gap: 20px; }
+  .text-7xl { font-size: 38px; line-height: 1.1; }
+  .text-6xl { font-size: 34px; line-height: 1.12; }
+  .text-5xl { font-size: 30px; line-height: 1.15; }
+  .text-4xl { font-size: 26px; line-height: 1.18; }
+  .text-3xl { font-size: 22px; line-height: 1.22; }
+  .text-xl { font-size: 18px; line-height: 1.45; }
+  .text-lg { font-size: 16.5px; line-height: 1.55; }
+  .px-8 { padding-left: 20px; padding-right: 20px; }
+  .px-6 { padding-left: 20px; padding-right: 20px; }
+  .px-4 { padding-left: 16px; padding-right: 16px; }
+  .p-8 { padding: 24px; }
+  .p-6 { padding: 20px; }
+  .p-4 { padding: 16px; }
+  .gap-6 { gap: 20px; }
+  .gap-4 { gap: 16px; }
+  .mt-6 { margin-top: 20px; } .mb-6 { margin-bottom: 20px; }
+  .mt-4 { margin-top: 16px; } .mb-4 { margin-bottom: 16px; }
+}
+
+/* Desktop nav CTA: gentle breathe + sheen sweep so the eye lands on it */
+@keyframes cta-entice { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+@keyframes cta-sheen {
+  0% { transform: translateX(-140%) skewX(-18deg); }
+  55%, 100% { transform: translateX(240%) skewX(-18deg); }
+}
+.nav-cta { animation: cta-entice 3.4s ease-in-out infinite; }
+.nav-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 45%;
+  background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.38) 50%, transparent 100%);
+  animation: cta-sheen 3.4s ease-in-out infinite;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-cta { animation: none; }
+  .nav-cta::before { animation: none; display: none; }
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  background: #fff;
+}
+
+#root {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, 'Oswald', Impact, sans-serif);
+  margin: 0;
+}
+
+/* Metallic silver text, applied to white headings on dark sections, and the .heading-metallic utility */
+h1.text-white,
+h2.text-white,
+h3.text-white,
+.heading-metallic {
+  background: linear-gradient(160deg, #ffffff 0%, #f9fafb 15%, #dde1e7 42%, #f6f7f9 68%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+p { margin: 0; }
+
+/* Carousel */
+.carousel-scroll::-webkit-scrollbar { display: none; }
+.carousel-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Gold/Accent CTA Button with static metallic glare ──
+   Uses per-client --accent / --accent-light / --accent-dark CSS variables
+   so the button takes the brand's actual accent color (e.g. copper, gold, teal,
+   classic gold default). The accent stops are derived in
+   tools/derive-accent-stops.py from the base accent color so the metallic
+   gradient still has light->base->dark->light progression. */
+/* ── AI chat widget (ChatWidget.jsx) ──
+   Modern light chat: solid brand-accent launcher with a soft tinted glow,
+   white panel, quiet motion. No gradients, no uppercase, no text-shadow. */
+.chat-launcher {
+  background: rgb(var(--accent));
+  box-shadow: 0 8px 24px rgb(var(--accent) / 0.42), 0 2px 8px rgba(15, 23, 42, 0.18);
+  transition: transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.25s;
+}
+.chat-launcher:hover { transform: scale(1.06); box-shadow: 0 12px 32px rgb(var(--accent) / 0.5), 0 3px 10px rgba(15, 23, 42, 0.2); }
+.chat-launcher:active { transform: scale(0.96); }
+@keyframes chat-ring {
+  0% { box-shadow: 0 8px 24px rgb(var(--accent) / 0.42), 0 0 0 0 rgb(var(--accent) / 0.35); }
+  70% { box-shadow: 0 8px 24px rgb(var(--accent) / 0.42), 0 0 0 12px rgb(var(--accent) / 0); }
+  100% { box-shadow: 0 8px 24px rgb(var(--accent) / 0.42), 0 0 0 0 rgb(var(--accent) / 0); }
+}
+.chat-pulse { animation: chat-ring 2.6s ease-out infinite; }
+@keyframes chat-pop-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.chat-pop { animation: chat-pop-in 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+@keyframes chat-panel-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.chat-panel-in { transform-origin: bottom right; animation: chat-panel-in 0.28s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .chat-pulse { animation: none; }
+  .chat-pop { animation: none; }
+  .chat-panel-in { animation: none; }
+}
+
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    rgb(var(--accent-light)) 0%,
+    rgb(var(--accent)) 35%,
+    rgb(var(--accent-dark)) 62%,
+    rgb(var(--accent-light)) 100%
+  );
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(15, 23, 42, 0.45), 0 0 1px rgba(15, 23, 42, 0.6);
+  box-shadow: 0 5px 0 rgb(var(--accent-dark)), 0 7px 16px rgba(0,0,0,0.35);
+  transform: translateY(0);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.32) 0%,
+    rgba(255, 255, 255, 0.16) 12%,
+    transparent 26%,
+    transparent 74%,
+    rgba(255, 255, 255, 0.16) 88%,
+    rgba(255, 255, 255, 0.28) 100%
+  );
+  pointer-events: none;
+}
+.btn-gold:hover {
+  box-shadow: 0 3px 0 rgb(var(--accent-dark)), 0 4px 10px rgba(0,0,0,0.28);
+  transform: translateY(2px);
+}
+.btn-gold:active {
+  box-shadow: 0 1px 0 rgb(var(--accent-dark)), 0 2px 6px rgba(0,0,0,0.22);
+  transform: translateY(4px);
+}
+
+/* ── Outline Secondary Button ── */
+.btn-outline {
+  border: 1px solid #C0C6CF;
+  color: white;
+  background: transparent;
+  transition: background 0.15s ease;
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.btn-outline:active {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ── Thin accent lines ── */
+.line-gold {
+  display: block;
+  height: 2px;
+  background: rgb(var(--accent));
+}
+
+.line-silver {
+  display: block;
+  height: 1px;
+  background: #C0C6CF;
+  opacity: 0.4;
+}
+
+/* ── Card depth / lift ── */
+.card-elevated {
+  box-shadow: 0 2px 10px rgba(15,23,42,0.08), 0 1px 3px rgba(15,23,42,0.05);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.card-elevated:hover {
+  box-shadow: 0 14px 40px rgba(15,23,42,0.16), 0 4px 12px rgba(15,23,42,0.08);
+  transform: translateY(-4px);
+}
+
+/* ── Dark card depth ── */
+.card-elevated-dark {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.card-elevated-dark:hover {
+  box-shadow: 0 18px 48px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06);
+  transform: translateY(-4px);
+}
+
+/* ── Background dot texture ── */
+.bg-dots {
+  background-image: radial-gradient(rgba(15,23,42,0.06) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+
+/* ── Subtle grid texture (dark sections) ── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* =====================================================================
+ * LIGHT THEME OVERRIDES
+ * Applied when <html data-theme-mode="light"> is set (the default per
+ * brandDNA.theme_mode).  Components hardcode `bg-navy`, `text-white`,
+ * `text-cool` etc. for a dark-first aesthetic. Light theme inverts: navy
+ * surfaces become white, white text becomes navy, muted text becomes slate.
+ * Gold accents stay gold in both themes.
+ *
+ * Section accent bands that should STAY dark even in light theme can opt out
+ * by adding the `theme-keep-dark` class to the parent element.
+ * ===================================================================== */
+[data-theme-mode="light"] :where(.bg-navy, .bg-navy-dark, .bg-navy-slate):not(.theme-keep-dark) {
+  background-color: #FFFFFF;
+}
+[data-theme-mode="light"] :where(.bg-navy-slate):not(.theme-keep-dark) {
+  background-color: #F5F7FA;
+}
+[data-theme-mode="light"] :where(.bg-navy-dark):not(.theme-keep-dark) {
+  background-color: #EDF1F7;
+}
+
+/* Body/heading text that was white-on-dark becomes navy-on-light. */
+[data-theme-mode="light"] :where(.bg-navy, .bg-navy-dark, .bg-navy-slate):not(.theme-keep-dark) .text-white {
+  color: rgb(var(--primary));
+}
+/* Catch-all for text-white on light surfaces (cards, sections).
+   Excludes any element inside a .theme-keep-dark section (hero photo overlay,
+   gold form panel, etc.) so white text on intentionally-dark surfaces stays white. */
+/* Containers marked theme-keep-dark keep their dark-surface text colors */
+[data-theme-mode="light"] .theme-keep-dark .text-white { color: #FFFFFF; }
+[data-theme-mode="light"] .theme-keep-dark :is(.text-steel, .text-cool) { color: rgb(168 179 194); }
+[data-theme-mode="light"] .theme-keep-dark :is(.text-steel, .text-cool):hover { color: #FFFFFF; }
+[data-theme-mode="light"] .text-white:not(.theme-keep-white):not(.theme-keep-dark *) {
+  color: rgb(var(--primary));
+}
+[data-theme-mode="light"] .theme-keep-dark .text-white,
+[data-theme-mode="light"] .theme-keep-dark h1.text-white,
+[data-theme-mode="light"] .theme-keep-dark h2.text-white,
+[data-theme-mode="light"] .theme-keep-dark h3.text-white,
+[data-theme-mode="light"] .theme-keep-dark .heading-metallic {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+[data-theme-mode="light"] .theme-keep-dark .text-cool {
+  color: rgb(var(--neutral)) !important;
+}
+/* Cool / steel text become darker slate for readability on white. */
+[data-theme-mode="light"] .text-cool:not(.theme-keep-light):not(.theme-keep-dark *) {
+  color: #475569;
+}
+[data-theme-mode="light"] .text-steel:not(.theme-keep-light):not(.theme-keep-dark *) {
+  color: #334155;
+}
+
+/* Borders that were light-on-dark become dark-on-light. */
+[data-theme-mode="light"] .border-steel\/25:not(.theme-keep-dark),
+[data-theme-mode="light"] .border-cool\/25:not(.theme-keep-dark),
+[data-theme-mode="light"] .border-cool\/40:not(.theme-keep-dark),
+[data-theme-mode="light"] .border-steel\/40:not(.theme-keep-dark) {
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
+/* Cards that were dark-elevated become light-elevated. */
+[data-theme-mode="light"] .card-elevated-dark:not(.theme-keep-dark) {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+}
+
+/* CRITICAL: H1/H2/H3 with text-white have a metallic SILVER gradient applied via
+   `background-clip: text` + `text-fill-color: transparent`. On white surfaces
+   this becomes invisible. Disable the metallic effect in light mode and render
+   solid navy text instead. */
+[data-theme-mode="light"] h1.text-white,
+[data-theme-mode="light"] h2.text-white,
+[data-theme-mode="light"] h3.text-white,
+[data-theme-mode="light"] h4.text-white,
+[data-theme-mode="light"] h5.text-white,
+[data-theme-mode="light"] h6.text-white,
+[data-theme-mode="light"] .heading-metallic {
+  background: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: rgb(var(--primary)) !important;
+  color: rgb(var(--primary)) !important;
+}
+
+/* Outline button text was white-on-dark. In light theme, navy text + navy border. */
+[data-theme-mode="light"] .btn-outline {
+  border: 1px solid rgba(15, 23, 42, 0.3);
+  color: rgb(var(--primary));
+}
+[data-theme-mode="light"] .btn-outline:hover {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+/* Vision/Mission cards on Founder section had hardcoded gradient bg in JSX
+   (style={{ background: 'linear-gradient(135deg, #1E293B 0%, #172030 100%)' }}).
+   We can't override inline styles via plain CSS without !important. The
+   override here only catches Tailwind class users; manual JSX inline-style
+   gradient cards remain dark in light mode (worth a future refactor). */
+
+/* The bg-grid texture inverts: light grid lines on dark become dark on light. */
+[data-theme-mode="light"] .bg-grid {
+  background-image:
+    linear-gradient(rgba(15,23,42,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,23,42,0.04) 1px, transparent 1px);
+}
+
+/* Gold buttons keep white text in both themes (gold is too dark for navy text). */
+[data-theme-mode="light"] :where(.bg-gold, [class*="bg-gradient"][style*="C6A75E"]) .text-white,
+[data-theme-mode="light"] .btn-primary .text-white {
+  color: #FFFFFF;
+}
+
+/* ── Diagonal stripe accent ── */
+.bg-stripe {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 18px,
+    rgba(255,255,255,0.015) 18px,
+    rgba(255,255,255,0.015) 19px
+  );
+}
+
+/* ── Hero height ── */
+.hero-section {
+  min-height: 100vh;
+}
+@media (min-width: 1024px) {
+  .hero-section {
+    min-height: clamp(460px, 72vh, 680px);
+  }
+}
+
+/* ── Form input focus ring ── */
+.form-input {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.form-input:focus {
+  border-color: rgb(var(--accent)) !important;
+  box-shadow: 0 0 0 3px rgb(var(--accent) / 0.15);
+  outline: none;
+}
+
+/* Vision/Mission cards in Founder section. Light theme: white card with subtle navy border. */
+.vision-mission-card {
+  background: linear-gradient(135deg, #1E293B 0%, #172030 100%);
+  border: 1px solid rgb(var(--accent) / 0.2);
+  border-top: 2px solid rgb(var(--accent));
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+[data-theme-mode="light"] .vision-mission-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-top: 2px solid rgb(var(--accent));
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+/* Stats card value (large number on About page stats strip). Dark mode:
+   metallic-silver gradient. Light mode: solid navy so it doesn't disappear
+   into the white card surface. */
+.stats-card-value {
+  background: linear-gradient(160deg, #ffffff 0%, #f9fafb 15%, #dde1e7 42%, #f6f7f9 68%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+[data-theme-mode="light"] .stats-card-value {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: rgb(var(--primary)) !important;
+  background-clip: unset !important;
+  color: rgb(var(--primary)) !important;
+}
+
+/* Footer social icons. In dark mode the SVG uses currentColor=white. In
+   light mode it would otherwise be white-on-white (invisible) so paint
+   it navy. Hover lifts it to gold in either mode. */
+.footer-social-icon {
+  color: #FFFFFF;
+}
+.footer-social-icon:hover {
+  color: rgb(var(--accent));
+}
+/* The :not() guard keeps chips slate-dark inside theme-keep-dark surfaces
+   (the footer stays navy in light mode; unguarded, this rule painted its
+   chips as big white squares). */
+[data-theme-mode="light"] .footer-social-icon:not(.theme-keep-dark *) {
+  color: rgb(var(--primary));
+  background-color: #F5F7FA !important;
+  border-color: rgba(15, 23, 42, 0.15) !important;
+}
+[data-theme-mode="light"] .footer-social-icon:hover:not(.theme-keep-dark *) {
+  color: rgb(var(--accent));
+  background-color: rgb(var(--accent) / 0.12) !important;
+  border-color: rgb(var(--accent) / 0.4) !important;
+}
+
+/* Chat teaser body: cap at two lines on phones so the popup stays small. */
+@media (max-width: 1023px) {
+  .teaser-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Form inputs. The template was dark-first, so .form-input had no
+   light-theme override. On the contact page (light mode) inputs were
+   white-on-white because their inline JSX style sets background to a
+   translucent white-on-dark pattern. Override here so light-mode pages get
+   visible borders + readable text without changing the dark-first JSX. */
+[data-theme-mode="light"] .form-input:not(.theme-keep-dark .form-input) {
+  background-color: #FAFBFC !important;
+  border: 1px solid rgba(15, 23, 42, 0.2) !important;
+  color: rgb(var(--primary)) !important;
+}
+[data-theme-mode="light"] .form-input:not(.theme-keep-dark .form-input)::placeholder {
+  color: #64748B !important;
+}
+/* Same for textareas and selects, which share the .form-input class */
+[data-theme-mode="light"] textarea.form-input:not(.theme-keep-dark .form-input),
+[data-theme-mode="light"] select.form-input:not(.theme-keep-dark .form-input) {
+  background-color: #FAFBFC !important;
+  border: 1px solid rgba(15, 23, 42, 0.2) !important;
+  color: rgb(var(--primary)) !important;
+}
+
+/* =====================================================================
+ * VIBE LAYER, the variance engine's finishing pass.
+ *
+ * brandDNA.layout.vibe sets <html data-vibe="signal | editorial | structural">
+ * (written by inject-theme.mjs). The vibe NEVER changes which sections render
+ * or the conversion spine. It changes the FEEL: corner radius, card edge
+ * treatment, button shape, and eyebrow rhythm, so two sites on the same
+ * blueprint still read as different studios built them. Tokens live on
+ * [data-vibe] attribute selectors (not :root) so inject-theme's :root rewrite
+ * never strips them.
+ *
+ * signal      bold, industrial, high-contrast. Sharp corners, hard island
+ *             buttons, layered shadows. Default; suits trades.
+ * editorial   premium, calm, magazine. Generous radii, hairline edges, pill
+ *             buttons, wide airy eyebrows. Suits boutique / personal brands.
+ * structural  clean, modern, soft. Medium radii, diffused ambient shadows.
+ *             Suits modern service brands (auto, dental, clinics).
+ * ===================================================================== */
+html {
+  --radius-card: 0.125rem;
+  --radius-feature: 0.375rem;
+  --radius-button: 0.125rem;
+  --eyebrow-transform: uppercase;
+  --eyebrow-spacing: 0.2em;
+  --eyebrow-weight: 600;
+  --reveal-distance: 30px;
+  --reveal-blur: 0px;
+}
+[data-vibe="editorial"] {
+  --radius-card: 1rem;
+  --radius-feature: 1.5rem;
+  --radius-button: 9999px;
+  --eyebrow-spacing: 0.34em;
+  --eyebrow-weight: 500;
+  --reveal-distance: 46px;
+  --reveal-blur: 6px;
+}
+[data-vibe="structural"] {
+  --radius-card: 0.875rem;
+  --radius-feature: 1.25rem;
+  --radius-button: 0.75rem;
+  --eyebrow-spacing: 0.16em;
+  --reveal-distance: 22px;
+  --reveal-blur: 2px;
+}
+
+/* Shared eyebrow utility (vibe-driven). Hero / section variants use this so
+ * the eyebrow rhythm tracks the vibe instead of a hardcoded tracking value. */
+.eyebrow {
+  text-transform: var(--eyebrow-transform);
+  letter-spacing: var(--eyebrow-spacing);
+  font-weight: var(--eyebrow-weight);
+}
+
+/* Corner radius flows to the standing card + button classes and the opt-in
+ * vibe-* hooks the new variant components use. */
+[data-vibe] .card-elevated,
+[data-vibe] .card-elevated-dark,
+[data-vibe] .vibe-card {
+  border-radius: var(--radius-card);
+}
+[data-vibe] .btn-gold,
+[data-vibe] .vibe-button {
+  border-radius: var(--radius-button);
+}
+[data-vibe] .vibe-feature {
+  border-radius: var(--radius-feature);
+}
+
+/* Editorial: trade the heavy layered shadow for a hairline edge so cards read
+ * like printed plates rather than lifted chips. */
+[data-vibe="editorial"] .card-elevated {
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.10);
+}
+[data-vibe="editorial"] .card-elevated-dark {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+[data-vibe="editorial"] .btn-gold {
+  box-shadow: 0 2px 0 rgb(var(--accent-dark)), 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+/* Structural: a single soft, far-diffused ambient shadow (no hard offset). */
+[data-vibe="structural"] .card-elevated {
+  box-shadow: 0 24px 60px -28px rgba(15, 23, 42, 0.30);
+}
+[data-vibe="structural"] .card-elevated-dark {
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.55);
+}

@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Customers</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23191a1c'/%3E%3Cpath d='M8 11h16M8 16h16M8 21h9' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Customers">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    color-scheme: light;
+    --page: #fafafa; --surface: #ffffff; --line: #e4e4e7; --line-2: #d4d4d8;
+    --ink: #18181b; --ink-2: #3f3f46; --muted: #71717a; --faint: #a1a1aa;
+    --primary: #2557d6; --primary-hover: #1e47b8;
+    --ok: #0f7b41; --ok-dot: #16a34a;
+    --warn: #92610a; --warn-dot: #d97706;
+    --bad: #b42318;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--page); color: var(--ink);
+    font-family: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 13px; line-height: 1.45; -webkit-font-smoothing: antialiased; min-height: 100dvh;
+  }
+  a { color: var(--primary); text-decoration: none; }
+
+  .topnav { background: var(--surface); border-bottom: 1px solid var(--line); }
+  .topnav .in { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 48px; display: flex; align-items: center; gap: 22px; }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; letter-spacing: -0.01em; white-space: nowrap; color: var(--ink); }
+  .brand .mk { width: 20px; height: 20px; border-radius: 5px; background: #191a1c; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 700; }
+  .navtabs { display: flex; gap: 4px; height: 100%; }
+  .navtab { display: inline-flex; align-items: center; white-space: nowrap; padding: 0 10px; font-size: 13px; font-weight: 500; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .navtab:hover { color: var(--ink); }
+  .navtab.on { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
+  .navright { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .signout { font-size: 12px; color: var(--muted); }
+  @media (max-width: 560px) {
+    .navtabs { min-width: 0; overflow-x: auto; scrollbar-width: none; }
+    .navtabs::-webkit-scrollbar { display: none; }
+    .navtab { padding: 0 8px; }
+    .navright { flex: none; }
+  }
+
+  .app { max-width: 1200px; margin: 0 auto; padding: 22px 24px 60px; }
+  h1 { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 3px; }
+  .sub { color: var(--muted); margin: 0 0 18px; }
+  .sub b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 560px) { .app { padding: 18px 14px 50px; } .topnav .in { padding: 0 14px; gap: 12px; } }
+
+  /* Summary tiles */
+  .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+  .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  .tile .k { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  .tile .v { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; }
+  .tile .v.warn { color: var(--warn); }
+  @media (max-width: 720px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .cardhead { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .cardhead h2 { font-size: 14px; font-weight: 600; margin: 0; }
+
+  input[type=text], input[type=search] {
+    width: 100%; font: inherit; font-size: 13px; height: 34px; padding: 0 10px;
+    border: 1px solid var(--line-2); border-radius: 6px; background: var(--surface); color: var(--ink);
+  }
+  input:focus { outline: 2px solid #c7d7fb; outline-offset: -1px; border-color: var(--primary); }
+  .search { max-width: 260px; }
+
+  .btn {
+    font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 6px; padding: 0 14px; height: 34px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    transition: background 0.15s var(--ease); text-decoration: none;
+  }
+  .btn:hover { background: #f4f4f5; }
+  .btn.sm { height: 28px; font-size: 12px; padding: 0 10px; }
+  .btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .btn.primary:hover { background: var(--primary-hover); }
+  .btn.primary:disabled { opacity: 0.55; cursor: default; }
+
+  /* One row per customer. A list rather than a table, because a customer
+     carries more than a table row comfortably holds on a phone. */
+  .rows { display: flex; flex-direction: column; gap: 8px; }
+  .row {
+    border: 1px solid var(--line); border-radius: 9px; padding: 12px 14px; background: var(--surface);
+    display: grid; grid-template-columns: 1.4fr 1.5fr auto; gap: 12px; align-items: center;
+  }
+  .row > * { min-width: 0; }
+  .who { font-weight: 600; font-size: 13.5px; }
+  .meta { color: var(--muted); font-size: 12px; margin-top: 1px; overflow-wrap: anywhere; }
+  .job { font-size: 12.5px; }
+  .job .none { color: var(--faint); }
+  .acts { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+  @media (max-width: 780px) {
+    .row { grid-template-columns: 1fr; gap: 8px; }
+    .acts { justify-content: flex-start; }
+  }
+
+  .pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; border-radius: 999px; padding: 2px 8px; }
+  .pill .d { width: 6px; height: 6px; border-radius: 50%; }
+  .pill.ref { background: #eff4fe; color: var(--primary); } .pill.ref .d { background: var(--primary); }
+  .pill.out { background: #f4f4f5; color: var(--ink-2); } .pill.out .d { background: var(--muted); }
+  .pill.adv { background: #f0fdf4; color: var(--ok); } .pill.adv .d { background: var(--ok-dot); }
+  .pill.owed { background: #fffbeb; color: var(--warn); } .pill.owed .d { background: var(--warn-dot); }
+
+  .note { border-radius: 6px; padding: 9px 11px; font-size: 12.5px; margin-bottom: 12px; }
+  .note.err { background: #fef2f2; border: 1px solid #fecaca; color: var(--bad); }
+  .note.ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: var(--ok); }
+  .note.warn { background: #fffbeb; border: 1px solid #fde68a; color: var(--warn); }
+  .note:empty { display: none; margin: 0; padding: 0; border: 0; }
+
+  .jobform { grid-column: 1 / -1; display: flex; gap: 8px; align-items: center; padding-top: 10px; border-top: 1px solid var(--line); margin-top: 2px; }
+  .jobform input { flex: 1 1 auto; }
+  @media (max-width: 560px) { .jobform { flex-wrap: wrap; } .jobform input { flex: 1 1 100%; } }
+
+  .empty { text-align: center; color: var(--muted); padding: 34px 10px; }
+  .empty b { color: var(--ink); font-weight: 600; }
+  .spin { width: 18px; height: 18px; border: 2px solid var(--line-2); border-top-color: var(--primary); border-radius: 50%; animation: sp 0.7s linear infinite; margin: 26px auto; }
+  @keyframes sp { to { transform: rotate(360deg); } }
+
+  /* ── Close's icon rail (shared with the Leads page) ───────────────────── */
+  :root { --rail: #1F2430; }
+  .crail { position: fixed; left: 0; top: 0; bottom: 0; width: 56px; z-index: 40;
+    background: var(--rail); display: flex; flex-direction: column; align-items: center;
+    padding: 12px 0 14px; gap: 4px; }
+  .crail-logo { width: 32px; height: 32px; border-radius: 9px; background: #2B6CF0;
+    color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 14px;
+    margin-bottom: 10px; flex: none; }
+  .crail-ic { width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center;
+    color: #9AA3B2; cursor: pointer; flex: none; border: 0; background: transparent;
+    text-decoration: none; position: relative;
+    transition-property: background-color, color; transition-duration: .15s; }
+  .crail-ic:hover { background: rgba(255,255,255,.08); color: #D9DEE7; }
+  .crail-ic.on { background: rgba(255,255,255,.12); color: #fff; }
+  .crail-ic svg { width: 19px; height: 19px; stroke: currentColor; fill: none;
+    stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .crail-ic::after { content: ""; position: absolute; inset: 50% auto auto 50%;
+    width: 40px; height: 40px; transform: translate(-50%, -50%); }
+  .crail-foot { margin-top: auto; display: flex; flex-direction: column; gap: 4px; }
+  .app { margin-left: 56px; }
+  .topnav { display: none; }
+  @media (max-width: 560px) {
+    .crail { flex-direction: row; width: auto; right: 0; bottom: auto; height: 52px; padding: 0 10px; }
+    .crail-logo { margin: 0 8px 0 0; width: 28px; height: 28px; }
+    .crail-foot { margin-top: 0; margin-left: auto; flex-direction: row; }
+    .app { margin-left: 0; margin-top: 52px; }
+  }
+
+  /* Close's palette, so these pages match the Leads page. */
+  :root { --primary: #2B6CF0; --primary-hover: #245BC6; --line: #E2E2E2;
+          --ink: #2E2E2E; --muted: #767676; }
+  body { font-family: -apple-system, system-ui, "Segoe UI", "Helvetica Neue", sans-serif;
+         -webkit-font-smoothing: antialiased; }
+</style>
+</head>
+<body>
+
+<nav class="crail" aria-label="Sections">
+  <span class="crail-logo">A</span>
+  <a class="crail-ic" href="crm-close.html" title="Leads" aria-label="Leads"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></a>
+  <a class="crail-ic on" href="customers-close.html" title="Customers" aria-label="Customers"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></a>
+  <a class="crail-ic" href="referrals-close.html" title="Referrals" aria-label="Referrals"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></a>
+  <a class="crail-ic" href="index-close.html" title="Email health" aria-label="Email health"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 8l8 5 8-5"/></svg></a>
+  <div class="crail-foot">
+    <a class="crail-ic" id="signout" href="#" title="Sign out" aria-label="Sign out" style="display:none"><svg viewBox="0 0 24 24"><path d="M15 12H4"/><path d="M8 8l-4 4 4 4"/><path d="M11 4h8v16h-8"/></svg></a>
+  </div>
+</nav>
+
+<div class="app">
+  <h1>Customers</h1>
+  <p class="sub" id="sub">Everyone who has actually bought.</p>
+
+  <div id="boot"><div class="spin"></div></div>
+
+  <div id="main" style="display:none">
+    <div class="tiles">
+      <div class="tile"><div class="k">Customers</div><div class="v" id="t_total">0</div></div>
+      <div class="tile"><div class="k">Jobs logged</div><div class="v" id="t_jobs">0</div></div>
+      <div class="tile"><div class="k">Sent you work</div><div class="v" id="t_adv">0</div></div>
+      <div class="tile"><div class="k">Rewards owed</div><div class="v warn" id="t_owed">$0</div></div>
+    </div>
+
+    <div class="card">
+      <div class="cardhead">
+        <h2 id="listtitle">Your customers</h2>
+        <input class="search" type="search" id="q" placeholder="Search name, email or phone" autocomplete="off">
+      </div>
+      <div id="listnote"></div>
+      <div class="rows" id="rows"></div>
+      <div class="empty" id="empty" style="display:none">
+        <b>No customers yet.</b><br>
+        Somebody becomes a customer when you mark their lead <b>Won</b> on the Leads tab,
+        or when you log a referral that brought them in.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var state = { customers: [], summary: {}, openJob: null };
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+  function money(n) {
+    var v = Number(n) || 0;
+    return "$" + v.toLocaleString("en-CA", { maximumFractionDigits: 0 });
+  }
+  function note(el, kind, msg) {
+    el.className = msg ? "note " + kind : "note";
+    el.textContent = msg || "";
+  }
+  function api(path) {
+    var k = new URLSearchParams(location.search).get("k");
+    return k ? path + "?k=" + encodeURIComponent(k) : path;
+  }
+
+  function matches(c, q) {
+    if (!q) return true;
+    var hay = [c.name, c.email, c.phone, c.last_job, c.referred_by].join(" ").toLowerCase();
+    return q.split(/\s+/).every(function (t) { return hay.indexOf(t) !== -1; });
+  }
+
+  function render() {
+    var q = $("q").value.trim().toLowerCase();
+    var list = state.customers.filter(function (c) { return matches(c, q); });
+    var rows = $("rows");
+    rows.innerHTML = "";
+    $("empty").style.display = state.customers.length ? "none" : "";
+    $("listtitle").textContent = q
+      ? list.length + " of " + state.customers.length + " customers"
+      : "Your customers";
+
+    list.forEach(function (c) {
+      var el = document.createElement("div");
+      el.className = "row";
+
+      var tel = String(c.phone || "").replace(/[^\d+]/g, "");
+      var contact = [];
+      if (c.email) contact.push(esc(c.email));
+      if (c.phone) contact.push(esc(c.phone));
+
+      var source = String(c.source || "").toLowerCase() === "referral"
+        ? '<span class="pill ref"><span class="d"></span>referred' + (c.referred_by ? " by " + esc(c.referred_by) : "") + "</span>"
+        : '<span class="pill out"><span class="d"></span>' + esc(c.source || "customer") + "</span>";
+
+      var badges = [source];
+      if (Number(c.sent) > 0) {
+        badges.push('<span class="pill adv"><span class="d"></span>sent ' + c.sent + (c.sent === 1 ? " person" : " people") + "</span>");
+      }
+      if (Number(c.owed) > 0) {
+        badges.push('<span class="pill owed"><span class="d"></span>' + money(c.owed) + " owed</span>");
+      }
+
+      var jobLine = c.last_job
+        ? esc(c.last_job) + (c.last_job_date ? ' <span class="meta">' + esc(c.last_job_date) + "</span>" : "")
+          + (Number(c.jobs) > 1 ? ' <span class="meta">and ' + (c.jobs - 1) + " before that</span>" : "")
+        : '<span class="none">No job logged yet</span>';
+
+      el.innerHTML =
+        '<div><div class="who">' + esc(c.name || "Unnamed") + "</div>"
+          + '<div class="meta">' + (contact.join(" &middot; ") || "No contact details") + "</div></div>"
+        + '<div><div class="job">' + jobLine + "</div>"
+          + '<div style="margin-top:5px;display:flex;gap:5px;flex-wrap:wrap">' + badges.join("") + "</div></div>"
+        + '<div class="acts"></div>';
+
+      var acts = el.querySelector(".acts");
+      if (tel) {
+        var call = document.createElement("a");
+        call.className = "btn sm"; call.href = "tel:" + tel; call.textContent = "Call";
+        acts.appendChild(call);
+      }
+      if (c.email) {
+        var mail = document.createElement("a");
+        mail.className = "btn sm"; mail.href = "mailto:" + c.email; mail.textContent = "Email";
+        acts.appendChild(mail);
+      }
+      var logBtn = document.createElement("button");
+      logBtn.className = "btn sm"; logBtn.type = "button"; logBtn.textContent = "Log a job";
+      logBtn.onclick = function () {
+        state.openJob = state.openJob === keyOf(c) ? null : keyOf(c);
+        render();
+      };
+      acts.appendChild(logBtn);
+
+      if (state.openJob === keyOf(c)) {
+        var form = document.createElement("div");
+        form.className = "jobform";
+        form.innerHTML = '<input type="text" placeholder="What was the job? For example, roof replacement" maxlength="160">'
+          + '<button class="btn primary sm" type="button">Save</button>'
+          + '<button class="btn sm" type="button">Cancel</button>';
+        var input = form.querySelector("input");
+        var save = form.querySelector(".primary");
+        var cancel = form.querySelectorAll("button")[1];
+        cancel.onclick = function () { state.openJob = null; render(); };
+        save.onclick = function () { logJob(c, input.value.trim(), save); };
+        input.addEventListener("keydown", function (e) { if (e.key === "Enter") save.click(); });
+        el.appendChild(form);
+        setTimeout(function () { input.focus(); }, 0);
+      }
+
+      rows.appendChild(el);
+    });
+  }
+
+  function keyOf(c) { return String(c.email || c.phone || c.name || "").toLowerCase(); }
+
+  function logJob(c, what, btn) {
+    if (!what) { note($("listnote"), "err", "Say what the job was."); return; }
+    btn.disabled = true;
+    btn.textContent = "Saving...";
+    fetch(api("api/customers"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        action: "job",
+        customer: c.name,
+        customer_email: c.email,
+        customer_phone: c.phone,
+        job: what,
+      }),
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.ok) throw new Error(d.error || "could not save that");
+        state.openJob = null;
+        return load().then(function () {
+          note($("listnote"), "ok", "Logged for " + (c.name || "them") + ".");
+        });
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        btn.textContent = "Save";
+        note($("listnote"), "err", String(err.message || err));
+      });
+  }
+
+  function load() {
+    return fetch(api("api/customers"))
+      .then(function (res) {
+        if (res.status === 401) { location.href = "./"; return null; }
+        return res.json();
+      })
+      .then(function (d) {
+        if (!d) return;
+        if (!d.ok) throw new Error(d.error || "could not load customers");
+        state.customers = d.customers || [];
+        state.summary = d.summary || {};
+        $("boot").style.display = "none";
+        $("main").style.display = "";
+
+        var s = state.summary;
+        $("t_total").textContent = s.total || 0;
+        $("t_jobs").textContent = s.jobs || 0;
+        $("t_adv").textContent = s.advocates || 0;
+        $("t_owed").textContent = money(s.owed);
+
+        $("sub").innerHTML = state.customers.length
+          ? "Everyone who has actually bought. <b>" + state.customers.length + "</b> so far."
+          : "Everyone who has actually bought.";
+
+        note($("listnote"), "", "");
+        render();
+      })
+      .catch(function (err) {
+        $("boot").style.display = "none";
+        $("main").style.display = "";
+        note($("listnote"), "err", String(err.message || err));
+      });
+  }
+
+  $("q").addEventListener("input", render);
+
+  // Same contract as the other tabs: POST {logout:1}, never DELETE.
+  fetch("api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" })
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (d && d.error === "Login is not configured.") return;
+      var out = $("signout");
+      out.style.display = "";
+      out.onclick = function (e) {
+        e.preventDefault();
+        fetch("api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ logout: 1 }),
+        }).then(function () { location.href = "./"; });
+      };
+    })
+    .catch(function () {});
+
+  load();
+})();
+</script>
+</body>
+</html>

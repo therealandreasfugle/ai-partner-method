@@ -1,0 +1,355 @@
+/* ==========================================================================
+   COFFEE SHOP
+   Warm cream and espresso, handwritten display face, floating product cards
+   and a cursor image trail.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Messy Handwritten';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/MessyHandwritten.woff') format('woff');
+}
+
+:root {
+  --background: #f5f0e8;
+  --card: #ede7db;
+  --foreground: #2c1810;
+  --primary-cta: #2c1810;
+  --primary-cta-text: #f5f0e8;
+  --secondary-cta: #ffffff;
+  --secondary-cta-text: #2c1810;
+  --accent: #8b7355;
+  --background-accent: #6f4e37;
+  --radius: 1.75rem;
+  --content-width: clamp(40rem, 67.5vw, 100rem);
+  --font-heading: 'Messy Handwritten', 'Segoe Print', cursive;
+}
+
+@media (width <= 768px) {
+  :root { --content-width: 80vw; }
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  padding-top: 7.5rem;
+  padding-bottom: 5rem;
+}
+
+@media (width >= 768px) { .hero { padding-top: 9rem; } }
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+
+.hero__title {
+  width: 100%;
+  white-space: nowrap;
+  line-height: 0.8;
+  font-size: var(--text-9xl); /* JS refines this to fit the width exactly */
+  transition: opacity 0.15s;
+}
+
+.hero__lede {
+  width: 50%;
+  font-size: var(--text-2xl);
+  line-height: 1.375;
+  text-align: right;
+  text-wrap: balance;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.hero__stage {
+  position: relative;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+}
+
+.hero__stage video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 0.25rem);
+}
+
+/* Product cards straddling the video panel's left and right edges. */
+.float-card {
+  position: absolute;
+  z-index: 10;
+  width: 13rem;
+  padding: 0.75rem;
+  overflow: hidden;
+}
+
+.float-card--left { left: 0; top: 4%; transform: translateX(-50%); }
+.float-card--right { right: 0; bottom: 6%; transform: translateX(50%); }
+
+.float-card__media { position: relative; }
+
+.float-card__media img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 0.25rem);
+}
+
+.float-card--left img { aspect-ratio: 3 / 4; }
+.float-card--right img { aspect-ratio: 1 / 1; }
+
+.float-card__label {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  padding: 0.75rem;
+}
+
+.float-card__label h3 {
+  font-size: var(--text-3xl);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (width <= 1280px) {
+  .float-card { width: 7rem; padding: 0.25rem; }
+  .float-card__label { bottom: 0.25rem; left: 0.25rem; right: 0.25rem; padding: 0.25rem; }
+  .float-card__label h3 { font-size: var(--text-2xl); }
+}
+
+@media (width <= 1024px) {
+  .float-card--left { transform: translateX(-20%); }
+  .float-card--right { transform: translateX(20%); }
+}
+
+@media (width <= 768px) {
+  .hero__lede { width: 100%; font-size: var(--text-lg); }
+  .hero__inner { gap: 2.5rem; }
+  .hero__stage video { aspect-ratio: 3 / 4; }
+  .float-card { width: 38%; }
+  .float-card--left { left: 6%; top: 8%; transform: none; }
+  .float-card--right { right: 6%; bottom: 8%; transform: none; }
+}
+
+/* --- Cursor trail --------------------------------------------------------- */
+
+.trail-section {
+  position: relative;
+  padding-block: 15rem;
+}
+
+.trail-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.trail-layer figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15em;
+  height: 20em;
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.trail-layer figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.trail-section__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.trail-section__content h3 {
+  font-size: var(--text-3xl);
+  font-weight: 400;
+}
+
+.trail-section__content h2 {
+  font-size: var(--text-7xl);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.trail-section__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  pointer-events: auto;
+}
+
+@media (width <= 768px) {
+  .trail-section { padding-block: 7rem; }
+  .trail-layer figure { width: 9em; height: 12em; }
+}
+
+/* --- Menu ----------------------------------------------------------------- */
+
+.menu-section { padding-block: 5rem; }
+
+.menu-section__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* --- Events --------------------------------------------------------------- */
+
+.events-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-block: 5rem;
+}
+
+.event-card { padding: 1rem; border-radius: var(--radius); }
+
+.event-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 0.5rem);
+}
+
+.event-card__body { padding: 1.5rem 0.5rem 0.5rem; }
+
+.event-card__body h3 {
+  font-size: var(--text-4xl);
+  margin-bottom: 0.5rem;
+}
+
+.event-card__body p {
+  font-size: var(--text-lg);
+  line-height: 1.375;
+  text-wrap: balance;
+}
+
+.event-wide {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-top: 1rem;
+}
+
+.event-wide__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.5rem;
+}
+
+.event-wide__copy h3 { font-size: var(--text-4xl); }
+.event-wide__copy p { font-size: var(--text-lg); line-height: 1.375; }
+
+.event-wide img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 0.5rem);
+}
+
+@media (width <= 768px) {
+  .event-wide { grid-template-columns: minmax(0, 1fr); }
+  .event-wide__copy { padding: 1rem; }
+}
+
+/* --- Contact -------------------------------------------------------------- */
+
+.contact-section { padding-block: 5rem; }
+
+.contact-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 3.5rem;
+  border-radius: var(--radius);
+}
+
+.contact-card h2 {
+  font-size: var(--text-7xl);
+  line-height: 1.15;
+  margin-top: 0.75rem;
+}
+
+.contact-methods { display: flex; gap: 1.5rem; }
+
+.contact-method {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.contact-method__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.75rem;
+  height: 6.75rem;
+  border-radius: 50%;
+  transition: transform 0.3s ease-out;
+}
+
+.contact-method:hover .contact-method__icon { transform: scale(0.92) rotate(-4deg); }
+.contact-method__icon svg { width: 2.25rem; height: 2.25rem; }
+.contact-method p { font-size: var(--text-base); }
+
+@media (width <= 768px) {
+  .contact-card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 2rem 1.5rem;
+    justify-items: center;
+    text-align: center;
+  }
+  .contact-methods { gap: 1rem; }
+  .contact-method__icon { width: 4.5rem; height: 4.5rem; }
+  .contact-method__icon svg { width: 1.5rem; height: 1.5rem; }
+}

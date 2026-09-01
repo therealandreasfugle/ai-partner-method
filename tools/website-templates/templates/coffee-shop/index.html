@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joe's Coffee: Handcrafted Espresso and Fresh Pastries</title>
+<meta name="description" content="Handcrafted espresso drinks and freshly baked pastries in a warm, welcoming atmosphere. From our first roast to your morning cup, every sip tells a story.">
+<meta property="og:title" content="Joe's Coffee">
+<meta property="og:description" content="Handcrafted espresso drinks and freshly baked pastries in a warm, welcoming atmosphere.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/hero/latte.webp">
+<meta name="theme-color" content="#f5f0e8">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../../core/tokens.css">
+<link rel="stylesheet" href="../../core/core.css">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="../../core/growth-kit.css">
+</head>
+<body>
+
+<div class="ambient" aria-hidden="true">
+  <span class="b1"></span>
+  <span class="b2"></span>
+  <span class="b3"></span>
+</div>
+
+<nav class="navbar" aria-label="Main">
+  <div class="navbar__panel" id="nav-panel">
+    <a href="#menu">Menu
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+    </a>
+    <a href="#locations">Find Us
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+    </a>
+  </div>
+
+  <div class="navbar__bar">
+    <a class="navbar__brand" href="#top">Joe's Coffee</a>
+    <div class="navbar__actions">
+      <a class="btn primary-button" href="#order" data-letters>Order Now</a>
+      <button class="navbar__toggle card" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero" aria-label="Hero section">
+    <div class="hero__inner wrap">
+      <div class="hero__copy">
+        <h1 class="hero__title" data-fit>Joe's Coffee</h1>
+        <p class="hero__lede">Handcrafted espresso drinks and freshly baked pastries in a warm, welcoming atmosphere. From our first roast to your morning cup, every sip tells a story.</p>
+        <div class="hero__actions">
+          <a class="btn primary-button" href="#order" data-letters>Order Now</a>
+          <a class="btn secondary-button" href="#menu" data-letters>View Menu</a>
+        </div>
+      </div>
+
+      <div class="hero__stage card">
+        <video src="assets/hero/hero.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Inside the Joe's Coffee shopfront"></video>
+
+        <div class="float-card card shadow-xl float-card--left">
+          <div class="float-card__media">
+            <img src="assets/hero/iced-coffee.webp" alt="Iced americano in a glass" width="720" height="960">
+            <div class="float-card__label card"><h3>Americano</h3></div>
+          </div>
+        </div>
+
+        <div class="float-card card shadow-xl float-card--right">
+          <div class="float-card__media">
+            <img src="assets/hero/latte.webp" alt="Latte with poured art" width="1254" height="1254">
+            <div class="float-card__label card"><h3>Latte</h3></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Enquiry form. Floats over the cover and takes no space in the
+         layout, so the design underneath is never pushed around. -->
+    <div data-growth-form="left"></div>
+  </section>
+
+  <!-- Cursor trail -->
+  <section class="trail-section" aria-label="About section">
+    <div class="trail-layer" data-trail aria-hidden="true">
+      <figure><img src="assets/trail/trail-1.webp" alt=""></figure>
+      <figure><img src="assets/trail/trail-2.webp" alt=""></figure>
+      <figure><img src="assets/trail/trail-3.webp" alt=""></figure>
+      <figure><img src="assets/trail/trail-4.webp" alt=""></figure>
+      <figure><img src="assets/trail/trail-5.webp" alt=""></figure>
+      <figure><img src="assets/trail/trail-6.webp" alt=""></figure>
+      <figure><img src="assets/trail/trail-7.webp" alt=""></figure>
+      <figure><img src="assets/trail/trail-8.webp" alt=""></figure>
+    </div>
+
+    <div class="trail-section__content wrap">
+      <h3>Move your cursor!</h3>
+      <h2>What are you in the mood for?</h2>
+      <div class="trail-section__actions">
+        <a class="btn primary-button" href="#menu" data-letters>See the Menu</a>
+        <a class="btn secondary-button" href="#locations" data-letters>Find Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section class="menu-section" id="menu" aria-label="Menu section">
+    <div class="menu-section__inner">
+      <div class="section-head wrap">
+        <div class="eyebrow card"><p>What We Serve</p></div>
+        <h2>Explore What's on Our Menu</h2>
+        <p>From handcrafted espresso drinks to freshly baked pastries, every item is made with care.</p>
+        <div class="filters" role="group" aria-label="Filter menu">
+          <button class="filter card" type="button" aria-pressed="true" data-filter="all"><span class="filter__fill primary-button"></span><span class="filter__label">All</span></button>
+          <button class="filter card" type="button" aria-pressed="false" data-filter="hot"><span class="filter__fill primary-button"></span><span class="filter__label">Hot Drinks</span></button>
+          <button class="filter card" type="button" aria-pressed="false" data-filter="cold"><span class="filter__fill primary-button"></span><span class="filter__label">Cold Drinks</span></button>
+          <button class="filter card" type="button" aria-pressed="false" data-filter="pastries"><span class="filter__fill primary-button"></span><span class="filter__label">Pastries</span></button>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <div class="grid grid--4" role="list" aria-live="polite">
+          <div class="filterable" role="listitem" data-cat="hot">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/menu/espresso.webp" alt="Espresso pulling into a glass" loading="lazy">
+              <div class="media-card__label card"><h4>Espresso</h4></div>
+            </div></div>
+          </div>
+          <div class="filterable" role="listitem" data-cat="hot">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/menu/latte-menu.webp" alt="Latte with rosetta art" loading="lazy">
+              <div class="media-card__label card"><h4>Latte</h4></div>
+            </div></div>
+          </div>
+          <div class="filterable" role="listitem" data-cat="cold">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/trail/trail-2.webp" alt="Barista pouring an iced latte" loading="lazy">
+              <div class="media-card__label card"><h4>Iced Latte</h4></div>
+            </div></div>
+          </div>
+          <div class="filterable" role="listitem" data-cat="hot">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/menu/cappuccino.webp" alt="Cappuccino dusted with cocoa" loading="lazy">
+              <div class="media-card__label card"><h4>Cappuccino</h4></div>
+            </div></div>
+          </div>
+          <div class="filterable" role="listitem" data-cat="cold">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/hero/iced-coffee.webp" alt="Iced americano against a blue sky" loading="lazy">
+              <div class="media-card__label card"><h4>Iced Americano</h4></div>
+            </div></div>
+          </div>
+          <div class="filterable" role="listitem" data-cat="hot">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/menu/mocha.webp" alt="Mocha with heart latte art" loading="lazy">
+              <div class="media-card__label card"><h4>Mocha</h4></div>
+            </div></div>
+          </div>
+          <div class="filterable" role="listitem" data-cat="cold">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/trail/trail-6.webp" alt="Iced mocha held out of a car window" loading="lazy">
+              <div class="media-card__label card"><h4>Iced Mocha</h4></div>
+            </div></div>
+          </div>
+          <div class="filterable" role="listitem" data-cat="hot">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/trail/trail-7.webp" alt="Flat white on a wooden table" loading="lazy">
+              <div class="media-card__label card"><h4>Flat White</h4></div>
+            </div></div>
+          </div>
+          <div class="filterable" role="listitem" data-cat="cold">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/menu/iced-flat-white.webp" alt="Iced flat white in a glass" loading="lazy">
+              <div class="media-card__label card"><h4>Iced Flat White</h4></div>
+            </div></div>
+          </div>
+          <div class="filterable" role="listitem" data-cat="hot">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/menu/chai-latte.webp" alt="Chai latte with spiced foam" loading="lazy">
+              <div class="media-card__label card"><h4>Chai Latte</h4></div>
+            </div></div>
+          </div>
+          <div class="filterable" role="listitem" data-cat="pastries">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/trail/trail-3.webp" alt="Croissant served on a plate" loading="lazy">
+              <div class="media-card__label card"><h4>Croissant</h4></div>
+            </div></div>
+          </div>
+          <div class="filterable" role="listitem" data-cat="pastries">
+            <div class="media-card card shadow-xl"><div class="media-card__media">
+              <img src="assets/menu/chocolate-chip-cookie.webp" alt="Chocolate chip cookies on a tray" loading="lazy">
+              <div class="media-card__label card"><h4>Chocolate Chip Cookie</h4></div>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section class="events-section" id="events" aria-label="Events section">
+    <div class="section-head wrap reveal">
+      <div class="eyebrow card"><p>Beyond the Cup</p></div>
+      <h2>Host Your Next Event at Joe's</h2>
+      <p>From intimate gatherings to full-scale catering, we bring the warmth of Joe's wherever you need it.</p>
+    </div>
+
+    <div class="wrap">
+      <div class="grid grid--2">
+        <article class="event-card card shadow-xl reveal">
+          <img src="assets/features/private-events.webp" alt="A full room of guests at a Joe's Coffee party" loading="lazy">
+          <div class="event-card__body">
+            <h3>Private Events</h3>
+            <p>Book our space for birthdays, meetings, or just a good excuse to get together. Great coffee and good vibes included.</p>
+          </div>
+        </article>
+
+        <article class="event-card card shadow-xl reveal">
+          <img src="assets/features/catering.webp" alt="A catering spread of pastries and sandwiches" loading="lazy">
+          <div class="event-card__body">
+            <h3>Catering</h3>
+            <p>Let us handle the coffee and pastries for your next event. We'll set up, pour, and make sure nobody runs on empty.</p>
+          </div>
+        </article>
+      </div>
+
+      <article class="event-wide card shadow-xl reveal">
+        <div class="event-wide__copy">
+          <h3>Custom Menus</h3>
+          <p>Work with our team to build a tailored menu for your event, from espresso bars to pastry platters, we've got you covered.</p>
+          <a class="btn primary-button" href="#contact" data-letters>Get in Touch</a>
+        </div>
+        <img src="assets/features/custom-menus.webp" alt="A printed Joe's Coffee menu board on a counter" loading="lazy">
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="order" aria-label="Contact section">
+    <div class="wrap">
+      <div class="contact-card card shadow-xl reveal" id="contact">
+        <div>
+          <div class="eyebrow card"><p>Get in Touch</p></div>
+          <h2>Speak with one of our experts</h2>
+        </div>
+        <div class="contact-methods">
+          <a class="contact-method" href="https://wa.me/15550100199" target="_blank" rel="noopener">
+            <span class="contact-method__icon primary-button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.5 8.5 0 0 1-4-1L3 20l1.1-5.4a8.4 8.4 0 0 1-1-4A8.4 8.4 0 0 1 11.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+            </span>
+            <p>Whatsapp</p>
+          </a>
+          <a class="contact-method" href="mailto:hello@joescoffee.com">
+            <span class="contact-method__icon primary-button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            </span>
+            <p>Email</p>
+          </a>
+          <a class="contact-method" href="tel:+15550100199">
+            <span class="contact-method__icon primary-button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            </span>
+            <p>Number</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="locations">
+  <div class="site-footer__inner wrap">
+    <h2 class="site-footer__wordmark" data-fit>Joe's Coffee</h2>
+
+    <div class="footer-cols">
+      <ul>
+        <li><a href="#menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Menu</a></li>
+        <li><a href="#menu" data-jump="hot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Hot Drinks</a></li>
+        <li><a href="#menu" data-jump="pastries"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Pastries</a></li>
+      </ul>
+      <ul>
+        <li><a href="#locations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Find Us</a></li>
+        <li><a href="#locations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Hours</a></li>
+        <li><a href="#events"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>About</a></li>
+      </ul>
+      <ul>
+        <li><a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Contact</a></li>
+        <li><a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Careers</a></li>
+        <li><a href="#order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Gift Cards</a></li>
+      </ul>
+    </div>
+
+    <p class="footer-legal">Joe's Coffee. Open daily, 7am to 6pm.</p>
+  </div>
+</footer>
+
+<script src="../../core/core.js"></script>
+<script>/* public read-only key: selects rows and nothing else */
+window.GK_STORE_KEY = "YOUR_SUPABASE_ANON_KEY";</script>
+<script src="demo-site.js"></script>
+<script src="../../core/growth-kit.js" defer></script>
+</body>
+</html>

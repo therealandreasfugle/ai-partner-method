@@ -1,0 +1,144 @@
+/* ==========================================================================
+   AI UGC CREATOR
+   Snow with signal red: video-wall hero, metric band, four long steps,
+   testimonial marquee, pricing, FAQ.
+   ========================================================================== */
+
+:root {
+  --background: snow;
+  --card: #ffffff;
+  --foreground: #1a0000;
+  --primary-cta: #e63946;
+  --primary-cta-text: snow;
+  --secondary-cta: #ffffff;
+  --secondary-cta-text: #1a0000;
+  --accent: #e63946;
+  --background-accent: #f09ca1;
+  --radius: 1.5rem;
+  --content-width: 87.5vw;
+  --section-head-size: var(--text-6xl);
+}
+
+@media (width >= 1536px) { :root { --section-head-size: var(--text-7xl); } }
+
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero { padding-top: 9rem; padding-bottom: 3rem; }
+.hero__inner { display: flex; flex-direction: column; align-items: center; gap: 1.15rem; text-align: center; }
+.hero__title { max-width: 16ch; font-size: var(--text-8xl); line-height: 1.02; font-weight: 700; letter-spacing: -0.035em; }
+.hero__lede { max-width: 52ch; font-size: var(--text-xl); line-height: 1.45; opacity: 0.75; }
+.hero__note { font-size: var(--text-base); opacity: 0.55; }
+
+@media (width <= 768px) { .hero { padding-top: 7.5rem; } .hero__title { font-size: var(--text-7xl); max-width: 13ch; } }
+
+/* --- Creator video wall ---------------------------------------------------- */
+
+.creator-marquee { --marquee-gap: 1rem; --marquee-duration: 55s; margin-top: 3rem; }
+
+.creator {
+  position: relative;
+  width: 16rem;
+  flex: none;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.creator video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; }
+
+.creator__meta {
+  position: absolute;
+  z-index: 2;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: calc(var(--radius) - 0.5rem);
+  background: rgba(255,255,255,0.9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.creator__meta img { width: 1.9rem; height: 1.9rem; border-radius: 50%; object-fit: cover; }
+.creator__meta strong { display: block; font-size: var(--text-base); }
+.creator__meta span { font-size: var(--text-xs); opacity: 0.6; }
+
+.creator__flag {
+  position: absolute;
+  z-index: 2;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(26,0,0,0.65);
+  color: snow;
+  font-size: var(--text-xs);
+}
+
+@media (width <= 768px) { .creator { width: 12rem; } }
+
+/* --- Metric band ------------------------------------------------------------ */
+
+.metric-band { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
+.metric-band__cell { padding: 2rem; border-radius: var(--radius); text-align: center; }
+.metric-band__cell strong { display: block; font-size: var(--text-6xl); font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--primary-cta); }
+.metric-band__cell span { display: block; margin-top: 0.6rem; font-size: var(--text-lg); opacity: 0.65; }
+
+@media (width <= 768px) { .metric-band { grid-template-columns: minmax(0,1fr); } }
+
+/* --- Long steps -------------------------------------------------------------- */
+
+.long-steps { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.long-step { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; padding: 2.5rem; border-radius: var(--radius); }
+.long-step:nth-child(even) .long-step__media { order: -1; }
+.long-step__copy { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.long-step__copy h3 { font-size: var(--text-5xl); line-height: 1.08; letter-spacing: -0.02em; }
+.long-step__copy p { max-width: 48ch; font-size: var(--text-lg); line-height: 1.55; opacity: 0.8; }
+.long-step img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: calc(var(--radius) - 0.5rem); }
+
+@media (width <= 900px) {
+  .long-step { grid-template-columns: minmax(0,1fr); padding: 1.5rem; gap: 1.5rem; }
+  .long-step:nth-child(even) .long-step__media { order: 0; }
+}
+
+/* --- Reviews ------------------------------------------------------------------ */
+
+.review-marquee { --marquee-gap: 1rem; --marquee-duration: 52s; }
+.review-marquee .testimonial { width: 24rem; flex: none; }
+
+@media (width <= 768px) { .review-marquee .testimonial { width: 19rem; } }
+
+/* --- Contact ---------------------------------------------------------------- */
+
+.cta-band { display: flex; flex-direction: column; align-items: center; gap: 1.15rem; text-align: center; padding-block: 5rem; }
+.cta-band h2 { max-width: 22ch; font-size: var(--text-6xl); line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
+.cta-band p { max-width: 46ch; font-size: var(--text-lg); line-height: 1.5; opacity: 0.75; }
+.cta-band__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+
+/* --- Footer -------------------------------------------------------------------- */
+
+.site-footer { border-radius: var(--radius) var(--radius) 0 0; background: var(--foreground); color: snow; padding-block: 4rem; }
+.footer-top { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: start; }
+.footer-brand { font-size: var(--text-5xl); font-weight: 700; letter-spacing: -0.02em; }
+.footer-nav { display: grid; grid-template-columns: repeat(3, minmax(9rem, auto)); gap: 2.5rem; }
+.footer-nav h3 { font-size: var(--text-base); font-weight: 500; opacity: 0.55; margin-bottom: 1rem; }
+.footer-nav ul { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-nav a { font-size: var(--text-lg); transition: color 0.2s, opacity 0.2s; }
+.footer-nav a:hover { color: var(--accent); }
+
+.footer-legal-bar {
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  margin-top: 3rem; padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  font-size: var(--text-base); opacity: 0.6;
+}
+.footer-legal-bar div { display: flex; gap: 1.25rem; }
+
+@media (width <= 768px) {
+  .footer-top { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .footer-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+}

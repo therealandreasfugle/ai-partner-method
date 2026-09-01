@@ -1,0 +1,355 @@
+{
+  "meta": {
+    "title": "Halloway Roofing | Roofing Contractor in Stockport",
+    "description": "Trusted roofing contractor in Stockport for full re-roofs and heritage slate work. NFRC member, fully insured, no subcontractors."
+  },
+  "company": {
+    "name": "Halloway Roofing",
+    "shortName": "Halloway",
+    "tagline": "Premium roofing, done right",
+    "description": "We specialise in full re-roofs and heritage slate work for homes in Stockport. Every job is done by our own team, never subcontracted.",
+    "serviceRegion": "Stockport and surrounding areas"
+  },
+  "copy": {
+    "hero": {
+      "eyebrow": "STOCKPORT ROOFING EXPERTS",
+      "headline": "NO COWBOYS, JUST PROPER ROOFING",
+      "subheadline": "Over 20 years fixing roofs in Stockport without disappearing with your deposit.",
+      "imageAlt": "A team of roofers working on a heritage slate roof in Stockport"
+    },
+    "heroTrustChips": [
+      "NFRC member",
+      "Fully insured",
+      "No subcontractors"
+    ],
+    "trustClaims": [
+      "20+ years in Stockport",
+      "Own team, every job",
+      "Premium quality, worth it"
+    ],
+    "formHeader": "Get a quote",
+    "formSubtext": "No deposit needed to book a survey.",
+    "buttonText": "Book now",
+    "footerCta": "Need a proper roof? Call us today.",
+    "cta": {
+      "label": "READY FOR A QUOTE?",
+      "heading": "No time wasters, just honest work",
+      "body": "We focus on quality jobs, not cheap fixes. Let's talk about your roof."
+    },
+    "founder": {
+      "label": "DANNY HALLOWAY",
+      "heading": "Roofing done right, every time",
+      "para1": "I started Halloway Roofing over 20 years ago because I was tired of seeing cowboys take deposits and disappear. We're a small team, but every job is done by us, no subcontractors, no shortcuts.",
+      "para2": "We don't compete on price because we don't want the cheap jobs. We want the ones that matter, full re-roofs, heritage slate, and work we can be proud of. If you want a roof that lasts, we're the ones to call.",
+      "vision": "To be the most trusted name in Stockport roofing, without cutting corners.",
+      "mission": "To give homeowners peace of mind with honest, high-quality roofing."
+    },
+    "submitButton": "Get Halloway quote",
+    "privacyLine": "We never share your details",
+    "mobileCallLabel": "Call now",
+    "copyright": "Halloway Roofing",
+    "services": {
+      "heading": "Roofing services in Stockport",
+      "body": "Full re-roofs, heritage slate work, repairs and maintenance across Stockport and nearby areas"
+    },
+    "whyChoose": {
+      "label": "WHY US",
+      "heading": "No subcontractors, just our own team"
+    },
+    "gallery": {
+      "heading": "Recent roofing projects",
+      "body": "See examples of our work in Stockport, Cheadle and Bramhall"
+    },
+    "process": {
+      "body": "We visit, quote, schedule and complete every job with no hidden steps",
+      "badgeText": "Clear process"
+    },
+    "offers": {
+      "heading": "Fair pricing on every job",
+      "detail": "No deposit needed for most work, just honest quotes upfront"
+    },
+    "reviews": {
+      "heading": "What customers say"
+    },
+    "faq": {
+      "label": "FAQS",
+      "heading": "Common roofing questions"
+    },
+    "blog": {
+      "label": "ADVICE",
+      "heading": "Roofing tips and guides",
+      "body": "Practical advice for homeowners in Stockport and surrounding areas"
+    },
+    "serviceAreas": {
+      "heading": "Roofing across Stockport",
+      "body": "Serving Stockport, Cheadle, Bramhall and nearby towns"
+    },
+    "serviceAreaCard": {
+      "heading": "Local roofers",
+      "body": "Working in Stockport, Cheadle, Bramhall and surrounding areas"
+    }
+  },
+  "services": [
+    {
+      "slug": "full-re-roofs",
+      "name": "Full re-roofs",
+      "body": "Whether your roof is past its best or you want a complete upgrade, we handle everything from stripping old tiles to fitting new ones. No subcontractors, just our own team."
+    },
+    {
+      "slug": "heritage-slate-work",
+      "name": "Heritage slate work",
+      "body": "Specialist slate roofing for older properties in Stockport. We match traditional materials and techniques to keep your home's character intact. Proper craftsmanship, no shortcuts."
+    },
+    {
+      "slug": "roof-repairs",
+      "name": "Roof repairs",
+      "body": "Leaks, slipped tiles, or storm damage? We fix problems properly, not just with a quick patch. Honest advice on whether a repair or replacement is best for your home."
+    },
+    {
+      "slug": "roof-surveys",
+      "name": "Roof surveys",
+      "body": "Not sure what's wrong with your roof? We'll inspect it thoroughly and give you a clear, no-nonsense report. No deposit needed to book a survey, just honest answers."
+    }
+  ],
+  "why_choose_us": [
+    "We don't disappear with your deposit, ever.",
+    "Every job is done by our own team, not subcontractors.",
+    "We focus on quality work, not cheap fixes.",
+    "Over 20 years of roofing experience in Stockport.",
+    "NFRC member and fully insured for your peace of mind.",
+    "We won't waste your time with lowball quotes or pushy sales."
+  ],
+  "process_steps": [
+    {
+      "n": 1,
+      "title": "Book a survey",
+      "body": "Call or message us to arrange a free, no-obligation roof survey. No deposit needed."
+    },
+    {
+      "n": 2,
+      "title": "Honest quote",
+      "body": "We'll give you a clear, detailed quote with no hidden costs. If it's not right for you, we'll tell you."
+    },
+    {
+      "n": 3,
+      "title": "Schedule the work",
+      "body": "We'll agree a start date and keep you updated every step of the way. No surprises."
+    },
+    {
+      "n": 4,
+      "title": "Job done right",
+      "body": "Our team gets to work, and we don't leave until you're happy. Proper roofing, no shortcuts."
+    }
+  ],
+  "faq": [
+    {
+      "q": "How do I know you won't take my deposit and disappear?",
+      "a": "We've been trading in Stockport for over 20 years and never taken a deposit upfront. We don't need to, our reputation is built on trust, not quick cash. You'll meet our team before any work starts, and we're always here if you have questions."
+    },
+    {
+      "q": "Why should I pay more for your work?",
+      "a": "We don't compete on price because we don't want the cheap jobs. Our work lasts longer, looks better, and comes with proper guarantees. If you want a roof that won't leak in a year, we're worth the investment."
+    },
+    {
+      "q": "Do you use subcontractors?",
+      "a": "No. Every job is done by our own team, so you know exactly who's working on your roof. No strangers, no shortcuts, just proper roofing."
+    },
+    {
+      "q": "How long does a full re-roof take?",
+      "a": "It depends on the size and complexity of your roof, but most full re-roofs take 1-2 weeks. We'll give you a clear timeline before we start, and we'll keep you updated every day."
+    },
+    {
+      "q": "What areas do you cover?",
+      "a": "We work across Stockport and the surrounding areas. If you're not sure, give us a call and we'll let you know if we can help."
+    },
+    {
+      "q": "Do you offer guarantees?",
+      "a": "Yes. We provide a written guarantee on all our work, and because we're NFRC members, you know we're held to high standards. If something goes wrong, we'll fix it, no questions asked."
+    }
+  ],
+  "special_offers": [
+    {
+      "label": "Free survey",
+      "description": "Book a no-obligation roof survey with no deposit required."
+    },
+    {
+      "label": "Heritage discounts",
+      "description": "Ask us about special rates for heritage slate work on older properties."
+    }
+  ],
+  "previous_projects": [
+    {
+      "alt": "A completed full re-roof on a detached house in Stockport",
+      "category": "Re-roof",
+      "filename": "project-1.webp"
+    },
+    {
+      "alt": "Heritage slate roofing work on a period property",
+      "category": "Slate",
+      "filename": "project-2.webp"
+    },
+    {
+      "alt": "A team repairing a storm-damaged roof in Stockport",
+      "category": "Repair",
+      "filename": "project-3.webp"
+    },
+    {
+      "alt": "A close-up of a newly installed slate roof on a cottage",
+      "category": "Heritage",
+      "filename": "project-4.webp"
+    }
+  ],
+  "blog_posts": [
+    {
+      "slug": "when-to-replace-your-roof",
+      "title": "When to replace your roof in Stockport",
+      "category": "Roofing advice",
+      "excerpt": "Signs your roof may need replacing and what to consider before starting work",
+      "body": "Most roofs in Stockport last between 20 and 50 years, depending on materials. Slate roofs often last the longest, while felt and other flat roofing materials may need replacing sooner.\n\nLook for missing or broken tiles, leaks in your loft, or daylight showing through the roof boards. If your roof is sagging or you notice granules in your gutters, these are also signs that replacement may be needed.\n\nBefore committing to a full re-roof, get a professional inspection. We can check the condition of your roof structure and advise whether repair or replacement is the best option for your home."
+    },
+    {
+      "slug": "choosing-slate-for-heritage-homes",
+      "title": "Choosing slate for heritage homes in Stockport",
+      "category": "Heritage work",
+      "excerpt": "How to select the right slate for period properties and what to expect from the process",
+      "body": "Heritage homes in Stockport often require traditional materials to maintain their character. Natural slate is the most authentic choice for period properties, with different colours and textures available to match your home's original roof.\n\nWhen selecting slate, consider the thickness, size and colour that best suits your property. Welsh slate is a popular choice for its durability and classic appearance, while local slate can sometimes be sourced for a more authentic match.\n\nThe installation process for heritage slate work is more time-consuming than modern roofing methods. Each slate must be carefully cut and fixed to ensure a watertight finish that will last for decades. Our team has experience working on listed buildings and conservation areas across Stockport."
+    }
+  ],
+  "pages": {
+    "about": {
+      "heroLabel": "About Halloway Roofing",
+      "heroHeadline": "Local roofers you can trust",
+      "storyHeading": "Our approach",
+      "storyClosing": "We take pride in every job, big or small",
+      "crewHeading": "Our team",
+      "crewBody": "Danny Halloway leads a team of experienced roofers, all employed directly by us. We don't use subcontractors, so you always know who will be working on your roof.",
+      "crewCaption": "Danny and the Halloway Roofing team",
+      "valuesIntro": "What matters most to us",
+      "values": [
+        {
+          "title": "No subbies",
+          "text": "Every job is done by our own team, never subcontracted"
+        },
+        {
+          "title": "Clear quotes",
+          "text": "Honest pricing with no hidden costs"
+        },
+        {
+          "title": "Local focus",
+          "text": "We know Stockport roofs inside out"
+        }
+      ]
+    },
+    "serviceAreas": {
+      "mapHeading": "Where we work",
+      "mapBody": "Serving Stockport and surrounding areas",
+      "citiesFallback": "We cover Stockport, Cheadle, Bramhall and nearby towns",
+      "readyHeading": "Need a roofer?",
+      "readyBody": "Get in touch for a free, no-obligation quote",
+      "coverageHighlights": [
+        {
+          "title": "Stockport",
+          "body": "Full roofing services across Stockport, from new roofs to repairs"
+        },
+        {
+          "title": "Cheadle",
+          "body": "Heritage slate work and re-roofing for homes in Cheadle"
+        },
+        {
+          "title": "Bramhall",
+          "body": "Local roofers serving Bramhall and surrounding areas"
+        }
+      ]
+    }
+  },
+  "assets": {
+    "base": "/sites/halloway-roofing"
+  },
+  "palette": {
+    "primary": "#1E3A5F",
+    "primary_dark": "#15293F",
+    "primary_slate": "#2C4660",
+    "accent": "#E8821E",
+    "accent_light": "#F4A94C",
+    "accent_dark": "#C26A12",
+    "neutral": "#F5F3EF",
+    "neutral_dim": "#E4E0D8",
+    "silver": "#9AA3AD",
+    "ink": "#1A1F26"
+  },
+  "typography": {
+    "heading": "Oswald",
+    "body": "Plus Jakarta Sans",
+    "headingFontUrl": "https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap",
+    "bodyFontUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+  },
+  "contact": {
+    "phone": "0161 555 0188",
+    "phoneTelLink": "tel:01615550188",
+    "email": "danny@hallowayroofing.example",
+    "googleMapsUrl": "https://maps.google.com/?cid=1234567890",
+    "mapsEmbedUrl": null
+  },
+  "address": {
+    "street": "14 Wellington Road South",
+    "city": "Stockport",
+    "state": "Stockport and surrounding areas",
+    "zip": "SK1 3UA",
+    "full": "14 Wellington Road South, Stockport, SK1 3UA",
+    "lat": null,
+    "lng": null
+  },
+  "serviceAreas": [
+    "Stockport",
+    "Cheadle",
+    "Bramhall"
+  ],
+  "team": {
+    "founder": {
+      "name": "Danny Halloway",
+      "displayName": "Danny",
+      "title": "Owner, Halloway",
+      "yearsExp": "",
+      "expLabel": "roofing contractor in Stockport"
+    },
+    "founders": []
+  },
+  "credit": {
+    "agency": "Northstar Web Studio",
+    "url": null
+  },
+  "reviews": {
+    "rating": 4.8,
+    "googleCount": 63,
+    "facebookCount": 0,
+    "totalReviewCount": 63,
+    "googleLabel": "Google",
+    "facebookLabel": "Facebook",
+    "googleStat": "4.8 from 63 reviews",
+    "facebookStat": "",
+    "items": []
+  },
+  "trust_badges": [],
+  "press_logos": [],
+  "_generated": {
+    "model": "omniroute/auto/best-free + omniroute/auto/best-free",
+    "lane": "free-api"
+  },
+  "_demo": {
+    "proposalUrl": "http://localhost:4400/proposal.html?site=halloway-roofing"
+  },
+  "_display": {
+    "name": "Halloway Roofing",
+    "town": "Stockport",
+    "phone": "0161 555 0188",
+    "address": "14 Wellington Road South, Stockport, SK1 3UA",
+    "streetOnly": "14 Wellington Road South",
+    "postcode": "SK1 3UA",
+    "mapsUrl": "https://maps.google.com/?cid=1234567890",
+    "websiteStatus": "Old site",
+    "website": "http://hallowayroofing.example",
+    "facebook": "",
+    "instagram": "",
+    "reviewLine": "4.8 from 63 Google reviews"
+  }
+}

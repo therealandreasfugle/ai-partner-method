@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outreach Health</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ffffff'/%3E%3Cpath d='M7 21l5-6 4 3 6-8' stroke='%232e6fe0' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f6f6f3;
+    --surface: #ffffff;
+    --shell: #ffffff;
+    --ring: #e8e7e2;
+    --ink: #1b1d20;
+    --ink-2: #4b4f54;
+    --muted: #878b90;
+    --grid: #e8e7e3;
+    --bar: #2e6fe0;
+    --bar-hover: #3d7ce6;
+    /* one-hue ordinal ramp for the funnel stages (light-surface safe) */
+    --seq-1: #b8d1f6; --seq-2: #7fa8ec; --seq-3: #3f7ee4; --seq-4: #2258b8;
+    /* pipeline categories */
+    --cat-new: #c9ccd0; --cat-seq: #3f7ee4; --cat-nur: #8d7fe0; --cat-rep: #1d9a67; --cat-rem: #e06a63;
+    --good: #1d9a67; --good-text: #157f4a;
+    --warning: #b07708;
+    --serious: #c96a3a;
+    --critical: #d04640; --critical-text: #c0392f;
+    --shadow: 0 1px 2px rgba(20, 22, 26, 0.05);
+    --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+  .glow { display: none; }
+  .wrap { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 22px 24px 90px; }
+  @media (min-width: 768px) { .wrap { padding: 24px 24px 110px; } }
+
+  /* App nav: one bar across the whole toolkit */
+  .topnav { background: var(--surface); border-bottom: 1px solid var(--ring); }
+  .topnav .in { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 48px; display: flex; align-items: center; gap: 22px; }
+  .topnav .brand { display: flex; flex-direction: row; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; letter-spacing: -0.01em; white-space: nowrap; color: var(--ink); }
+  .topnav .brand .mk { width: 20px; height: 20px; border-radius: 5px; background: #191a1c; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 700; }
+  .navtabs { display: flex; gap: 2px; height: 100%; }
+  /* A flex child sits at min-width:auto by default, so once there were three
+     tabs the strip refused to shrink and dragged the whole page sideways on a
+     phone. It scrolls inside itself instead. */
+  @media (max-width: 560px) {
+    .navtabs { min-width: 0; overflow-x: auto; scrollbar-width: none; }
+    .navtabs::-webkit-scrollbar { display: none; }
+    .navtab { padding: 0 8px; }
+    /* The scrolling strip absorbs the squeeze; the buttons keep their size. */
+    .navright { flex: none; }
+  }
+  .navtab { display: inline-flex; align-items: center; padding: 0 10px; font-size: 13px; font-weight: 500; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; text-decoration: none; }
+  .navtab:hover { color: var(--ink); }
+  .navtab.on { color: var(--ink); font-weight: 600; border-bottom-color: var(--ink); }
+
+  header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+  .brand { display: flex; flex-direction: column; gap: 4px; }
+  .eyebrow { width: max-content; font-size: 11px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+  h1 { font-size: 17px; font-weight: 650; letter-spacing: -0.01em; }
+  .stamp { font-size: 12px; color: var(--muted); text-align: right; line-height: 1.6; white-space: nowrap; }
+
+  .shell { background: var(--surface); border: 1px solid var(--ring); border-radius: 8px; }
+  .core { background: var(--surface); border-radius: 8px; padding: 18px; height: 100%; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .grid > * { min-width: 0; }
+  @media (min-width: 768px) {
+    .grid-6 { grid-template-columns: repeat(6, 1fr); }
+    .span-2 { grid-column: span 2; } .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; } .span-6 { grid-column: span 6; }
+  }
+
+  .reveal { opacity: 0; transform: translateY(6px); transition: opacity 0.4s var(--ease), transform 0.4s var(--ease); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  h3 { font-size: 13px; font-weight: 600; letter-spacing: -0.005em; }
+  .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+  .hint { font-size: 11px; color: var(--muted); }
+  .label { font-size: 11px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+  .sub { font-size: 12px; color: var(--muted); }
+  .sub strong, .note strong { color: var(--ink-2); font-weight: 600; }
+
+  /* Hero verdict */
+  .hero { display: flex; gap: 22px; align-items: flex-start; padding: 6px 4px; }
+  .hero .badge {
+    flex: 0 0 auto; width: 44px; height: 44px; border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    background: #f2f2ef; border: 1px solid var(--ring);
+  }
+  .hero .badge svg { width: 20px; height: 20px; }
+  .hero.good .badge { background: rgba(12,163,12,0.14); color: var(--good-text); }
+  .hero.warning .badge { background: rgba(250,178,25,0.12); color: var(--warning); }
+  .hero.critical .badge { background: rgba(208,59,59,0.14); color: var(--critical-text); }
+  .hero.neutral .badge { background: #f0f0ed; color: var(--muted); }
+  .hero h2 { font-size: 18px; font-weight: 650; letter-spacing: -0.01em; margin: 3px 0 8px; }
+  .hero .kicker { font-size: 11px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+  .note { font-size: 13.5px; color: var(--ink-2); padding-left: 18px; position: relative; margin-top: 5px; }
+  .note::before { content: ""; position: absolute; left: 2px; top: 9px; width: 6px; height: 2px; border-radius: 2px; background: var(--muted); }
+
+  /* Funnel */
+  .funnel { display: flex; flex-direction: column; gap: 10px; }
+  .stage { display: grid; grid-template-columns: 92px 1fr 118px; gap: 14px; align-items: center; }
+  .stage .name { font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+  .stage .track { height: 26px; border-radius: 6px; background: #f0f0ed; overflow: hidden; }
+  .stage .fill { display: block; height: 100%; border-radius: 6px 4px 4px 6px; min-width: 2px; transition: width 0.9s var(--ease); }
+  .stage .val { font-size: 12.5px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+  .stage .val strong { color: var(--ink); font-size: 14px; font-weight: 700; }
+
+  /* Threshold meters */
+  .meter { margin-top: 16px; }
+  .meter .row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; }
+  .meter .row .label { letter-spacing: 0.1em; }
+  .meter .val { font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .meter .track { position: relative; height: 8px; border-radius: 999px; background: var(--grid); }
+  .meter .fill { position: absolute; inset: 0 auto 0 0; border-radius: 999px; min-width: 0; }
+  .meter .limit { position: absolute; top: -4px; bottom: -4px; width: 2px; border-radius: 2px; background: var(--ink-2); opacity: 0.8; }
+  .meter .cap { font-size: 11px; color: var(--muted); margin-top: 6px; }
+  .ok-text { color: var(--good-text); } .bad-text { color: var(--critical-text); } .warn-text { color: var(--warning); }
+
+  /* Warm-up ring */
+  .ringwrap { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+  .ringbox { position: relative; width: 148px; height: 148px; }
+  .ringbox svg { transform: rotate(-90deg); }
+  .ringbox .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+  .ringbox .big { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .ringbox .of { font-size: 11px; color: var(--muted); }
+
+  /* Pipeline stacked bar */
+  .stack { display: flex; height: 30px; border-radius: 8px; overflow: hidden; gap: 2px; background: transparent; margin: 4px 0 14px; }
+  .stack i { display: block; height: 100%; min-width: 3px; border-radius: 3px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+  .chip { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--ink-2); }
+  .chip b { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .dot { width: 9px; height: 9px; border-radius: 3px; flex: 0 0 auto; }
+  .answer { margin-top: 16px; border-top: 1px solid rgba(20,22,26,0.06); padding-top: 12px; }
+  .answer .rowline { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; font-size: 13px; }
+  .answer .rowline .who { color: var(--ink); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .answer .rowline .when { color: var(--muted); font-variant-numeric: tabular-nums; flex: 0 0 auto; }
+
+  /* Chart */
+  .chart { position: relative; height: 180px; }
+  .gridlines { position: absolute; inset: 0 0 22px 0; display: flex; flex-direction: column; justify-content: space-between; pointer-events: none; }
+  .gridlines i { display: block; height: 1px; background: var(--grid); }
+  .gridlines i:last-child { background: #d9d8d2; }
+  .bars { position: absolute; inset: 0 0 22px 0; display: flex; align-items: flex-end; gap: 2px; }
+  .bar { flex: 1 1 0; min-width: 0; position: relative; height: 100%; display: flex; align-items: flex-end; cursor: default; }
+  .bar i { display: block; width: 100%; background: var(--bar); border-radius: 4px 4px 0 0; transition: background 0.3s var(--ease); }
+  .bar:hover i { background: var(--bar-hover); }
+  .bar.zero i { height: 2px; background: var(--grid); border-radius: 2px; }
+  .axis { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .peak { position: absolute; transform: translate(-50%, -130%); font-size: 11px; font-weight: 700; color: var(--ink-2); pointer-events: none; }
+  .tip {
+    position: fixed; z-index: 10; pointer-events: none; opacity: 0;
+    background: #1b1d20; border: 1px solid #1b1d20; border-radius: 10px;
+    padding: 7px 10px; font-size: 12px; color: #ffffff;
+    transition: opacity 0.2s var(--ease); white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .tip .d { color: var(--muted); }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted); padding: 0 12px 9px 0; border-bottom: 1px solid var(--grid); }
+  td { padding: 11px 12px 11px 0; border-bottom: 1px solid rgba(20,22,26,0.06); color: var(--ink-2); vertical-align: middle; font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; }
+  td.num, th.num { text-align: right; padding-right: 0; }
+  .to { color: var(--ink); font-weight: 500; max-width: 210px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .subj { max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .scroll-x { overflow-x: auto; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; border-radius: 5px; padding: 2px 8px 2px 6px; font-size: 11px; font-weight: 500; background: transparent; border: 1px solid var(--ring); white-space: nowrap; }
+  .pill svg { width: 12px; height: 12px; }
+  .pill.good { color: var(--good-text); } .pill.warning { color: var(--warning); }
+  .pill.serious { color: var(--serious); } .pill.critical { color: var(--critical-text); }
+  .pill.neutral { color: var(--muted); }
+
+  /* Send-now button */
+  .sendbtn {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid #1e47b8; border-radius: 6px; cursor: pointer;
+    background: #2557d6; color: #ffffff;
+    font: inherit; font-size: 13px; font-weight: 600; padding: 7px 8px 7px 14px;
+    transition: background 0.15s var(--ease);
+  }
+  .sendbtn:hover { background: #1e47b8; }
+  .sendbtn:active { transform: scale(0.98); }
+  .sendbtn:disabled { opacity: 0.55; cursor: default; }
+  .sendbtn .go {
+    width: 26px; height: 26px; border-radius: 999px; background: rgba(255,255,255,0.22);
+    display: flex; align-items: center; justify-content: center; transition: transform 0.4s var(--ease);
+  }
+  .sendbtn:hover .go { transform: translateX(2px); }
+  .sendbtn .go svg { width: 13px; height: 13px; }
+  .sendout { font-size: 12.5px; margin-top: 10px; color: var(--ink-2); min-height: 18px; }
+
+  /* Call Mode link */
+  .head-right { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  .callmode {
+    display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
+    border: 1px solid var(--ring); border-radius: 999px;
+    background: var(--surface); color: var(--ink); box-shadow: var(--shadow);
+    font-size: 13px; font-weight: 700; padding: 9px 16px; white-space: nowrap;
+    transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .callmode:hover { background: #fafaf8; }
+  .callmode:active { transform: scale(0.98); }
+  .callmode svg { width: 15px; height: 15px; color: var(--bar); }
+
+  .state { text-align: center; padding: 80px 20px; color: var(--muted); }
+  .state h2 { color: var(--ink); font-size: 18px; margin-bottom: 10px; font-weight: 700; }
+  .state p { max-width: 460px; margin: 0 auto; font-size: 14px; }
+  .spin { width: 22px; height: 22px; margin: 0 auto 18px; border-radius: 999px; border: 2px solid var(--grid); border-top-color: var(--bar); animation: spin 0.9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Login gate: full-screen cover shown when the API asks for a sign in. */
+  .signout { margin-left: auto; font: inherit; font-size: 12.5px; font-weight: 500; color: var(--muted); background: none; border: none; cursor: pointer; padding: 4px 2px; white-space: nowrap; text-decoration: none; }
+  .signout:hover { color: var(--ink); }
+  .loginwrap { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 24px; background: var(--page); }
+  .loginwrap.on { display: flex; }
+  .logincard { width: 100%; max-width: 340px; background: var(--surface); border: 1px solid var(--ring); border-radius: 10px; padding: 26px 24px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .loginmark { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 20px; }
+  .loginmark .mk { width: 22px; height: 22px; border-radius: 6px; background: #191a1c; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+  .loginlab { font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 6px; }
+  .logininput { width: 100%; height: 38px; padding: 0 11px; font: inherit; font-size: 13px; color: var(--ink); background: var(--surface); border: 1px solid var(--ring); border-radius: 7px; margin-bottom: 14px; outline: none; transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease); }
+  .logininput:focus { border-color: var(--bar); box-shadow: 0 0 0 3px rgba(46, 111, 224, 0.12); }
+  .loginbtn { height: 38px; border: 0; border-radius: 7px; background: var(--bar); color: #fff; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; margin-top: 2px; transition: background 0.15s var(--ease); }
+  .loginbtn:hover { background: var(--bar-hover); }
+  .loginbtn:disabled { opacity: 0.6; cursor: default; }
+  .loginerr { min-height: 17px; margin-top: 10px; font-size: 12.5px; color: var(--critical); text-align: center; }
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="in">
+  <span class="brand"><span class="mk">A</span>AI Partner Method</span>
+  <div class="navtabs">
+    <a class="navtab" href="crm.html" id="nav-crm">Leads</a>
+    <a class="navtab" href="customers.html" id="nav-customers">Customers</a>
+    <a class="navtab" href="referrals.html" id="nav-referrals">Referrals</a>
+    <a class="navtab on" href="./" id="nav-email">Email health</a>
+  </div>
+  <a class="signout" id="signout" href="#" style="display:none">Sign out</a>
+</div></nav>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <span class="eyebrow">Email health</span>
+      <h1>Your cold email, at a glance</h1>
+    </div>
+    <div class="head-right">
+      <div class="stamp" id="stamp"></div>
+    </div>
+  </header>
+
+  <div id="app">
+    <div class="state"><div class="spin"></div><p>Reading your Resend account...</p></div>
+  </div>
+</div>
+<div class="tip" id="tip"></div>
+<div class="loginwrap" id="loginwrap" role="dialog" aria-modal="true" aria-label="Sign in" aria-hidden="true">
+  <form class="logincard" id="loginform" autocomplete="on">
+    <div class="loginmark"><span class="mk">A</span>AI Partner Method</div>
+    <label class="loginlab" for="loginuser">Username</label>
+    <input class="logininput" id="loginuser" name="username" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false">
+    <label class="loginlab" for="loginpass">Password</label>
+    <input class="logininput" id="loginpass" name="password" type="password" autocomplete="current-password">
+    <button class="loginbtn" id="loginbtn" type="submit">Sign in</button>
+    <div class="loginerr" id="loginerr" aria-live="polite"></div>
+  </form>
+</div>
+
+<script>
+(function () {
+  var app = document.getElementById("app");
+  var tip = document.getElementById("tip");
+
+  // Carry the ?k= lock through the nav.
+  document.getElementById("nav-crm").href = "crm.html" + location.search;
+  document.getElementById("nav-email").href = "./" + location.search;
+
+  // Login gate. The API answers a 401 with {login:true} when a sign in is needed;
+  // showLogin() covers the page with the sign-in card. On success we reload, and
+  // the now-set cookie lets the same fetch through.
+  function showLogin() {
+    var lw = document.getElementById("loginwrap");
+    if (!lw) return;
+    lw.classList.add("on");
+    lw.setAttribute("aria-hidden", "false");
+    var u = document.getElementById("loginuser");
+    if (u) setTimeout(function () { u.focus(); }, 30);
+  }
+  // Show "Sign out" only when the page loaded on a cookie session (no ?k= key).
+  function markAuthedNav() {
+    if (/[?&]k=/.test(location.search)) return;
+    var so = document.getElementById("signout");
+    if (so) so.style.display = "inline-flex";
+  }
+  var loginform = document.getElementById("loginform");
+  if (loginform) {
+    loginform.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var btn = document.getElementById("loginbtn");
+      var errEl = document.getElementById("loginerr");
+      var pass = document.getElementById("loginpass").value;
+      var user = document.getElementById("loginuser").value;
+      btn.disabled = true; errEl.textContent = "";
+      fetch("api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ user: user, pass: pass }) })
+        .then(function (res) { return res.json().then(function (b) { return { ok: res.ok && b.ok, body: b }; }); })
+        .then(function (r) {
+          if (r.ok) { location.reload(); return; }
+          btn.disabled = false;
+          errEl.textContent = (r.body && r.body.error) || "Wrong username or password."; // username field left as typed
+          var pw = document.getElementById("loginpass"); if (pw) { pw.value = ""; pw.focus(); }
+        })
+        .catch(function () { btn.disabled = false; errEl.textContent = "Could not reach the server. Try again."; });
+    });
+  }
+  var signoutEl = document.getElementById("signout");
+  if (signoutEl) {
+    signoutEl.addEventListener("click", function (e) {
+      e.preventDefault();
+      fetch("api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ logout: 1 }) })
+        .then(function () { location.reload(); })
+        .catch(function () { location.reload(); });
+    });
+  }
+
+  var ICONS = {
+    good: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>',
+    warning: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>',
+    serious: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4m0 4h.01"/></svg>',
+    critical: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6m0-6l6 6"/></svg>',
+    neutral: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4m0-4h.01"/></svg>',
+    clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'
+  };
+  var EVENTS = {
+    delivered: ["Delivered", "good", "good"],
+    opened: ["Opened", "good", "good"],
+    clicked: ["Clicked", "good", "good"],
+    sent: ["Sending", "neutral", "clock"],
+    scheduled: ["Scheduled", "neutral", "clock"],
+    delivery_delayed: ["Delayed", "warning", "warning"],
+    bounced: ["Bounced", "serious", "serious"],
+    complained: ["Marked spam", "critical", "critical"],
+    failed: ["Failed", "critical", "critical"]
+  };
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function pill(ev) {
+    var m = EVENTS[ev] || [ev || "unknown", "neutral", "neutral"];
+    return '<span class="pill ' + m[1] + '">' + ICONS[m[2]] + esc(m[0]) + "</span>";
+  }
+  function card(span, inner, style) {
+    return '<div class="' + span + ' shell reveal"' + (style ? ' style="' + style + '"' : "") + '><div class="core">' + inner + "</div></div>";
+  }
+  function fail(title, message) {
+    app.innerHTML = '<div class="state"><h2>' + esc(title) + "</h2><p>" + esc(message) + "</p></div>";
+  }
+
+  // A funnel stage row: label, proportional bar, count + percent of the stage above.
+  function stage(name, value, base, color, subLabel) {
+    var w = base ? Math.max(value ? 2 : 0, Math.round((value / base) * 100)) : 0;
+    return '<div class="stage">' +
+      '<span class="name">' + name + "</span>" +
+      '<span class="track"><span class="fill" style="width:' + w + '%;background:' + color + '"></span></span>' +
+      '<span class="val"><strong>' + value + "</strong> " + subLabel + "</span>" +
+      "</div>";
+  }
+
+  // A threshold meter: how close a rate is to its danger limit, limit marked.
+  function meter(name, rate, limit, help) {
+    var scale = Math.max(limit * 2.5, rate * 1.25, 0.1);
+    var w = Math.min(100, (rate / scale) * 100);
+    var lim = Math.min(96, (limit / scale) * 100);
+    var tone = rate > limit ? "var(--critical)" : "var(--good)";
+    var toneText = rate > limit ? "bad-text" : "ok-text";
+    return '<div class="meter">' +
+      '<div class="row"><span class="label">' + name + '</span><span class="val ' + toneText + '">' + rate + "%</span></div>" +
+      '<div class="track"><span class="fill" style="width:' + w + '%;background:' + tone + '"></span><span class="limit" style="left:' + lim + '%"></span></div>' +
+      '<div class="cap">' + help + "</div>" +
+      "</div>";
+  }
+
+  function render(d) {
+    var s = d.stats;
+    var v = d.verdict || { level: "neutral", title: "", notes: [] };
+    var w = d.warmup || {};
+    var sh = d.sheet || { connected: false };
+    var html = "";
+
+    // 1. The verdict, as the hero.
+    html += '<div class="grid" style="margin-bottom:16px">' +
+      card("span-6",
+        '<div class="hero ' + v.level + '">' +
+        '<div class="badge">' + (ICONS[v.level] || ICONS.neutral) + "</div>" +
+        '<div style="min-width:0"><div class="kicker">The verdict, in plain English</div>' +
+        "<h2>" + esc(v.title) + "</h2>" +
+        (v.notes || []).map(function (n) { return '<div class="note">' + esc(n) + "</div>"; }).join("") +
+        "</div></div>") +
+      "</div>";
+
+    // 2. The journey funnel + the two danger meters.
+    var funnel =
+      '<div class="card-head"><h3>Where your emails end up</h3><span class="hint">last ' + d.window_days + " days</span></div>" +
+      '<div class="funnel">' +
+      stage("Sent", s.sent, s.sent, "var(--seq-1)", "emails") +
+      stage("Delivered", s.reached, s.sent, "var(--seq-2)", (s.sent ? Math.round((s.reached / s.sent) * 100) : 0) + "% of sent") +
+      stage("Opened", s.opened, s.sent, "var(--seq-3)", s.open_rate + "% of delivered") +
+      stage("Clicked", s.clicked, s.sent, "var(--seq-4)", s.click_rate + "% of delivered") +
+      "</div>" +
+      (s.open_tracking_off ? '<div class="cap" style="margin-top:12px;color:var(--warning);font-size:12px">Opens read as zero because open tracking looks switched off in Resend (Domains, your domain, enable open and click tracking).</div>' : "");
+    var meters =
+      '<div class="card-head"><h3>Stay under these lines</h3><span class="hint">the marker is the limit</span></div>' +
+      meter("Bounced", s.bounce_rate, 2, s.bounced + " of " + s.sent + " bounced. Past the 2% mark, scrape fresher leads.") +
+      meter("Marked spam", s.spam_rate, 0.1, s.spam + " complaint(s). Past the 0.1% mark, slow down or change domains.") +
+      '<div class="cap" style="margin-top:14px">Failed sends: ' + s.failed + "</div>";
+    html += '<div class="grid grid-6" style="margin-bottom:16px">' + card("span-4", funnel) + card("span-2", meters) + "</div>";
+
+    // 3. Warm-up ring + pipeline.
+    var ringPct = w.cap_today ? Math.min(1, w.sent_today / w.cap_today) : 0;
+    var C = 2 * Math.PI * 62;
+    var ringHtml =
+      '<div class="card-head"><h3>Warm-up</h3></div>' +
+      '<div class="ringwrap"><div class="ringbox">' +
+      '<svg width="148" height="148" viewBox="0 0 148 148">' +
+      '<circle cx="74" cy="74" r="62" fill="none" stroke="var(--grid)" stroke-width="10"/>' +
+      '<circle cx="74" cy="74" r="62" fill="none" stroke="' + (w.complete ? "var(--good)" : "var(--bar)") + '" stroke-width="10" stroke-linecap="round" stroke-dasharray="' + C + '" stroke-dashoffset="' + (C * (1 - ringPct)) + '"/>' +
+      "</svg>" +
+      '<div class="center"><span class="big">' + (w.sent_today || 0) + '</span><span class="of">of ' + (w.cap_today || 0) + " today</span></div>" +
+      "</div>" +
+      (w.complete
+        ? '<div class="sub">Warm-up <strong>complete</strong>. You are sending up to <strong>' + w.ceiling + ' a day</strong>. Raise that only a few at a time, and only while this page still says healthy.</div>'
+        : '<div class="sub"><strong>Day ' + (w.day || 1) + "</strong> of warming up. Today allows <strong>" + (w.cap_today || 0) + "</strong>, climbing to " + (w.ceiling || 40) + " a day." + (w.remaining ? " <strong>" + w.remaining + "</strong> left today." : " Done for today.") + "</div>") +
+      '<button class="sendbtn" id="sendnow" type="button">Send now<span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></span></button>' +
+      '<div class="sendout" id="sendout">Runs by itself once a day. The button just runs it now.</div>' +
+      "</div>";
+
+    var pipeHtml;
+    if (!sh.connected) {
+      pipeHtml = '<div class="card-head"><h3>Replies and pipeline</h3></div>' +
+        '<p style="font-size:13.5px;color:var(--ink-2);max-width:56ch">Resend cannot see replies, your leads sheet can. Connect it and this panel shows who replied, your reply rate, and where every lead sits. In Vercel add the environment variable <strong>LEADS_SHEET_URL</strong> set to your Google Sheet web app link (the same address as SHEETS_WEBHOOK_URL in your .env), then redeploy. Steps: dashboard/README.md.</p>';
+    } else if (sh.error) {
+      pipeHtml = '<div class="card-head"><h3>Replies and pipeline</h3></div>' +
+        '<p style="font-size:13px;color:var(--serious)">' + esc(sh.error) + "</p>";
+    } else {
+      var segs = [
+        ["Not emailed yet", sh.new_leads, "var(--cat-new)"],
+        ["In the sequence", sh.in_sequence, "var(--cat-seq)"],
+        ["Monthly nurture", sh.nurturing, "var(--cat-nur)"],
+        ["Replied", sh.replied, "var(--cat-rep)"],
+        ["Asked to be removed", sh.removed, "var(--cat-rem)"]
+      ];
+      var totalSeg = segs.reduce(function (n, x) { return n + x[1]; }, 0) || 1;
+      pipeHtml =
+        '<div class="card-head"><h3>Replies and pipeline</h3><span class="hint">from your leads sheet</span></div>' +
+        '<div style="font-size:13.5px;color:var(--ink-2);margin-bottom:10px"><strong style="color:var(--ink);font-size:22px;font-weight:800">' + sh.replied + "</strong> replied" +
+        (sh.emailed ? " so far, <strong>" + sh.reply_rate + "%</strong> of the " + sh.emailed + " leads emailed" : "") + "</div>" +
+        '<div class="stack">' + segs.map(function (x) {
+          return x[1] ? '<i style="flex:' + x[1] + ' 1 0;background:' + x[2] + '" title="' + esc(x[0] + ": " + x[1]) + '"></i>' : "";
+        }).join("") + "</div>" +
+        '<div class="chips">' + segs.map(function (x) {
+          return '<span class="chip"><span class="dot" style="background:' + x[2] + '"></span>' + esc(x[0]) + " <b>" + x[1] + "</b></span>";
+        }).join("") + "</div>";
+      if ((sh.recent_replies || []).length) {
+        pipeHtml += '<div class="answer"><div class="label" style="margin-bottom:4px">Answer these first</div>' +
+          sh.recent_replies.map(function (r) {
+            return '<div class="rowline"><span class="who">' + esc(r.business || "(no name)") + '</span><span class="when">' + esc(String(r.when || "").slice(0, 10)) + "</span></div>";
+          }).join("") + "</div>";
+      }
+    }
+    html += '<div class="grid grid-6" style="margin-bottom:16px">' + card("span-2", ringHtml) + card("span-4", pipeHtml) + "</div>";
+
+    // 4. Daily volume + domain health.
+    var maxDay = Math.max(1, s.max_day || 1);
+    var days = d.days || [];
+    var bars = days.map(function (day) {
+      var h = day.sent === 0 ? 0 : Math.max(4, Math.round((day.sent / maxDay) * 100));
+      return '<div class="bar' + (day.sent === 0 ? " zero" : "") + '" data-day="' + day.day + '" data-n="' + day.sent + '"><i style="height:' + h + '%"></i></div>';
+    }).join("");
+    var chartHtml =
+      '<div class="card-head"><h3>Emails per day</h3><span class="hint">hover a bar for the exact count</span></div>' +
+      '<div class="chart"><div class="gridlines"><i></i><i></i><i></i><i></i></div>' +
+      '<div class="bars" id="bars">' + bars + "</div>" +
+      '<div class="axis"><span>' + (days.length ? days[0].day.slice(5) : "") + "</span><span>" + (days.length ? days[days.length - 1].day.slice(5) : "") + "</span></div></div>";
+    var domHtml =
+      '<div class="card-head"><h3>Domain health</h3></div>' +
+      '<div class="scroll-x"><table><thead><tr><th>Domain</th><th class="num">Sent</th><th class="num">Bounce</th><th class="num">Spam</th></tr></thead><tbody>' +
+      (d.domains || []).map(function (dom) {
+        var b = dom.sent ? Math.round((dom.bounced / dom.sent) * 1000) / 10 : 0;
+        var sp = dom.sent ? Math.round((dom.spam / dom.sent) * 1000) / 10 : 0;
+        return "<tr><td class=\"to\">" + esc(dom.domain) + '</td><td class="num">' + dom.sent + '</td><td class="num"' + (b > 2 ? ' style="color:var(--serious)"' : "") + ">" + b + '%</td><td class="num"' + (sp > 0.1 ? ' style="color:var(--critical-text)"' : "") + ">" + sp + "%</td></tr>";
+      }).join("") + "</tbody></table></div>";
+    html += '<div class="grid grid-6" style="margin-bottom:16px">' + card("span-4", chartHtml) + card("span-2", domHtml) + "</div>";
+
+    // 5. Which email wins.
+    var temps = d.templates || [];
+    var tHtml = '<div class="card-head"><h3>Which email wins</h3><span class="hint">rotate 6 or more, keep the winners</span></div>';
+    if (temps.length) {
+      tHtml += '<div class="scroll-x"><table><thead><tr><th>Email</th><th>Subject</th><th class="num">Sent</th><th class="num">Opened</th><th class="num">Clicked</th></tr></thead><tbody>' +
+        temps.map(function (t) {
+          var or = t.sent ? Math.round((t.opened / t.sent) * 100) : 0;
+          return '<tr><td class="to">' + esc(t.template) + '</td><td class="subj">' + esc(t.subject) + '</td><td class="num">' + t.sent + '</td><td class="num">' + t.opened + " (" + or + '%)</td><td class="num">' + t.clicked + "</td></tr>";
+        }).join("") + "</tbody></table></div>";
+    } else {
+      tHtml += '<p style="font-size:13px;color:var(--muted)">Once your outreach templates start sending, this table shows which subject lines get opened and clicked, so you know which copy wins.</p>';
+    }
+    html += '<div class="grid" style="margin-bottom:16px">' + card("span-6", tHtml) + "</div>";
+
+    // 6. Latest emails.
+    var rHtml = '<div class="card-head"><h3>Latest emails</h3><span class="hint">who is getting what</span></div>' +
+      '<div class="scroll-x"><table><thead><tr><th>To</th><th>Subject</th><th>Status</th><th class="num">When</th></tr></thead><tbody>' +
+      (d.recent || []).map(function (r) {
+        return '<tr><td class="to">' + esc(r.to) + '</td><td class="subj">' + esc(r.subject) + "</td><td>" + pill(r.last_event) + '</td><td class="num">' + esc(r.created_at) + "</td></tr>";
+      }).join("") + "</tbody></table></div>";
+    html += '<div class="grid">' + card("span-6", rHtml) + "</div>";
+
+    app.innerHTML = html;
+    document.getElementById("stamp").innerHTML =
+      "Last " + d.window_days + " days<br>refreshed " + new Date(d.generated_at).toLocaleTimeString();
+
+    // Direct-label the busiest day only.
+    var barEls = document.querySelectorAll("#bars .bar");
+    var peakIdx = -1, peakVal = 0;
+    days.forEach(function (day, i) { if (day.sent > peakVal) { peakVal = day.sent; peakIdx = i; } });
+    if (peakIdx >= 0 && peakVal > 0) {
+      var el = barEls[peakIdx];
+      var lab = document.createElement("span");
+      lab.className = "peak";
+      lab.textContent = peakVal;
+      el.appendChild(lab);
+      lab.style.left = "50%";
+      lab.style.top = (100 - Math.max(4, Math.round((peakVal / maxDay) * 100))) + "%";
+    }
+    barEls.forEach(function (bar) {
+      bar.addEventListener("mousemove", function (e) {
+        tip.innerHTML = '<span class="d">' + bar.getAttribute("data-day") + "</span> &nbsp;" + bar.getAttribute("data-n") + " sent";
+        tip.style.opacity = "1";
+        tip.style.left = Math.min(window.innerWidth - 130, e.clientX + 12) + "px";
+        tip.style.top = (e.clientY - 34) + "px";
+      });
+      bar.addEventListener("mouseleave", function () { tip.style.opacity = "0"; });
+    });
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".reveal").forEach(function (el, i) {
+      el.style.transitionDelay = Math.min(i * 70, 350) + "ms";
+      io.observe(el);
+    });
+
+    // The Send now button: runs the same autopilot the daily schedule runs.
+    var btn = document.getElementById("sendnow");
+    var out = document.getElementById("sendout");
+    if (btn) {
+      btn.addEventListener("click", function () {
+        btn.disabled = true;
+        out.textContent = "Sending your batch...";
+        fetch("api/send" + location.search, { method: "POST" })
+          .then(function (res) { return res.json(); })
+          .then(function (r) {
+            if (r.login) { showLogin(); return; }
+            if (r.error) { out.textContent = r.error; btn.disabled = false; return; }
+            var bits = [];
+            if (r.sent) bits.push(r.sent + " sent");
+            if (r.failed) bits.push(r.failed + " failed");
+            if (r.held_for_tomorrow) bits.push(r.held_for_tomorrow + " held for tomorrow (daily cap)");
+            out.textContent = bits.length ? bits.join(", ") + ". Refreshing..." : "All caught up. Nothing was due to send.";
+            if (r.sent) setTimeout(function () { location.reload(); }, 1800);
+            else btn.disabled = false;
+          })
+          .catch(function (err) { out.textContent = "Could not run the send: " + err.message; btn.disabled = false; });
+      });
+    }
+  }
+
+  fetch("api/stats" + location.search)
+    .then(function (res) {
+      return res.json().then(function (body) {
+        if (body && body.login) { showLogin(); return; }
+        if (!res.ok || body.error) throw new Error(body.error || "The data source returned HTTP " + res.status);
+        render(body);
+        markAuthedNav();
+      });
+    })
+    .catch(function (err) {
+      fail("Could not load your outreach data", err.message);
+    });
+})();
+</script>
+</body>
+</html>

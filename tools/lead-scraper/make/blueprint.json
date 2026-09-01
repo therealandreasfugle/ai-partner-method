@@ -1,0 +1,886 @@
+{
+  "name": "Local Lead Finder - Outreach Engine",
+  "flow": [
+    {
+      "id": 1,
+      "module": "google-sheets:filterRows",
+      "version": 2,
+      "parameters": {
+        "from": "drive",
+        "mode": "select",
+        "spreadsheetId": "",
+        "sheetId": "Leads",
+        "includesHeaders": true,
+        "tableFirstRow": "A2:V2",
+        "valueRenderOption": "FORMATTED_VALUE",
+        "dateTimeRenderOption": "FORMATTED_STRING"
+      },
+      "mapper": {
+        "sortColumn": "",
+        "sortOrder": "asc",
+        "maxRows": "500"
+      },
+      "metadata": {
+        "designer": {
+          "name": "Scan the leads"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "util:SetVariables",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "scope": "roundtrip",
+        "variables": [
+          {
+            "name": "demo_link",
+            "value": "https://your-demo-site.com"
+          },
+          {
+            "name": "booking_link",
+            "value": "https://calendly.com/you/15min"
+          },
+          {
+            "name": "sender_name",
+            "value": "Your Name"
+          },
+          {
+            "name": "sender_phone",
+            "value": "000-000-0000"
+          }
+        ]
+      },
+      "metadata": {
+        "designer": {
+          "name": "Set the details (edit these)"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "builtin:BasicRouter",
+      "version": 1,
+      "mapper": null,
+      "metadata": {
+        "designer": {
+          "name": "What to send this lead"
+        }
+      },
+      "routes": [
+        {
+          "flow": [
+            {
+              "id": 10,
+              "module": "google-email:sendAnEmail",
+              "version": 4,
+              "parameters": {},
+              "mapper": {
+                "to": [
+                  "{{1.`5`}}"
+                ],
+                "subject": "did u take a look at this yet?",
+                "bodyType": "rawHtml",
+                "content": "<p>Hi there,</p>\n<p>Made you a website. Here is the demo:<br>\n<a href=\"{{2.demo_link}}\">{{2.demo_link}}</a></p>\n<p>It loads fast, works on mobile, and looks like somewhere people trust, so more visitors turn into calls. It also texts and emails every new lead the moment they enquire, so you reply first, before your competition gets back to them. That is speed to lead, and it is where most local businesses lose jobs.</p>\n<p>No crazy monthly hosting fees either.</p>\n<p>Like it? Book a quick call here:<br>\n<a href=\"{{2.booking_link}}\">{{2.booking_link}}</a></p>\n<p>{{2.sender_name}}<br>\n{{2.sender_phone}}</p>",
+                "attachments": []
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Template 1"
+                }
+              },
+              "filter": {
+                "name": "template 1",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.`__ROW_NUMBER__` - 6 * floor(1.`__ROW_NUMBER__` / 6)}}",
+                      "b": "0",
+                      "o": "number:equal"
+                    },
+                    {
+                      "a": "{{1.`5`}}",
+                      "o": "exist"
+                    },
+                    {
+                      "a": "{{1.`20`}}",
+                      "o": "notexist"
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "id": 30,
+              "module": "google-sheets:updateRow",
+              "version": 2,
+              "parameters": {},
+              "mapper": {
+                "from": "share",
+                "mode": "select",
+                "values": {
+                  "0": "{{1.`0`}}",
+                  "1": "{{1.`1`}}",
+                  "2": "{{1.`2`}}",
+                  "3": "{{1.`3`}}",
+                  "4": "{{1.`4`}}",
+                  "5": "{{1.`5`}}",
+                  "6": "{{1.`6`}}",
+                  "7": "{{1.`7`}}",
+                  "8": "{{1.`8`}}",
+                  "9": "{{1.`9`}}",
+                  "10": "{{1.`10`}}",
+                  "11": "{{1.`11`}}",
+                  "12": "{{1.`12`}}",
+                  "13": "{{1.`13`}}",
+                  "14": "{{1.`14`}}",
+                  "15": "{{1.`15`}}",
+                  "16": "{{1.`16`}}",
+                  "17": "{{1.`17`}}",
+                  "18": "{{1.`18`}}",
+                  "19": "Contacted",
+                  "20": "{{formatDate(now; \"YYYY-MM-DD HH:mm\")}}",
+                  "21": "{{1.`21`}}"
+                },
+                "sheetId": "Leads",
+                "rowNumber": "{{1.`__ROW_NUMBER__`}}",
+                "spreadsheetId": "",
+                "includesHeaders": true,
+                "valueInputOption": "RAW"
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Mark Contacted 1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 11,
+              "module": "google-email:sendAnEmail",
+              "version": 4,
+              "parameters": {},
+              "mapper": {
+                "to": [
+                  "{{1.`5`}}"
+                ],
+                "subject": "made you something",
+                "bodyType": "rawHtml",
+                "content": "<p>Hi there,</p>\n<p>I put together a website for your business. Have a look:<br>\n<a href=\"{{2.demo_link}}\">{{2.demo_link}}</a></p>\n<p>It is quick, works on any phone, and looks the part, so more of the people who find you actually get in touch. Every new enquiry gets an instant text and email back too, which means you are first to reply while they are still keen. Most local businesses lose work simply by being slow off the mark.</p>\n<p>And there are no ongoing hosting fees to worry about.</p>\n<p>If it looks good, grab a time here:<br>\n<a href=\"{{2.booking_link}}\">{{2.booking_link}}</a></p>\n<p>{{2.sender_name}}<br>\n{{2.sender_phone}}</p>",
+                "attachments": []
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Template 2"
+                }
+              },
+              "filter": {
+                "name": "template 2",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.`__ROW_NUMBER__` - 6 * floor(1.`__ROW_NUMBER__` / 6)}}",
+                      "b": "1",
+                      "o": "number:equal"
+                    },
+                    {
+                      "a": "{{1.`5`}}",
+                      "o": "exist"
+                    },
+                    {
+                      "a": "{{1.`20`}}",
+                      "o": "notexist"
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "id": 31,
+              "module": "google-sheets:updateRow",
+              "version": 2,
+              "parameters": {},
+              "mapper": {
+                "from": "share",
+                "mode": "select",
+                "values": {
+                  "0": "{{1.`0`}}",
+                  "1": "{{1.`1`}}",
+                  "2": "{{1.`2`}}",
+                  "3": "{{1.`3`}}",
+                  "4": "{{1.`4`}}",
+                  "5": "{{1.`5`}}",
+                  "6": "{{1.`6`}}",
+                  "7": "{{1.`7`}}",
+                  "8": "{{1.`8`}}",
+                  "9": "{{1.`9`}}",
+                  "10": "{{1.`10`}}",
+                  "11": "{{1.`11`}}",
+                  "12": "{{1.`12`}}",
+                  "13": "{{1.`13`}}",
+                  "14": "{{1.`14`}}",
+                  "15": "{{1.`15`}}",
+                  "16": "{{1.`16`}}",
+                  "17": "{{1.`17`}}",
+                  "18": "{{1.`18`}}",
+                  "19": "Contacted",
+                  "20": "{{formatDate(now; \"YYYY-MM-DD HH:mm\")}}",
+                  "21": "{{1.`21`}}"
+                },
+                "sheetId": "Leads",
+                "rowNumber": "{{1.`__ROW_NUMBER__`}}",
+                "spreadsheetId": "",
+                "includesHeaders": true,
+                "valueInputOption": "RAW"
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Mark Contacted 2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 12,
+              "module": "google-email:sendAnEmail",
+              "version": 4,
+              "parameters": {},
+              "mapper": {
+                "to": [
+                  "{{1.`5`}}"
+                ],
+                "subject": "this could be making you money",
+                "bodyType": "rawHtml",
+                "content": "<p>Hi there,</p>\n<p>Built you a sample website. Take a look:<br>\n<a href=\"{{2.demo_link}}\">{{2.demo_link}}</a></p>\n<p>Loads fast, looks great on mobile, and builds instant trust, so visitors turn into calls instead of leaving. It also replies to every new lead by text and email the second they come in, so you beat the competition to the phone. That speed is where most jobs are won or lost.</p>\n<p>No monthly hosting fees either.</p>\n<p>Want it live? Book a quick call:<br>\n<a href=\"{{2.booking_link}}\">{{2.booking_link}}</a></p>\n<p>{{2.sender_name}}<br>\n{{2.sender_phone}}</p>",
+                "attachments": []
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Template 3"
+                }
+              },
+              "filter": {
+                "name": "template 3",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.`__ROW_NUMBER__` - 6 * floor(1.`__ROW_NUMBER__` / 6)}}",
+                      "b": "2",
+                      "o": "number:equal"
+                    },
+                    {
+                      "a": "{{1.`5`}}",
+                      "o": "exist"
+                    },
+                    {
+                      "a": "{{1.`20`}}",
+                      "o": "notexist"
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "id": 32,
+              "module": "google-sheets:updateRow",
+              "version": 2,
+              "parameters": {},
+              "mapper": {
+                "from": "share",
+                "mode": "select",
+                "values": {
+                  "0": "{{1.`0`}}",
+                  "1": "{{1.`1`}}",
+                  "2": "{{1.`2`}}",
+                  "3": "{{1.`3`}}",
+                  "4": "{{1.`4`}}",
+                  "5": "{{1.`5`}}",
+                  "6": "{{1.`6`}}",
+                  "7": "{{1.`7`}}",
+                  "8": "{{1.`8`}}",
+                  "9": "{{1.`9`}}",
+                  "10": "{{1.`10`}}",
+                  "11": "{{1.`11`}}",
+                  "12": "{{1.`12`}}",
+                  "13": "{{1.`13`}}",
+                  "14": "{{1.`14`}}",
+                  "15": "{{1.`15`}}",
+                  "16": "{{1.`16`}}",
+                  "17": "{{1.`17`}}",
+                  "18": "{{1.`18`}}",
+                  "19": "Contacted",
+                  "20": "{{formatDate(now; \"YYYY-MM-DD HH:mm\")}}",
+                  "21": "{{1.`21`}}"
+                },
+                "sheetId": "Leads",
+                "rowNumber": "{{1.`__ROW_NUMBER__`}}",
+                "spreadsheetId": "",
+                "includesHeaders": true,
+                "valueInputOption": "RAW"
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Mark Contacted 3"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 13,
+              "module": "google-email:sendAnEmail",
+              "version": 4,
+              "parameters": {},
+              "mapper": {
+                "to": [
+                  "{{1.`5`}}"
+                ],
+                "subject": "your new website (have a look)",
+                "bodyType": "rawHtml",
+                "content": "<p>Hi there,</p>\n<p>Made you a website. Here it is:<br>\n<a href=\"{{2.demo_link}}\">{{2.demo_link}}</a></p>\n<p>It is fast, mobile-friendly, and looks trustworthy, so more visitors pick up the phone. Better yet, every new lead gets an automatic text and email the moment they reach out, so you are first to respond and win the job. Replying fast is the difference between a booking and a missed call.</p>\n<p>Plus no crazy hosting fees.</p>\n<p>Like what you see? Grab a call here:<br>\n<a href=\"{{2.booking_link}}\">{{2.booking_link}}</a></p>\n<p>{{2.sender_name}}<br>\n{{2.sender_phone}}</p>",
+                "attachments": []
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Template 4"
+                }
+              },
+              "filter": {
+                "name": "template 4",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.`__ROW_NUMBER__` - 6 * floor(1.`__ROW_NUMBER__` / 6)}}",
+                      "b": "3",
+                      "o": "number:equal"
+                    },
+                    {
+                      "a": "{{1.`5`}}",
+                      "o": "exist"
+                    },
+                    {
+                      "a": "{{1.`20`}}",
+                      "o": "notexist"
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "id": 33,
+              "module": "google-sheets:updateRow",
+              "version": 2,
+              "parameters": {},
+              "mapper": {
+                "from": "share",
+                "mode": "select",
+                "values": {
+                  "0": "{{1.`0`}}",
+                  "1": "{{1.`1`}}",
+                  "2": "{{1.`2`}}",
+                  "3": "{{1.`3`}}",
+                  "4": "{{1.`4`}}",
+                  "5": "{{1.`5`}}",
+                  "6": "{{1.`6`}}",
+                  "7": "{{1.`7`}}",
+                  "8": "{{1.`8`}}",
+                  "9": "{{1.`9`}}",
+                  "10": "{{1.`10`}}",
+                  "11": "{{1.`11`}}",
+                  "12": "{{1.`12`}}",
+                  "13": "{{1.`13`}}",
+                  "14": "{{1.`14`}}",
+                  "15": "{{1.`15`}}",
+                  "16": "{{1.`16`}}",
+                  "17": "{{1.`17`}}",
+                  "18": "{{1.`18`}}",
+                  "19": "Contacted",
+                  "20": "{{formatDate(now; \"YYYY-MM-DD HH:mm\")}}",
+                  "21": "{{1.`21`}}"
+                },
+                "sheetId": "Leads",
+                "rowNumber": "{{1.`__ROW_NUMBER__`}}",
+                "spreadsheetId": "",
+                "includesHeaders": true,
+                "valueInputOption": "RAW"
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Mark Contacted 4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 14,
+              "module": "google-email:sendAnEmail",
+              "version": 4,
+              "parameters": {},
+              "mapper": {
+                "to": [
+                  "{{1.`5`}}"
+                ],
+                "subject": "thought this would be of interest",
+                "bodyType": "rawHtml",
+                "content": "<p>Hi there,</p>\n<p>I built a website for your business. See it here:<br>\n<a href=\"{{2.demo_link}}\">{{2.demo_link}}</a></p>\n<p>Quick to load, easy on a phone, and built to look trustworthy, so more people who land on it get in touch. It also fires off an instant text and email to every new lead, so you follow up in seconds and beat slower competitors to the sale. That speed to lead is where the money is.</p>\n<p>And no ongoing hosting fees.</p>\n<p>If you like it, book a quick call:<br>\n<a href=\"{{2.booking_link}}\">{{2.booking_link}}</a></p>\n<p>{{2.sender_name}}<br>\n{{2.sender_phone}}</p>",
+                "attachments": []
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Template 5"
+                }
+              },
+              "filter": {
+                "name": "template 5",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.`__ROW_NUMBER__` - 6 * floor(1.`__ROW_NUMBER__` / 6)}}",
+                      "b": "4",
+                      "o": "number:equal"
+                    },
+                    {
+                      "a": "{{1.`5`}}",
+                      "o": "exist"
+                    },
+                    {
+                      "a": "{{1.`20`}}",
+                      "o": "notexist"
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "id": 34,
+              "module": "google-sheets:updateRow",
+              "version": 2,
+              "parameters": {},
+              "mapper": {
+                "from": "share",
+                "mode": "select",
+                "values": {
+                  "0": "{{1.`0`}}",
+                  "1": "{{1.`1`}}",
+                  "2": "{{1.`2`}}",
+                  "3": "{{1.`3`}}",
+                  "4": "{{1.`4`}}",
+                  "5": "{{1.`5`}}",
+                  "6": "{{1.`6`}}",
+                  "7": "{{1.`7`}}",
+                  "8": "{{1.`8`}}",
+                  "9": "{{1.`9`}}",
+                  "10": "{{1.`10`}}",
+                  "11": "{{1.`11`}}",
+                  "12": "{{1.`12`}}",
+                  "13": "{{1.`13`}}",
+                  "14": "{{1.`14`}}",
+                  "15": "{{1.`15`}}",
+                  "16": "{{1.`16`}}",
+                  "17": "{{1.`17`}}",
+                  "18": "{{1.`18`}}",
+                  "19": "Contacted",
+                  "20": "{{formatDate(now; \"YYYY-MM-DD HH:mm\")}}",
+                  "21": "{{1.`21`}}"
+                },
+                "sheetId": "Leads",
+                "rowNumber": "{{1.`__ROW_NUMBER__`}}",
+                "spreadsheetId": "",
+                "includesHeaders": true,
+                "valueInputOption": "RAW"
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Mark Contacted 5"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 15,
+              "module": "google-email:sendAnEmail",
+              "version": 4,
+              "parameters": {},
+              "mapper": {
+                "to": [
+                  "{{1.`5`}}"
+                ],
+                "subject": "made you a website",
+                "bodyType": "rawHtml",
+                "content": "<p>Hi there,</p>\n<p>Put this together for you. Here is the demo:<br>\n<a href=\"{{2.demo_link}}\">{{2.demo_link}}</a></p>\n<p>It loads fast, works on mobile, and looks like a business people trust, so more visitors become customers. Every new lead also gets an instant text and email, which means you reply first, while they are still deciding. Most local businesses lose jobs by being slow to follow up.</p>\n<p>No crazy monthly hosting fees, either.</p>\n<p>Want it? Book a quick call here:<br>\n<a href=\"{{2.booking_link}}\">{{2.booking_link}}</a></p>\n<p>{{2.sender_name}}<br>\n{{2.sender_phone}}</p>",
+                "attachments": []
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Template 6"
+                }
+              },
+              "filter": {
+                "name": "template 6",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.`__ROW_NUMBER__` - 6 * floor(1.`__ROW_NUMBER__` / 6)}}",
+                      "b": "5",
+                      "o": "number:equal"
+                    },
+                    {
+                      "a": "{{1.`5`}}",
+                      "o": "exist"
+                    },
+                    {
+                      "a": "{{1.`20`}}",
+                      "o": "notexist"
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "id": 35,
+              "module": "google-sheets:updateRow",
+              "version": 2,
+              "parameters": {},
+              "mapper": {
+                "from": "share",
+                "mode": "select",
+                "values": {
+                  "0": "{{1.`0`}}",
+                  "1": "{{1.`1`}}",
+                  "2": "{{1.`2`}}",
+                  "3": "{{1.`3`}}",
+                  "4": "{{1.`4`}}",
+                  "5": "{{1.`5`}}",
+                  "6": "{{1.`6`}}",
+                  "7": "{{1.`7`}}",
+                  "8": "{{1.`8`}}",
+                  "9": "{{1.`9`}}",
+                  "10": "{{1.`10`}}",
+                  "11": "{{1.`11`}}",
+                  "12": "{{1.`12`}}",
+                  "13": "{{1.`13`}}",
+                  "14": "{{1.`14`}}",
+                  "15": "{{1.`15`}}",
+                  "16": "{{1.`16`}}",
+                  "17": "{{1.`17`}}",
+                  "18": "{{1.`18`}}",
+                  "19": "Contacted",
+                  "20": "{{formatDate(now; \"YYYY-MM-DD HH:mm\")}}",
+                  "21": "{{1.`21`}}"
+                },
+                "sheetId": "Leads",
+                "rowNumber": "{{1.`__ROW_NUMBER__`}}",
+                "spreadsheetId": "",
+                "includesHeaders": true,
+                "valueInputOption": "RAW"
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Mark Contacted 6"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 20,
+              "module": "google-email:sendAnEmail",
+              "version": 4,
+              "parameters": {},
+              "mapper": {
+                "to": [
+                  "{{1.`5`}}"
+                ],
+                "subject": "quick one about your website",
+                "bodyType": "rawHtml",
+                "content": "<p>Hi there,</p>\n<p>Just checking you saw the website I put together for you the other day:<br>\n<a href=\"{{2.demo_link}}\">{{2.demo_link}}</a></p>\n<p>No pressure at all. If it is useful, the quickest way to get it live is a short call and I will walk you through it:<br>\n<a href=\"{{2.booking_link}}\">{{2.booking_link}}</a></p>\n<p>{{2.sender_name}}<br>\n{{2.sender_phone}}</p>",
+                "attachments": []
+              },
+              "metadata": {
+                "designer": {
+                  "name": "quick one about your web"
+                }
+              },
+              "filter": {
+                "name": "Follow-up 1",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.`19`}}",
+                      "b": "Contacted",
+                      "o": "text:equal"
+                    },
+                    {
+                      "a": "{{parseDate(1.`20`; \"YYYY-MM-DD HH:mm\")}}",
+                      "b": "{{addDays(now; -3)}}",
+                      "o": "date:less"
+                    },
+                    {
+                      "a": "{{1.`5`}}",
+                      "o": "exist"
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "id": 40,
+              "module": "google-sheets:updateRow",
+              "version": 2,
+              "parameters": {},
+              "mapper": {
+                "from": "share",
+                "mode": "select",
+                "values": {
+                  "0": "{{1.`0`}}",
+                  "1": "{{1.`1`}}",
+                  "2": "{{1.`2`}}",
+                  "3": "{{1.`3`}}",
+                  "4": "{{1.`4`}}",
+                  "5": "{{1.`5`}}",
+                  "6": "{{1.`6`}}",
+                  "7": "{{1.`7`}}",
+                  "8": "{{1.`8`}}",
+                  "9": "{{1.`9`}}",
+                  "10": "{{1.`10`}}",
+                  "11": "{{1.`11`}}",
+                  "12": "{{1.`12`}}",
+                  "13": "{{1.`13`}}",
+                  "14": "{{1.`14`}}",
+                  "15": "{{1.`15`}}",
+                  "16": "{{1.`16`}}",
+                  "17": "{{1.`17`}}",
+                  "18": "{{1.`18`}}",
+                  "19": "Follow-up 1",
+                  "20": "{{1.`20`}}",
+                  "21": "{{1.`21`}}"
+                },
+                "sheetId": "Leads",
+                "rowNumber": "{{1.`__ROW_NUMBER__`}}",
+                "spreadsheetId": "",
+                "includesHeaders": true,
+                "valueInputOption": "RAW"
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Mark Follow-up 1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 21,
+              "module": "google-email:sendAnEmail",
+              "version": 4,
+              "parameters": {},
+              "mapper": {
+                "to": [
+                  "{{1.`5`}}"
+                ],
+                "subject": "should I close this off?",
+                "bodyType": "rawHtml",
+                "content": "<p>Hi there,</p>\n<p>I have not heard back, so I will assume the timing is not right and leave it here.</p>\n<p>If you did still want it, the website is ready to look at:<br>\n<a href=\"{{2.demo_link}}\">{{2.demo_link}}</a></p>\n<p>And a quick call is the easiest way to get it live:<br>\n<a href=\"{{2.booking_link}}\">{{2.booking_link}}</a></p>\n<p>Either way, all the best.</p>\n<p>{{2.sender_name}}<br>\n{{2.sender_phone}}</p>",
+                "attachments": []
+              },
+              "metadata": {
+                "designer": {
+                  "name": "should I close this off?"
+                }
+              },
+              "filter": {
+                "name": "Follow-up 2",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.`19`}}",
+                      "b": "Follow-up 1",
+                      "o": "text:equal"
+                    },
+                    {
+                      "a": "{{parseDate(1.`20`; \"YYYY-MM-DD HH:mm\")}}",
+                      "b": "{{addDays(now; -7)}}",
+                      "o": "date:less"
+                    },
+                    {
+                      "a": "{{1.`5`}}",
+                      "o": "exist"
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "id": 41,
+              "module": "google-sheets:updateRow",
+              "version": 2,
+              "parameters": {},
+              "mapper": {
+                "from": "share",
+                "mode": "select",
+                "values": {
+                  "0": "{{1.`0`}}",
+                  "1": "{{1.`1`}}",
+                  "2": "{{1.`2`}}",
+                  "3": "{{1.`3`}}",
+                  "4": "{{1.`4`}}",
+                  "5": "{{1.`5`}}",
+                  "6": "{{1.`6`}}",
+                  "7": "{{1.`7`}}",
+                  "8": "{{1.`8`}}",
+                  "9": "{{1.`9`}}",
+                  "10": "{{1.`10`}}",
+                  "11": "{{1.`11`}}",
+                  "12": "{{1.`12`}}",
+                  "13": "{{1.`13`}}",
+                  "14": "{{1.`14`}}",
+                  "15": "{{1.`15`}}",
+                  "16": "{{1.`16`}}",
+                  "17": "{{1.`17`}}",
+                  "18": "{{1.`18`}}",
+                  "19": "Follow-up 2",
+                  "20": "{{1.`20`}}",
+                  "21": "{{1.`21`}}"
+                },
+                "sheetId": "Leads",
+                "rowNumber": "{{1.`__ROW_NUMBER__`}}",
+                "spreadsheetId": "",
+                "includesHeaders": true,
+                "valueInputOption": "RAW"
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Mark Follow-up 2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 22,
+              "module": "google-email:sendAnEmail",
+              "version": 4,
+              "parameters": {},
+              "mapper": {
+                "to": [
+                  "{{1.`5`}}"
+                ],
+                "subject": "closing your file",
+                "bodyType": "rawHtml",
+                "content": "<p>Hi there,</p>\n<p>I am tidying up my list and about to close this out on my end.</p>\n<p>If you ever want it, the website is still built and ready to see:<br>\n<a href=\"{{2.demo_link}}\">{{2.demo_link}}</a></p>\n<p>A two-minute call gets it live whenever suits you:<br>\n<a href=\"{{2.booking_link}}\">{{2.booking_link}}</a></p>\n<p>All the best with the business.</p>\n<p>{{2.sender_name}}<br>\n{{2.sender_phone}}</p>",
+                "attachments": []
+              },
+              "metadata": {
+                "designer": {
+                  "name": "closing your file"
+                }
+              },
+              "filter": {
+                "name": "Follow-up 3",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.`19`}}",
+                      "b": "Follow-up 2",
+                      "o": "text:equal"
+                    },
+                    {
+                      "a": "{{parseDate(1.`20`; \"YYYY-MM-DD HH:mm\")}}",
+                      "b": "{{addDays(now; -14)}}",
+                      "o": "date:less"
+                    },
+                    {
+                      "a": "{{1.`5`}}",
+                      "o": "exist"
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "id": 42,
+              "module": "google-sheets:updateRow",
+              "version": 2,
+              "parameters": {},
+              "mapper": {
+                "from": "share",
+                "mode": "select",
+                "values": {
+                  "0": "{{1.`0`}}",
+                  "1": "{{1.`1`}}",
+                  "2": "{{1.`2`}}",
+                  "3": "{{1.`3`}}",
+                  "4": "{{1.`4`}}",
+                  "5": "{{1.`5`}}",
+                  "6": "{{1.`6`}}",
+                  "7": "{{1.`7`}}",
+                  "8": "{{1.`8`}}",
+                  "9": "{{1.`9`}}",
+                  "10": "{{1.`10`}}",
+                  "11": "{{1.`11`}}",
+                  "12": "{{1.`12`}}",
+                  "13": "{{1.`13`}}",
+                  "14": "{{1.`14`}}",
+                  "15": "{{1.`15`}}",
+                  "16": "{{1.`16`}}",
+                  "17": "{{1.`17`}}",
+                  "18": "{{1.`18`}}",
+                  "19": "Follow-up 3",
+                  "20": "{{1.`20`}}",
+                  "21": "{{1.`21`}}"
+                },
+                "sheetId": "Leads",
+                "rowNumber": "{{1.`__ROW_NUMBER__`}}",
+                "spreadsheetId": "",
+                "includesHeaders": true,
+                "valueInputOption": "RAW"
+              },
+              "metadata": {
+                "designer": {
+                  "name": "Mark Follow-up 3"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false
+    },
+    "designer": {
+      "orphans": []
+    }
+  }
+}

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where to Get Photos and Video: AIPM Template Library</title>
+<meta name="description" content="Free stock photo and video sources, plus which AI generators are good enough to pass as real, and where AI will get you in trouble.">
+<meta property="og:title" content="Where to Get Photos and Video">
+<meta property="og:description" content="Free stock and AI sources for replacing template imagery.">
+<meta name="theme-color" content="#0b0d10">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../shared/gallery.css">
+</head>
+<body>
+
+<header>
+  <div class="shell">
+    <a class="backlink" href="../">Back to templates</a>
+    <span class="kicker">Asset sourcing</span>
+    <h1>Where to get the photos and video.</h1>
+    <p class="lede">Every template ships with placeholder imagery you will replace. Drop new files into the template's <code>assets/</code> folder using the same filenames and the site updates with no code changes. Here is where to get them.</p>
+  </div>
+</header>
+
+<main class="shell">
+
+  <!-- Rule zero -->
+  <section class="group">
+    <div class="callout callout--warn">
+      <h2>Start here: the client's own photos beat everything</h2>
+      <p>For a local business, one real photo of the actual shop, van, team, or finished job outperforms the best stock or AI image on the internet. It is the single biggest trust signal on the page. Ask every client for their camera roll before you source anything. Use stock and AI to fill the gaps, not to replace the real thing.</p>
+    </div>
+  </section>
+
+  <!-- Free photos -->
+  <section class="group">
+    <div class="group__head">
+      <h2>Free stock photos</h2>
+      <p>No attribution required, commercial use allowed</p>
+    </div>
+
+    <div class="grid">
+      <a class="res" href="https://www.pexels.com" target="_blank" rel="noopener">
+        <h3>Pexels</h3>
+        <p>The best all-rounder and the first place to look. Deep on trades, food, interiors, and people. Search the action rather than the industry: "technician repairing" beats "HVAC".</p>
+        <span class="res__tag">Free</span>
+      </a>
+
+      <a class="res" href="https://unsplash.com" target="_blank" rel="noopener">
+        <h3>Unsplash</h3>
+        <p>Strongest for atmosphere, architecture, and anything that needs to look editorial. Weaker on trades and hands-on service work.</p>
+        <span class="res__tag">Free</span>
+      </a>
+
+      <a class="res" href="https://pixabay.com" target="_blank" rel="noopener">
+        <h3>Pixabay</h3>
+        <p>Huge back catalogue with more variable quality. Worth searching when Pexels and Unsplash come up short on a niche.</p>
+        <span class="res__tag">Free</span>
+      </a>
+
+      <a class="res" href="https://burst.shopify.com" target="_blank" rel="noopener">
+        <h3>Burst by Shopify</h3>
+        <p>Built for ecommerce, so it is unusually good at product and small-business shots that look like a real operation rather than a stock shoot.</p>
+        <span class="res__tag">Free</span>
+      </a>
+
+      <a class="res" href="https://www.nappy.co" target="_blank" rel="noopener">
+        <h3>Nappy</h3>
+        <p>Free stock of Black and Brown people, and genuinely good. Most stock libraries are thin here, so this is worth bookmarking.</p>
+        <span class="res__tag">Free</span>
+      </a>
+
+      <a class="res" href="https://kaboompics.com" target="_blank" rel="noopener">
+        <h3>Kaboompics</h3>
+        <p>Interiors, lifestyle, and flat lays with a consistent look. Useful when you need several images that feel like one shoot.</p>
+        <span class="res__tag">Free</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Free video -->
+  <section class="group">
+    <div class="group__head">
+      <h2>Free stock video</h2>
+      <p>For hero backgrounds and section loops</p>
+    </div>
+
+    <div class="grid">
+      <a class="res" href="https://coverr.co" target="_blank" rel="noopener">
+        <h3>Coverr</h3>
+        <p>Made specifically for website hero videos, which is exactly what these templates use. Start here before anywhere else.</p>
+        <span class="res__tag">Free</span>
+      </a>
+
+      <a class="res" href="https://www.pexels.com/videos/" target="_blank" rel="noopener">
+        <h3>Pexels Video</h3>
+        <p>The largest free video library. Same search rules as the photos: search the action, not the industry.</p>
+        <span class="res__tag">Free</span>
+      </a>
+
+      <a class="res" href="https://mixkit.co" target="_blank" rel="noopener">
+        <h3>Mixkit</h3>
+        <p>Short, well-categorised clips. Good when you need something specific and clean rather than a big library to dig through.</p>
+        <span class="res__tag">Free</span>
+      </a>
+
+      <a class="res" href="https://www.videvo.net" target="_blank" rel="noopener">
+        <h3>Videvo</h3>
+        <p>Mixed free and paid. Check the licence on each clip, since the free ones vary between no-attribution and attribution-required.</p>
+        <span class="res__tag">Mixed</span>
+      </a>
+    </div>
+
+    <div class="callout">
+      <h2>Keep hero video under about 2MB</h2>
+      <p>The coffee shop hero in this library is 1.6MB and that is roughly the ceiling. Anything heavier and mobile visitors wait, which costs you the conversion the video was supposed to win. Trim to 8 to 12 seconds, mute it, and compress before it goes in a template:</p>
+      <pre><code>ffmpeg -i input.mp4 -t 10 -an -vf "scale=1600:-2" -c:v libx264 -crf 28 -preset slow hero.mp4</code></pre>
+      <p>Hero video should always be muted, looping, and autoplaying. That is how the templates are already set up.</p>
+    </div>
+  </section>
+
+  <!-- AI images -->
+  <section class="group">
+    <div class="group__head">
+      <h2>AI image generators</h2>
+      <p>Current models are photoreal enough to pass</p>
+    </div>
+
+    <p class="section-note">This is true now in a way it was not a year ago. A well-prompted image from any of these will pass as a real photograph to almost everyone. All have a free tier, though tiers change often, so check before you rely on one.</p>
+
+    <div class="grid">
+      <a class="res" href="https://aistudio.google.com" target="_blank" rel="noopener">
+        <h3>Google AI Studio</h3>
+        <p>Google's image models with a genuinely usable free tier. Among the most photoreal available, and strong at realistic lighting, which is usually what gives AI images away.</p>
+        <span class="res__tag res__tag--good">Free tier</span>
+      </a>
+
+      <a class="res" href="https://www.krea.ai" target="_blank" rel="noopener">
+        <h3>Krea</h3>
+        <p>Runs Flux and other top models with free daily credits. The real-time canvas is the fastest way to iterate until an image looks right.</p>
+        <span class="res__tag res__tag--good">Free daily credits</span>
+      </a>
+
+      <a class="res" href="https://leonardo.ai" target="_blank" rel="noopener">
+        <h3>Leonardo</h3>
+        <p>Generous daily free credits and good photography presets. Solid default choice for interiors, products, and environments.</p>
+        <span class="res__tag res__tag--good">Free daily credits</span>
+      </a>
+
+      <a class="res" href="https://ideogram.ai" target="_blank" rel="noopener">
+        <h3>Ideogram</h3>
+        <p>The one to use when the image needs readable text in it: signage, packaging, a menu board, a van livery. Other models mangle text; this one does not.</p>
+        <span class="res__tag res__tag--good">Free tier</span>
+      </a>
+
+      <a class="res" href="https://firefly.adobe.com" target="_blank" rel="noopener">
+        <h3>Adobe Firefly</h3>
+        <p>Trained on licensed and public-domain content, so it is the safest option for a client who is nervous about where AI imagery comes from. Free monthly credits.</p>
+        <span class="res__tag res__tag--good">Free credits</span>
+      </a>
+
+      <a class="res" href="https://www.recraft.ai" target="_blank" rel="noopener">
+        <h3>Recraft</h3>
+        <p>Best of this list for product shots, icons, and anything vector. Useful for the parts of a site that are not photography.</p>
+        <span class="res__tag res__tag--good">Free tier</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- AI video -->
+  <section class="group">
+    <div class="group__head">
+      <h2>AI video generators</h2>
+      <p>Free credits, no Higgsfield subscription needed</p>
+    </div>
+
+    <div class="grid">
+      <a class="res" href="https://klingai.com" target="_blank" rel="noopener">
+        <h3>Kling</h3>
+        <p>Free daily credits and the most convincing motion of the free options. Best results come from feeding it a still image and asking for a slow camera move rather than generating from text alone.</p>
+        <span class="res__tag res__tag--good">Free daily credits</span>
+      </a>
+
+      <a class="res" href="https://hailuoai.video" target="_blank" rel="noopener">
+        <h3>Hailuo (MiniMax)</h3>
+        <p>Free credits and strong at short, realistic clips. Good second option when Kling's daily allowance runs out.</p>
+        <span class="res__tag res__tag--good">Free daily credits</span>
+      </a>
+
+      <a class="res" href="https://lumalabs.ai/dream-machine" target="_blank" rel="noopener">
+        <h3>Luma Dream Machine</h3>
+        <p>Free tier with fast generations. Particularly good at smooth camera movement, which is what a hero background needs.</p>
+        <span class="res__tag res__tag--good">Free tier</span>
+      </a>
+
+      <a class="res" href="https://pika.art" target="_blank" rel="noopener">
+        <h3>Pika</h3>
+        <p>Free tier, quick turnaround, good for short looping background clips rather than anything narrative.</p>
+        <span class="res__tag res__tag--good">Free tier</span>
+      </a>
+    </div>
+
+    <div class="callout">
+      <h2>The trick that makes AI video usable</h2>
+      <p>Do not generate video from a text prompt. Generate a still image first in one of the image tools above until it is exactly right, then feed that image into the video tool and ask only for a slow push in, slow pan, or gentle drift. Short simple motion on a good still is what looks real. Long complex motion is what looks like AI.</p>
+      <p>Keep clips under 10 seconds and loop them. Every hero video in these templates is a loop, so nobody ever sees it end.</p>
+    </div>
+  </section>
+
+  <!-- Where AI gets you in trouble -->
+  <section class="group">
+    <div class="group__head">
+      <h2>Where AI will get you in trouble</h2>
+      <p>Read this before putting generated imagery on a client site</p>
+    </div>
+
+    <div class="split">
+      <div class="callout callout--good">
+        <h2>Safe to generate</h2>
+        <ul>
+          <li>Backgrounds, textures, and atmosphere</li>
+          <li>Interiors and exteriors that are not the client's actual premises</li>
+          <li>Product and packaging shots</li>
+          <li>Abstract hero imagery</li>
+          <li>Illustrations, icons, and patterns</li>
+          <li>Anonymous hands-at-work shots where no face is identifiable</li>
+        </ul>
+      </div>
+
+      <div class="callout callout--warn">
+        <h2>Do not generate</h2>
+        <ul>
+          <li><strong>Team photos.</strong> Presenting generated faces as the client's real staff is a misrepresentation, and customers who meet the team notice.</li>
+          <li><strong>Testimonial headshots.</strong> A made-up face beside a made-up quote is a fake review. Some jurisdictions treat that as an offence.</li>
+          <li><strong>Completed work or before-and-afters.</strong> Generated results a client did not achieve are false advertising, and this is the fastest way to get a client in real trouble.</li>
+          <li><strong>The client's actual premises.</strong> Customers navigate by what the building looks like.</li>
+          <li><strong>Anything with a real brand or logo in it.</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h2>The line worth holding</h2>
+      <p>AI is fine for how a page feels. It is not fine for what a page claims. If an image is making a factual claim about the business, its people, or its results, it has to be real.</p>
+    </div>
+  </section>
+
+  <!-- Practical -->
+  <section class="group">
+    <div class="group__head">
+      <h2>Getting images into a template</h2>
+      <p>The mechanical part</p>
+    </div>
+
+    <div class="callout">
+      <ol>
+        <li>Open the template's <code>assets/</code> folder and note the filenames and their shapes. Most are 3:4 portrait or 4:3 landscape.</li>
+        <li>Crop replacements to the same aspect ratio, or the layout will letterbox them.</li>
+        <li>Save as WebP where you can. It is typically half the size of a JPEG at the same quality and every current browser supports it.</li>
+        <li>Keep photos under about 300KB each. A page with twenty images at 1MB apiece will lose mobile visitors before it finishes loading.</li>
+        <li>Reuse the same filenames and nothing in the HTML needs touching.</li>
+      </ol>
+      <p style="margin-top: 1.25rem">Bulk-convert and resize a folder in one command:</p>
+      <pre><code>for f in *.jpg; do cwebp -q 82 -resize 1600 0 "$f" -o "${f%.jpg}.webp"; done</code></pre>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="shell">
+    <p>Free tiers and licence terms change. Check the current terms on any source before using it on a paying client's site.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "meta": { "title": "Marlow Plumbing, Emergency Plumbers in Leeds", "description": "Hydration test config." },
+  "company": {
+    "name": "Marlow Plumbing",
+    "shortName": "Marlow",
+    "tagline": "Leaks fixed today, not next week"
+  },
+  "palette": {
+    "primary": "#0E7C4A",
+    "primary_dark": "#08492B",
+    "accent": "#F2B705"
+  },
+  "typography": {
+    "heading": "Plus Jakarta Sans",
+    "body": "Plus Jakarta Sans",
+    "headingFontUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap",
+    "bodyFontUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+  }
+}

@@ -27,7 +27,7 @@ try {
 } catch (e) { /* generic answers */ }
 
 const PROVIDERS = [
-  { env: 'GROQ_API_KEY', url: 'https://api.groq.com/openai/v1/chat/completions', model: 'llama-3.3-70b-versatile' },
+  { env: 'GROQ_API_KEY', url: 'https://api.groq.com/openai/v1/chat/completions', model: 'qwen/qwen3.8-27b' },
   { env: 'GEMINI_API_KEY', url: 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions', model: 'gemini-2.0-flash' },
   { env: 'OPENAI_API_KEY', url: 'https://api.openai.com/v1/chat/completions', model: 'gpt-4o-mini' },
 ];

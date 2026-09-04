@@ -420,8 +420,8 @@ function keysFor(provider) {
 }
 
 const MODEL_CASCADE = [
-  ["groq", "llama-3.3-70b-versatile"],
-  ["groq", "llama-3.1-8b-instant"],
+  ["groq", "qwen/qwen3.8-27b"],
+  ["groq", "openai/gpt-oss-20b"],
   ["gemini", "gemini-2.5-flash"],
   ["gemini", "gemini-2.5-flash-lite"],
   ["mistral", "mistral-small-latest"],

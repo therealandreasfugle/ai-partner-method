@@ -113,7 +113,7 @@ function keysFor(provider) {
 }
 
 const CASCADE = [
-  ["groq", "llama-3.3-70b-versatile"],
+  ["groq", "qwen/qwen3.8-27b"],
   ["gemini", "gemini-2.5-flash"],
   ["mistral", "mistral-small-latest"],
   ["openrouter", "openai/gpt-oss-20b:free"],

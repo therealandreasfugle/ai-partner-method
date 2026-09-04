@@ -3527,7 +3527,7 @@ function setClient(company, contact){
 // Baked from agency-brand.json "payment_links", so every proposal you build already
 // carries your Stripe/PayPal/invoice links. Anything you add here is saved to this
 // proposal in this browser only. Leads never open this panel.
-var PAY_LINKS_BAKED = {{AGENCY_PAYMENT_LINKS_JSON}};
+var PAY_LINKS_BAKED = [{"label":"Setup fee ($4,500)","url":"https://buy.stripe.com/test_dRmdRbdfmerBehsdKq3sI00"},{"label":"Monthly plan ($199/mo)","url":"https://buy.stripe.com/test_cNifZja3afvFehs21I3sI01"}];
 function payKey(){ return 'agency-pay-' + CLIENT_SLUG; }
 // A link is only ever rendered as an href after this passes, so a bad paste can
 // never become a javascript: URL.

@@ -1179,7 +1179,7 @@
     renderChat();
   }
 
-  var STORE = "https://YOUR_SUPABASE_PROJECT_REF.supabase.co";
+  var STORE = "https://yorgyaarnkxmjsgzmvpw.supabase.co";
   var STORE_KEY = (window.GK_STORE_KEY || "");
 
   function boot() {

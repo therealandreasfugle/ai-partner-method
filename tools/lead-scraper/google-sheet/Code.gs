@@ -12,7 +12,7 @@
 
 // OPTIONAL: set a password here and the same value as SHEETS_WEBHOOK_TOKEN in
 // your .env. Leave it blank to accept any request (fine for personal use).
-var SHARED_TOKEN = '';
+var SHARED_TOKEN = 'rhkgRr71Xr3UjIaw3QE13IDevLAhRhHh';
 
 var SHEET_NAME = 'Leads';
 var LAST_FMT_ROW = 2000; // formatting/validation cover this many rows

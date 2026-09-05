@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.local
+leads/*.csv
+!leads/.gitkeep
+.DS_Store
+*.log
+.claude-flow/
+.claude/
+.swarm/
+.hive-mind/
+memory/
+*.tmp

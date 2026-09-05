@@ -3616,12 +3616,12 @@
             '<div><h3>You</h3><p>What goes in the emails you send and the sites you build.</p></div></div>'+
           '<div class="setbody">'+
             '<div class="setrow"><label>Your name</label>'+
-              '<input id="set-name" type="text" placeholder="Brett" value="'+esc(me.name||"")+'"></div>'+
+              '<input id="set-name" type="text" placeholder="Your name" value="'+esc(me.name||"")+'"></div>'+
 
             '<div class="setrow"><label>Your phone</label>'+
               '<input id="set-phone" type="tel" placeholder="+44 7000 000000" value="'+esc(me.phone||"")+'"></div>'+
             '<div class="setrow"><label>Business name</label>'+
-              '<input id="set-agency" type="text" placeholder="Jumpsky Ltd" value="'+esc(me.agency||"")+'"></div>'+
+              '<input id="set-agency" type="text" placeholder="{{YOUR_BUSINESS}}" value="'+esc(me.agency||"")+'"></div>'+
           '</div>'+
         '</section>'+
 
@@ -4028,7 +4028,7 @@
           // and Alabama. Without this the whole batch can come back from the
           // wrong continent, which is only obvious once the emails have gone.
           // Free text with suggestions: a dropdown of six countries cannot cover
-          // everywhere Brett or a student might sell, and typing is faster than
+          // everywhere a student might sell, and typing is faster than
           // hunting a list anyway.
           '<label class="dmfield"><span>Country</span>'+
             '<input id="dmcountry" class="ssin" list="dmcountries" value="United Kingdom" '+
@@ -4723,7 +4723,7 @@
      number, before any detail.
 
      The question is "is my outreach landing". Delivered rate answers it.
-     Colour follows the Trakyo pattern Brett liked: green means money or good,
+     Colour follows the reference pattern: green means money or good,
      red means a problem, and nothing else is coloured, so colour still means
      something when it appears. */
 

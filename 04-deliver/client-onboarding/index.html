@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Getting started</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap">
+<style>
+  :root{
+    --ink:#16181C; --ink2:#4A525B; --muted:#79828C;
+    --ground:#F3F2EE; --card:#FFFFFF; --hair:rgba(22,24,28,.12);
+    --gold:#9C7B2E; --gold-lite:#D4A94E; --ok:#14713F; --bad:#C2470F;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font:400 16px/1.6 "Plus Jakarta Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:44px 20px 90px}
+  header{margin-bottom:34px}
+  .label{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);margin:0 0 10px}
+  h1{font-size:clamp(30px,5vw,44px);font-weight:800;letter-spacing:-.03em;line-height:1.05;
+    margin:0 0 12px;text-wrap:balance}
+  .sub{color:var(--ink2);margin:0;max-width:60ch}
+  fieldset{border:none;margin:0 0 14px;padding:0;background:var(--card);
+    border:1px solid var(--hair);border-radius:4px}
+  legend{display:block;width:100%;padding:16px 20px;margin:0;font-weight:800;font-size:17px;
+    letter-spacing:-.01em;border-bottom:1px solid var(--hair);background:#FAFAF8}
+  .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:18px}
+  .q label{display:block;font-weight:600;font-size:15px;margin-bottom:4px}
+  .hint{color:var(--muted);font-size:13.5px;margin:0 0 8px}
+  input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
+    width:100%;padding:11px 13px;font:inherit;font-size:16px;color:var(--ink);
+    background:#fff;border:1px solid var(--hair);border-radius:3px}
+  textarea{min-height:84px;resize:vertical}
+  input:focus,textarea:focus,select:focus{outline:2px solid var(--gold-lite);outline-offset:1px;
+    border-color:transparent}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:620px){.two{grid-template-columns:1fr}}
+  .req{color:var(--bad);font-weight:700}
+  button{font:inherit;font-weight:800;font-size:16px;padding:14px 26px;border:none;border-radius:3px;
+    background:var(--gold);color:#fff;cursor:pointer;width:100%}
+  button:hover{background:#846626}
+  button:disabled{opacity:.6;cursor:not-allowed}
+  .note{color:var(--muted);font-size:13px;text-align:center;margin:12px 0 0}
+  .msg{padding:13px 15px;border-radius:3px;font-size:14.5px;margin-bottom:14px;display:none}
+  .msg.bad{display:block;background:rgba(194,71,15,.10);color:var(--bad)}
+  .done{display:none;background:var(--card);border:1px solid var(--hair);border-radius:4px;
+    padding:34px 26px;text-align:center}
+  .done h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 10px}
+  .done p{color:var(--ink2);margin:0 auto;max-width:46ch}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="label">Welcome aboard</p>
+    <h1>Let us get your site built</h1>
+    <p class="sub">This is the only form you will ever fill in for us. It takes about ten minutes
+      and it decides how the whole site reads, so answer it the way you would talk, not the way you
+      think a website should sound. Anything you are unsure about, leave blank and we will ask.</p>
+  </header>
+
+  <div class="msg bad" id="err" role="alert"></div>
+
+  <form id="onboard" novalidate>
+
+    <fieldset>
+      <legend>1. The basics</legend>
+      <div class="body">
+        <div class="two">
+          <div class="q"><label for="business">Business name <span class="req">*</span></label>
+            <input type="text" id="business" name="business" required autocomplete="organization" /></div>
+          <div class="q"><label for="owner">Your name <span class="req">*</span></label>
+            <input type="text" id="owner" name="owner" required autocomplete="name" /></div>
+        </div>
+        <div class="two">
+          <div class="q"><label for="phone">Best phone number <span class="req">*</span></label>
+            <p class="hint">The one you want customers ringing.</p>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel" /></div>
+          <div class="q"><label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email" /></div>
+        </div>
+        <div class="q"><label for="address">Business address</label>
+          <p class="hint">Leave blank if you work from home and would rather not show it.</p>
+          <input type="text" id="address" name="address" autocomplete="street-address" /></div>
+        <div class="q"><label for="hours">Opening hours</label>
+          <input type="text" id="hours" name="hours" placeholder="Mon to Fri 8am to 6pm, Sat mornings" /></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2. What you do</legend>
+      <div class="body">
+        <div class="q"><label for="services">Your services <span class="req">*</span></label>
+          <p class="hint">One per line. Put them in the order you want them on the site.</p>
+          <textarea id="services" name="services" required></textarea></div>
+        <div class="q"><label for="areas">Towns and areas you cover <span class="req">*</span></label>
+          <p class="hint">One per line. Each one gets its own page, which is a large part of how you
+            get found.</p>
+          <textarea id="areas" name="areas" required></textarea></div>
+        <div class="q"><label for="work_wanted">What work do you want more of?</label>
+          <p class="hint">Be specific. This decides what the site leads with.</p>
+          <input type="text" id="work_wanted" name="work_wanted"
+            placeholder="Full replacements rather than small repairs" /></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3. Your customers</legend>
+      <div class="body">
+        <div class="q"><label for="customer_worry">What do customers worry about before they book you?</label>
+          <p class="hint">Whatever it is, the site will answer it head on.</p>
+          <input type="text" id="customer_worry" name="customer_worry"
+            placeholder="Being overcharged, or nobody turning up" /></div>
+        <div class="q"><label for="edge">What do you do better than the people you compete with?</label>
+          <input type="text" id="edge" name="edge"
+            placeholder="I do every job myself, I do not use subcontractors" /></div>
+        <div class="q"><label for="bottleneck">What is holding the business back right now?</label>
+          <input type="text" id="bottleneck" name="bottleneck" /></div>
+        <div class="q"><label for="ninety_day_win">If the next ninety days went well, what changed?</label>
+          <input type="text" id="ninety_day_win" name="ninety_day_win" /></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>4. How it should feel</legend>
+      <div class="body">
+        <div class="two">
+          <div class="q"><label for="years">Years trading</label>
+            <input type="text" id="years" name="years" /></div>
+          <div class="q"><label for="team">How many of you are there?</label>
+            <input type="text" id="team" name="team" placeholder="Just me, or a team of six" /></div>
+        </div>
+        <div class="q"><label for="price_position">Where do you sit on price?</label>
+          <select id="price_position" name="price_position">
+            <option value="">Choose one</option>
+            <option>Cheapest in the area, and that is the pitch</option>
+            <option>Around the middle, fair price for good work</option>
+            <option>Premium, and I want the site to justify it</option>
+          </select></div>
+        <div class="q"><label for="vibe">How should the site feel?</label>
+          <select id="vibe" name="vibe">
+            <option value="">Choose one</option>
+            <option>Straightforward and trustworthy</option>
+            <option>Established and traditional</option>
+            <option>Modern and premium</option>
+            <option>Friendly and local</option>
+          </select></div>
+        <div class="q"><label for="likes">Any websites you like?</label>
+          <p class="hint">Paste a link or two, in or out of your trade. Fastest way to get this right
+            first time.</p>
+          <textarea id="likes" name="likes"></textarea></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>5. Photos, logo and proof</legend>
+      <div class="body">
+        <div class="q"><label for="assets_link">Link to your photos and logo</label>
+          <p class="hint">A Google Drive, Dropbox or WeTransfer link is easiest. Photos of real
+            finished jobs beat stock every time. If you would rather email them, just say so below.</p>
+          <input type="url" id="assets_link" name="assets_link" placeholder="https://" /></div>
+        <div class="q"><label for="accreditations">Accreditations, licences or insurance to show</label>
+          <input type="text" id="accreditations" name="accreditations" /></div>
+        <div class="q"><label for="reviews_note">Reviews you want featured</label>
+          <p class="hint">Paste a few, or tell us where to pull them from. We never invent one.</p>
+          <textarea id="reviews_note" name="reviews_note"></textarea></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>6. Accounts we need</legend>
+      <div class="body">
+        <div class="q"><label for="domain">Your web address, if you have one</label>
+          <p class="hint">And who it is registered with, if you know. If you do not have one, say so
+            and we will sort it.</p>
+          <input type="text" id="domain" name="domain" /></div>
+        <div class="q"><label for="gbp">Google Business Profile</label>
+          <p class="hint">Getting you found on Google Maps needs access. Add us as a manager and it
+            takes two minutes, we will send you exactly how.</p>
+          <input type="text" id="gbp" name="gbp" placeholder="Yes I have one, or no I do not" /></div>
+        <div class="q"><label for="review_link">Your Google review link</label>
+          <p class="hint">This is what every finished customer gets sent. If you cannot find it, leave
+            it and we will get it for you.</p>
+          <input type="url" id="review_link" name="review_link" placeholder="https://" /></div>
+        <div class="q"><label for="socials">Facebook, Instagram or anywhere else you post</label>
+          <textarea id="socials" name="socials"></textarea></div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>7. Where your leads should go</legend>
+      <div class="body">
+        <div class="q"><label for="lead_email">Who gets the enquiry alerts? <span class="req">*</span></label>
+          <p class="hint">Every enquiry emails this address the second it comes in. Separate more than
+            one with a comma.</p>
+          <input type="text" id="lead_email" name="lead_email" required /></div>
+        <div class="q"><label for="lead_extra">Anyone else who should see them?</label>
+          <p class="hint">An office manager, a partner, whoever answers the phone when you cannot.</p>
+          <input type="text" id="lead_extra" name="lead_extra" /></div>
+        <div class="q"><label for="anything">Anything else we should know?</label>
+          <textarea id="anything" name="anything"></textarea></div>
+      </div>
+    </fieldset>
+
+    <input class="hp" name="website_url" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+    <button type="submit" id="go">Send this to my team</button>
+    <p class="note">We will come back to you within one working day if anything needs a follow up.</p>
+  </form>
+
+  <div class="done" id="done">
+    <h2>Got it, thank you</h2>
+    <p>That is everything we need to start. We will be in touch shortly, and you do not need to do
+      anything else in the meantime.</p>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("onboard");
+  var btn  = document.getElementById("go");
+  var err  = document.getElementById("err");
+  var done = document.getElementById("done");
+
+  function fail(msg) {
+    err.textContent = msg;
+    err.classList.add("bad");
+    err.scrollIntoView({ behavior: "smooth", block: "center" });
+    btn.disabled = false;
+    btn.textContent = "Send this to my team";
+  }
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    err.classList.remove("bad");
+
+    var missing = [];
+    ["business","owner","phone","email","services","areas","lead_email"].forEach(function (n) {
+      var el = form.elements[n];
+      if (!el || !String(el.value).trim()) missing.push(n);
+    });
+    if (missing.length) {
+      var first = form.elements[missing[0]];
+      if (first && first.focus) first.focus();
+      return fail("A few things are still needed before we can start. Check the fields marked with a star.");
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+
+    try {
+      var res = await fetch("/api/onboarding", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+      var out = {};
+      try { out = await res.json(); } catch (e2) {}
+      if (!res.ok || !out.ok) {
+        return fail(out.message || "That did not send. Please try again, or email us your answers and we will take it from there.");
+      }
+      form.style.display = "none";
+      document.querySelector("header").style.display = "none";
+      done.style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (e3) {
+      fail("That did not send, your connection may have dropped. Please try again.");
+    }
+  });
+}());
+</script>
+</body>
+</html>

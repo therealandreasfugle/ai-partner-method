@@ -1,0 +1,7 @@
+yt-dlp>=2024.1.0
+youtube-transcript-api>=0.6.2
+anthropic>=0.40.0
+openai>=1.50.0
+apify-client>=1.7.0
+python-dotenv>=1.0.0
+requests>=2.31.0

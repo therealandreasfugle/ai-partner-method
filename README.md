@@ -4,6 +4,12 @@ Everything you need to find a local business, sign them, and deliver what you
 sold. The tools are built. Your job is to connect them to your own accounts and
 then run the process.
 
+## New here?
+
+Open **[WHAT-YOU-GET.md](WHAT-YOU-GET.md)** first. It has live links to everything
+you are selling, so you can see it before you set anything up, plus a plain list of
+what you must customise.
+
 ## How to use this repo
 
 Work top to bottom, once. After that you live in folders 01 to 05 on repeat.
@@ -17,9 +23,37 @@ Work top to bottom, once. After that you live in folders 01 to 05 on repeat.
 05-keep-the-client       reporting, edits, and keeping the monthly fee alive
 06-your-own-credibility  your own site and proof, so you look like what you sell
 scripts                  every word you will ever need to send or say
-tools                    the code: scraper, CRM, site builder, proposal builder
+tools                    the code: scraper, CRM, site builder, proposal builder, dashboard
 .claude                  the commands. Type these and the AI does the work
 ```
+
+### What lives where, after the repos were merged
+
+Everything that used to be a separate repo now sits inside this one. Nothing to
+clone twice.
+
+| Folder | Was its own repo |
+|---|---|
+| `01-find-leads/client-research` | aipm-client-research |
+| `01-find-leads/youtube-creator-scraper` | youtube-creator-scraper |
+| `02-outreach/email-toolkit` | ai-partner-method-email-toolkit |
+| `02-outreach/marketing-sops` | aipm-marketing-sops |
+| `04-deliver/client-onboarding` | ai-partner-method-onboarding |
+| `04-deliver/form-templates` | aipm-student-form-templates |
+| `04-deliver/reel-editor` | aipm-reel-editor |
+| `tools/lead-scraper` | local-lead-finder |
+| `tools/dashboard` | settoku-os, the Next.js pipeline dashboard you deploy yourself |
+
+Two things are deliberately still separate, because they are their own products
+rather than folders in this one:
+
+- **[aipm-operator-stack](https://github.com/BrettZuke/aipm-operator-stack)** is the
+  Claude Code toolkit: 255 skills, a Playwright browser so Claude can check the
+  sites you ship, subagents and task templates. Install it once and it applies to
+  every project on your machine, not just this repo.
+- **[aipm-local-website-builder](https://github.com/BrettZuke/aipm-local-website-builder)**
+  is the full website factory. It is 84MB on its own and you only need it when you
+  outgrow the 20 templates in `tools/website-templates`.
 
 ## What you are selling
 
@@ -83,10 +117,22 @@ Honest state of this repo, updated as it fills in.
 | AI chatbot endpoint and setup guide | `tools/website-template/api/chat.mjs` |
 | Proposal builder and contract e-sign | `tools/proposal-builder` |
 | Evergreen VSL page you send instead of a call | `tools/vsl-page` |
-| 30 Claude skills, copy, design, SEO, video | `skills` |
+| The sales call proposal, with contract e-sign | `tools/sales-proposal` |
+| High end websites playbook, the premium track | `04-deliver/01-website` |
+| Marketing SOPs, frameworks and case studies | `02-outreach/marketing-sops` |
+| 38 Claude skills, copy, design, SEO, video | `skills` |
+| Client onboarding form, sent after they pay | `04-deliver/client-onboarding` |
+| Account setup, ten guides plus a check script | `00-setup` |
+| Email warmup and domain authentication | `02-outreach/email-warmup.md` |
+| Claude commands, so you prompt instead of read | `.claude/commands` |
 | 16 cold emails, 4 angles plus follow ups | `scripts/cold-email` |
 | DM scripts and objection handling | `scripts/dm` |
 | Cold call, voicemail, discovery and closing call | `scripts/phone` |
+
+⚠️ **We never ask a prospect to fill in a form.** Every outreach path, the
+proposal with their site embedded, the video, or both together, pushes to one
+thing: book a call. The only form anybody fills in is the onboarding form, and
+that goes out after they have paid.
 
 ⚠️ **Everything you deploy goes on YOUR OWN accounts.** Every tool in here is
 set up to be deployed by you, to your own Vercel, with your own keys. Placeholders
@@ -94,21 +140,24 @@ like `YOUR_SUPABASE_PROJECT_REF` and `{{YOUR_BOOKING_LINK}}` mark the spots you
 fill in. Nothing here points at anybody else's account, and nothing you build
 touches anybody else's client data.
 
-**Still being written, arriving over the next few days:**
+**Still being written:**
 
 | Area | Notes |
 |---|---|
-| Account setup walkthroughs | Each tool, with signup links |
-| Email warmup and domain auth | Read this before you send anything |
-| Client intake and onboarding emails | What to collect the day they sign |
-| Review and referral copy | Including the script your client records |
-| Google Business Profile guide | |
-| Launch QA checklist | |
-| Monthly report and retention | |
-| Claude commands | So you type a command instead of reading a guide |
+| Troubleshooting guide | When something breaks, run `/check` first. A written guide is coming |
 
-⚠️ **The folders numbered 00 to 06 are mostly empty for now.** Everything that
-works today is in `tools` and `scripts`. Start there.
+## Start here
+
+```bash
+python3 00-setup/setup_check.py
+```
+
+It tells you what is connected and what is missing. Then open
+[`00-setup/README.md`](00-setup/README.md) and work down it once.
+
+Once Claude Code is running in this folder you can also just type `/setup` and it
+will walk you through connecting everything one step at a time. The other commands
+are `/check`, `/find-leads`, `/build-site` and `/onboard-client`.
 
 ## A rule worth reading twice
 

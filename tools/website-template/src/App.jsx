@@ -2,6 +2,7 @@ import './index.css'
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Layout from './components/Layout'
+import RouteMeta from './components/RouteMeta'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
@@ -14,6 +15,8 @@ import BlogPostPage from './pages/BlogPostPage'
 import FinancingPage from './pages/FinancingPage'
 import ContactPage from './pages/ContactPage'
 import ThankYouPage from './pages/ThankYouPage'
+import PrivacyPage from './pages/PrivacyPage'
+import TermsPage from './pages/TermsPage'
 
 /**
  * ScrollToHash — fires on initial mount AND on every route/hash change.
@@ -48,6 +51,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToHash />
+      <RouteMeta />
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -62,6 +66,8 @@ export default function App() {
           <Route path="/financing" element={<FinancingPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -1,0 +1,228 @@
+{
+  "type": "quiz",
+  "title": "Community Onboarding",
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "Thanks for completing this typeform\nNow *create your own* \u2014 it's free, easy, & beautiful",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Create a *typeform*"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "GtRle3bdSCiK",
+      "title": "*what's your name?*",
+      "ref": "b5af5a93-91c2-420b-b41a-d81a7484eb69",
+      "properties": {
+        "fields": [
+          {
+            "id": "4UZCNWJLfaAv",
+            "title": "First name",
+            "ref": "3d5e5b64-cc7a-498c-a027-29cd410394d7",
+            "subfield_key": "first_name",
+            "properties": {},
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "BHsKV58lvtyN",
+            "title": "Last name",
+            "ref": "496d8d28-dfe0-4892-bdef-6151b651fa54",
+            "subfield_key": "last_name",
+            "properties": {},
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          }
+        ]
+      },
+      "type": "contact_info"
+    },
+    {
+      "id": "1UG7ZRbrwJ2f",
+      "title": "*Where did you first see my content?*",
+      "ref": "ef90e7d7-b646-47b9-940c-b111ce7d2460",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "jmMcWOj3MA4P",
+            "ref": "5b1b4b04-6e67-4620-8903-6fa6e3e2fa01",
+            "label": "Youtube"
+          },
+          {
+            "id": "ZHdTrlWnIYZD",
+            "ref": "a2d2c66f-cdf3-4ce8-9b26-1390244ec456",
+            "label": "Reels"
+          },
+          {
+            "id": "hS5pDZVX637H",
+            "ref": "fb88030a-ba6a-4ee0-b05c-2d95a36b8dae",
+            "label": "IG Stories"
+          },
+          {
+            "id": "cyXIYFDE9r5Y",
+            "ref": "f78f42df-4fc6-4649-b92f-2c9d124e7726",
+            "label": "Emails"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "8cYUqdHPJtT8",
+      "title": "*Which specific piece of content (video/story/email) finally made you join?*",
+      "ref": "68531bcb-7c69-4640-86ab-133bfe5284cf",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "7xWY8La86hLz",
+      "title": "*What was the*_* *_*#1 thing that almost stopped you from joining?*",
+      "ref": "48f6d4fe-c8e2-419b-85f7-6b7a38d4decb",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "hkruLjY8etVr",
+      "title": "*How long have you been watching and thinking of joining before finally pulling the trigger?*",
+      "ref": "1c61b951-a34b-40ba-a1c6-a8ad7a4e1bc7",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "fLXBIzaFlojL",
+      "title": "*Before you saw the price, what did you honestly expect this to cost (in $USD)*",
+      "ref": "0591f1a0-bc79-4b44-a861-99e80ddd934c",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "3YRHWZelMQaX",
+      "title": "*What is the one result you need to see in the next 30 days to feel like joining was a win?*",
+      "ref": "e94b69d4-29a9-47ce-b673-09bafc073d41",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "ttbHlDF3Ujt7",
+      "title": "*What sort of value do you need to see every month to make it worth it?*",
+      "ref": "4c1f1204-2ce6-45d5-8e6a-e2dbdfdd16d6",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "5xlHAMrnOfjV",
+      "title": "*What would make you want to cancel?* ",
+      "ref": "36b101d2-5580-4baa-b3f2-443bd7211f79",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "OvPKzkVzUYot",
+      "title": "*Any other communities you thought of joining? If so, who and why?*",
+      "ref": "6d1f5b38-8867-4ea0-846e-19ed01d12633",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "e7yp4w46b1C1",
+      "title": "*What were the top 3 hesitations or \"risks\" you felt before hitting the buy button*",
+      "ref": "6670f0de-b7fb-46ce-8333-6998332c2e7d",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "zpeitAxCpXYZ",
+      "title": "*What\u2019s the #1 lie you were telling yourself that kept you from joining 3 months ago?*",
+      "ref": "19a5afff-f016-4ba2-bfdb-2e00ec404fe2",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "4JY2BZBAa14C",
+      "title": "*What\u2019s one thing I could have done to make you join sooner?*",
+      "ref": "e6e39f88-fea5-4870-ba31-356f3f446b12",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    }
+  ]
+}

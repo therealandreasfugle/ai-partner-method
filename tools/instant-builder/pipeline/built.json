@@ -1,18 +1,10 @@
 {
-  "nails-time-spa": {
-    "business": "Nails Time & Spa",
-    "email": "nailstimepenticton@gmail.com",
-    "site": "https://aipm-instant-site.vercel.app/?site=nails-time-spa",
-    "proposal": "https://aipm-instant-proposal.vercel.app/proposal.html?site=nails-time-spa",
+  "example-roofing": {
+    "business": "Halloway Roofing",
+    "email": "danny@hallowayroofing.example",
+    "site": "https://your-instant-site.vercel.app/?site=example-roofing",
+    "proposal": "https://your-instant-proposal.vercel.app/proposal.html?site=example-roofing",
     "sent": false,
-    "row": 4
-  },
-  "penticton-family-dentist": {
-    "business": "Penticton Family Dentist",
-    "email": "ray.mar@shaw.ca",
-    "site": "https://aipm-instant-site.vercel.app/?site=penticton-family-dentist",
-    "proposal": "https://aipm-instant-proposal.vercel.app/proposal.html?site=penticton-family-dentist",
-    "sent": false,
-    "row": 8
+    "row": 2
   }
 }

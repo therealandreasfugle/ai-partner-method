@@ -209,7 +209,7 @@ function timingSafeEqual(given, expected) {
   return diff === 0;
 }
 
-/** Strips characters Brett bans everywhere, absorbing spaces around dashes. */
+/** Strips the banned characters, absorbing spaces around dashes. */
 function scrub(value) {
   if (typeof value === "string") {
     return value
@@ -482,7 +482,7 @@ view of what this business should be saying, not as a report of what they said.`
 }
 
 /**
- * The house copywriting standard, lifted from the skills Brett actually uses:
+ * The house copywriting standard, lifted from the skills in this repo:
  * Ogilvy on promise and specificity, the conversion-copywriting skill on
  * structure and CTAs, and stop-slop on the tells that make writing read as
  * machine-made. It sits in front of both prompts so the model is briefed the
@@ -1680,7 +1680,7 @@ function composeEmail(config, siteUrl, proposalUrl, agency) {
   const count = Number(config.reviews?.totalReviewCount || 0);
   const noSite = status.includes("no website") || status === "none";
 
-  const sender = (process.env.SENDER_NAME || "Dan").trim();
+  const sender = (process.env.SENDER_NAME || "{{YOUR_FIRST_NAME}}").trim();
   const company = (agency || "").trim();
   const senderPhone = (process.env.SENDER_PHONE || "").trim();
   const senderSite = (process.env.SENDER_SITE || "").trim();
@@ -2121,7 +2121,7 @@ export default async function handler(request, response) {
     const siteUrl = (config._demo && config._demo.siteUrl) || `${SITE_BASE}/?site=${slug}`;
     const proposalUrl = `${PROPOSAL_BASE}/proposal.html?site=${slug}`;
     const agency = (request.body.lead && request.body.lead.agency_name) ||
-      process.env.AGENCY_NAME || "Jumpsky Ltd";
+      process.env.AGENCY_NAME || "{{YOUR_BUSINESS}}";
     const message = composeEmail(config, siteUrl, proposalUrl, agency);
 
     const delivery = await sendEmail(message, to, DEMO_SEND_DOMAIN);
@@ -2163,7 +2163,7 @@ export default async function handler(request, response) {
     website: lead.website || "", website_status: lead.website_status || "",
     facebook: lead.facebook || "", instagram: lead.instagram || "",
     // Whose name goes in the site footer and the email sign off.
-    agency_name: lead.agency_name || process.env.AGENCY_NAME || "Jumpsky Ltd",
+    agency_name: lead.agency_name || process.env.AGENCY_NAME || "{{YOUR_BUSINESS}}",
   };
 
   if (!normalised.business_name) {
@@ -2389,7 +2389,7 @@ export default async function handler(request, response) {
       // text, an Instagram DM or Messenger.
       shortMessage: message.shortMessage,
       // The actual email, both parts of it. The CRM used to preview the DM
-      // version and call it the email draft, so what Brett read on screen was
+      // version and call it the email draft, so what was read on screen was
       // never what landed in the inbox: different wording, and the link pasted
       // as raw text instead of being a link. Showing a draft that does not match
       // the send is worse than showing no draft at all.

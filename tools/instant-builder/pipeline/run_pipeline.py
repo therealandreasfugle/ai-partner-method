@@ -26,6 +26,7 @@ Steps per run:
 Nothing sends by default. Nothing is deployed by default either.
 """
 
+import os
 import argparse
 import json
 import subprocess
@@ -109,7 +110,7 @@ def publish():
     if result.returncode != 0:
         raise SystemExit("staging failed:\n" + result.stdout + result.stderr)
 
-    token_file = Path.home() / "Desktop/settoku/.env.local"
+    token_file = Path(os.environ.get("SETTOKU_ENV", Path.home() / ".env.local"))
     token = ""
     for line in token_file.read_text().splitlines():
         if line.startswith("VERCEL_TOKEN_PERSONAL="):
@@ -119,7 +120,7 @@ def publish():
 
     deploy = subprocess.run(
         ["vercel", "deploy", "--prod", "--yes", "--name", "aipm-instant-site",
-         "--scope", "brettzuke6987-1136s-projects", "--token", token],
+         "--scope", os.environ["VERCEL_SCOPE"], "--token", token],
         cwd=ROOT / ".deploy" / "site", capture_output=True, text=True, timeout=600,
     )
     ok = deploy.returncode == 0
@@ -136,7 +137,7 @@ def main():
     parser.add_argument("--plan", action="store_true", help="show what would happen, build nothing")
     parser.add_argument("--publish", action="store_true", help="deploy the batch when done")
     parser.add_argument("--send", action="store_true", help="actually email the leads")
-    parser.add_argument("--agency", default="Jumpsky Ltd")
+    parser.add_argument("--agency", default="{{YOUR_BUSINESS}}")
     args = parser.parse_args()
 
     print("reading leads from the sheet...")

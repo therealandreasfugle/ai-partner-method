@@ -4,7 +4,7 @@ build-proposal.py, Stage 13 (template-approach branch)
 
 Translation layer between our pipeline outputs (intake / research / strategy /
 brand-dna / dist / assets) and the canonical proposal template
-(`templates/proposal/proposal-template.html` with ~110 {{VAR}} placeholders).
+(`proposal-template.html`, in this same folder, with ~110 {{VAR}} placeholders).
 
 Reads our pipeline data, composes the placeholder values, copies the agency-static
 dossier wholesale + per-lead overlays (logo, GMB cover photo, the QA-cleared
@@ -19,10 +19,14 @@ Per-lead artifact tree:
     ├── build/                  (copy of [X] Website/dist/)
     └── agency-assets/             (agency-static dossier + per-lead client-logo + gmb-cover)
 
-Usage:
-    python3 tools/build-proposal.py --client "Acme Roofing"
-    python3 tools/build-proposal.py --client "Acme Roofing" --skip-build-copy
-    python3 tools/build-proposal.py --client "Acme Roofing" --dry-run
+Usage (run from anywhere; paths below are all resolved relative to this file):
+    python3 tools/proposal-builder/tools/build-proposal.py --client "Acme Roofing"
+    python3 tools/proposal-builder/tools/build-proposal.py --client "Acme Roofing" --skip-build-copy
+    python3 tools/proposal-builder/tools/build-proposal.py --client "Acme Roofing" --dry-run
+
+Per-client inputs live at the true repo root, not under tools/proposal-builder/:
+    clients/[X]/Pipeline Data/{intake,research,strategy,brand}/*.json
+    clients/_agency/agency-brand.json  (this agency's own identity/pricing/proof)
 """
 
 from __future__ import annotations
@@ -39,8 +43,16 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import quote
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-TEMPLATE_DIR = REPO_ROOT / "templates" / "proposal"
+# This file lives at tools/proposal-builder/tools/build-proposal.py. The
+# template files (proposal-template.html, sign.html, api/) live one level up,
+# directly in tools/proposal-builder/ - there is no templates/proposal/
+# subfolder, despite what an earlier version of this script assumed. Per-client
+# and per-agency data (clients/) lives at the TRUE top-level repo root instead,
+# two levels above that again - it's shared with the other pipeline tools
+# (tools/website-template, etc.), not private to the proposal builder.
+PROPOSAL_DIR = Path(__file__).resolve().parent.parent
+REPO_ROOT = PROPOSAL_DIR.parent.parent
+TEMPLATE_DIR = PROPOSAL_DIR
 TEMPLATE_HTML = TEMPLATE_DIR / "proposal-template.html"
 TEMPLATE_LOGO = TEMPLATE_DIR / "agency-logo.svg"
 AGENCY_ASSETS = TEMPLATE_DIR / "agency-assets"
@@ -321,8 +333,8 @@ def compose_agency_vars(brand: dict[str, Any]) -> dict[str, str]:
 
     # Founder portrait: prefer the configured portrait file if it exists in
     # assets/, else scan common names/extensions. Keeps the template working
-    # whether the student ships agency-intro.png, .jpg, or .webp.
-    portrait_src = "agency-assets/agency-intro.png"
+    # whether the student ships your-photo.jpg, .jpg, or .webp.
+    portrait_src = "agency-assets/your-photo.jpg"
     configured = (founder.get("portrait_path") or "").replace("assets/", "")
     candidates = [configured] if configured else []
     candidates += [f"agency-intro.{ext}" for ext in ("jpg", "jpeg", "png", "webp")]
@@ -1296,7 +1308,7 @@ def derive_page_data(strategy: dict[str, Any], owner_first: str, brand_short: st
             ["Process", "Same 4-step the website template process applied across every service.", "Process"],
             ["Why Us strip", "4 differentiators. Carried over from homepage.", "Pitch"],
             ["FAQ", "Cross-service questions. Schema-marked.", "AEO"],
-            ["Final CTA", "Lead form. '__REQUIRED__CTA_PRIMARY__'.", "Convert"],
+            ["Final CTA", "Lead form with a primary call-to-action button.", "Convert"],
         ],
     })
 

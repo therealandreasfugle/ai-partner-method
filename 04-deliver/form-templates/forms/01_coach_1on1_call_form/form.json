@@ -1,0 +1,198 @@
+{
+  "type": "quiz",
+  "title": "[Coach] 1-on-1 Call Form",
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "enrichment_in_renderer": {
+      "toggle": false,
+      "active": true
+    },
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "GuMBDF7HsTd9",
+      "ref": "01KR53QJH2YNXAKRJGHTSYSW67",
+      "title": "\u2713 Logged. Recording added to student card.",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": false,
+        "share_icons": true,
+        "button_mode": "default_redirect",
+        "button_text": "again"
+      }
+    },
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "Thanks for completing this typeform\nNow *create your own* \u2014 it's free, easy, & beautiful",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Create a *typeform*"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+      }
+    }
+  ],
+  "welcome_screens": [
+    {
+      "id": "kE1KiTInx6Hr",
+      "ref": "01KR53QJH2MRJ3ZJTVNTFXAACK",
+      "title": "\ud83d\udcde Log a 1-on-1 call recording",
+      "properties": {
+        "show_button": true,
+        "button_text": "Start",
+        "description": "Fill this after every coaching call. Takes 30 seconds."
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "f42sGLvyQCmo",
+      "title": "Student email",
+      "ref": "email",
+      "validations": {
+        "required": true
+      },
+      "type": "email"
+    },
+    {
+      "id": "Np3u8ayxtOhL",
+      "title": "Coach who took the call",
+      "ref": "coach",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "lTRNCWAAZqMx",
+            "ref": "01KR53QJH2ZRZ9EGXAJTTN5MT2",
+            "label": "Coach Name 1"
+          },
+          {
+            "id": "LMt7HHCd6vRh",
+            "ref": "01KR53QJH265405YDQJGM382BG",
+            "label": "Coach Name 2"
+          },
+          {
+            "id": "G58DIRhbyG2A",
+            "ref": "01KR53QJH2X4BQTR626ZMPBP29",
+            "label": "Coach Name 3"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "e74xtKp8DwnT",
+      "title": "Call type",
+      "ref": "call_type",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "yzhpQYQ0bQEa",
+            "ref": "01KR53QJH296M06K49R88VFCQP",
+            "label": "1-on-1 coaching"
+          },
+          {
+            "id": "7RKTD0cEUnW0",
+            "ref": "01KR53QJH2D79WG4K0S2713B1R",
+            "label": "Onboarding"
+          },
+          {
+            "id": "T2tBjZLGoQ4d",
+            "ref": "01KR53QJH2W5SFW46A1T3N4CAW",
+            "label": "Content review"
+          },
+          {
+            "id": "JOyyMMkBCdgZ",
+            "ref": "01KR53QJH2QR554KZHDMK4FV7X",
+            "label": "Sales call review"
+          },
+          {
+            "id": "FI4WFZVSdcQb",
+            "ref": "01KR53QJH2G7D2MBC60FBQCJ6N",
+            "label": "Q&A"
+          },
+          {
+            "id": "33EYe077WRfl",
+            "ref": "01KR53QJH2F5MH9BTZGDSNTXN6",
+            "label": "Other"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "frAbhaZgrDPI",
+      "title": "Date of call",
+      "ref": "call_date",
+      "properties": {
+        "separator": "/",
+        "structure": "DDMMYYYY"
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "date"
+    },
+    {
+      "id": "jgo32SBMV3yU",
+      "title": "Recording link (Fathom / Zoom / Loom)",
+      "ref": "recording_url",
+      "validations": {
+        "required": true
+      },
+      "type": "website"
+    },
+    {
+      "id": "5AbgRH9XVl9c",
+      "title": "Brief note on what was covered",
+      "ref": "notes",
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    }
+  ]
+}

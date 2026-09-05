@@ -6,13 +6,13 @@ business, and about half a minute later a real, finished website exists for them
 It gets emailed over with a link to a proposal page carrying the price and a pay
 button.
 
-Built for Dan's AIPM webinar demo. **Nothing here is deployed and no email is
+Built for the AIPM webinar demo. **Nothing here is deployed and no email is
 sent.** It all runs on this machine until you say otherwise.
 
 ## Run the demo
 
 ```
-cd ~/Desktop/aipm-instant-site
+cd tools/instant-builder
 python3 tools/local_server.py
 ```
 

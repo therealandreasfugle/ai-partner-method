@@ -22,6 +22,7 @@ Output lands at a "-claude" slug so both versions can be opened side by side:
     Claude lane  /?site=kerrigan-roofing-claude
 """
 
+import os
 import argparse
 import json
 import re
@@ -41,7 +42,7 @@ CLAUDE = "/opt/homebrew/bin/claude"
 # Read-only reference. The factory's own copy conventions live here, and letting
 # Claude read them is what makes this lane meaningfully better than a cold
 # prompt. The repo is never written to.
-BUILDER_REPO = Path.home() / "Desktop/aipm-local-website-builder"
+BUILDER_REPO = Path(os.environ.get("BUILDER_REPO", Path.home() / "aipm-local-website-builder"))
 
 
 def build_brief(answers, trade_set):

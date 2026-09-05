@@ -138,7 +138,7 @@ export const brandDNA = {
         text: "Three other garages quoted me for a full clutch. Grayson found it was a sensor, fixed it for a fraction of the price, and showed me the old part. Honest people who actually explain what they are doing.",
       },
       {
-        author: "Dan W.",
+        author: "Chris W.",
         source: "facebook",
         rating: 5,
         text: "Full service and MOT done in a morning, courtesy car sorted so I never missed work. Got a clear breakdown of what was done and what to keep an eye on next year. This is my garage now.",

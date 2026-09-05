@@ -47,7 +47,7 @@ class LLMError(RuntimeError):
 
 def _load_env():
     """Reads free keys from the Agentic Workflows .env without importing it."""
-    env_path = Path.home() / "Desktop/Agentic Workflows/.env"
+    env_path = Path(os.environ.get("LLM_ENV", Path.home() / ".env"))
     if not env_path.is_file():
         return
     for line in env_path.read_text().splitlines():

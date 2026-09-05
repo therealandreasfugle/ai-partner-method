@@ -463,7 +463,7 @@ export const brandDNA = {
     },
   },
 
-  credit: { agency: "Jumpsky Ltd", url: "https://danbennettz.com" },
+  credit: { agency: "{{YOUR_BUSINESS}}", url: "https://yourdomain.com" },
 };
 
 export default brandDNA;

@@ -539,7 +539,7 @@ def add_display_fields(config, answers):
 
 
 def scrub_banned(value):
-    """Replaces characters Brett bans everywhere. Applied to every string."""
+    """Replaces the banned characters. Applied to every string."""
     if isinstance(value, str):
         # Absorb the spaces around a dash so "a — b" becomes "a, b" and never
         # "a , b". Models emit dashes despite being told not to, so this pass is
@@ -811,7 +811,7 @@ DEMO_ANSWERS = {
     "customer_worry": "That the price will jump halfway through, or nobody turns up when they said",
     "edge": "I do every job myself, same day quotes, and I clean up properly after",
     "vibe": "Solid and trustworthy",
-    "agency_name": "Jumpsky Ltd",
+    "agency_name": "{{YOUR_BUSINESS}}",
 }
 
 

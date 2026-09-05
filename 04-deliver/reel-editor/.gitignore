@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+examples/*.mp4
+*_edited.mp4
+*_report.json
+stitched.mp4

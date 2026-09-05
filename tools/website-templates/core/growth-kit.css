@@ -279,7 +279,7 @@
   border: 2px solid color-mix(in srgb, var(--primary-cta-text) 55%, transparent);
 }
 
-/* The panel follows the shape Brett pointed at on the Summit site: a greeting
+/* The panel follows the shape used on the reference site: a greeting
    header, then a stack of cards a visitor can tap, then Home and Messages
    tabs. The point of it is that nobody has to type anything to get moving. */
 .gk-chat-panel {

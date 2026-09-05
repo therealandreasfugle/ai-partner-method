@@ -1,0 +1,16 @@
+[
+  {
+    "tag": "phoenix:1778283207206",
+    "url": "<REPLACE_WITH_YOUR_WEBHOOK_URL>",
+    "enabled": true,
+    "verify_ssl": true,
+    "_note": "Replace url with your own Make / n8n / Zapier / Modal endpoint before running scripts/recreate_webhooks.py"
+  },
+  {
+    "tag": "phoenix:1775263818541",
+    "url": "<REPLACE_WITH_YOUR_WEBHOOK_URL>",
+    "enabled": true,
+    "verify_ssl": true,
+    "_note": "Replace url with your own Make / n8n / Zapier / Modal endpoint before running scripts/recreate_webhooks.py"
+  }
+]

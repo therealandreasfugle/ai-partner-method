@@ -10,6 +10,8 @@ const companyLinks = [
   { label: 'Financing', to: '/financing' },
   { label: 'Blog', to: '/blog' },
   { label: 'Contact', to: '/contact' },
+  { label: 'Privacy Policy', to: '/privacy' },
+  { label: 'Terms of Use', to: '/terms' },
 ];
 
 const serviceLinks = brandDNA.services.slice(0, 7).map((s) => ({

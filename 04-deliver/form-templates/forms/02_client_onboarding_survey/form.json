@@ -1,0 +1,402 @@
+{
+  "type": "quiz",
+  "title": "Client Onboarding Survey",
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "g081sJ7CAwfN",
+      "ref": "fc2a428e-fda0-431b-beee-b00f235a4127",
+      "title": "Thanks for taking the time to fill this out \u2014 really appreciate the thorough answers. You're all set.",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": false,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "again"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://images.typeform.com/images/ZCClOJbECZSn",
+        "properties": {
+          "description": "IMG_0842"
+        }
+      },
+      "layout": {
+        "type": "stack",
+        "attachment": {
+          "type": "image",
+          "href": "https://images.typeform.com/images/ZCClOJbECZSn",
+          "properties": {
+            "brightness": 0,
+            "focal_point": {
+              "x": 0,
+              "y": 0
+            },
+            "description": "IMG_0842"
+          }
+        },
+        "viewport_overrides": {
+          "small": {
+            "type": "stack"
+          },
+          "large": {
+            "type": "split",
+            "placement": "right"
+          }
+        }
+      }
+    },
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "Thanks for completing this typeform\nNow *create your own* \u2014 it's free, easy, & beautiful",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Create a *typeform*"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "GPs899ARsqyr",
+      "title": "*What's your name?*",
+      "ref": "f9c11625-bbe0-4382-af92-57e076a22cb3",
+      "properties": {
+        "fields": [
+          {
+            "id": "mFq5Nab84RDg",
+            "title": "First name",
+            "ref": "73bce50a-0bda-47a6-ab28-cb96fbb7993f",
+            "subfield_key": "first_name",
+            "properties": {},
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "JGzjQgfbaHPS",
+            "title": "Last name",
+            "ref": "a97f967b-b048-478d-a0d9-ba8fc6a631ac",
+            "subfield_key": "last_name",
+            "properties": {},
+            "validations": {
+              "required": false
+            },
+            "type": "short_text"
+          }
+        ]
+      },
+      "type": "contact_info"
+    },
+    {
+      "id": "Q2mbFbITCNGH",
+      "title": "*whats your phone number?*",
+      "ref": "0a0f2cee-eec2-4d56-8cd2-ef15c56d52da",
+      "properties": {
+        "default_country_code": "US"
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "phone_number"
+    },
+    {
+      "id": "3eHcxsUPhN7o",
+      "title": "*whats your prefered email?*",
+      "ref": "c077e9e0-98ac-45f8-9323-86e0bd969631",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "email"
+    },
+    {
+      "id": "PCAgGy1MwY27",
+      "title": "*what country do you reside in legally?*",
+      "ref": "7b1e308f-2aa0-46f3-adb1-6e0cc6351284",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "TwLoUQjuJsZc",
+      "title": "*What was your first touch point with me?*",
+      "ref": "17855a4f-4667-4cab-9612-e591fc1989ff",
+      "properties": {
+        "description": "as in, where did u first come in contact with me/my content?",
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "CDHzjdxv19K5",
+            "ref": "cbc687dd-dadb-4056-a3e0-dc79083fae4e",
+            "label": "Youtube"
+          },
+          {
+            "id": "ubaahwcdu9P5",
+            "ref": "0130c3b5-22c6-4059-9f53-efe340258b9c",
+            "label": "Reels"
+          },
+          {
+            "id": "hFEo1unCoU0P",
+            "ref": "f51e0a2a-5516-4ea7-87c0-2607b128a493",
+            "label": "Referral"
+          },
+          {
+            "id": "obxb8PjobAyn",
+            "ref": "9ee2fa8b-3d23-4334-bb07-5d0a1a6abbcc",
+            "label": "Dms"
+          },
+          {
+            "id": "z8PQZKFfNAGZ",
+            "ref": "6f3fc44c-33d7-448f-ad76-156109aa997e",
+            "label": "Email"
+          },
+          {
+            "id": "umSgvKNx8dS0",
+            "ref": "8bb10d7a-504a-4238-83f4-a68b9bb43cc1",
+            "label": "Ads"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "SRftHUXtwjFN",
+      "title": "*What made you choose me?*",
+      "ref": "faaf27c5-8038-428c-9abb-4dc341416da1",
+      "properties": {
+        "description": "please be ultra specific"
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "ERnzgohza1SM",
+      "title": "*How long did it take you to start working with me? *",
+      "ref": "3384a0e3-1544-4ed2-bce1-3d02b5cc4c48",
+      "properties": {
+        "description": "(from first touch point to onboarding)"
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "eFgwhO2X6FWZ",
+      "title": "*At what point were you sold?*",
+      "ref": "8806f2d0-34de-4ea4-8b84-b6f240ba3401",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "XHgncGa2OsMG",
+      "title": "*There are lots of other people offering the same thing.. What made you want to work with ME specifically? *\n",
+      "ref": "56f7caa9-1017-4ca9-9483-e16c3549315c",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "MJIWlFaHrsRD",
+      "title": "*What could I have improved or done to make you join earlier?*",
+      "ref": "d627f480-d10a-4196-82d1-80a1109a88bd",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "mLwSMfr5krEL",
+      "title": "*What was the final decision that put you over the line?*",
+      "ref": "a33ae4c3-fdbd-41cd-b54a-43a8193d23d8",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "10F9XTH3BxU2",
+      "title": "*Were there any specific content pieces (yt videos, stories etc) that pushed you over the edge?*",
+      "ref": "4edc8e7f-5263-4931-a6f5-e7ab682573e8",
+      "properties": {
+        "description": "if not just say no"
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "8Q6LcmKK7XTw",
+      "title": "*Before the call, how convinced were you that you would join?*",
+      "ref": "cc91cab9-67c1-4899-92d5-71179fedd929",
+      "properties": {
+        "start_at_one": false,
+        "steps": 11
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "opinion_scale"
+    },
+    {
+      "id": "FmTzZrMriop3",
+      "title": "*Any fears of going with me?*",
+      "ref": "f0d6d305-e39d-4bac-9080-7eae448795b1",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "jeLZ9AgSbcje",
+      "title": "*What were your biggest hesitations before joining?*",
+      "ref": "94ed67d3-28e0-4f09-a238-872c9decd53d",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "m4T2YZud02hi",
+      "title": "*What would of made you join sooner?*",
+      "ref": "b8d12b00-33a0-44b6-bf9d-0c35ee7ec507",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "WndpBmHAXwvd",
+      "title": "*Would you have paid more to join? If so, how much more?*",
+      "ref": "9429cc9c-dab0-431b-8f9c-e7ee240aadc7",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "2PcFjE8KoJDD",
+            "ref": "caaa1f85-6ba3-483b-9965-0e7e12a3fdfb",
+            "label": "No"
+          },
+          {
+            "id": "udK1XzU1DXvw",
+            "ref": "1b91fe72-53a9-4dbf-ba7c-1c5f2a592b9f",
+            "label": "Yes $100-$500 more"
+          },
+          {
+            "id": "XP0aGMtIa4Ax",
+            "ref": "99c7db19-80ce-4332-9727-e8f5f795a500",
+            "label": "Yes $500 - $1000 more"
+          },
+          {
+            "id": "Eo2nzVXmGB7b",
+            "ref": "bee0d00c-7210-4443-b426-a37df0bb48bb",
+            "label": "Yes $1000 - $2000 more"
+          },
+          {
+            "id": "UCvR4pnaB9Ss",
+            "ref": "5f7299e5-d01a-43df-8f2f-cbd13da11deb",
+            "label": "Yes $2000 - $4000 more"
+          },
+          {
+            "id": "60KP3jL97zUn",
+            "ref": "30a68cd7-f767-490a-842c-6aca3e95d915",
+            "label": "Yes $4000+ more"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "c2yoc9Td1KL2",
+      "title": "*What would make you WANT to pay more?*",
+      "ref": "4d8cc90b-2d4b-4a27-9976-50513584997b",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "3XbZoZC9CLkb",
+      "title": "*Which of my traits as a human being spoke to you? Why did you buy from me as a person*",
+      "ref": "5ab21664-212d-44c1-ae87-696a390e50e3",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "B581TzdIVbka",
+      "title": "*Anything else?*",
+      "ref": "070425da-7049-41cf-a603-858875d8ef73",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    }
+  ]
+}

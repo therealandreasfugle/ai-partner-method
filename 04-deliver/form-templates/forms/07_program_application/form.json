@@ -1,0 +1,364 @@
+{
+  "type": "quiz",
+  "title": "Program Application",
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": false,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "enrichment_in_renderer": {
+      "toggle": false,
+      "active": false
+    },
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "X2To1LB5w4RK",
+      "ref": "01KRCRWGFKT6S4R7HJ8Q37D79K",
+      "title": "Application received.",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": false,
+        "share_icons": true,
+        "button_mode": "default_redirect",
+        "button_text": "again",
+        "description": "We'll review your application and get back to you within 48 hours."
+      }
+    },
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "All done! Thanks for your time.",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": false,
+        "share_icons": false
+      }
+    }
+  ],
+  "welcome_screens": [
+    {
+      "id": "zyHB7q6ic2tj",
+      "ref": "01KRCRWGFKAHSRDMV1HJ1ZTN3W",
+      "title": "{{Program Name}} \u2014 Application",
+      "properties": {
+        "show_button": true,
+        "button_text": "Start application",
+        "description": "Quick 2-minute application. We review every submission and reply within 48 hours."
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "CUehgGxp8bgR",
+      "title": "What's the goal monthly income you're chasing in the next 6 months?",
+      "ref": "goal_income",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "DHXETQSnIR70",
+            "ref": "01KRCRWGFKM0PR6R3A0RBBWZ1H",
+            "label": "$3k\u2013$6k/mo: A bit extra on the side"
+          },
+          {
+            "id": "5O4JQ4qpBoea",
+            "ref": "01KRCRWGFKPT2SVC5XWC21CTGH",
+            "label": "$6k\u2013$10k/mo: Replace my job income, work for myself"
+          },
+          {
+            "id": "vPU1mmkSrpoK",
+            "ref": "01KRCRWGFK3Y6T3Y2CEV91DNJ8",
+            "label": "$10k\u2013$20k/mo: Real money \u2014 freedom, travel, the works"
+          },
+          {
+            "id": "6Twpl7xs2hyd",
+            "ref": "01KRCRWGFK768TPSQQX34VEP65",
+            "label": "$20k+/mo: I want to go big with this"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "qQP90dlwDoyj",
+      "title": "Where are you right now?",
+      "ref": "current_income",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "gc1MZxxA8coY",
+            "ref": "01KRCRWGFKHKTFASBYZ03V5JY9",
+            "label": "Unemployed or scraping by (under $2k/mo)"
+          },
+          {
+            "id": "I5NEi1RLfhYF",
+            "ref": "01KRCRWGFKP1BQRPNS227YYQZY",
+            "label": "Stuck in a job that's not paying enough ($2k\u2013$4k/mo)"
+          },
+          {
+            "id": "v4gnwO9CRfGr",
+            "ref": "01KRCRWGFKVBZ35AMAX5CBDX5T",
+            "label": "Earning okay but plateaued ($4k\u2013$8k/mo)"
+          },
+          {
+            "id": "dFTW03APALB3",
+            "ref": "01KRCRWGFKZA12P4MTCCNXEWYT",
+            "label": "Already in the $8k+/mo bracket and want to scale"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "js6GVDgpGZeO",
+      "title": "What's been the actual thing stopping you hitting that goal?",
+      "ref": "main_blocker",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "mynI2opPcpi5",
+            "ref": "01KRCRWGFKPYP7TTQX2AA0ZVMY",
+            "label": "No one's shown me the way. Don't know where to start."
+          },
+          {
+            "id": "H6x9K3ukIOkv",
+            "ref": "01KRCRWGFKBRMSPQB6KJ5NYPJS",
+            "label": "Tried before. Didn't work. Burned out on it."
+          },
+          {
+            "id": "FSSa6DMQvjTs",
+            "ref": "01KRCRWGFKY5Q358W9FVYFXRWA",
+            "label": "I have the time but no real system to follow"
+          },
+          {
+            "id": "OntZQUPt8Lnt",
+            "ref": "01KRCRWGFK6AFBM32CT480MAYR",
+            "label": "Scared to commit. Don't trust myself to follow through."
+          },
+          {
+            "id": "LUL1qTbwyytT",
+            "ref": "01KRCRWGFKPWGXZ0T43A3N83D6",
+            "label": "Skeptical. Been sold dreams before."
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "QNsdr1u8tr7S",
+      "title": "Why now? What's pushing you to do something about it?",
+      "ref": "why_now",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "IwMEYVae9AH8",
+            "ref": "01KRCRWGFKFG6R1KBC1QPJCHD1",
+            "label": "Sick of being stuck. Something has to change."
+          },
+          {
+            "id": "9AbRcuvho3jb",
+            "ref": "01KRCRWGFK55Y74XXW5GVH783H",
+            "label": "Life's just pushed me into it recently"
+          },
+          {
+            "id": "RktLYIwVP7qg",
+            "ref": "01KRCRWGFKZ5HH1250YJ5DC8E0",
+            "label": "I've been thinking about this for a long time. Ready to commit."
+          },
+          {
+            "id": "j65B0jnjOdPT",
+            "ref": "01KRCRWGFKTAFTNQ47998N7Q0Z",
+            "label": "I see others succeeding with AI. I don't want to miss the window."
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "kS6dyMnZpm50",
+      "title": "We're selective with who we work with. With limited spots available, *briefly tell us why you'd be a great fit for the program.*",
+      "ref": "why_you",
+      "validations": {
+        "required": true
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "TkaxzGuTs0Q0",
+      "title": "If we showed you a clear path that's already working for people in your exact situation, what's the plan?",
+      "ref": "intent",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "1deXUO4CYujH",
+            "ref": "01KRCRWGFKHZJ0WE5YV686BMHX",
+            "label": "I'm ready to start immediately"
+          },
+          {
+            "id": "GEDQZMsE8GP7",
+            "ref": "01KRCRWGFK9B4TCJ8D6P31HWSK",
+            "label": "I'd start within the next month if it's the right fit"
+          },
+          {
+            "id": "02ZKj8Vo1DUy",
+            "ref": "01KRCRWGFK346RQK4W5SHFDC0V",
+            "label": "I need more information before committing"
+          },
+          {
+            "id": "L6EPtymBn6Mh",
+            "ref": "01KRCRWGFKG6F05ABHYRM4KCWS",
+            "label": "I'm just exploring at this point"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "6XIxTHgQwmWW",
+      "title": "What's your budget for this right now?",
+      "ref": "budget",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "fGurl40dL8Il",
+            "ref": "01KRCRWGFKARENVKEMHBZE0SZH",
+            "label": "$120: Tight on cash, but want something I can actually use"
+          },
+          {
+            "id": "i9R03SGU9Cl5",
+            "ref": "01KRCRWGFK1SB5CWXPT1JVZPK6",
+            "label": "$250: I have a bit to invest. Want something practical to start with."
+          },
+          {
+            "id": "vflW3IKGhLjt",
+            "ref": "01KRCRWGFKKCDJ28N07NJBYVC8",
+            "label": "$360: Ready to invest in a real foundation"
+          },
+          {
+            "id": "bM3J2Gz8O2Hh",
+            "ref": "01KRCRWGFKPXP7C99XY0E182DR",
+            "label": "$500: I'm serious. Want something solid I can run with."
+          },
+          {
+            "id": "Ob3XyQKNvHUG",
+            "ref": "01KRCRWGFKYJ2EJ123F09C0F2P",
+            "label": "$750: Want the strongest setup I can get on my own"
+          },
+          {
+            "id": "v8QVqSSaEGrd",
+            "ref": "01KRCRWGFK8P6JE1R5M09BP5R3",
+            "label": "$1,500+: I'm ready to invest in proper coaching. Won't think twice."
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "hUSjKVF3e5BA",
+      "title": "First name?",
+      "ref": "first_name",
+      "validations": {
+        "required": true
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "H7s95BmZ01Qo",
+      "title": "Best email?",
+      "ref": "email",
+      "validations": {
+        "required": true
+      },
+      "type": "email"
+    },
+    {
+      "id": "3fLHWaeRUbwZ",
+      "title": "Phone number?",
+      "ref": "phone",
+      "properties": {
+        "default_country_code": "GB"
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "phone_number"
+    }
+  ],
+  "hidden": [
+    "fn",
+    "ln",
+    "source",
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "ref"
+  ]
+}

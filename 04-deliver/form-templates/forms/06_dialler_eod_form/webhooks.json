@@ -1,0 +1,9 @@
+[
+  {
+    "tag": "WHTP2864312",
+    "url": "<REPLACE_WITH_YOUR_WEBHOOK_URL>",
+    "enabled": true,
+    "verify_ssl": true,
+    "_note": "Replace url with your own Make / n8n / Zapier / Modal endpoint before running scripts/recreate_webhooks.py"
+  }
+]

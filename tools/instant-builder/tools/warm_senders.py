@@ -3,7 +3,7 @@
 warm_senders.py
 
 Sends a small, varied batch of real-looking mail from the sending domains to
-Brett's own inboxes, so the new domains build a history before they are pointed
+your own inboxes, so the new domains build a history before they are pointed
 at strangers.
 
     python3 tools/warm_senders.py                 # show the plan, send nothing
@@ -54,22 +54,18 @@ ENV = ROOT.parent / "Agentic Workflows" / ".env"
 BROWSER_UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
 
-# Brett's own inboxes. Spread across providers on purpose: Gmail, iCloud and a
+# YOUR OWN inboxes. Spread across providers on purpose: Gmail, iCloud and a
 # custom domain each judge a sender differently, and a domain that only ever
 # reaches Gmail has only ever been judged by Gmail.
+#
+# Fill these in with inboxes YOU control. Never put a client's address here:
+# "Re: the invoice" arriving out of nowhere is a strange thing for them to get.
 SEED_INBOXES = [
-    "brettzuke6987@gmail.com",
-    "brettzuke0@gmail.com",
-    "blooo.r6@gmail.com",
-    "adrianzuke@gmail.com",
-    "bretzuk@icloud.com",
-    "alliferguson77@gmail.com",
-    "brett.zukemarketing.ca@gmail.com",
+    "you@gmail.com",
+    "you.second@gmail.com",
+    "you@icloud.com",
+    "you@outlook.com",
     "you@yourdomain.com",
-    # dan@danbennettz.com is a real client inbox, so it is left out by default.
-    # "Re: the invoice" arriving there out of nowhere is a strange thing for him
-    # to receive. Uncomment it if you would rather have the extra provider.
-    # "dan@danbennettz.com",
 ]
 
 # Short, ordinary, and worth replying to. A warmup message that obviously exists

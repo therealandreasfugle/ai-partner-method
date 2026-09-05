@@ -1,0 +1,151 @@
+{
+  "type": "quiz",
+  "title": "Setter EOD Form",
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "Thanks for completing this typeform\nNow *create your own* \u2014 it's free, easy, & beautiful",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Create a *typeform*"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "icsfM9qe8iNI",
+      "title": "How many inbound DMs did you handle?",
+      "ref": "a7ba3b89-b588-4588-a969-1fe6ff3a1c9e",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "N6SY65e7kKQX",
+      "title": "How many inbound booked calls did you have?",
+      "ref": "c0c0d62e-7c05-4d48-9e1d-5688e06c38f9",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "6bWGsgzM0exD",
+      "title": "How many outbound messages did you send?",
+      "ref": "dc82870f-6737-413e-a892-f206cd58e358",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "TpjMLFOMbedR",
+      "title": "How many outbound responses did you receive?",
+      "ref": "8b09c3e7-87cf-48ce-b0a9-a9d9ef7b3c93",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "OJMemAd7Qo6E",
+      "title": "How many outbound booked calls did you achieve?",
+      "ref": "038ec600-5964-4f38-941c-214b8f76416b",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "AF0XK9UajjZY",
+      "title": "What is the total number of qualified leads (inbound + outbound)?",
+      "ref": "df3cf1dc-4425-4d4e-9600-fee049b873a7",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "qZCBm9gtkKIC",
+      "title": "Which was your primary communication channel?",
+      "ref": "842540f9-33c8-419c-bd6f-590667bd1301",
+      "properties": {
+        "randomize": false,
+        "alphabetical_order": false,
+        "choices": [
+          {
+            "id": "2UKUxfSX5zJ5",
+            "ref": "e6a54367-7260-415c-b5ae-a1d6d522dd3a",
+            "label": "Instagram DM"
+          },
+          {
+            "id": "wodlTMMJQT9o",
+            "ref": "d238c9e0-9ac6-4d6e-81df-83dca88d557a",
+            "label": "Telegram"
+          },
+          {
+            "id": "5w36bTE4BZPM",
+            "ref": "a4863a22-79a6-4bfc-ae1d-b09aedb713fe",
+            "label": "WhatsApp"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "dropdown"
+    },
+    {
+      "id": "11fs3XF1P8Dq",
+      "title": "What was the top barrier to booking calls?",
+      "ref": "083f3bbb-6c3c-4a9c-ac44-4f78d039fa21",
+      "properties": {
+        "description": "For example: 'Price/Early Bird too high,' 'Masterclass not watched,' or 'Timezone conflict.'"
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    }
+  ]
+}

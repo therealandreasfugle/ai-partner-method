@@ -1,0 +1,759 @@
+{
+  "type": "quiz",
+  "title": "[Closer] Post Call Form",
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "4Dmsel0H6MGq",
+      "ref": "0418f0b1-947e-4c74-bb9d-a30184c89947",
+      "title": "Logged. On to the next call.\n\nDon't forget to confirm your upcoming calls and make any needed dials.",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": false,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "again"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://images.typeform.com/images/CAHStGYzqxPB",
+        "properties": {
+          "description": "098aedee-8d21-4896-b876-7ea2fbb17f44.JPG"
+        }
+      },
+      "layout": {
+        "type": "stack",
+        "attachment": {
+          "type": "image",
+          "href": "https://images.typeform.com/images/CAHStGYzqxPB",
+          "properties": {
+            "brightness": 0,
+            "focal_point": {
+              "x": 0,
+              "y": 0
+            },
+            "description": "098aedee-8d21-4896-b876-7ea2fbb17f44.JPG"
+          }
+        },
+        "viewport_overrides": {
+          "small": {
+            "type": "stack"
+          },
+          "large": {
+            "type": "float",
+            "placement": "right"
+          }
+        }
+      }
+    },
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "Thanks for completing this typeform\nNow *create your own* \u2014 it's free, easy, & beautiful",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Create a *typeform*"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "QxtUmEZGGbQr",
+      "title": "*Enter Leads Info*",
+      "ref": "9ebb86a6-f5fd-4335-8f21-74a6deae7658",
+      "properties": {
+        "description": "make sure it's correct *(phone number is on Iclosed)*",
+        "fields": [
+          {
+            "id": "kmiDXJdDlcS0",
+            "title": "First name",
+            "ref": "0650d2b6-29b1-45a9-b273-0b961d1164ec",
+            "subfield_key": "first_name",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "short_text"
+          },
+          {
+            "id": "1xEbO78j7BYh",
+            "title": "Phone number",
+            "ref": "63988bb2-d865-4abb-ab5e-c5a6454f7eac",
+            "subfield_key": "phone_number",
+            "properties": {
+              "default_country_code": "US"
+            },
+            "validations": {
+              "required": false
+            },
+            "type": "phone_number"
+          },
+          {
+            "id": "3fMQ76TlXlSj",
+            "title": "Email",
+            "ref": "ce0a5927-3edb-4570-8365-9e9fba7df79c",
+            "subfield_key": "email",
+            "properties": {},
+            "validations": {
+              "required": true
+            },
+            "type": "email"
+          }
+        ]
+      },
+      "type": "contact_info"
+    },
+    {
+      "id": "OOJO5M4Goy7S",
+      "title": "*Closer Name*",
+      "ref": "76cd2ea7-496b-4f46-b5e1-22fa09e1cb47",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "eli8qgwpGvXS",
+            "ref": "254258e8-af7f-4608-9aca-fb2ca295203c",
+            "label": "Closer Name 1"
+          },
+          {
+            "id": "xMuhvOedTZoR",
+            "ref": "ec26caeb-e954-4896-ae8f-09f3a69056d7",
+            "label": "Closer Name 2"
+          },
+          {
+            "id": "Ham5STJQyefq",
+            "ref": "ef85cc23-0504-49d0-a191-b3211375418c",
+            "label": "Closer Name 3"
+          },
+          {
+            "id": "7GKDsLW6dEjF",
+            "ref": "7357bec5-ba43-4b39-bc59-746f5cb415d6",
+            "label": "Closer Name 4"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "5zmcaOBpqeg0",
+      "title": "*Setter Name*",
+      "ref": "8cbd31ce-5198-45ac-a840-d99b79a54b63",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "aPw4NPvCalKv",
+            "ref": "95893b6b-f80e-4383-ba82-27f3175b776c",
+            "label": "Setter Name 1"
+          },
+          {
+            "id": "5ei5HEn67vUx",
+            "ref": "1d14075a-1b20-4768-8ddf-99b88a624ea7",
+            "label": "Setter Name 2"
+          },
+          {
+            "id": "bLQTTUkLHOmS",
+            "ref": "d4b10142-f94b-47f6-b733-7c21e83b1a38",
+            "label": "No Setter"
+          },
+          {
+            "id": "KBm14cjjOu59",
+            "ref": "8ad39390-836b-4ac0-81fb-3721054ae910",
+            "label": "Unsure of Setter"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "Io4WHtq2sJ40",
+      "title": "*Outcome of Sales Call?*",
+      "ref": "815d1168-1dff-416e-bc7c-5c9f10f7271b",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "MqEGR8zUHvWL",
+            "ref": "aa7e27af-d01d-4df1-9a79-0c1b9e02bd52",
+            "label": "PIF"
+          },
+          {
+            "id": "YdZWxhMTo9gT",
+            "ref": "f06ac453-47a4-4f86-bc47-1228e3e5f8df",
+            "label": "Financed via Fanbasis"
+          },
+          {
+            "id": "ekNdugbbko36",
+            "ref": "cac2ee39-6444-48fc-9019-741d749ab2ed",
+            "label": "Financed In House"
+          },
+          {
+            "id": "7Jd02XPD5Ssh",
+            "ref": "49e16d5a-74a0-423f-b364-398f89a35a5d",
+            "label": "Put Deposit"
+          },
+          {
+            "id": "anCLsVm9LAuf",
+            "ref": "761df4ea-760f-4f7e-9295-2058c52aeb9d",
+            "label": "Booked Follow Up"
+          },
+          {
+            "id": "RFS4oDBHmUiS",
+            "ref": "a3e88122-37d6-4e01-99ad-779fdc9c5718",
+            "label": "No Close"
+          },
+          {
+            "id": "deoCMyqoThi7",
+            "ref": "3efaca12-569d-41c8-8a3d-f477887cae33",
+            "label": "Financially DQ'd"
+          },
+          {
+            "id": "Kcvw7d713yDV",
+            "ref": "e996fdc7-b326-4e86-b109-510b92cfc1cd",
+            "label": "No Show"
+          },
+          {
+            "id": "W2yo0ZSA9HEC",
+            "ref": "5221f628-da79-4563-86b2-1091bbdc03fc",
+            "label": "Cancelled"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "7rBwqD3yxLVY",
+      "title": "*What was the ONE specific technical or mental 'gap' they believed was stopping them?*",
+      "ref": "9741738e-020c-4057-91af-6f1bc1def773",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "mD5Qr9xMoMBK",
+      "title": "*If they did NOT close:*\n\n*List the biggest objection(s) they had that stopped them from buying*",
+      "ref": "48af8791-276a-49dc-8246-76e363be564c",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "ErEw4nLM6Ree",
+      "title": "*What objections of theirs did you struggle to overcome?*",
+      "ref": "546ea979-1900-4c62-adc8-2e96e312a628",
+      "properties": {
+        "description": "leave blank if truly nothing but take a minute to self reflect "
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "qbviLx1TZtZb",
+      "title": "*What could you have done to improve the chances of them closing? *",
+      "ref": "66f657eb-e305-46c4-8e3f-ab527f3f6699",
+      "properties": {
+        "description": "leave blank if truly nothing but take a minute to self reflect "
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "4AM82qE5iRNd",
+      "title": "*What could we improve in our marketing & post-call booking process to help you close?*",
+      "ref": "f80d303e-08c9-48aa-9d54-aad6294828c7",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "j8Gq4ZvxXd0h",
+      "title": "*Did you present the offer?*",
+      "ref": "a90693cb-3642-470d-ba10-3576641eb6b0",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "yes_no"
+    },
+    {
+      "id": "Y17fo4OBi4Gk",
+      "title": "*What's the cash COLLECTED*",
+      "ref": "7a2f86a8-abcc-4e69-b801-db07d50d93e2",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "9a3b0MttXLes",
+      "title": "*What is the closed deal/contract value?*",
+      "ref": "d99999eb-dfe0-4ebb-8bbf-508eeace1f27",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "GSrwbMM2ESir",
+      "title": "*What tier did you get them in on?*",
+      "ref": "9a8de7c5-53e9-43da-b288-4f6f82b2945b",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "hkyxduF0BYOb",
+            "ref": "e45ebe20-9bca-4c66-9a5a-4f1c73a6c567",
+            "label": "Tier 1"
+          },
+          {
+            "id": "CpZloR75AZfd",
+            "ref": "c2f02ec4-fd86-4908-bf7f-1a3b04902f11",
+            "label": "Tier 2"
+          },
+          {
+            "id": "R6PJrtaG1R4l",
+            "ref": "bc1ced55-871e-4d99-82bb-fda406a5d33b",
+            "label": "Tier 3"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "OAS0mfP6OYdW",
+      "title": "*Payment Plan*",
+      "ref": "068b0b90-5983-4718-a36c-daadd270408d",
+      "properties": {
+        "description": "Select NA this if PIF or no close",
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "wxnjdwByYrGN",
+            "ref": "ffd5fe0b-109b-42aa-aea9-8fc2dc10259c",
+            "label": "2 monthly payments"
+          },
+          {
+            "id": "TXXfDItQHSa4",
+            "ref": "d2603014-040f-49db-9e16-2a222a719f7e",
+            "label": "3 monthly payments"
+          },
+          {
+            "id": "iX0Thc4gXVUC",
+            "ref": "b071b1dd-eccf-4166-8ca5-e9292216f23b",
+            "label": "4 monthly payments"
+          },
+          {
+            "id": "DCvh7ak8aYk6",
+            "ref": "876c768e-5725-4a38-aff0-dce50f1e2271",
+            "label": "6 monthly payments"
+          },
+          {
+            "id": "gGJjqA4pAHcj",
+            "ref": "12902ad9-dd92-4ab7-abf9-16bd66c0348d",
+            "label": "Custom (specify at end of typeform)"
+          },
+          {
+            "id": "tqUpwPgjx6ph",
+            "ref": "d795fe92-e256-4d38-8b7e-010171181b71",
+            "label": "NA"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "cgeabOC2EFkd",
+      "title": "*Amount per upcoming recurring payment ($USD)*",
+      "ref": "c093306f-7868-4052-9352-de6959698562",
+      "properties": {
+        "description": "What they will pay each month after todays CC"
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "KmNuCzMKH0mY",
+      "title": "Date of first recurring payment",
+      "ref": "2123ae4a-107a-452b-8e09-16f25eca32c3",
+      "properties": {
+        "separator": "/",
+        "structure": "DDMMYYYY"
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "date"
+    },
+    {
+      "id": "X6thFWkTO2PU",
+      "title": "Insert the Call Link",
+      "ref": "29995e03-7ce4-4378-b206-c95f36aac283",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "DhsLbT9HiSMP",
+      "title": "* \ud83d\udd34 I M P O R T A N T \ud83d\udd34*\n \nThe *next answer you give* is going straight into an* email being sent *to the lead* *in 10 minutes.\n\n*Write your answer lowercase & informal so they flow naturally into the template*",
+      "ref": "b85ade31-4f4e-498d-940b-ab175ee8f36e",
+      "properties": {
+        "button_text": "Continue",
+        "hide_marks": true
+      },
+      "type": "statement",
+      "attachment": {
+        "type": "image",
+        "href": "https://images.typeform.com/images/dLscAfRyiLVL",
+        "properties": {
+          "description": "IMG_7702"
+        }
+      },
+      "layout": {
+        "type": "stack",
+        "attachment": {
+          "type": "image",
+          "href": "https://images.typeform.com/images/dLscAfRyiLVL",
+          "properties": {
+            "brightness": 0,
+            "focal_point": {
+              "x": 0,
+              "y": 0
+            },
+            "description": "IMG_7702"
+          }
+        },
+        "viewport_overrides": {
+          "small": {
+            "type": "float"
+          },
+          "large": {
+            "type": "float",
+            "placement": "right"
+          }
+        }
+      }
+    },
+    {
+      "id": "tpfakZz3CNUr",
+      "title": "*Start of Template*:\nhey [Name], [CloserName] said yous just got off the phone... \n\nhe said you were looking to *[ANSWER A]* with the help of my program\n\n\n*(I need you to fill in Answer A)*\n\n*What was the #1 goal they wanted to achieve?*",
+      "ref": "7127d0f7-6275-4c62-8fb7-c315b569e04b",
+      "properties": {
+        "description": "If they PIF / Financed leave blank"
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "qK4AoDueErUq",
+      "title": "*add any other info you think is useful*",
+      "ref": "fef4acf3-ce65-45da-af59-bf7535e5f101",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    }
+  ],
+  "variables": {
+    "utm_campaign": "",
+    "utm_content": "",
+    "utm_medium": "",
+    "utm_source": ""
+  },
+  "logic": [
+    {
+      "type": "field",
+      "ref": "a90693cb-3642-470d-ba10-3576641eb6b0",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "29995e03-7ce4-4378-b206-c95f36aac283"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "815d1168-1dff-416e-bc7c-5c9f10f7271b"
+              },
+              {
+                "type": "choice",
+                "value": "761df4ea-760f-4f7e-9295-2058c52aeb9d"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "29995e03-7ce4-4378-b206-c95f36aac283"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "815d1168-1dff-416e-bc7c-5c9f10f7271b"
+              },
+              {
+                "type": "choice",
+                "value": "a3e88122-37d6-4e01-99ad-779fdc9c5718"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "29995e03-7ce4-4378-b206-c95f36aac283"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "815d1168-1dff-416e-bc7c-5c9f10f7271b"
+              },
+              {
+                "type": "choice",
+                "value": "3efaca12-569d-41c8-8a3d-f477887cae33"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "29995e03-7ce4-4378-b206-c95f36aac283"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "815d1168-1dff-416e-bc7c-5c9f10f7271b"
+              },
+              {
+                "type": "choice",
+                "value": "e996fdc7-b326-4e86-b109-510b92cfc1cd"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "d99999eb-dfe0-4ebb-8bbf-508eeace1f27",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "29995e03-7ce4-4378-b206-c95f36aac283"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "815d1168-1dff-416e-bc7c-5c9f10f7271b"
+              },
+              {
+                "type": "choice",
+                "value": "aa7e27af-d01d-4df1-9a79-0c1b9e02bd52"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "29995e03-7ce4-4378-b206-c95f36aac283"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "815d1168-1dff-416e-bc7c-5c9f10f7271b"
+              },
+              {
+                "type": "choice",
+                "value": "761df4ea-760f-4f7e-9295-2058c52aeb9d"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "29995e03-7ce4-4378-b206-c95f36aac283"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "815d1168-1dff-416e-bc7c-5c9f10f7271b"
+              },
+              {
+                "type": "choice",
+                "value": "a3e88122-37d6-4e01-99ad-779fdc9c5718"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "29995e03-7ce4-4378-b206-c95f36aac283"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "815d1168-1dff-416e-bc7c-5c9f10f7271b"
+              },
+              {
+                "type": "choice",
+                "value": "3efaca12-569d-41c8-8a3d-f477887cae33"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "29995e03-7ce4-4378-b206-c95f36aac283"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "815d1168-1dff-416e-bc7c-5c9f10f7271b"
+              },
+              {
+                "type": "choice",
+                "value": "e996fdc7-b326-4e86-b109-510b92cfc1cd"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

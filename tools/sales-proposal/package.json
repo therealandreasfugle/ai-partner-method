@@ -1,0 +1,8 @@
+{
+  "name": "agency-proposal",
+  "private": true,
+  "description": "Static agency proposal + /api/send-contract serverless function (signed-agreement email via Resend).",
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  }
+}

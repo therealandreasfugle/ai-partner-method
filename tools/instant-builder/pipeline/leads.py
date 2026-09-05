@@ -24,7 +24,7 @@ BROWSER_UA = (
 
 def sheet_url():
     """The Apps Script web app the CRM already talks to."""
-    env = Path.home() / "Desktop/local-lead-finder/.env"
+    env = Path(os.environ.get("LEAD_SCRAPER_ENV", Path.home() / ".env"))
     if env.is_file():
         for line in env.read_text().splitlines():
             if line.startswith("SHEETS_WEBHOOK_URL="):

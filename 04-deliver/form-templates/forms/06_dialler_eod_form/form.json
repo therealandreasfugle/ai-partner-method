@@ -1,0 +1,99 @@
+{
+  "type": "quiz",
+  "title": "Dialler EOD Form",
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": true,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "hide_required_indicator": false,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "Thanks for completing this typeform\nNow *create your own* \u2014 it's free, easy, & beautiful",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": true,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "Create a *typeform*"
+      },
+      "attachment": {
+        "type": "image",
+        "href": "https://public-assets.typeform.com/public/admin/2dpnUBBkz2VN.gif"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "U2FHeq9JN1Xu",
+      "title": "How many dials did you make today?",
+      "ref": "2ae496b8-e940-4311-a294-088617b7ee24",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "WmFTUmNCdFZ7",
+      "title": "Total pickups",
+      "ref": "8b104938-9bb8-4cf3-8739-0c5374c8e6f0",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "ywThrm6CZcbO",
+      "title": "Total pickups or conversations (lasting over 30 seconds):",
+      "ref": "0a57ebb9-b6c9-4e12-9276-cb050207d500",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "2a38vezQ2DDW",
+      "title": "How many qualified leads did you find today?",
+      "ref": "d0018ec2-d11a-4890-b481-4e1e7d213a44",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    },
+    {
+      "id": "KyTekbVMLaou",
+      "title": "Number of calls you successfully booked:",
+      "ref": "ff8be14a-106f-434e-b6b3-4053df58de1f",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "number"
+    }
+  ]
+}

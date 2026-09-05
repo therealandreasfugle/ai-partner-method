@@ -6,7 +6,7 @@ Composes the email that carries the finished site to the lead.
 NOTHING IS SENT. compose() returns the subject and HTML and writes a preview
 file; send() exists but refuses to run unless SEND_ENABLED is switched on AND a
 recipient is passed explicitly. Sending to a real business owner is a one-way
-action, so it stays behind an explicit switch until Brett says otherwise.
+action, so it stays behind an explicit switch until you turn it on.
 
 Two calls to action, in the order agreed:
   1. See your website      the preview, the hook
@@ -140,7 +140,7 @@ def compose(answers, site_url, proposal_url, agency_name=None, config=None):
 
 def _resend_key():
     """Send-only Resend key. Read at call time so it is never held in memory."""
-    env = Path.home() / "Desktop/settoku/.env.local"
+    env = Path(os.environ.get("SETTOKU_ENV", Path.home() / ".env.local"))
     if env.is_file():
         for line in env.read_text().splitlines():
             if line.startswith("RESEND_API_KEY="):

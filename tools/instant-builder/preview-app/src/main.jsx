@@ -40,7 +40,7 @@ function startAnalytics() {
 // have three things doing it forever: the nav CTA's infinite entice and sheen
 // animations, the chat bubble's infinite pulse ring, and backdrop blurs on the
 // navbar, hero, form and CTA band. Together they made the proposal page stutter
-// while scrolling, which Brett reported.
+// while scrolling, which was reported.
 //
 // The site is on a different origin from the proposal, so the parent cannot
 // reach in and stop them. Instead the proposal asks for embed=1 and we mark the

@@ -19,11 +19,12 @@ Run from anywhere; prints a per-file summary. Verify with `npm run build` and a
 browser check afterwards.
 """
 
+import os
 import re
 import sys
 from pathlib import Path
 
-APP = Path.home() / "Desktop/aipm-instant-site/preview-app"
+APP = Path(os.environ.get("PREVIEW_APP", Path(__file__).resolve().parents[1] / "preview-app"))
 SRC = APP / "src"
 
 # Per-client image paths only. Anything not matching these stays untouched.

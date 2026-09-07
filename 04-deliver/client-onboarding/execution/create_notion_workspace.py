@@ -25,6 +25,10 @@ import sys
 import requests
 from dotenv import load_dotenv
 
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+
 load_dotenv()
 
 API_KEY = os.getenv("NOTION_API_KEY")

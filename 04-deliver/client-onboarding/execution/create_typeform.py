@@ -242,7 +242,6 @@ def build_form_payload() -> dict:
             "language": "en",
             "progress_bar": "proportion",
             "show_progress_bar": True,
-            "show_typeform_branding": False,
             "meta": {"allow_indexing": False},
         },
         "welcome_screens": [
